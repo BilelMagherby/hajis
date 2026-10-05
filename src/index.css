@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-espresso: #160D08;
+    --color-espresso-dark: #090604;
+    --color-espresso-deep: #24150E;
+    --color-cream: #F3EBDD;
+    --color-cream-light: #F8F4EC;
+    --color-gold: #C8A46A;
+    --color-gold-light: #E3C994;
+    --color-coffee-brown: #4A2B1C;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #090604;
+    color: #F8F4EC;
+    font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+    direction: rtl;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #090604;
+    color: #F8F4EC;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #C8A46A;
+    color: #090604;
+  }
+}
+
+/* Custom luxury scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090604;
+}
+::-webkit-scrollbar-thumb {
+  background: #3D281C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A46A;
+}
+
+/* Grain Noise Overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Luxury Glassmorphism */
+.glass-espresso {
+  background: rgba(36, 21, 14, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 164, 106, 0.2);
+}
+
+.glass-espresso-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-espresso-hover:hover {
+  background: rgba(36, 21, 14, 0.85);
+  border-color: rgba(200, 164, 106, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(200, 164, 106, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Gold Gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F8F4EC 0%, #E3C994 40%, #C8A46A 75%, #A68249 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Torn / Brush edge mask for Saudi heritage section */
+.brush-mask {
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 60%, transparent 100%);
+}
+
+/* Animated gold border pulse */
+@keyframes goldBorderGlow {
+  0%, 100% { border-color: rgba(200, 164, 106, 0.3); }
+  50% { border-color: rgba(227, 201, 148, 0.7); }
+}
+
+.gold-glow-animated {
+  animation: goldBorderGlow 3s ease-in-out infinite;
+}

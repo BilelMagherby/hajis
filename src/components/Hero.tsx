@@ -1,0 +1,141 @@
+import React, { useState } from 'react';
+import { ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
+import { brandData } from '../data/brand';
+
+interface HeroProps {
+  onDiscoverClick?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const totalSlides = 4;
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev % totalSlides) + 1);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 1 ? totalSlides : prev - 1));
+  };
+
+  return (
+    <section
+      id="hero"
+      className="relative w-full min-h-screen lg:h-screen flex items-center bg-[#090604] overflow-hidden select-none"
+    >
+      {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <img
+          src="/images/main_cafe.jpg"
+          alt="Hajiss Café Facade"
+          className="w-full h-full object-cover object-center transform scale-100 filter brightness-95 contrast-105"
+        />
+
+        {/* Cinematic Luxury Dark Gradients & Vignettes for High Contrast Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#090604] via-[#090604]/30 to-[#090604]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#090604]/60 via-[#090604]/10 to-[#090604]/60" />
+      </div>
+
+      {/* Subtle Grain Texture Overlay */}
+      <div className="absolute inset-0 grain-overlay pointer-events-none z-10 opacity-30" />
+
+      {/* FOREGROUND CONTENT CONTAINER */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between min-h-[75vh]">
+          
+          {/* BOTTOM LEFT: SLIDER NAVIGATION (← → 01 / 04) */}
+          <div className="order-2 lg:order-1 self-start lg:self-end mb-8 lg:mb-12 flex items-center space-x-5 space-x-reverse">
+            <div className="flex items-center space-x-2 space-x-reverse bg-[#24150E]/80 backdrop-blur-md p-1.5 rounded-full border border-[#C8A46A]/25 shadow-lg">
+              <button
+                onClick={handlePrevSlide}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[#F8F4EC] hover:text-[#C8A46A] hover:bg-[#160D08] transition-colors"
+                aria-label="Previous Slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNextSlide}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[#F8F4EC] hover:text-[#C8A46A] hover:bg-[#160D08] transition-colors"
+                aria-label="Next Slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="font-mono text-sm tracking-widest text-[#E3C994]/90 flex items-center space-x-1 space-x-reverse">
+              <span className="font-bold text-[#F8F4EC]">
+                0{currentSlide}
+              </span>
+              <span className="text-[#C8A46A]/50">/</span>
+              <span className="text-[#C8A46A]/70">
+                0{totalSlides}
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT: HERO HEADLINE & BRAND STORY */}
+          <div className="order-1 lg:order-2 w-full lg:max-w-2xl text-right lg:ml-auto mb-10 lg:mb-0">
+            {/* Circular Hajiss Monogram Insignia */}
+            <div className="mb-4 inline-flex items-center justify-center">
+              <div className="relative w-28 sm:w-32 flex items-center justify-center p-2">
+                <img
+                  src="/images/logo.png"
+                  alt="Insignia"
+                  className="w-full h-auto object-contain filter invert contrast-125"
+                />
+              </div>
+            </div>
+
+            {/* Main Arabic Title */}
+            <div className="space-y-1">
+              <h1 className="font-kufi text-5xl sm:text-6xl lg:text-7xl font-bold text-[#F8F4EC] tracking-tight leading-none drop-shadow-md">
+                هاجس
+              </h1>
+              <h2 className="font-kufi text-2xl sm:text-3xl lg:text-4xl font-light text-[#E3C994] tracking-wide pt-1">
+                هوس التذوّق
+              </h2>
+            </div>
+
+            {/* Description Text */}
+            <p className="mt-5 font-arabic text-sm sm:text-base text-[#D8CEBF] leading-relaxed max-w-xl font-light">
+              {brandData.heroQuote}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-4 justify-end">
+              <button
+                onClick={onDiscoverClick || (() => {
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                })}
+                className="group relative inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/80 backdrop-blur-md text-[#F8F4EC] text-sm font-medium tracking-wide hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow hover:shadow-gold-glow-lg"
+              >
+                <span>اكتشف قصتنا</span>
+                <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => {
+                  document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-6 py-3.5 rounded-full text-[#C8BAA6] hover:text-[#E3C994] text-sm font-arabic transition-colors border border-transparent hover:border-[#C8A46A]/30 bg-[#160D08]/40"
+              >
+                اكتشف القائمة
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* SCROLL INDICATOR ON LEFT/RIGHT EDGE */}
+      <div className="hidden lg:flex absolute bottom-8 left-8 z-20 flex-col items-center space-y-2 opacity-75 hover:opacity-100 transition-opacity pointer-events-none">
+        <div className="w-5 h-8 rounded-full border border-[#C8A46A]/50 flex justify-center p-1">
+          <div className="w-1 h-2 bg-[#E3C994] rounded-full animate-bounce" />
+        </div>
+        <span className="font-brand text-[9px] tracking-[0.25em] text-[#C8A46A]">
+          SCROLL
+        </span>
+      </div>
+    </section>
+  );
+};

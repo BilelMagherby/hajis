@@ -1,0 +1,101 @@
+import React from 'react';
+
+export const AboutSection: React.FC = () => {
+  return (
+    <section
+      id="about"
+      className="relative w-full py-24 lg:py-32 bg-[#F3EBDD] text-[#160D08] overflow-hidden"
+    >
+      {/* Decorative Warm Ambient Texture */}
+      <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#D8CEBF_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* IMAGE CONTAINER (Will appear on LEFT in RTL if it's order-2) */}
+          <div className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center">
+            <div className="relative w-full max-w-lg">
+              {/* Soft decorative shadow background */}
+              <div className="absolute -inset-4 bg-[#C8BAA6]/40 rounded-3xl blur-2xl transform -rotate-2" />
+
+              {/* The Image Container with subtle organic border */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#D8CEBF] bg-[#EAE0D0]">
+                <img
+                  src="/images/arabic_dallah.jpg"
+                  alt="Traditional Saudi Dallah & Hail Hospitality"
+                  className="w-full h-[400px] sm:h-[480px] object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                
+                {/* Subtle vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#160D08]/30 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+              {/* Small Heritage Tag at bottom-right of image */}
+              <div className="absolute -bottom-5 right-6 bg-[#160D08] text-[#E3C994] px-5 py-2.5 rounded-full border border-[#C8A46A]/40 shadow-xl flex items-center space-x-2 space-x-reverse">
+                <span className="font-brand text-xs tracking-widest uppercase">Hajiss</span>
+                <span className="text-[#C8A46A]">•</span>
+                <span className="font-arabic text-xs font-light">حائل منذ 2020</span>
+              </div>
+            </div>
+          </div>
+
+          {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
+          <div className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6">
+            {/* Top Insignia Emblem */}
+            <div className="flex items-center justify-end space-x-3 space-x-reverse">
+              <span className="font-arabic text-xs tracking-widest text-[#82543A] uppercase font-semibold">
+                أصالة المكان وروح الضيافة
+              </span>
+              <div className="w-12 h-auto flex items-center justify-center">
+                <img
+                  src="/images/logo.png"
+                  alt="Hajiss"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Main Title */}
+            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#160D08] tracking-tight">
+              ما هو هاجس ؟
+            </h2>
+
+            {/* Introductory sentence */}
+            <p className="font-arabic text-base sm:text-lg text-[#4A2B1C] font-medium leading-relaxed">
+              في هاجس، تلتقي ثلاث أشياء في مكان واحد:
+            </p>
+
+            {/* The 3 Pillars List */}
+            <ul className="space-y-4 font-arabic text-sm sm:text-base text-[#24150E] leading-relaxed">
+              <li className="flex items-start justify-end space-x-3 space-x-reverse">
+                <span>مقهى متخصص، ما هو أي مقهى.</span>
+                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+              </li>
+              <li className="flex items-start justify-end space-x-3 space-x-reverse">
+                <span>مكان للتجمّعات، جذوره من الوجار، عادة أهل حائل الأصيلة بالكرم والدفا..</span>
+                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+              </li>
+              <li className="flex items-start justify-end space-x-3 space-x-reverse">
+                <span>انتماء، مو مجرد راحة تجيك وتروح.</span>
+                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+              </li>
+            </ul>
+
+            {/* Unifying statement */}
+            <p className="font-arabic text-sm sm:text-base text-[#4A2B1C]/90 leading-relaxed pt-2">
+              وهذي الأشياء الثلاث مو متفرقة عن بعض، أصلها واحد، بس كل وحدة تعبّر عنه بطريقتها.
+            </p>
+
+            {/* Final Statement / Punchline */}
+            <div className="pt-4 border-t border-[#D8CEBF]/80">
+              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[#160D08] tracking-wide">
+                القهوة... طقس نعيشه.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
