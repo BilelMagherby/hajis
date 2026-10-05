@@ -42,13 +42,16 @@
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #090604;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #3D281C;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #C8A46A;
 }
@@ -69,6 +72,7 @@
 .glass-espresso-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .glass-espresso-hover:hover {
   background: rgba(36, 21, 14, 0.85);
   border-color: rgba(200, 164, 106, 0.6);
@@ -91,8 +95,15 @@
 
 /* Animated gold border pulse */
 @keyframes goldBorderGlow {
-  0%, 100% { border-color: rgba(200, 164, 106, 0.3); }
-  50% { border-color: rgba(227, 201, 148, 0.7); }
+
+  0%,
+  100% {
+    border-color: rgba(200, 164, 106, 0.3);
+  }
+
+  50% {
+    border-color: rgba(227, 201, 148, 0.7);
+  }
 }
 
 .gold-glow-animated {

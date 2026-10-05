@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
       {/* FOREGROUND CONTENT CONTAINER */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[75vh]">
-          
+
           {/* BOTTOM LEFT: SLIDER NAVIGATION (← → 01 / 04) */}
           <div className="order-2 lg:order-1 self-start lg:self-end mb-8 lg:mb-12 flex items-center space-x-5 space-x-reverse">
             <div className="flex items-center space-x-2 space-x-reverse bg-[#24150E]/80 backdrop-blur-md p-1.5 rounded-full border border-[#C8A46A]/25 shadow-lg">

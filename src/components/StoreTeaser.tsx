@@ -8,7 +8,7 @@ export const StoreTeaser: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#24150E]/80 via-[#160D08] to-[#24150E]/80 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#24150E] to-[#160D08] border border-[#C8A46A]/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 text-right">
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#24150E] to-[#160D08] border border-[#C8A46A]/40 shadow-2xl flex flex-col md:flex-row-reverse items-center justify-between gap-8 text-right">
           
           {/* QR CODE & BADGE */}
           <div className="flex flex-col items-center p-4 rounded-2xl bg-[#090604] border border-[#C8A46A]/30 shadow-lg">

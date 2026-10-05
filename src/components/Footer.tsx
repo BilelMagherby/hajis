@@ -19,10 +19,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="w-full bg-[#090604] text-[#F8F4EC] border-t border-[#3D281C]/40 pt-16 pb-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* TOP 4 COLUMNS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-right pb-12 border-b border-[#2A180E]">
-          
+
           {/* COL 1: BRAND LOGO & BIO */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3 space-x-reverse justify-end">

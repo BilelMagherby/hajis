@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, X, Sparkles } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
-import { CoffeeBag3D } from './3d/CoffeeBag3D';
 
 export const MenuSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
