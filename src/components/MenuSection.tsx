@@ -3,7 +3,11 @@ import { ArrowLeft, X, Sparkles } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
 import { RevealOnScroll } from './RevealOnScroll';
 
-export const MenuSection: React.FC = () => {
+interface MenuSectionProps {
+  onNavigate?: (sectionId: string) => void;
+}
+
+export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
 
   return (
@@ -53,7 +57,13 @@ export const MenuSection: React.FC = () => {
             </div>
 
             <button
-              onClick={() => setSelectedCategory(menuCategories[0])}
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate('menu');
+                } else {
+                  setSelectedCategory(menuCategories[0]);
+                }
+              }}
               className="mt-6 w-full py-3.5 px-6 rounded-full border border-[#C8A46A] bg-[#24150E]/80 text-[#F8F4EC] hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 font-arabic text-sm font-medium flex items-center justify-center space-x-2 space-x-reverse shadow-gold-glow"
             >
               <span>استعرض القائمة الكاملة</span>

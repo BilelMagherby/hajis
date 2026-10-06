@@ -95,7 +95,7 @@ export const App: React.FC = () => {
         <PhilosophySection />
 
         {/* 7. Coffee Menu & 3D Interactive Coffee Bag */}
-        <MenuSection />
+        <MenuSection onNavigate={handleNavigate} />
 
         {/* 8. Dedicated V60 Pour-Over Ritual Section */}
         <V60Section />
