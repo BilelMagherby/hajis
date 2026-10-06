@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
         <img
           src="/images/main_cafe.jpg"
           alt="Hajiss Café Facade"
-          className="w-full h-full object-contain object-center filter brightness-125 contrast-125 saturate-125"
+          className="w-full h-full object-cover object-center filter brightness-125 contrast-125 saturate-125"
         />
 
         {/* Very light vignette so the image stays crisp and bright */}
