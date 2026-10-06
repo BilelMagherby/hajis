@@ -107,7 +107,7 @@ export const App: React.FC = () => {
         {/* 10. Online Store Teaser & QR Code */}
         <StoreTeaser />
 
-        {/* 11. Hajiss location map */}
+        {/* 11. Hajiss location */}
         <LocationMapSection />
       </main>
 
