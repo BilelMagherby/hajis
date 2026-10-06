@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { InstagramIcon, SnapchatIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
+import { InstagramIcon, SnapchatIcon, ThreadsIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
 import { brandData } from '../data/brand';
 
 interface NavbarProps {
@@ -151,6 +151,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-label="Snapchat"
               >
                 <SnapchatIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={brandData.contact.threads}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
+                aria-label="Threads"
+              >
+                <ThreadsIcon className="w-4 h-4" />
               </a>
               <a
                 href={brandData.contact.x}

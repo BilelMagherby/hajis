@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
-import { InstagramIcon, SnapchatIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
+import { InstagramIcon, SnapchatIcon, ThreadsIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
 import { ShopQrCode } from './ShopQrCode';
 import './ShopQrCode.css';
 import { brandData } from '../data/brand';
@@ -77,6 +77,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 aria-label="Snapchat"
               >
                 <SnapchatIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={brandData.contact.threads}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                aria-label="Threads"
+              >
+                <ThreadsIcon className="w-4 h-4" />
               </a>
               <a
                 href={brandData.contact.x}
