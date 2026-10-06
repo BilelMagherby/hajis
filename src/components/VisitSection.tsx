@@ -16,7 +16,7 @@ export const VisitSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* TOP ROW: SPLIT IMAGES AND LOCATION DETAILS */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" dir="ltr">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center" dir="ltr">
           
           {/* LEFT: HAJISS V60 COFFEE PHOTO */}
           <div className="lg:col-span-6 lg:col-start-1 relative group overflow-hidden rounded-3xl border border-[#C8A46A]/30 shadow-2xl">
@@ -39,8 +39,8 @@ export const VisitSection: React.FC = () => {
           </div>
 
           {/* RIGHT: INVITATION & HOURS */}
-          <div className="lg:col-span-6 lg:col-start-7 text-right space-y-5" dir="rtl">
-            <div className="flex justify-end">
+          <div className="lg:col-span-6 lg:col-start-7 text-right space-y-5 self-start" dir="rtl">
+            <div className="flex w-full justify-start">
               <div className="inline-flex items-center gap-2 rounded-2xl border border-[#C8A46A]/25 bg-[#303522] px-4 py-3 text-[11px] text-[#D8CEBF]/80">
                 <span>يومياً من 6:00 صباحاً حتى 2:00 بعد منتصف الليل</span>
                 <Clock className="w-3.5 h-3.5 flex-shrink-0 text-[#C8A46A]" />

@@ -41,7 +41,7 @@ export const V60Section: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" dir="ltr">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start lg:items-center" dir="ltr">
           
           {/* RIGHT: V60 RITUAL STEPS GRID */}
           <div className="lg:col-span-6 lg:col-start-1 grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1" dir="rtl">
@@ -64,8 +64,8 @@ export const V60Section: React.FC = () => {
           </div>
 
           {/* LEFT: TEXT & INTRO */}
-          <div className="lg:col-span-6 lg:col-start-7 text-right order-1 lg:order-2 space-y-6" dir="rtl">
-            <div className="flex items-center justify-start gap-3">
+          <div className="lg:col-span-6 lg:col-start-7 text-right order-1 lg:order-2 space-y-6 self-start" dir="rtl">
+            <div className="flex items-center justify-end gap-3">
                 <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
                 طقس التقطير اليدوي
               </span>
@@ -79,7 +79,7 @@ export const V60Section: React.FC = () => {
               تجربة قهوة مختصة تُحضَّر أمامك بعناية، من اختيار الحبة حتى آخر قطرة. نختار لك أندر المحاصيل العالمية ونقطرها بحرفية تكشف أدق تفاصيل المذاق.
             </p>
 
-            <div className="pt-2 flex justify-end">
+            <div className="pt-2 flex w-full justify-start">
               <button
                 onClick={() => {
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });

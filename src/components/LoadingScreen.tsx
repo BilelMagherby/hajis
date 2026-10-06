@@ -36,10 +36,10 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       }`}
     >
       <img
-        src="/images/hajiss-loading.jpeg"
+        src="/images/loading-pour-over.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90 motion-reduce:hidden"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100 motion-reduce:hidden"
       />
       <div
         aria-hidden="true"
@@ -56,11 +56,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Brand Name */}
-        <div className="space-y-1 border-0 bg-transparent p-0 shadow-none">
-          <h1 className="font-kufi text-3xl md:text-4xl text-[#F8F4EC] tracking-wide">
+        <div className="space-y-1">
+          <h1 className="font-kufi text-3xl md:text-4xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
             هـاجـس
           </h1>
-          <p className="font-brand text-lg md:text-xl text-[#C8A46A] tracking-[0.3em]">
+          <p className="font-brand text-lg md:text-xl font-semibold text-[#E3C994] tracking-[0.3em] drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
             HAJISS CAFÉ
           </p>
         </div>
