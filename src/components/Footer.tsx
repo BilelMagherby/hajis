@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* COL 2: CONTACT INFORMATION */}
           <div className="space-y-4">
-            <h4 className="font-kufi text-base font-semibold text-[#E3C994]">
+            <h4 className="font-kufi text-base font-bold text-[#E3C994]">
               التواصل
             </h4>
 
@@ -127,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* COL 3: STORE & QR CODE */}
           <div className="space-y-3">
-            <h4 className="font-kufi text-base font-semibold text-[#E3C994]">
+            <h4 className="font-kufi text-base font-bold text-[#E3C994]">
               زوروا متجرنا الإلكتروني
             </h4>
             <p className="font-arabic text-xs text-[#C8BAA6] font-light">
@@ -141,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* COL 4: QUICK NAVIGATION LINKS */}
           <div className="space-y-3">
-            <h4 className="font-kufi text-base font-semibold text-[#E3C994]">
+            <h4 className="font-kufi text-base font-bold text-[#E3C994]">
               روابط سريعة
             </h4>
             <ul className="space-y-2 font-arabic text-xs text-[#D8CEBF]">

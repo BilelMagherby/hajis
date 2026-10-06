@@ -18,7 +18,7 @@
     scroll-behavior: smooth;
     background-color: #090604;
     color: #F8F4EC;
-    font-family: 'Merriweather', 'IBM Plex Sans Arabic', 'Tajawal', serif;
+    font-family: 'Tajawal', sans-serif;
     direction: rtl;
   }
 
@@ -30,6 +30,11 @@
     color: #F8F4EC;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  button {
+    font-weight: 500;
   }
 
   ::selection {

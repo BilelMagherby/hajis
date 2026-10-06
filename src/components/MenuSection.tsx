@@ -20,7 +20,7 @@ export const MenuSection: React.FC = () => {
         <div className="flex flex-col items-end text-right mb-16">
           <div className="flex items-center space-x-3 space-x-reverse mb-2">
             <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
-            <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-semibold">
+            <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
               إبداعات هاجس
             </span>
           </div>
@@ -144,7 +144,7 @@ export const MenuSection: React.FC = () => {
 
                     {/* Name */}
                     <div>
-                      <h4 className="font-kufi text-lg font-semibold text-[#F8F4EC]">
+                      <h4 className="font-kufi text-lg font-bold text-[#F8F4EC]">
                         {item.nameAr}
                       </h4>
                       <span className="font-brand text-xs text-[#C8BAA6]">

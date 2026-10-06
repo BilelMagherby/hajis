@@ -70,7 +70,7 @@
 
 .admin-login-card h1 {
   margin: 10px 0 6px;
-  font-family: 'Merriweather', 'IBM Plex Sans Arabic', serif;
+  font-family: 'Tajawal', sans-serif;
   font-size: 1.8rem;
 }
 
@@ -111,7 +111,7 @@
   margin-top: 9px;
   color: #e5d8c4;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .admin-input-wrap {
@@ -293,7 +293,7 @@
 }
 
 .admin-sidebar-brand b {
-  font-family: 'Merriweather', serif;
+  font-family: 'Tajawal', sans-serif;
   letter-spacing: 0.15em;
 }
 
@@ -441,7 +441,7 @@
 
 .admin-page-heading h1 {
   margin: 7px 0 6px;
-  font-family: 'Merriweather', 'IBM Plex Sans Arabic', serif;
+  font-family: 'Tajawal', sans-serif;
   font-size: clamp(1.45rem, 2.5vw, 2rem);
 }
 
@@ -514,9 +514,9 @@
 }
 
 .admin-stat-card > strong {
-  font-family: 'Merriweather', serif;
+  font-family: 'Tajawal', sans-serif;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .admin-stat-change {
@@ -607,7 +607,7 @@
 
 .admin-content-row b {
   color: #ead4a8;
-  font-family: 'Merriweather', serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 .admin-social-kpis {
@@ -623,7 +623,7 @@
 }
 
 .admin-social-kpis article b {
-  font-family: 'Merriweather', serif;
+  font-family: 'Tajawal', sans-serif;
   font-size: 1.55rem;
 }
 
@@ -1200,7 +1200,7 @@
   right: 12px;
   bottom: 12px;
   color: rgba(255, 255, 255, 0.82);
-  font: 700 0.75rem 'Merriweather', serif;
+  font: 700 0.75rem 'Tajawal', sans-serif;
   letter-spacing: 0.14em;
 }
 
@@ -1461,7 +1461,7 @@
 
 .admin-review-rating strong {
   color: #f5ead5;
-  font-family: 'Merriweather', serif;
+  font-family: 'Tajawal', sans-serif;
   font-size: 1.8rem;
 }
 

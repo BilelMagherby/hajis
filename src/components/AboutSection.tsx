@@ -41,7 +41,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6">
             {/* Top Insignia Emblem */}
             <div className="flex items-center justify-end space-x-3 space-x-reverse">
-              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-semibold">
+              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
                 أصالة المكان وروح الضيافة
               </span>
               <div className="w-12 h-auto flex items-center justify-center">

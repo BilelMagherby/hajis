@@ -34,10 +34,10 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Merriweather', '"IBM Plex Sans Arabic"', 'Tajawal', 'serif'],
-        arabic: ['Merriweather', '"IBM Plex Sans Arabic"', 'Tajawal', 'serif'],
-        kufi: ['Merriweather', '"Noto Kufi Arabic"', '"IBM Plex Sans Arabic"', 'serif'],
-        brand: ['Merriweather', '"Cormorant Garamond"', 'serif'],
+        sans: ['Tajawal', 'sans-serif'],
+        arabic: ['Tajawal', 'sans-serif'],
+        kufi: ['Tajawal', 'sans-serif'],
+        brand: ['Tajawal', 'sans-serif'],
       },
       boxShadow: {
         'gold-glow': '0 0 25px rgba(200, 164, 106, 0.15)',

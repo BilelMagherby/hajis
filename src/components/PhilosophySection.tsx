@@ -38,7 +38,7 @@ export const PhilosophySection: React.FC = () => {
           <div className="lg:col-span-6 text-right">
             <div className="flex items-center justify-end space-x-3 space-x-reverse mb-3">
               <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
-              <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-semibold">
+              <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
                 معايير الجودة والكمال
               </span>
             </div>
@@ -60,7 +60,7 @@ export const PhilosophySection: React.FC = () => {
               </div>
 
               <div className="relative z-10 space-y-2">
-                <h3 className="font-kufi text-2xl sm:text-3xl font-semibold text-[#20140F] leading-snug">
+                <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[#20140F] leading-snug">
                   كل كوب محضر <span className="text-[#3D281C]">بعناية فائقة.</span>
                 </h3>
                 <p className="font-arabic text-sm sm:text-base text-[#302019] font-medium">
@@ -98,10 +98,10 @@ export const PhilosophySection: React.FC = () => {
 
                 {/* Content */}
                 <div className="space-y-2 mt-4">
-                  <h4 className="font-kufi text-lg font-semibold text-[#20140F] group-hover:text-[#5B3626] transition-colors">
+                  <h4 className="font-kufi text-lg font-bold text-[#20140F] group-hover:text-[#5B3626] transition-colors">
                     {item.titleAr}
                   </h4>
-                  <p className="font-arabic text-xs text-[#3D281C] font-semibold">
+                  <p className="font-arabic text-xs text-[#3D281C] font-medium">
                     {item.subtitleAr}
                   </p>
                   <p className="font-arabic text-xs text-[#302019] leading-relaxed font-medium line-clamp-3">

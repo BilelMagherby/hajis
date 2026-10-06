@@ -53,7 +53,7 @@ export const V60Section: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-[#160D08] border border-[#C8A46A]/35 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   {step.icon}
                 </div>
-                <h4 className="font-kufi text-base font-semibold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
+                <h4 className="font-kufi text-base font-bold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
                   {step.titleAr}
                 </h4>
                 <p className="font-arabic text-xs text-[#D8CEBF] mt-1.5 leading-relaxed font-medium">
@@ -67,7 +67,7 @@ export const V60Section: React.FC = () => {
           <div className="lg:col-span-6 text-right order-1 lg:order-2 space-y-6">
             <div className="flex items-center justify-end space-x-3 space-x-reverse">
                 <span className="h-[1px] w-12 bg-[#3D281C]/60" />
-                <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-semibold">
+                <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
                 طقس التقطير اليدوي
               </span>
             </div>

@@ -53,7 +53,7 @@ export const StoreTeaser: React.FC = () => {
                   href="https://hajiss.shop"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-3 space-x-reverse px-7 py-3 rounded-full bg-[#3D281C] text-[#F8F4EC] font-arabic font-semibold text-sm hover:bg-[#24150E] transition-all shadow-lg"
+                  className="inline-flex items-center space-x-3 space-x-reverse px-7 py-3 rounded-full bg-[#3D281C] text-[#F8F4EC] font-arabic font-medium text-sm hover:bg-[#24150E] transition-all shadow-lg"
                 >
                   <span>زيارة المتجر الإلكتروني</span>
                   <ArrowLeft className="w-4 h-4" />
@@ -65,7 +65,7 @@ export const StoreTeaser: React.FC = () => {
           <form onSubmit={handleSubmit} className="bg-[#A88F81] flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[#3D281C]/45 p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-[10px] font-semibold tracking-[0.22em] text-[#3D281C] uppercase">
+                <p className="text-[10px] font-medium tracking-[0.22em] text-[#3D281C] uppercase">
                   opinion
                 </p>
                 <h4 className="mt-1 font-kufi text-xl text-[#20140F]">

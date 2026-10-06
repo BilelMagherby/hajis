@@ -106,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
-                className={`relative py-1 font-arabic text-sm transition-colors tracking-wide group ${
+                className={`relative py-1 font-arabic text-sm font-medium transition-colors tracking-wide group ${
                   activeSection === link.id ? 'text-[#E3C994]' : 'text-[#F3EBDD]/90 hover:text-[#E3C994]'
                 }`}
               >

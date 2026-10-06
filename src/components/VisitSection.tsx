@@ -32,7 +32,7 @@ export const VisitSection: React.FC = () => {
               <span className="font-brand text-xs text-[#E3C994] uppercase tracking-widest">
                 Atmosphere & View
               </span>
-              <p className="font-arabic text-sm text-[#F8F4EC] font-semibold mt-0.5">
+              <p className="font-arabic text-sm text-[#F8F4EC] font-medium mt-0.5">
                 إطلالة بانورامية على جبال حائل الشامخة وجلسات خارجية دافئة
               </p>
             </div>
@@ -42,7 +42,7 @@ export const VisitSection: React.FC = () => {
           <div className="lg:col-span-6 text-right space-y-5">
             <div className="flex items-center justify-end space-x-3 space-x-reverse">
               <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
-              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-semibold">
+              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
                 حيث يلتقي الأصدقاء
               </span>
             </div>
@@ -58,7 +58,7 @@ export const VisitSection: React.FC = () => {
             {/* Address Card */}
             <div className="p-4 rounded-2xl bg-[#303522] border border-[#C8A46A]/25 space-y-2">
               <div className="flex items-center justify-end space-x-2 space-x-reverse text-[#E3C994]">
-                <span className="font-arabic text-sm font-semibold">{brandData.location.placeAr}</span>
+                <span className="font-arabic text-sm font-medium">{brandData.location.placeAr}</span>
                 <MapPin className="w-4 h-4" />
               </div>
               <p className="font-arabic text-xs text-[#C8BAA6]">

@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
             </div>
 
             <div className="space-y-1">
-              <h1 className="font-kufi text-5xl sm:text-6xl lg:text-7xl font-bold text-[#F8F4EC] tracking-tight leading-none drop-shadow-md">
+              <h1 className="font-kufi text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#F8F4EC] tracking-tight leading-none drop-shadow-md">
                 هاجس
               </h1>
               <h2 className="font-kufi text-2xl sm:text-3xl lg:text-4xl font-light text-[#E3C994] tracking-wide pt-1">
