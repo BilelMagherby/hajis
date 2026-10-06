@@ -8,10 +8,11 @@ export const MenuSection: React.FC = () => {
   return (
     <section
       id="menu"
-      className="relative w-full py-28 bg-[#090604] text-[#F8F4EC] overflow-hidden"
+      data-bean-rain="off"
+      className="relative w-full py-28 bg-[#303522] text-[#F8F4EC] overflow-hidden"
     >
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#24150E]/40 via-[#090604] to-[#090604] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#59603B]/35 via-[#303522] to-[#303522] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -35,7 +36,7 @@ export const MenuSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* LEFT: IMAGE & BUTTON */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#160D08]/70 border border-[#C8A46A]/20 backdrop-blur-md shadow-2xl">
+          <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl">
             <div className="w-full relative rounded-xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(200,164,106,0.1)]">
               <img 
                 src="/images/espresso_pour.jpg" 
@@ -69,13 +70,13 @@ export const MenuSection: React.FC = () => {
                 />
 
                 {/* Dark Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090604] via-[#090604]/60 to-transparent group-hover:via-[#090604]/40 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#202418] via-[#202418]/60 to-transparent group-hover:via-[#202418]/40 transition-colors duration-500" />
 
                 {/* Card Content at Bottom */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end text-right z-10">
                   <div className="flex items-center justify-between">
                     {/* Gold arrow indicator */}
-                    <div className="w-9 h-9 rounded-full border border-[#C8A46A]/50 bg-[#160D08]/80 flex items-center justify-center text-[#E3C994] group-hover:bg-[#C8A46A] group-hover:text-[#090604] group-hover:-translate-x-1 transition-all duration-300">
+                    <div className="w-9 h-9 rounded-full border border-[#C8A46A]/50 bg-[#252A1B]/90 flex items-center justify-center text-[#E3C994] group-hover:bg-[#C8A46A] group-hover:text-[#090604] group-hover:-translate-x-1 transition-all duration-300">
                       <ArrowLeft className="w-4 h-4" />
                     </div>
 

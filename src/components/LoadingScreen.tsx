@@ -31,11 +31,21 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#160D08] transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 isolate flex flex-col items-center justify-center overflow-hidden bg-[#160D08] transition-opacity duration-700 ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      <div className="flex flex-col items-center space-y-6 text-center px-4">
+      <img
+        src="/images/hajiss-loading.gif"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55 motion-reduce:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/75 via-[#160D08]/40 to-[#090604]/80"
+      />
+      <div className="relative z-10 flex flex-col items-center space-y-6 px-4 text-center">
         {/* Logo Monogram */}
         <div className="relative w-40 sm:w-48 mb-2 flex justify-center items-center">
           <img

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
-import { InstagramIcon, XIcon, YoutubeIcon } from './SocialIcons';
+import { InstagramIcon, SnapchatIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
+import { ShopQrCode } from './ShopQrCode';
+import './ShopQrCode.css';
 import { brandData } from '../data/brand';
 
 interface FooterProps {
@@ -59,6 +61,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <InstagramIcon className="w-4 h-4" />
               </a>
               <a
+                href={brandData.contact.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={brandData.contact.snapchat}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                aria-label="Snapchat"
+              >
+                <SnapchatIcon className="w-4 h-4" />
+              </a>
+              <a
                 href={brandData.contact.x}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -115,23 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </p>
 
             <div className="flex justify-end pt-1">
-              <div className="w-20 h-20 bg-[#F8F4EC] p-1.5 rounded-lg border border-[#C8A46A]/50">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-[#090604]">
-                  <rect x="5" y="5" width="28" height="28" fill="currentColor" rx="3" />
-                  <rect x="9" y="9" width="20" height="20" fill="#F8F4EC" rx="2" />
-                  <rect x="13" y="13" width="12" height="12" fill="currentColor" />
-                  <rect x="67" y="5" width="28" height="28" fill="currentColor" rx="3" />
-                  <rect x="71" y="9" width="20" height="20" fill="#F8F4EC" rx="2" />
-                  <rect x="75" y="13" width="12" height="12" fill="currentColor" />
-                  <rect x="5" y="67" width="28" height="28" fill="currentColor" rx="3" />
-                  <rect x="9" y="71" width="20" height="20" fill="#F8F4EC" rx="2" />
-                  <rect x="13" y="75" width="12" height="12" fill="currentColor" />
-                  <rect x="38" y="12" width="10" height="10" fill="currentColor" />
-                  <rect x="42" y="38" width="16" height="16" fill="currentColor" />
-                  <rect x="68" y="44" width="12" height="12" fill="currentColor" />
-                  <rect x="42" y="70" width="14" height="14" fill="currentColor" />
-                </svg>
-              </div>
+              <ShopQrCode className="w-20 h-20 bg-[#F8F4EC] p-1.5 rounded-lg border border-[#C8A46A]/50" imageClassName="w-full h-full object-contain" />
             </div>
           </div>
 

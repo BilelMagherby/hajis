@@ -1,0 +1,81 @@
+.coffee-bean-rain {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 500ms ease, visibility 0s;
+}
+
+.coffee-bean-rain--hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 500ms ease, visibility 0s 500ms;
+}
+
+.coffee-bean {
+  position: absolute;
+  top: -12vh;
+  display: block;
+  border: 1px solid rgba(191, 139, 82, 0.26);
+  border-radius: 48% 52% 46% 54% / 38% 42% 58% 62%;
+  background:
+    radial-gradient(ellipse at 31% 26%, rgba(215, 167, 111, 0.58), transparent 28%),
+    radial-gradient(ellipse at 67% 76%, rgba(31, 15, 8, 0.9), transparent 54%),
+    linear-gradient(125deg, #75401f 2%, #4b2817 46%, #2b170e 100%);
+  box-shadow:
+    inset 1px 1px 3px rgba(255, 220, 165, 0.22),
+    inset -2px -3px 5px rgba(12, 6, 3, 0.58),
+    0 2px 7px rgba(8, 4, 2, 0.38);
+  animation-name: coffee-bean-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.coffee-bean::after {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: 25%;
+  height: 76%;
+  border-right: 1px solid rgba(20, 10, 5, 0.76);
+  border-radius: 50%;
+  content: '';
+  transform: translateX(-50%) rotate(11deg);
+  box-shadow: 1px 0 0 rgba(207, 158, 99, 0.23);
+}
+
+@keyframes coffee-bean-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(var(--bean-rotation, 0deg));
+  }
+
+  25% {
+    transform: translate3d(calc(var(--bean-drift, 0px) * -0.35), 25vh, 0)
+      rotate(calc(var(--bean-rotation, 0deg) + 105deg));
+  }
+
+  55% {
+    transform: translate3d(calc(var(--bean-drift, 0px) * 0.3), 65vh, 0)
+      rotate(calc(var(--bean-rotation, 0deg) + 245deg));
+  }
+
+  100% {
+    transform: translate3d(var(--bean-drift, 0px), 118vh, 0)
+      rotate(calc(var(--bean-rotation, 0deg) + 440deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee-bean {
+    animation-play-state: paused;
+    top: 12%;
+  }
+
+  .coffee-bean:nth-child(n + 9) {
+    display: none;
+  }
+}

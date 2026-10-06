@@ -10,23 +10,67 @@ import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
+import { CoffeeBeanRain } from './components/CoffeeBeanRain';
 import { ambientAudio } from './utils/ambientAudio';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { MenuBookPage } from './pages/MenuBookPage';
+import { Navigate } from 'react-router-dom';
+import { AdminLoginPage } from './pages/AdminLoginPage';
+import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { hasDemoAdminSession } from './utils/demoAdminAuth';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleToggleAudio = () => {
     const active = ambientAudio.toggle();
     setIsAudioPlaying(active);
   };
 
+  if (location.pathname === '/admin/login') {
+    return hasDemoAdminSession()
+      ? <Navigate to="/admin" replace />
+      : <AdminLoginPage />;
+  }
+
+  if (location.pathname === '/admin') {
+    return hasDemoAdminSession()
+      ? <AdminDashboardPage onLogout={() => navigate('/admin/login', { replace: true })} />
+      : <Navigate to="/admin/login" replace />;
+  }
+
   const handleNavigate = (id: string) => {
+    if (id === 'menu') {
+      navigate('/menu');
+      return;
+    }
+
+    if (location.pathname === '/menu') {
+      navigate('/');
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (location.pathname === '/menu') {
+    return (
+      <MenuBookPage
+        onNavigate={handleNavigate}
+        isAudioPlaying={isAudioPlaying}
+        toggleAudio={handleToggleAudio}
+      />
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-[#090604] text-[#F8F4EC] selection:bg-[#C8A46A] selection:text-[#090604] overflow-x-hidden">
@@ -36,9 +80,15 @@ export const App: React.FC = () => {
       {/* 2. Custom Gold Desktop Cursor */}
       <CustomCursor />
 
+      {/* Coffee bean rain continues across the full home page while scrolling */}
+      <CoffeeBeanRain />
+
       {/* 3. Luxury Floating Navbar */}
       <Navbar
         onNavigate={handleNavigate}
+        onAdminAccess={() => navigate('/admin/login')}
+        enableAdminShortcut={location.pathname === '/'}
+        activeSection={location.pathname === '/menu' ? 'menu' : undefined}
         isAudioPlaying={isAudioPlaying}
         toggleAudio={handleToggleAudio}
       />

@@ -18,6 +18,7 @@ export interface BrandInfo {
     phone: string;
     instagram: string;
     tiktok: string;
+    snapchat: string;
     x: string;
     youtube: string;
   };
@@ -41,8 +42,9 @@ export const brandData: BrandInfo = {
   contact: {
     email: 'hajiss@natheelco.com',
     phone: '+966 50 123 4567',
-    instagram: 'https://instagram.com/hajisscafe',
-    tiktok: 'https://tiktok.com/@hajisscafe',
+    instagram: 'https://tr.ee/-7CXv_nRSz',
+    tiktok: 'https://tr.ee/rk6v-CXwTY',
+    snapchat: 'https://tr.ee/BGumyfpWtN',
     x: 'https://x.com/hajisscafe',
     youtube: 'https://youtube.com/@hajisscafe'
   }

@@ -7,10 +7,11 @@ export const VisitSection: React.FC = () => {
   return (
     <section
       id="visit"
-      className="relative w-full py-28 bg-[#090604] text-[#F8F4EC] overflow-hidden"
+      data-bean-rain="off"
+      className="relative w-full py-28 bg-[#3B4028] text-[#F8F4EC] overflow-hidden"
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#C8A46A]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#77764A]/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -24,7 +25,7 @@ export const VisitSection: React.FC = () => {
               alt="Hajiss Lounge Terrace Hail"
               className="w-full h-[380px] sm:h-[440px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#090604] via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#202418] via-transparent to-transparent pointer-events-none" />
             
             {/* Overlay badge */}
             <div className="absolute bottom-5 right-5 left-5 p-4 rounded-xl bg-[#160D08]/85 backdrop-blur-md border border-[#C8A46A]/30 text-right">
@@ -55,7 +56,7 @@ export const VisitSection: React.FC = () => {
             </p>
 
             {/* Address Card */}
-            <div className="p-4 rounded-2xl bg-[#160D08] border border-[#C8A46A]/20 space-y-2">
+            <div className="p-4 rounded-2xl bg-[#303522] border border-[#C8A46A]/25 space-y-2">
               <div className="flex items-center justify-end space-x-2 space-x-reverse text-[#E3C994]">
                 <span className="font-arabic text-sm font-semibold">{brandData.location.placeAr}</span>
                 <MapPin className="w-4 h-4" />
@@ -75,7 +76,7 @@ export const VisitSection: React.FC = () => {
                 href={brandData.location.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 space-x-reverse px-6 py-3 rounded-full border border-[#C8A46A] bg-[#24150E] text-[#F8F4EC] text-sm hover:bg-[#C8A46A] hover:text-[#090604] transition-all shadow-gold-glow"
+                className="inline-flex items-center space-x-2 space-x-reverse px-6 py-3 rounded-full border border-[#C8A46A] bg-[#303522] text-[#F8F4EC] text-sm hover:bg-[#C8A46A] hover:text-[#090604] transition-all shadow-gold-glow"
               >
                 <span>الموقع على الخريطة</span>
                 <Navigation className="w-4 h-4" />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { brandData } from '../data/brand';
 
 interface HeroProps {
@@ -7,17 +7,6 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const totalSlides = 4;
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev % totalSlides) + 1);
-  };
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 1 ? totalSlides : prev - 1));
-  };
-
   return (
     <section
       id="hero"
@@ -42,36 +31,6 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
       {/* FOREGROUND CONTENT CONTAINER */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[75vh]">
-
-          {/* BOTTOM LEFT: SLIDER NAVIGATION (← → 01 / 04) */}
-          <div className="order-2 lg:order-1 self-start lg:self-end mb-8 lg:mb-12 flex items-center space-x-5 space-x-reverse">
-            <div className="flex items-center space-x-2 space-x-reverse bg-[#24150E]/80 backdrop-blur-md p-1.5 rounded-full border border-[#C8A46A]/25 shadow-lg">
-              <button
-                onClick={handlePrevSlide}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-[#F8F4EC] hover:text-[#C8A46A] hover:bg-[#160D08] transition-colors"
-                aria-label="Previous Slide"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-[#F8F4EC] hover:text-[#C8A46A] hover:bg-[#160D08] transition-colors"
-                aria-label="Next Slide"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="font-mono text-sm tracking-widest text-[#E3C994]/90 flex items-center space-x-1 space-x-reverse">
-              <span className="font-bold text-[#F8F4EC]">
-                0{currentSlide}
-              </span>
-              <span className="text-[#C8A46A]/50">/</span>
-              <span className="text-[#C8A46A]/70">
-                0{totalSlides}
-              </span>
-            </div>
-          </div>
 
           {/* RIGHT: HERO HEADLINE & BRAND STORY */}
           <div className="order-1 lg:order-2 w-full lg:max-w-2xl text-right lg:ml-auto mb-10 lg:mb-0">

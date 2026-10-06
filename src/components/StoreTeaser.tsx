@@ -1,5 +1,7 @@
 import React from 'react';
 import { ShoppingBag, ArrowLeft } from 'lucide-react';
+import { ShopQrCode } from './ShopQrCode';
+import './ShopQrCode.css';
 
 export const StoreTeaser: React.FC = () => {
   return (
@@ -13,37 +15,7 @@ export const StoreTeaser: React.FC = () => {
           {/* QR CODE & BADGE */}
           <div className="flex flex-col items-center p-4 rounded-2xl bg-[#090604] border border-[#C8A46A]/30 shadow-lg">
             {/* High fidelity SVG QR code representation */}
-            <div className="w-28 h-28 bg-[#F8F4EC] p-2 rounded-xl flex items-center justify-center">
-              <svg viewBox="0 0 100 100" className="w-full h-full text-[#160D08]">
-                {/* 3 Corner squares */}
-                <rect x="5" y="5" width="28" height="28" fill="currentColor" rx="4" />
-                <rect x="9" y="9" width="20" height="20" fill="#F8F4EC" rx="2" />
-                <rect x="13" y="13" width="12" height="12" fill="currentColor" rx="1" />
-
-                <rect x="67" y="5" width="28" height="28" fill="currentColor" rx="4" />
-                <rect x="71" y="9" width="20" height="20" fill="#F8F4EC" rx="2" />
-                <rect x="75" y="13" width="12" height="12" fill="currentColor" rx="1" />
-
-                <rect x="5" y="67" width="28" height="28" fill="currentColor" rx="4" />
-                <rect x="9" y="71" width="20" height="20" fill="#F8F4EC" rx="2" />
-                <rect x="13" y="75" width="12" height="12" fill="currentColor" rx="1" />
-
-                {/* Data blocks */}
-                <rect x="38" y="10" width="8" height="8" fill="currentColor" />
-                <rect x="50" y="15" width="8" height="8" fill="currentColor" />
-                <rect x="38" y="28" width="18" height="6" fill="currentColor" />
-                <rect x="10" y="38" width="6" height="16" fill="currentColor" />
-                <rect x="22" y="44" width="8" height="8" fill="currentColor" />
-                <rect x="36" y="40" width="28" height="28" fill="currentColor" rx="2" />
-                <rect x="42" y="46" width="16" height="16" fill="#F8F4EC" />
-                <rect x="47" y="51" width="6" height="6" fill="currentColor" />
-                <rect x="70" y="40" width="10" height="10" fill="currentColor" />
-                <rect x="84" y="48" width="10" height="18" fill="currentColor" />
-                <rect x="40" y="75" width="12" height="12" fill="currentColor" />
-                <rect x="60" y="72" width="15" height="8" fill="currentColor" />
-                <rect x="78" y="78" width="14" height="14" fill="currentColor" />
-              </svg>
-            </div>
+            <ShopQrCode className="w-28 h-28 bg-[#F8F4EC] p-2 rounded-xl flex items-center justify-center" imageClassName="w-full h-full object-contain" />
             <span className="font-arabic text-[11px] text-[#C8BAA6] mt-2 font-light">
               امسح الكود لزيارة المتجر
             </span>
@@ -66,11 +38,9 @@ export const StoreTeaser: React.FC = () => {
 
             <div className="pt-2 flex justify-end">
               <a
-                href="#store"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert('متجر هاجس الإلكتروني متاح قريباً مع كامل خيارات الدفع والشحن السريع!');
-                }}
+                href="https://hajiss.shop"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center space-x-3 space-x-reverse px-7 py-3 rounded-full bg-gradient-to-r from-[#C8A46A] to-[#E3C994] text-[#090604] font-arabic font-semibold text-sm hover:brightness-110 transition-all shadow-gold-glow"
               >
                 <span>زيارة المتجر الإلكتروني</span>

@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Menu, X } from 'lucide-react';
-import { InstagramIcon, XIcon, YoutubeIcon } from './SocialIcons';
+import { InstagramIcon, SnapchatIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
 import { brandData } from '../data/brand';
 
 interface NavbarProps {
   onNavigate?: (sectionId: string) => void;
+  onAdminAccess?: () => void;
+  enableAdminShortcut?: boolean;
+  activeSection?: string;
   isAudioPlaying?: boolean;
   toggleAudio?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigate,
+  onAdminAccess,
+  enableAdminShortcut = false,
+  activeSection,
   isAudioPlaying = false,
   toggleAudio
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLang, setActiveLang] = useState<'ar' | 'en'>('ar');
+  const logoClickCount = React.useRef(0);
+  const logoClickTimer = React.useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,6 +56,29 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  const handleBrandClick = () => {
+    handleLinkClick('hero');
+    if (!enableAdminShortcut || !onAdminAccess) return;
+
+    logoClickCount.current += 1;
+    if (logoClickTimer.current) window.clearTimeout(logoClickTimer.current);
+
+    if (logoClickCount.current >= 5) {
+      logoClickCount.current = 0;
+      onAdminAccess();
+      return;
+    }
+
+    logoClickTimer.current = window.setTimeout(() => {
+      logoClickCount.current = 0;
+      logoClickTimer.current = null;
+    }, 2200);
+  };
+
+  useEffect(() => () => {
+    if (logoClickTimer.current) window.clearTimeout(logoClickTimer.current);
+  }, []);
+
   return (
     <>
       <header
@@ -58,9 +89,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* LEFT: HAJISS BRAND LOGO */}
-          <div
-            onClick={() => handleLinkClick('hero')}
-            className="flex items-center cursor-pointer group"
+          <button
+            type="button"
+            onClick={handleBrandClick}
+            aria-label="العودة إلى الرئيسية"
+            className="flex items-center cursor-pointer group bg-transparent border-0 p-0"
           >
             <div className="w-28 sm:w-36 flex items-center justify-center p-1 transition-transform group-hover:scale-105">
               <img
@@ -69,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="w-full h-auto object-contain filter invert contrast-125"
               />
             </div>
-          </div>
+          </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
           <nav className="hidden lg:flex items-center space-x-8 space-x-reverse" aria-label="Main Navigation">
@@ -77,11 +110,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
-                className="relative py-1 font-arabic text-sm text-[#F3EBDD]/90 hover:text-[#E3C994] transition-colors tracking-wide group"
+                aria-current={activeSection === link.id ? 'page' : undefined}
+                className={`relative py-1 font-arabic text-sm transition-colors tracking-wide group ${
+                  activeSection === link.id ? 'text-[#E3C994]' : 'text-[#F3EBDD]/90 hover:text-[#E3C994]'
+                }`}
               >
                 {link.labelAr}
                 {/* Gold Underline Animation */}
-                <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-gradient-to-l from-[#C8A46A] to-[#E3C994] transition-all duration-300 group-hover:w-full" />
+                <span className={`absolute bottom-0 right-0 h-[2px] bg-gradient-to-l from-[#C8A46A] to-[#E3C994] transition-all duration-300 ${
+                  activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
               </button>
             ))}
           </nav>
@@ -98,6 +136,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={brandData.contact.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={brandData.contact.snapchat}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
+                aria-label="Snapchat"
+              >
+                <SnapchatIcon className="w-4 h-4" />
               </a>
               <a
                 href={brandData.contact.x}
@@ -174,7 +230,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
-                className="font-arabic text-xl text-[#F8F4EC] hover:text-[#E3C994] py-2 border-b border-[#2A180E] text-right"
+                aria-current={activeSection === link.id ? 'page' : undefined}
+                className={`font-arabic text-xl py-2 border-b border-[#2A180E] text-right ${
+                  activeSection === link.id ? 'text-[#E3C994]' : 'text-[#F8F4EC] hover:text-[#E3C994]'
+                }`}
               >
                 {link.labelAr}
               </button>
@@ -185,6 +244,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center space-x-4 space-x-reverse text-[#C8A46A]">
               <a href={brandData.contact.instagram} target="_blank" rel="noopener noreferrer">
                 <InstagramIcon className="w-5 h-5" />
+              </a>
+              <a href={brandData.contact.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <TikTokIcon className="w-5 h-5" />
+              </a>
+              <a href={brandData.contact.snapchat} target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+                <SnapchatIcon className="w-5 h-5" />
               </a>
               <a href={brandData.contact.x} target="_blank" rel="noopener noreferrer">
                 <XIcon className="w-4 h-4" />
