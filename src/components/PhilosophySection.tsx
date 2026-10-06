@@ -88,7 +88,7 @@ export const PhilosophySection: React.FC = () => {
               >
                 {/* Header: Icon & Number */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-[#302019] tracking-widest">
+                  <span className="font-mono text-xs font-medium text-[#302019] tracking-widest">
                     {item.number}
                   </span>
                   <div className="w-10 h-10 rounded-lg bg-[#E9D9C9] border border-[#3D281C]/40 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform">

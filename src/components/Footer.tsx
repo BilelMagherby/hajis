@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="flex items-center justify-end space-x-2 space-x-reverse">
                 <a
                   href={`mailto:${brandData.contact.email}`}
-                  className="hover:text-[#E3C994] transition-colors font-mono"
+                  className="hover:text-[#E3C994] transition-colors"
                 >
                   {brandData.contact.email}
                 </a>

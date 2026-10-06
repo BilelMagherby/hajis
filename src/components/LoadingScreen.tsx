@@ -79,7 +79,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Percentage Counter */}
-        <span className="font-mono text-xs text-[#C8A46A]/80 tracking-widest">
+        <span className="font-mono text-xs font-medium text-[#C8A46A]/80 tracking-widest">
           {progress}%
         </span>
       </div>

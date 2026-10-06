@@ -38,6 +38,7 @@ export default {
         arabic: ['Tajawal', 'sans-serif'],
         kufi: ['Tajawal', 'sans-serif'],
         brand: ['Tajawal', 'sans-serif'],
+        mono: ['Tajawal', 'sans-serif'],
       },
       boxShadow: {
         'gold-glow': '0 0 25px rgba(200, 164, 106, 0.15)',
