@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/menu",
+      "destination": "/"
+    },
+    {
+      "source": "/admin",
+      "destination": "/"
+    },
+    {
+      "source": "/admin/login",
+      "destination": "/"
+    }
+  ]
+}
