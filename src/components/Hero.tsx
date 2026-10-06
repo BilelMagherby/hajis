@@ -10,14 +10,14 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen lg:h-screen flex items-center bg-[#090604] overflow-hidden select-none"
+      className="relative mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[#090604] select-none"
     >
       {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
           src="/images/main_cafe.jpg"
           alt="Hajiss Café Facade"
-          className="w-full h-full object-cover object-center transform scale-110 filter brightness-125 contrast-125 saturate-125"
+          className="w-full h-full object-contain object-center filter brightness-125 contrast-125 saturate-125"
         />
 
         {/* Very light vignette so the image stays crisp and bright */}
@@ -29,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
       <div className="absolute inset-0 grain-overlay pointer-events-none z-10 opacity-30" />
 
       {/* FOREGROUND CONTENT CONTAINER */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-0">
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="flex min-h-[75vh] items-center justify-center">
           <div className="pointer-events-none opacity-0 h-0 w-0 overflow-hidden">
             <div className="inline-flex items-center justify-center">

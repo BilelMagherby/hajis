@@ -22,11 +22,11 @@ export const StoreTeaser: React.FC = () => {
   return (
     <section className="header-primary-mix relative w-full py-20 border-t border-b border-[#C8A46A]/30 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="header-primary-mix p-8 sm:p-12 rounded-3xl border border-[#C8A46A]/40 shadow-[0_18px_50px_rgba(0,0,0,0.22)] flex flex-col gap-8 text-right lg:flex-row lg:items-stretch lg:justify-between">
-          <div className="flex flex-1 flex-col gap-8 md:flex-row md:items-center md:justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
+          <article className="header-primary-mix flex h-full flex-col justify-center gap-8 rounded-3xl border border-[#C8A46A]/40 p-7 text-right shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:p-9 md:flex-row md:items-center md:justify-between">
             {/* QR CODE & BADGE */}
-            <div className="header-primary-mix flex flex-col items-center p-4 rounded-2xl border border-[#C8A46A]/30 shadow-lg">
+            <div className="header-primary-mix flex shrink-0 flex-col items-center rounded-2xl border border-[#C8A46A]/30 p-4 shadow-lg">
               <ShopQrCode className="w-28 h-28 bg-[#F8F4EC] p-2 rounded-xl flex items-center justify-center" imageClassName="w-full h-full object-contain" />
               <span className="font-arabic text-[11px] text-[#302019] mt-2 font-medium">
                 امسح الكود لزيارة المتجر
@@ -34,7 +34,7 @@ export const StoreTeaser: React.FC = () => {
             </div>
 
             {/* TEXT & CALL TO ACTION */}
-            <div className="space-y-3 flex-1">
+            <div className="space-y-3 md:flex-1">
               <div className="header-primary-mix inline-flex items-center space-x-2 space-x-reverse px-3 py-1 rounded-full border border-[#3D281C]/40 text-[#302019] text-xs font-arabic">
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>تسوق أونلاين وتوصيل فوري</span>
@@ -60,9 +60,9 @@ export const StoreTeaser: React.FC = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <form onSubmit={handleSubmit} className="bg-[#A88F81] w-full max-w-md rounded-[1.75rem] border border-[#3D281C]/45 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
+          <form onSubmit={handleSubmit} className="bg-[#A88F81] flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[#3D281C]/45 p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <p className="text-[10px] font-semibold tracking-[0.22em] text-[#3D281C] uppercase">

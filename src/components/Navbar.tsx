@@ -78,10 +78,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled
-            ? 'bg-[#160D08]/90 backdrop-blur-md border-b border-[#C8A46A]/25 py-2 shadow-lg shadow-black/40'
-            : 'bg-transparent py-1 md:py-1'
-          }`}
+        className={`fixed top-0 left-0 right-0 z-40 border-b border-[#C8A46A]/25 bg-[#160D08]/95 backdrop-blur-md shadow-lg shadow-black/40 transition-all duration-500 ${
+          isScrolled ? 'py-2' : 'py-1 md:py-1'
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between -translate-y-2">
           {/* LEFT: HAJISS BRAND LOGO */}

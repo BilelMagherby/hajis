@@ -4,22 +4,22 @@ import { ArrowLeft, Clock, Thermometer, Scale, Waves } from 'lucide-react';
 export const V60Section: React.FC = () => {
   const steps = [
     {
-      icon: <Scale className="w-5 h-5 text-[#3D281C]" />,
+      icon: <Scale className="w-5 h-5 text-[#E3C994]" />,
       titleAr: 'نسبة استخلاص متوازنة',
       descAr: 'وزن دقيق بمعيار 1:15 لحبيبات البن مقابل الماء النقي المفلتر.',
     },
     {
-      icon: <Thermometer className="w-5 h-5 text-[#3D281C]" />,
+      icon: <Thermometer className="w-5 h-5 text-[#E3C994]" />,
       titleAr: 'درجة حرارة 92° مئوية',
       descAr: 'استخلاص متناغم يحافظ على المركبات الزيتية الخفيفة دون احتراق.',
     },
     {
-      icon: <Waves className="w-5 h-5 text-[#3D281C]" />,
+      icon: <Waves className="w-5 h-5 text-[#E3C994]" />,
       titleAr: 'صب حلزوني مدروس',
       descAr: 'ترطيب تدريجي (Bloom) لمدة 45 ثانية يطلق أرقى النوتات العطرية.',
     },
     {
-      icon: <Clock className="w-5 h-5 text-[#3D281C]" />,
+      icon: <Clock className="w-5 h-5 text-[#E3C994]" />,
       titleAr: 'توقيت تقطير مثالي',
       descAr: 'دقيقتان ونصف من العناية لإنتاج فنجان متوازن الحمضية والحلاوة.',
     }
@@ -48,15 +48,15 @@ export const V60Section: React.FC = () => {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="header-primary-mix p-5 rounded-2xl border border-[#C8A46A]/20 backdrop-blur-md hover:border-[#C8A46A]/60 transition-all text-right group"
+                className="bg-[#24150E]/95 p-5 rounded-2xl border border-[#C8A46A]/35 shadow-[0_12px_32px_rgba(0,0,0,0.28)] backdrop-blur-md hover:bg-[#1A100B] hover:border-[#C8A46A]/70 transition-all text-right group"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#E9D9C9] border border-[#3D281C]/40 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-[#160D08] border border-[#C8A46A]/35 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   {step.icon}
                 </div>
-                <h4 className="font-kufi text-base font-semibold text-[#20140F] group-hover:text-[#5B3626] transition-colors">
+                <h4 className="font-kufi text-base font-semibold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
                   {step.titleAr}
                 </h4>
-                <p className="font-arabic text-xs text-[#302019] mt-1.5 leading-relaxed font-medium">
+                <p className="font-arabic text-xs text-[#D8CEBF] mt-1.5 leading-relaxed font-medium">
                   {step.descAr}
                 </p>
               </div>
