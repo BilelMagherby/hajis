@@ -11,7 +11,6 @@ import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { CoffeeBeanRain } from './components/CoffeeBeanRain';
-import { ambientAudio } from './utils/ambientAudio';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuBookPage } from './pages/MenuBookPage';
 import { Navigate } from 'react-router-dom';
@@ -21,14 +20,8 @@ import { hasDemoAdminSession } from './utils/demoAdminAuth';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-
-  const handleToggleAudio = () => {
-    const active = ambientAudio.toggle();
-    setIsAudioPlaying(active);
-  };
 
   if (location.pathname === '/admin/login') {
     return hasDemoAdminSession()
@@ -66,8 +59,6 @@ export const App: React.FC = () => {
     return (
       <MenuBookPage
         onNavigate={handleNavigate}
-        isAudioPlaying={isAudioPlaying}
-        toggleAudio={handleToggleAudio}
       />
     );
   }
@@ -89,8 +80,6 @@ export const App: React.FC = () => {
         onAdminAccess={() => navigate('/admin/login')}
         enableAdminShortcut={location.pathname === '/'}
         activeSection={location.pathname === '/menu' ? 'menu' : undefined}
-        isAudioPlaying={isAudioPlaying}
-        toggleAudio={handleToggleAudio}
       />
 
       {/* 4. Fullscreen Hero matching mockup */}

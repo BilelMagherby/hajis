@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { InstagramIcon, SnapchatIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
 import { brandData } from '../data/brand';
 
@@ -8,17 +8,13 @@ interface NavbarProps {
   onAdminAccess?: () => void;
   enableAdminShortcut?: boolean;
   activeSection?: string;
-  isAudioPlaying?: boolean;
-  toggleAudio?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigate,
   onAdminAccess,
   enableAdminShortcut = false,
-  activeSection,
-  isAudioPlaying = false,
-  toggleAudio
+  activeSection
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -178,19 +174,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Subtle Divider */}
             <div className="w-[1px] h-4 bg-[#3D281C]" />
 
-            {/* Ambient Sound Toggle */}
-            {toggleAudio && (
-              <button
-                onClick={toggleAudio}
-                className="p-1.5 rounded-full text-[#C8A46A] hover:text-[#E3C994] bg-[#24150E]/80 border border-[#C8A46A]/20 hover:border-[#C8A46A] transition-all"
-                title={isAudioPlaying ? 'كتم الصوت' : 'تشغيل أجواء المقهى الهادئة'}
-                aria-label={isAudioPlaying ? 'إيقاف موسيقى المقهى الهادئة' : 'تشغيل موسيقى المقهى الهادئة'}
-                aria-pressed={isAudioPlaying}
-              >
-                {isAudioPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-              </button>
-            )}
-
             {/* Language Selector */}
             <button
               onClick={() => setActiveLang(activeLang === 'ar' ? 'en' : 'ar')}
@@ -202,17 +185,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* MOBILE HAMBURGER BUTTON */}
           <div className="flex md:hidden items-center space-x-3 space-x-reverse">
-            {toggleAudio && (
-              <button
-                onClick={toggleAudio}
-                className="p-2 text-[#C8A46A] rounded-md bg-[#24150E]/80 border border-[#C8A46A]/30"
-                aria-label={isAudioPlaying ? 'إيقاف موسيقى المقهى الهادئة' : 'تشغيل موسيقى المقهى الهادئة'}
-                aria-pressed={isAudioPlaying}
-              >
-                {isAudioPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-              </button>
-            )}
-
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#F8F4EC] hover:text-[#E3C994] focus:outline-none"

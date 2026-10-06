@@ -7,8 +7,6 @@ import './MenuBookPage.css';
 
 interface MenuBookPageProps {
   onNavigate: (sectionId: string) => void;
-  isAudioPlaying: boolean;
-  toggleAudio: () => void;
 }
 
 type TurnDirection = 'next' | 'previous';
@@ -120,9 +118,7 @@ const BookLeaf: React.FC<{
 };
 
 export const MenuBookPage: React.FC<MenuBookPageProps> = ({
-  onNavigate,
-  isAudioPlaying,
-  toggleAudio
+  onNavigate
 }) => {
   const [pageNumber, setPageNumber] = useState(2);
   const [isBookOpen, setIsBookOpen] = useState(false);
@@ -271,8 +267,6 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
       <Navbar
         onNavigate={onNavigate}
         activeSection="menu"
-        isAudioPlaying={isAudioPlaying}
-        toggleAudio={toggleAudio}
       />
 
       <main className="menu-book-main" onClick={handleOutsideBookClick}>
