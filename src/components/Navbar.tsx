@@ -199,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#160D08]/98 backdrop-blur-xl flex flex-col pt-24 px-6 lg:hidden">
+        <div className="fixed inset-0 z-30 bg-[rgba(150,124,109,0.8)] backdrop-blur-xl flex flex-col pt-24 px-6 lg:hidden">
           <div className="flex flex-col space-y-5 text-right">
             {navLinks.map((link) => (
               <button

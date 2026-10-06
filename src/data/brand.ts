@@ -11,6 +11,7 @@ export interface BrandInfo {
     placeAr: string;
     placeEn: string;
     coordinates: { lat: number; lng: number };
+    address: string;
     mapUrl: string;
   };
   contact: {
@@ -37,7 +38,8 @@ export const brandData: BrandInfo = {
     placeAr: 'منطقة الخليج العربي — ميدان داني',
     placeEn: 'Arabian Gulf Area — Dani Square',
     coordinates: { lat: 27.52188, lng: 41.69611 },
-    mapUrl: 'https://maps.google.com/?q=27.52188,41.69611'
+    address: '7249 2353 King Abdulaziz Rd, Az Zibarah, Hail 55425, Saudi Arabia',
+    mapUrl: 'https://maps.google.com/?q=7249%202353%20King%20Abdulaziz%20Rd%2C%20Az%20Zibarah%2C%20Hail%2055425%2C%20Saudi%20Arabia'
   },
   contact: {
     email: 'hajiss@natheelco.com',

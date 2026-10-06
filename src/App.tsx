@@ -9,6 +9,7 @@ import { V60Section } from './components/V60Section';
 import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
+import { LocationMapSection } from './components/LocationMapSection';
 import { CustomCursor } from './components/CustomCursor';
 import { CoffeeBeanRain } from './components/CoffeeBeanRain';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -105,9 +106,12 @@ export const App: React.FC = () => {
 
         {/* 10. Online Store Teaser & QR Code */}
         <StoreTeaser />
+
+        {/* 11. Hajiss location map */}
+        <LocationMapSection />
       </main>
 
-      {/* 11. Dark Luxury Footer */}
+      {/* 12. Dark Luxury Footer */}
       <Footer onNavigate={handleNavigate} />
     </div>
   );

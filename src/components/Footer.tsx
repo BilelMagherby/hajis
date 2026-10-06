@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
               <div className="flex items-start justify-end space-x-2 space-x-reverse">
                 <span className="leading-relaxed">
-                  {brandData.location.placeAr} — {brandData.location.cityAr}
+                  {brandData.location.address}
                 </span>
                 <MapPin className="w-4 h-4 text-[#C8A46A] mt-0.5 flex-shrink-0" />
               </div>

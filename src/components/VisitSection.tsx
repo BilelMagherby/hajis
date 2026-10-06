@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Navigation, ArrowLeft, Clock } from 'lucide-react';
+import { Navigation, ArrowLeft, Clock } from 'lucide-react';
 
 import { brandData } from '../data/brand';
 
@@ -18,11 +18,11 @@ export const VisitSection: React.FC = () => {
         {/* TOP ROW: SPLIT IMAGES AND LOCATION DETAILS */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" dir="ltr">
           
-          {/* LEFT: LUXURY LOUNGE TERRACE PHOTO OVERLOOKING HAIL MOUNTAINS */}
+          {/* LEFT: HAJISS V60 COFFEE PHOTO */}
           <div className="lg:col-span-6 lg:col-start-1 relative group overflow-hidden rounded-3xl border border-[#C8A46A]/30 shadow-2xl">
             <img
-              src="/images/lounge_terrace.jpg"
-              alt="Hajiss Lounge Terrace Hail"
+              src="/images/visit_v60.jpeg"
+              alt="Hajiss iced V60 coffee being poured over berries"
               className="w-full h-[380px] sm:h-[440px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#202418] via-transparent to-transparent pointer-events-none" />
@@ -40,6 +40,13 @@ export const VisitSection: React.FC = () => {
 
           {/* RIGHT: INVITATION & HOURS */}
           <div className="lg:col-span-6 lg:col-start-7 text-right space-y-5" dir="rtl">
+            <div className="flex justify-end">
+              <div className="inline-flex items-center gap-2 rounded-2xl border border-[#C8A46A]/25 bg-[#303522] px-4 py-3 text-[11px] text-[#D8CEBF]/80">
+                <span>يومياً من 6:00 صباحاً حتى 2:00 بعد منتصف الليل</span>
+                <Clock className="w-3.5 h-3.5 flex-shrink-0 text-[#C8A46A]" />
+              </div>
+            </div>
+
             <div className="flex items-center justify-start">
               <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
                 حيث يلتقي الأصدقاء
@@ -53,21 +60,6 @@ export const VisitSection: React.FC = () => {
             <p className="font-arabic text-base text-[#D8CEBF] leading-relaxed font-light">
               تجربة أكثر من مجرد قهوة ... إنها جلسة، ودفء، وانتماء مستوحى من كرم حائل وضيافتها التاريخية.
             </p>
-
-            {/* Address Card */}
-            <div className="p-4 rounded-2xl bg-[#303522] border border-[#C8A46A]/25 space-y-2">
-              <div className="flex items-center justify-end space-x-2 space-x-reverse text-[#E3C994]">
-                <span className="font-arabic text-sm font-medium">{brandData.location.placeAr}</span>
-                <MapPin className="w-4 h-4" />
-              </div>
-              <p className="font-arabic text-xs text-[#C8BAA6]">
-                {brandData.location.cityAr}
-              </p>
-              <div className="flex items-center justify-end space-x-2 space-x-reverse text-[11px] text-[#D8CEBF]/80 pt-1">
-                <span>يومياً من 6:00 صباحاً حتى 2:00 بعد منتصف الليل</span>
-                <Clock className="w-3.5 h-3.5 text-[#C8A46A]" />
-              </div>
-            </div>
 
             {/* Action Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-3 justify-end">
