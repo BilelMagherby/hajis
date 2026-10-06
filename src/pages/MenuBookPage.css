@@ -257,13 +257,8 @@
   color: #bd9354;
 }
 
-.cover-mountain {
+.cover-emblem {
   margin-top: 18px;
-  font-family: 'Almarai', sans-serif;
-  font-size: clamp(52px, 8vw, 120px);
-  line-height: 0.8;
-  opacity: 0.24;
-  transform: scaleX(2.1);
 }
 
 .cover-location {

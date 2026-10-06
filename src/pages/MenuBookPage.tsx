@@ -42,11 +42,10 @@ const BookLeaf: React.FC<{
         aria-label="غلاف قائمة هاجس"
       >
         <div className="cover-emboss">
-          <img src="/images/logo.png" alt="شعار هاجس" />
           <span className="cover-brand">HAJISS</span>
           <span className="cover-title">قائمة هاجس</span>
           <span className="cover-subtitle">Specialty Coffee</span>
-          <span className="cover-mountain" aria-hidden="true">⌁</span>
+          <img className="cover-emblem" src="/images/logo.png" alt="شعار هاجس" />
           <span className="cover-location">حائل — المملكة العربية السعودية</span>
         </div>
       </article>

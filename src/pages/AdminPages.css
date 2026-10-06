@@ -610,6 +610,81 @@
   font-family: 'Almarai', sans-serif;
 }
 
+.admin-content .admin-notice,
+.admin-content .admin-date-pill,
+.admin-content .admin-stat-card,
+.admin-content .admin-social-kpis article,
+.admin-content .admin-panel,
+.admin-content .admin-review-heading > span {
+  color: #20140f;
+  background: rgb(150, 124, 109) !important;
+}
+
+.admin-content .admin-platform-select button,
+.admin-content .admin-composer textarea,
+.admin-content .admin-date-input,
+.admin-content .admin-hashtags button,
+.admin-content .admin-upload-box {
+  color: #20140f;
+  background: #f0e4d2;
+}
+
+.admin-content .admin-stat-label,
+.admin-content .admin-stat-change,
+.admin-content .admin-stat-change span,
+.admin-content .admin-panel-heading h2,
+.admin-content .admin-panel-heading p,
+.admin-content .admin-chart-column,
+.admin-content .admin-content-row,
+.admin-content .admin-content-row b,
+.admin-content .admin-social-kpis article > span,
+.admin-content .admin-social-kpis article small,
+.admin-content .admin-review-rating span,
+.admin-content .admin-review-rating strong,
+.admin-content .admin-review-rating small,
+.admin-content .admin-review-card p,
+.admin-content .admin-post-row > div b,
+.admin-content .admin-post-row > div small,
+.admin-content .admin-platform-select button,
+.admin-content .admin-composer textarea,
+.admin-content .admin-date-input,
+.admin-content .admin-hashtags button,
+.admin-content .admin-upload-box small {
+  color: #20140f;
+}
+
+.admin-content .admin-field-label,
+.admin-content .admin-caption-meta,
+.admin-content .admin-caption-meta small,
+.admin-content .admin-upload-box,
+.admin-content .admin-upload-box small,
+.admin-content .admin-secondary-button {
+  color: #20140f;
+}
+
+.admin-content .admin-platform-select button.is-selected {
+  color: #20140f;
+  background: #d8c09f;
+}
+
+.admin-content .admin-composer textarea::placeholder {
+  color: #695547;
+  opacity: 1;
+}
+
+.admin-content .admin-date-input {
+  color-scheme: light;
+}
+
+.admin-content .admin-secondary-button {
+  border-color: rgba(32, 20, 15, 0.32);
+  background: #e6d5bd;
+}
+
+.admin-content .admin-chart {
+  background-color: rgb(150, 124, 109) !important;
+}
+
 .admin-social-kpis {
   margin-bottom: 14px;
 }

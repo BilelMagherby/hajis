@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-8 space-x-reverse" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <button
                 key={link.id}
