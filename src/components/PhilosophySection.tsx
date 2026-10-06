@@ -32,12 +32,11 @@ export const PhilosophySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* TOP ROW: HEADINGS & ROASTER STORY SHOWCASE */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16" dir="ltr">
           
           {/* LEFT: SECTION TITLE WITH GOLD ACCENT */}
-          <div className="lg:col-span-6 text-right">
-            <div className="flex items-center justify-end space-x-3 space-x-reverse mb-3">
-              <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
+          <div className="lg:col-span-6 lg:col-start-7 text-right" dir="rtl">
+            <div className="flex items-center justify-start mb-3">
               <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
                 معايير الجودة والكمال
               </span>
@@ -48,7 +47,7 @@ export const PhilosophySection: React.FC = () => {
           </div>
 
           {/* RIGHT: STORYTELLING & ROASTER PREVIEW BANNER */}
-          <div className="lg:col-span-6 text-right">
+          <div className="lg:col-span-6 lg:col-start-1 text-right" dir="rtl">
             <div className="header-primary-mix relative rounded-2xl overflow-hidden border border-[#C8A46A]/40 p-8 backdrop-blur-md shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
               {/* Subtle Roaster Background Image */}
               <div className="absolute inset-0 opacity-20 pointer-events-none">

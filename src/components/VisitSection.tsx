@@ -16,10 +16,10 @@ export const VisitSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* TOP ROW: SPLIT IMAGES AND LOCATION DETAILS */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" dir="ltr">
           
           {/* LEFT: LUXURY LOUNGE TERRACE PHOTO OVERLOOKING HAIL MOUNTAINS */}
-          <div className="lg:col-span-6 relative group overflow-hidden rounded-3xl border border-[#C8A46A]/30 shadow-2xl">
+          <div className="lg:col-span-6 lg:col-start-1 relative group overflow-hidden rounded-3xl border border-[#C8A46A]/30 shadow-2xl">
             <img
               src="/images/lounge_terrace.jpg"
               alt="Hajiss Lounge Terrace Hail"
@@ -39,9 +39,8 @@ export const VisitSection: React.FC = () => {
           </div>
 
           {/* RIGHT: INVITATION & HOURS */}
-          <div className="lg:col-span-6 text-right space-y-5">
-            <div className="flex items-center justify-end space-x-3 space-x-reverse">
-              <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
+          <div className="lg:col-span-6 lg:col-start-7 text-right space-y-5" dir="rtl">
+            <div className="flex items-center justify-start">
               <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
                 حيث يلتقي الأصدقاء
               </span>

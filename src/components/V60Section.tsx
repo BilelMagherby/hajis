@@ -41,10 +41,10 @@ export const V60Section: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" dir="ltr">
           
           {/* RIGHT: V60 RITUAL STEPS GRID */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1">
+          <div className="lg:col-span-6 lg:col-start-1 grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1" dir="rtl">
             {steps.map((step, idx) => (
               <div
                 key={idx}
@@ -64,9 +64,8 @@ export const V60Section: React.FC = () => {
           </div>
 
           {/* LEFT: TEXT & INTRO */}
-          <div className="lg:col-span-6 text-right order-1 lg:order-2 space-y-6">
-            <div className="flex items-center justify-end space-x-3 space-x-reverse">
-                <span className="h-[1px] w-12 bg-[#3D281C]/60" />
+          <div className="lg:col-span-6 lg:col-start-7 text-right order-1 lg:order-2 space-y-6" dir="rtl">
+            <div className="flex items-center justify-start gap-3">
                 <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
                 طقس التقطير اليدوي
               </span>

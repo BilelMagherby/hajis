@@ -98,11 +98,18 @@
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    direction: rtl;
+    text-align: start;
     background-color: #090604;
     color: #F8F4EC;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Almarai', sans-serif;
+  }
+
+  #root {
+    direction: rtl;
+    text-align: start;
   }
 
   button {

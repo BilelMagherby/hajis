@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               للحصول على عروض خاصة ومحاصيل طازجة
             </p>
 
-            <div className="flex justify-end pt-1">
+            <div className="flex justify-center pt-1 md:justify-end">
               <ShopQrCode className="w-20 h-20 bg-[#F8F4EC] p-1.5 rounded-lg border border-[#C8A46A]/50" imageClassName="w-full h-full object-contain" />
             </div>
           </div>

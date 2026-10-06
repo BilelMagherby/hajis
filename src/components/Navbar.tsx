@@ -78,8 +78,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 border-b border-[#C8A46A]/25 bg-[#160D08]/95 backdrop-blur-md shadow-lg shadow-black/40 transition-all duration-500 ${
-          isScrolled ? 'py-2' : 'py-1 md:py-1'
+        className={`fixed top-0 left-0 right-0 z-40 border-b transition-all duration-500 ${
+          isScrolled
+            ? 'border-[#C8A46A]/25 bg-[#160D08]/85 backdrop-blur-md shadow-lg shadow-black/40 py-2'
+            : 'border-transparent bg-transparent shadow-none py-1'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between -translate-y-2">
@@ -100,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center space-x-8 space-x-reverse" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-8 space-x-reverse" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -120,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* RIGHT: ACTIONS & SOCIALS */}
-          <div className="hidden md:flex items-center space-x-5 space-x-reverse">
+          <div className="hidden xl:flex items-center space-x-5 space-x-reverse">
             {/* Social Icons */}
             <div className="flex items-center space-x-3 space-x-reverse text-[#C8BAA6]">
               <a
@@ -183,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* MOBILE HAMBURGER BUTTON */}
-          <div className="flex md:hidden items-center space-x-3 space-x-reverse">
+          <div className="flex lg:hidden items-center space-x-3 space-x-reverse">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#F8F4EC] hover:text-[#E3C994] focus:outline-none"
@@ -197,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[#160D08]/98 backdrop-blur-xl flex flex-col pt-24 px-6 md:hidden">
+        <div className="fixed inset-0 z-30 bg-[#160D08]/98 backdrop-blur-xl flex flex-col pt-24 px-6 lg:hidden">
           <div className="flex flex-col space-y-5 text-right">
             {navLinks.map((link) => (
               <button

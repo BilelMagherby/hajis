@@ -17,9 +17,8 @@ export const MenuSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION HEADER */}
-        <div className="flex flex-col items-end text-right mb-16">
-          <div className="flex items-center space-x-3 space-x-reverse mb-2">
-            <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
+        <div dir="rtl" className="flex w-full flex-col items-start text-right mb-16">
+          <div className="flex items-center justify-start mb-2">
             <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
               إبداعات هاجس
             </span>
@@ -33,10 +32,10 @@ export const MenuSection: React.FC = () => {
         </div>
 
         {/* MAIN DISPLAY: 3D PRODUCT ON LEFT + 4 CATEGORY CARDS ON RIGHT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center" dir="ltr">
           
           {/* LEFT: IMAGE & BUTTON */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl">
+          <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl" dir="rtl">
             <div className="w-full relative rounded-xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(200,164,106,0.1)]">
               <img 
                 src="/images/espresso_pour.jpg" 
@@ -55,7 +54,7 @@ export const MenuSection: React.FC = () => {
           </div>
 
           {/* RIGHT: 4 CATEGORY CARDS */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5" dir="rtl">
             {menuCategories.map((cat) => (
               <div
                 key={cat.id}

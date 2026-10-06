@@ -29,7 +29,7 @@ export const CoffeeBeanRain: React.FC = () => {
           return bounds.top <= viewportMiddle && bounds.bottom > viewportMiddle;
         });
 
-        setIsVisible(activeSection?.dataset.beanRain !== 'off');
+        setIsVisible(activeSection?.id === 'hero');
       });
     };
 

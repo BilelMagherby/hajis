@@ -40,7 +40,7 @@ export const AboutSection: React.FC = () => {
           {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
           <div className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6">
             {/* Top Insignia Emblem */}
-            <div className="flex items-center justify-end space-x-3 space-x-reverse">
+            <div dir="rtl" className="flex items-center justify-start gap-3">
               <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
                 أصالة المكان وروح الضيافة
               </span>
@@ -64,18 +64,18 @@ export const AboutSection: React.FC = () => {
             </p>
 
             {/* The 3 Pillars List */}
-            <ul className="space-y-4 font-arabic text-sm sm:text-base text-[#F3EBDD] leading-relaxed">
-              <li className="flex items-start justify-end space-x-3 space-x-reverse">
+            <ul dir="rtl" className="space-y-4 font-arabic text-sm sm:text-base text-[#F3EBDD] leading-relaxed">
+              <li className="flex items-start gap-3 text-right">
+                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
                 <span>مقهى متخصص، ما هو أي مقهى.</span>
-                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
               </li>
-              <li className="flex items-start justify-end space-x-3 space-x-reverse">
+              <li className="flex items-start gap-3 text-right">
+                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
                 <span>مكان للتجمّعات، جذوره من الوجار، عادة أهل حائل الأصيلة بالكرم والدفا..</span>
-                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
               </li>
-              <li className="flex items-start justify-end space-x-3 space-x-reverse">
-                <span>انتماء، مو مجرد راحة تجيك وتروح.</span>
+              <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+                <span>انتماء، مو مجرد راحة تجيك وتروح.</span>
               </li>
             </ul>
 
