@@ -83,11 +83,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled
-            ? 'bg-[#160D08]/90 backdrop-blur-md border-b border-[#C8A46A]/25 py-3 shadow-lg shadow-black/40'
-            : 'bg-transparent py-5 md:py-6'
+            ? 'bg-[#160D08]/90 backdrop-blur-md border-b border-[#C8A46A]/25 py-2 shadow-lg shadow-black/40'
+            : 'bg-transparent py-1 md:py-1'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between -translate-y-2">
           {/* LEFT: HAJISS BRAND LOGO */}
           <button
             type="button"
@@ -184,7 +184,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={toggleAudio}
                 className="p-1.5 rounded-full text-[#C8A46A] hover:text-[#E3C994] bg-[#24150E]/80 border border-[#C8A46A]/20 hover:border-[#C8A46A] transition-all"
                 title={isAudioPlaying ? 'كتم الصوت' : 'تشغيل أجواء المقهى الهادئة'}
-                aria-label="Toggle ambient café sound"
+                aria-label={isAudioPlaying ? 'إيقاف موسيقى المقهى الهادئة' : 'تشغيل موسيقى المقهى الهادئة'}
+                aria-pressed={isAudioPlaying}
               >
                 {isAudioPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
               </button>
@@ -205,7 +206,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={toggleAudio}
                 className="p-2 text-[#C8A46A] rounded-md bg-[#24150E]/80 border border-[#C8A46A]/30"
-                aria-label="Ambient audio"
+                aria-label={isAudioPlaying ? 'إيقاف موسيقى المقهى الهادئة' : 'تشغيل موسيقى المقهى الهادئة'}
+                aria-pressed={isAudioPlaying}
               >
                 {isAudioPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
               </button>

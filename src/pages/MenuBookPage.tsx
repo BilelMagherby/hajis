@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, MoveHorizontal } from 'lucide-react';
-import type { MenuBookPage as MenuBookPageData } from '../data/menu';
+import { ChevronLeft, ChevronRight, MoveHorizontal, X } from 'lucide-react';
+import type { MenuBookPage as MenuBookPageData, MenuItem } from '../data/menu';
 import { menuBookPages } from '../data/menu';
 import { Navbar } from '../components/Navbar';
 import './MenuBookPage.css';
@@ -29,7 +29,8 @@ const BookLeaf: React.FC<{
   onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
   onPointerDown?: React.PointerEventHandler<HTMLElement>;
   onPointerUp?: React.PointerEventHandler<HTMLElement>;
-}> = ({ page, side, className = '', onClick, onKeyDown, onPointerDown, onPointerUp }) => {
+  onSelectItem?: (item: MenuItem) => void;
+}> = ({ page, side, className = '', onClick, onKeyDown, onPointerDown, onPointerUp, onSelectItem }) => {
   if (page.type === 'cover') {
     return (
       <article
@@ -82,7 +83,13 @@ const BookLeaf: React.FC<{
 
       <div className="leaf-items">
         {page.items.map((item) => (
-          <div className="leaf-item" key={item.id}>
+          <button
+            className="leaf-item"
+            key={item.id}
+            type="button"
+            onClick={() => onSelectItem?.({ ...item, image: item.image || page.image })}
+            aria-label={`عرض تفاصيل ${item.nameAr}`}
+          >
             <img
               className="leaf-item-image"
               src={item.image || page.image}
@@ -100,7 +107,7 @@ const BookLeaf: React.FC<{
               <p>{item.descriptionAr}</p>
               {item.notes && <span className="leaf-item-notes">Tasting Notes: {item.notes}</span>}
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -123,6 +130,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
   const [turnDirection, setTurnDirection] = useState<TurnDirection>('next');
   const [isTurning, setIsTurning] = useState(false);
   const [flippingPage, setFlippingPage] = useState<MenuBookPageData | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const dragStartX = useRef<number | null>(null);
   const turnTimer = useRef<number | null>(null);
@@ -205,6 +213,10 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
   };
 
   const handlePointerDown: React.PointerEventHandler<HTMLElement> = (event) => {
+    if (event.target instanceof Element && event.target.closest('.leaf-item')) {
+      dragStartX.current = null;
+      return;
+    }
     dragStartX.current = event.clientX;
     event.currentTarget.setPointerCapture(event.pointerId);
   };
@@ -221,6 +233,30 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
     dragStartX.current = null;
     setTilt({ x: 0, y: 0 });
   };
+
+  const handleOutsideBookClick: React.MouseEventHandler<HTMLElement> = (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest('.book-frame, .book-controls, .book-side-navigation, .book-swipe-hint, .product-detail-backdrop')) return;
+    if (isBookOpen) {
+      setIsBookOpen(false);
+      setIsTurning(false);
+      setFlippingPage(null);
+      if (turnTimer.current) window.clearTimeout(turnTimer.current);
+      if (pageCommitTimer.current) window.clearTimeout(pageCommitTimer.current);
+    }
+  };
+
+  useEffect(() => {
+    if (!selectedProduct) return;
+
+    const handleModalKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProduct(null);
+    };
+
+    window.addEventListener('keydown', handleModalKeyDown);
+    return () => window.removeEventListener('keydown', handleModalKeyDown);
+  }, [selectedProduct]);
 
   return (
     <div className="menu-book-experience" dir="rtl">
@@ -239,7 +275,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
         toggleAudio={toggleAudio}
       />
 
-      <main className="menu-book-main">
+      <main className="menu-book-main" onClick={handleOutsideBookClick}>
         <div className="menu-book-scene">
           <div
             className={`book-frame ${isBookOpen ? 'book-frame--open' : ''} ${isOpening ? 'book-frame--opening' : ''}`}
@@ -257,6 +293,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
                   className="book-leaf-static"
                   onPointerDown={handlePointerDown}
                   onPointerUp={handlePointerUp}
+                  onSelectItem={setSelectedProduct}
                 />
                 <BookLeaf
                   page={rightPage}
@@ -264,6 +301,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
                   className="book-leaf-static"
                   onPointerDown={handlePointerDown}
                   onPointerUp={handlePointerUp}
+                  onSelectItem={setSelectedProduct}
                 />
                 <BookLeaf
                   page={findPage(1)}
@@ -361,6 +399,51 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
           <MoveHorizontal />
           <span>استخدم الأسهم للتنقل</span>
         </div>
+
+        {selectedProduct && (
+          <div
+            className="product-detail-backdrop"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setSelectedProduct(null);
+            }}
+          >
+            <section
+              className="product-detail-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="product-detail-title"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="product-detail-close"
+                onClick={() => setSelectedProduct(null)}
+                aria-label="إغلاق تفاصيل المنتج"
+              >
+                <X aria-hidden="true" />
+              </button>
+              <img
+                className="product-detail-image"
+                src={selectedProduct.image || '/images/main_cafe.jpg'}
+                alt={selectedProduct.nameAr}
+              />
+              <div className="product-detail-copy">
+                <span className="product-detail-english">{selectedProduct.nameEn}</span>
+                <h2 id="product-detail-title">{selectedProduct.nameAr}</h2>
+                <span className="product-detail-price">{selectedProduct.price}</span>
+                <p>{selectedProduct.descriptionAr}</p>
+                {selectedProduct.notes && (
+                  <p className="product-detail-notes">ملاحظات التذوق: {selectedProduct.notes}</p>
+                )}
+                {selectedProduct.tags && selectedProduct.tags.length > 0 && (
+                  <ul className="product-detail-tags" aria-label="خصائص المنتج">
+                    {selectedProduct.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                  </ul>
+                )}
+              </div>
+            </section>
+          </div>
+        )}
       </main>
     </div>
   );

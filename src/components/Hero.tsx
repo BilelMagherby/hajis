@@ -17,12 +17,12 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
         <img
           src="/images/main_cafe.jpg"
           alt="Hajiss Café Facade"
-          className="w-full h-full object-cover object-center transform scale-100 filter brightness-95 contrast-105"
+          className="w-full h-full object-cover object-center transform scale-110 filter brightness-125 contrast-125 saturate-125"
         />
 
-        {/* Cinematic Luxury Dark Gradients & Vignettes for High Contrast Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#090604] via-[#090604]/30 to-[#090604]/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#090604]/60 via-[#090604]/10 to-[#090604]/60" />
+        {/* Very light vignette so the image stays crisp and bright */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#090604]/10 via-transparent to-[#090604]/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#090604]/10 via-transparent to-[#090604]/10" />
       </div>
 
       {/* Subtle Grain Texture Overlay */}
@@ -30,12 +30,9 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
 
       {/* FOREGROUND CONTENT CONTAINER */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 lg:pt-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between min-h-[75vh]">
-
-          {/* RIGHT: HERO HEADLINE & BRAND STORY */}
-          <div className="order-1 lg:order-2 w-full lg:max-w-2xl text-right lg:ml-auto mb-10 lg:mb-0">
-            {/* Circular Hajiss Monogram Insignia */}
-            <div className="mb-4 inline-flex items-center justify-center">
+        <div className="flex min-h-[75vh] items-center justify-center">
+          <div className="pointer-events-none opacity-0 h-0 w-0 overflow-hidden">
+            <div className="inline-flex items-center justify-center">
               <div className="relative w-28 sm:w-32 flex items-center justify-center p-2">
                 <img
                   src="/images/logo.png"
@@ -45,7 +42,6 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
               </div>
             </div>
 
-            {/* Main Arabic Title */}
             <div className="space-y-1">
               <h1 className="font-kufi text-5xl sm:text-6xl lg:text-7xl font-bold text-[#F8F4EC] tracking-tight leading-none drop-shadow-md">
                 هاجس
@@ -55,12 +51,10 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
               </h2>
             </div>
 
-            {/* Description Text */}
             <p className="mt-5 font-arabic text-sm sm:text-base text-[#D8CEBF] leading-relaxed max-w-xl font-light">
               {brandData.heroQuote}
             </p>
 
-            {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4 justify-end">
               <button
                 onClick={onDiscoverClick || (() => {
@@ -82,7 +76,6 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
               </button>
             </div>
           </div>
-
         </div>
       </div>
 

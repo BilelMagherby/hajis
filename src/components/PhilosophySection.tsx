@@ -8,27 +8,26 @@ export const PhilosophySection: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'droplet':
-        return <Droplet className="w-5 h-5 text-[#E3C994]" />;
+        return <Droplet className="w-5 h-5 text-[#3D281C]" />;
       case 'flame':
-        return <Flame className="w-5 h-5 text-[#E3C994]" />;
+        return <Flame className="w-5 h-5 text-[#3D281C]" />;
       case 'mountain':
-        return <Mountain className="w-5 h-5 text-[#E3C994]" />;
+        return <Mountain className="w-5 h-5 text-[#3D281C]" />;
       case 'bean':
-        return <Sparkles className="w-5 h-5 text-[#E3C994]" />;
+        return <Sparkles className="w-5 h-5 text-[#3D281C]" />;
       case 'coffee':
       default:
-        return <Coffee className="w-5 h-5 text-[#E3C994]" />;
+        return <Coffee className="w-5 h-5 text-[#3D281C]" />;
     }
   };
 
   return (
     <section
       id="philosophy"
-      className="relative w-full py-28 bg-[#160D08] text-[#F8F4EC] overflow-hidden"
+      className="header-primary-mix relative w-full py-28 text-[#20140F] overflow-hidden"
     >
       {/* Background Subtle Gradient & Grain */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#090604] via-[#160D08] to-[#090604] pointer-events-none" />
-      <div className="absolute inset-0 grain-overlay pointer-events-none opacity-30" />
+      <div className="absolute inset-0 grain-overlay pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -39,18 +38,18 @@ export const PhilosophySection: React.FC = () => {
           <div className="lg:col-span-6 text-right">
             <div className="flex items-center justify-end space-x-3 space-x-reverse mb-3">
               <span className="h-[1px] w-12 bg-[#C8A46A]/60" />
-              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-semibold">
+              <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-semibold">
                 معايير الجودة والكمال
               </span>
             </div>
-            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC]">
+            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#20140F]">
               ماذا يميّز هاجس؟
             </h2>
           </div>
 
           {/* RIGHT: STORYTELLING & ROASTER PREVIEW BANNER */}
           <div className="lg:col-span-6 text-right">
-            <div className="relative rounded-2xl overflow-hidden border border-[#C8A46A]/30 p-8 bg-[#24150E]/60 backdrop-blur-md shadow-2xl">
+            <div className="header-primary-mix relative rounded-2xl overflow-hidden border border-[#C8A46A]/40 p-8 backdrop-blur-md shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
               {/* Subtle Roaster Background Image */}
               <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <img
@@ -61,10 +60,10 @@ export const PhilosophySection: React.FC = () => {
               </div>
 
               <div className="relative z-10 space-y-2">
-                <h3 className="font-kufi text-2xl sm:text-3xl font-semibold text-[#F8F4EC] leading-snug">
-                  كل كوب محضر <span className="text-[#E3C994]">بعناية فائقة.</span>
+                <h3 className="font-kufi text-2xl sm:text-3xl font-semibold text-[#20140F] leading-snug">
+                  كل كوب محضر <span className="text-[#3D281C]">بعناية فائقة.</span>
                 </h3>
-                <p className="font-arabic text-sm sm:text-base text-[#D8CEBF] font-light">
+                <p className="font-arabic text-sm sm:text-base text-[#302019] font-medium">
                   كل كوب يُقدَّم لأنه يستحق تذوّقه. لا شيء عندنا صدفة.
                 </p>
               </div>
@@ -83,29 +82,29 @@ export const PhilosophySection: React.FC = () => {
                 onMouseEnter={() => setActiveCard(item.id)}
                 className={`relative group rounded-xl p-6 transition-all duration-500 cursor-pointer text-right flex flex-col justify-between min-h-[220px] ${
                   isSelected
-                    ? 'bg-[#24150E] border border-[#E3C994] shadow-gold-glow -translate-y-2'
-                    : 'bg-[#1F130C]/80 border border-[#C8A46A]/20 hover:border-[#C8A46A]/60 hover:-translate-y-1'
+                    ? 'bg-[#E9D9C9] border border-[#3D281C]/70 shadow-[0_18px_38px_rgba(0,0,0,0.18)] -translate-y-2'
+                    : 'bg-[#A88F81] border border-[#3D281C]/45 hover:border-[#3D281C]/75 hover:-translate-y-1'
                 }`}
               >
                 {/* Header: Icon & Number */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-[#C8A46A]/50 tracking-widest">
+                  <span className="font-mono text-xs text-[#302019] tracking-widest">
                     {item.number}
                   </span>
-                  <div className="w-10 h-10 rounded-lg bg-[#2A180E] border border-[#C8A46A]/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                  <div className="w-10 h-10 rounded-lg bg-[#E9D9C9] border border-[#3D281C]/40 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform">
                     {getIcon(item.icon)}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="space-y-2 mt-4">
-                  <h4 className="font-kufi text-lg font-semibold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
+                  <h4 className="font-kufi text-lg font-semibold text-[#20140F] group-hover:text-[#5B3626] transition-colors">
                     {item.titleAr}
                   </h4>
-                  <p className="font-arabic text-xs text-[#C8A46A] font-medium">
+                  <p className="font-arabic text-xs text-[#3D281C] font-semibold">
                     {item.subtitleAr}
                   </p>
-                  <p className="font-arabic text-xs text-[#D8CEBF]/80 leading-relaxed font-light line-clamp-3">
+                  <p className="font-arabic text-xs text-[#302019] leading-relaxed font-medium line-clamp-3">
                     {item.descriptionAr}
                   </p>
                 </div>
@@ -113,7 +112,7 @@ export const PhilosophySection: React.FC = () => {
                 {/* Bottom Gold Accent Bar */}
                 <div
                   className={`h-[2px] w-full rounded-full transition-all duration-300 mt-4 ${
-                    isSelected ? 'bg-gradient-to-r from-[#C8A46A] to-[#E3C994]' : 'bg-transparent'
+                    isSelected ? 'bg-gradient-to-r from-[#5B3626] to-[#A7653E]' : 'bg-transparent'
                   }`}
                 />
               </div>
