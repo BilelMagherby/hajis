@@ -238,7 +238,7 @@
 .cover-brand,
 .closing-brand {
   margin-top: 12px;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(17px, 2vw, 30px);
   letter-spacing: 0.34em;
 }
@@ -251,7 +251,7 @@
 
 .cover-subtitle {
   margin-top: 8px;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(11px, 1.1vw, 15px);
   letter-spacing: 0.08em;
   color: #bd9354;
@@ -259,7 +259,7 @@
 
 .cover-mountain {
   margin-top: 18px;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(52px, 8vw, 120px);
   line-height: 0.8;
   opacity: 0.24;
@@ -293,7 +293,7 @@
 .leaf-heading h2 {
   margin: 0;
   color: #614126;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(19px, 2.1vw, 29px);
   font-weight: 700;
 }
@@ -302,7 +302,7 @@
   display: block;
   margin-top: 2px;
   color: #856641;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(8px, 0.78vw, 11px);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -385,7 +385,7 @@
   display: block;
   margin-top: 1px;
   color: #947955;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(8px, 0.76vw, 11px);
 }
 
@@ -407,7 +407,7 @@
   display: block;
   margin-top: 4px;
   color: #8b714d;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: clamp(7px, 0.66vw, 9px);
   letter-spacing: 0.025em;
 }
@@ -491,7 +491,7 @@
 
 .product-detail-english {
   color: #856641;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: 12px;
   letter-spacing: 0.08em;
 }
@@ -546,7 +546,7 @@
 }
 
 .leaf-page-number {
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: 11px;
 }
 
@@ -719,7 +719,7 @@
 
 .book-page-count {
   color: #e9d1a5;
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: 12px;
   direction: ltr;
 }
@@ -730,7 +730,7 @@
   width: 100%;
   gap: 10px;
   color: rgba(232, 215, 184, 0.67);
-  font-family: 'Tajawal', sans-serif;
+  font-family: 'Almarai', sans-serif;
   font-size: 8px;
 }
 

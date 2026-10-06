@@ -8,7 +8,9 @@ export const signInDemoAdmin = (email: string, password: string) => {
   const configuredPassword = import.meta.env.VITE_DEMO_ADMIN_PASSWORD;
 
   if (!configuredEmail || !configuredPassword) {
-    throw new Error('بيانات الدخول التجريبية غير مهيأة في ملف البيئة المحلي.');
+    throw new Error(
+      'إعداد تسجيل الدخول التجريبي غير مكتمل. أضف VITE_DEMO_ADMIN_EMAIL و VITE_DEMO_ADMIN_PASSWORD إلى ملف .env.local محلياً أو إلى Environment Variables في Vercel، ثم أعد النشر.'
+    );
   }
 
   if (email.trim().toLowerCase() !== configuredEmail.toLowerCase() || password !== configuredPassword) {

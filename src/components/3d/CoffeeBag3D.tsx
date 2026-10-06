@@ -63,12 +63,12 @@ export const CoffeeBag3D: React.FC<CoffeeBag3DProps> = ({ className = '' }) => {
 
       // Gold foil brand typography
       ctx.fillStyle = '#E3C994';
-      ctx.font = '800 84px "Tajawal", sans-serif';
+      ctx.font = '800 84px "Almarai", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('HAJISS', 512, 340);
 
       ctx.fillStyle = '#C8A46A';
-      ctx.font = '500 32px "Tajawal", sans-serif';
+      ctx.font = '500 32px "Almarai", sans-serif';
       ctx.letterSpacing = '6px';
       ctx.fillText('SPECIALTY COFFEE', 512, 410);
 
@@ -82,18 +82,18 @@ export const CoffeeBag3D: React.FC<CoffeeBag3DProps> = ({ className = '' }) => {
 
       // Coffee origin details
       ctx.fillStyle = '#F8F4EC';
-      ctx.font = '400 24px "Tajawal", sans-serif';
+      ctx.font = '400 24px "Almarai", sans-serif';
       ctx.fillText('SINGLE ORIGIN • ETHIOPIA', 512, 510);
       ctx.fillText('محصول إثيوبيا يرغاتشيف الفاخر', 512, 555);
 
       ctx.fillStyle = '#C8BAA6';
-      ctx.font = '300 20px "Tajawal", sans-serif';
+      ctx.font = '300 20px "Almarai", sans-serif';
       ctx.fillText('ROASTED IN HAIL, SAUDI ARABIA', 512, 630);
       ctx.fillText('250G • NET WT 8.8 OZ', 512, 680);
 
       // Saudi emblem / palm icon
       ctx.fillStyle = '#E3C994';
-      ctx.font = '400 36px "Tajawal", sans-serif';
+      ctx.font = '400 36px "Almarai", sans-serif';
       ctx.fillText('✦ ✦ ✦', 512, 760);
     }
     const labelTexture = new THREE.CanvasTexture(labelCanvas);

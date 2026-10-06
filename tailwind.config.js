@@ -34,11 +34,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Tajawal', 'sans-serif'],
-        arabic: ['Tajawal', 'sans-serif'],
-        kufi: ['Tajawal', 'sans-serif'],
-        brand: ['Tajawal', 'sans-serif'],
-        mono: ['Tajawal', 'sans-serif'],
+        sans: ['Almarai', 'sans-serif'],
+        arabic: ['Almarai', 'sans-serif'],
+        kufi: ['Almarai', 'sans-serif'],
+        brand: ['Almarai', 'sans-serif'],
+        mono: ['Almarai', 'sans-serif'],
       },
       boxShadow: {
         'gold-glow': '0 0 25px rgba(200, 164, 106, 0.15)',
