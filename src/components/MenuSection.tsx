@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, X, Sparkles } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
+import { RevealOnScroll } from './RevealOnScroll';
 
 export const MenuSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
@@ -17,7 +18,10 @@ export const MenuSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION HEADER */}
-        <div dir="rtl" className="flex w-full flex-col items-start text-right mb-16">
+        <RevealOnScroll
+          dir="rtl"
+          className="flex w-full flex-col items-start text-right mb-16"
+        >
           <div className="flex items-center justify-start mb-2">
             <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
               إبداعات هاجس
@@ -29,13 +33,17 @@ export const MenuSection: React.FC = () => {
           <p className="mt-3 font-arabic text-sm sm:text-base text-[#D8CEBF] font-light max-w-xl">
             من القهوة الكلاسيكية إلى تجارب V60 الفريدة، كل كوب يروي حكاية حب وتفانٍ للمذاق الأصيل.
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* MAIN DISPLAY: 3D PRODUCT ON LEFT + 4 CATEGORY CARDS ON RIGHT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center" dir="ltr">
           
           {/* LEFT: IMAGE & BUTTON */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl" dir="rtl">
+          <RevealOnScroll
+            className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl"
+            dir="rtl"
+            delay={120}
+          >
             <div className="w-full relative rounded-xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(200,164,106,0.1)]">
               <img 
                 src="/images/espresso_pour.jpg" 
@@ -51,15 +59,20 @@ export const MenuSection: React.FC = () => {
               <span>استعرض القائمة الكاملة</span>
               <ArrowLeft className="w-4 h-4" />
             </button>
-          </div>
+          </RevealOnScroll>
 
           {/* RIGHT: 4 CATEGORY CARDS */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5" dir="rtl">
-            {menuCategories.map((cat) => (
-              <div
+          <RevealOnScroll
+            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            dir="rtl"
+            delay={200}
+          >
+            {menuCategories.map((cat, index) => (
+              <RevealOnScroll
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat)}
                 className="group relative h-64 rounded-2xl overflow-hidden cursor-pointer border border-[#C8A46A]/25 hover:border-[#E3C994] transition-all duration-500 shadow-xl"
+                delay={index * 80}
               >
                 {/* Background Image with Zoom on Hover */}
                 <img
@@ -94,9 +107,9 @@ export const MenuSection: React.FC = () => {
                     {cat.descriptionAr}
                   </p>
                 </div>
-              </div>
+              </RevealOnScroll>
             ))}
-          </div>
+          </RevealOnScroll>
 
         </div>
 

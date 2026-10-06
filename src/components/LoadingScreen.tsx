@@ -36,14 +36,14 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       }`}
     >
       <img
-        src="/images/hajiss-loading.gif"
+        src="/images/hajiss-loading.jpeg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55 motion-reduce:hidden"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90 motion-reduce:hidden"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/75 via-[#160D08]/40 to-[#090604]/80"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/45 via-[#160D08]/10 to-[#090604]/55"
       />
       <div className="relative z-10 flex flex-col items-center space-y-6 px-4 text-center">
         {/* Logo Monogram */}
@@ -56,7 +56,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </div>
 
         {/* Brand Name */}
-        <div className="space-y-1">
+        <div className="space-y-1 border-0 bg-transparent p-0 shadow-none">
           <h1 className="font-kufi text-3xl md:text-4xl text-[#F8F4EC] tracking-wide">
             هـاجـس
           </h1>
@@ -64,11 +64,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             HAJISS CAFÉ
           </p>
         </div>
-
-        {/* Tagline */}
-        <p className="font-arabic text-sm text-[#D8CEBF] tracking-wider">
-          هوس التذوّق • حائل
-        </p>
 
         {/* Progress Bar Container */}
         <div className="w-56 h-[2px] bg-[#2A180E] rounded-full overflow-hidden mt-6 relative">

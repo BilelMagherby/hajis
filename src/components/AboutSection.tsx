@@ -1,4 +1,5 @@
 import React from 'react';
+import { RevealOnScroll } from './RevealOnScroll';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -11,7 +12,9 @@ export const AboutSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* IMAGE CONTAINER (Will appear on LEFT in RTL if it's order-2) */}
-          <div className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center">
+          <RevealOnScroll
+            className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center"
+          >
             <div className="relative w-full max-w-lg">
               {/* Soft decorative shadow background */}
               <div className="absolute -inset-4 bg-[#77764A]/40 rounded-3xl blur-2xl transform -rotate-2" />
@@ -35,10 +38,13 @@ export const AboutSection: React.FC = () => {
                 <span className="font-arabic text-xs font-light">حائل منذ 2020</span>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
-          <div className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6">
+          <RevealOnScroll
+            className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6"
+            delay={160}
+          >
             {/* Top Insignia Emblem */}
             <div dir="rtl" className="flex items-center justify-start gap-3">
               <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
@@ -90,7 +96,7 @@ export const AboutSection: React.FC = () => {
                 القهوة... طقس نعيشه.
               </p>
             </div>
-          </div>
+          </RevealOnScroll>
 
         </div>
       </div>

@@ -149,6 +149,35 @@
   background: #967C6D !important;
 }
 
+.scroll-reveal-from-right {
+  opacity: 0;
+  transform: translateX(56px);
+}
+
+.scroll-reveal-from-right.is-visible {
+  animation: reveal-from-right 750ms ease-out both;
+}
+
+@keyframes reveal-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(56px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-from-right {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 /* Luxury Glassmorphism */
 .glass-espresso {
   background: rgba(36, 21, 14, 0.65);
