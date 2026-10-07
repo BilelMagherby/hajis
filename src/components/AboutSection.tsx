@@ -22,7 +22,7 @@ export const AboutSection: React.FC = () => {
               {/* The Image Container with subtle organic border */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
                 <img
-                  src="/images/about_coffee_pourover.png"
+                  src="/images/about_cafe_pourover.jpeg"
                   alt="قهوة مقطرة وكرم الضيافة العربية"
                   className="w-full h-[400px] sm:h-[480px] object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
                 />
