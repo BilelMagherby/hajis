@@ -28,9 +28,9 @@ export const brandData: BrandInfo = {
   since: '2020',
   location: {
     cityAr: 'Hail 55425, Saudi Arabia',
-    placeAr: '7249 2353 King Abdulaziz Rd, Az Zibarah • GM4X+2J',
-    mapQuery: '7249 2353 King Abdulaziz Rd, Az Zibarah, Hail 55425, Saudi Arabia',
-    mapUrl: 'https://www.google.com/maps/search/?api=1&query=7249%202353%20King%20Abdulaziz%20Rd%2C%20Az%20Zibarah%2C%20Hail%2055425%2C%20Saudi%20Arabia'
+    placeAr: 'Hajiss Cafe',
+    mapQuery: 'Hajiss Cafe, 27.50503, 41.6991248',
+    mapUrl: 'https://www.google.com/maps/place/Hajiss+Cafe/@27.50503,41.6991248,781m/data=!3m2!1e3!4b1!4m6!3m5!1s0x157647b084b58537:0xdf37976ceaabcffb!8m2!3d27.50503!4d41.6991248!16s%2Fg%2F11zglvzvfp?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D'
   },
   contact: {
     email: 'hajiss@natheelco.com',
