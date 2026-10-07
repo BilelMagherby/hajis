@@ -29,8 +29,8 @@ export const brandData: BrandInfo = {
   location: {
     cityAr: 'حائل، المملكة العربية السعودية',
     placeAr: 'منطقة الخليج العربي — ميدان داني',
-    coordinates: { lat: 27.52188, lng: 41.69611 },
-    mapUrl: 'https://maps.google.com/?q=27.52188,41.69611'
+    coordinates: { lat: 27.50503, lng: 41.6991248 },
+    mapUrl: 'https://www.google.com/maps/place/Hajiss+Cafe/@27.50503,41.6991248,781m/data=!3m2!1e3!4b1!4m6!3m5!1s0x157647b084b58537:0xdf37976ceaabcffb!8m2!3d27.50503!4d41.6991248!16s%2Fg%2F11zglvzvfp?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D'
   },
   contact: {
     email: 'hajiss@natheelco.com',

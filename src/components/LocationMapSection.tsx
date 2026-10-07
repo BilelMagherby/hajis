@@ -12,13 +12,20 @@ export const LocationMapSection: React.FC = () => {
       dir="rtl"
     >
       <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">
-        <div className="overflow-hidden rounded-xl">
+        <div className="relative overflow-hidden rounded-xl">
           <iframe
             title="موقع مقهى هاجس على الخريطة"
             src={mapEmbedUrl}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="block h-64 w-full border-0 sm:h-80"
+            className="pointer-events-none block h-64 w-full border-0 sm:h-80"
+          />
+          <a
+            href={brandData.location.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="افتح موقع مقهى هاجس الدقيق على خرائط Google"
+            className="absolute inset-0"
           />
         </div>
 
