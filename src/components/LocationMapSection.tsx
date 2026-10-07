@@ -3,7 +3,7 @@ import { MapPin, Navigation } from 'lucide-react';
 import { brandData } from '../data/brand';
 
 export const LocationMapSection: React.FC = () => {
-  const mapEmbedUrl = `https://www.google.com/maps?q=${brandData.location.coordinates.lat},${brandData.location.coordinates.lng}&output=embed`;
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(brandData.location.mapQuery)}&output=embed`;
 
   return (
     <section
