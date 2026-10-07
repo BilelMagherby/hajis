@@ -41,13 +41,7 @@ const BookLeaf: React.FC<{
         tabIndex={onClick ? 0 : undefined}
         aria-label="غلاف قائمة هاجس"
       >
-        <div className="cover-emboss">
-          <span className="cover-brand">HAJISS</span>
-          <span className="cover-title">قائمة هاجس</span>
-          <span className="cover-subtitle">Specialty Coffee</span>
-          <img className="cover-emblem" src="/images/logo.png" alt="شعار هاجس" />
-          <span className="cover-location">حائل — المملكة العربية السعودية</span>
-        </div>
+        <div className="cover-emboss" aria-hidden="true" />
       </article>
     );
   }
@@ -56,7 +50,6 @@ const BookLeaf: React.FC<{
     return (
       <article className={`book-leaf book-closing-leaf ${className}`}>
         <img src="/images/logo.png" alt="شعار هاجس" />
-        <span className="closing-brand">HAJISS</span>
         <h2>قهوتك... طقسك... مكانك.</h2>
         <span>حائل — المملكة العربية السعودية</span>
       </article>
@@ -73,9 +66,7 @@ const BookLeaf: React.FC<{
       <header className="leaf-heading">
         <div>
           <h2>{page.titleAr}</h2>
-          <span>{page.titleEn}</span>
         </div>
-        <span className="leaf-ornament" aria-hidden="true">✳</span>
       </header>
 
       <div className="leaf-items">
@@ -97,12 +88,11 @@ const BookLeaf: React.FC<{
               <div className="leaf-item-title">
                 <div>
                   <h3>{item.nameAr}</h3>
-                  <span className="leaf-item-english">{item.nameEn}</span>
                 </div>
                 <span className="leaf-item-price">{item.price}</span>
               </div>
               <p>{item.descriptionAr}</p>
-              {item.notes && <span className="leaf-item-notes">Tasting Notes: {item.notes}</span>}
+              {item.notes && <span className="leaf-item-notes">ملاحظات التذوق: {item.notes}</span>}
             </div>
           </button>
         ))}
@@ -421,7 +411,6 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
                 alt={selectedProduct.nameAr}
               />
               <div className="product-detail-copy">
-                <span className="product-detail-english">{selectedProduct.nameEn}</span>
                 <h2 id="product-detail-title">{selectedProduct.nameAr}</h2>
                 <span className="product-detail-price">{selectedProduct.price}</span>
                 <p>{selectedProduct.descriptionAr}</p>

@@ -37,7 +37,7 @@ export const featuresData: FeatureCardItem[] = [
     number: '04',
     titleAr: 'أجود أنواع البن من حول العالم',
     subtitleAr: 'محاصيل نادرة 88+ نقطة',
-    descriptionAr: 'شراكات مباشرة مع مزارع عائلية متخصصة تضمن أسمى درجات التقييم الدولي (Specialty Coffee Association).',
+    descriptionAr: 'شراكات مباشرة مع مزارع عائلية متخصصة تضمن أسمى درجات التقييم الدولي.',
     icon: 'bean'
   },
   {

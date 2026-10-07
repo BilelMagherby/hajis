@@ -16,7 +16,7 @@ export const V60Section: React.FC = () => {
     {
       icon: <Waves className="w-5 h-5 text-[#E3C994]" />,
       titleAr: 'صب حلزوني مدروس',
-      descAr: 'ترطيب تدريجي (Bloom) لمدة 45 ثانية يطلق أرقى النوتات العطرية.',
+      descAr: 'ترطيب تدريجي لمدة 45 ثانية يطلق أرقى النوتات العطرية.',
     },
     {
       icon: <Clock className="w-5 h-5 text-[#E3C994]" />,
@@ -34,7 +34,7 @@ export const V60Section: React.FC = () => {
       <div className="absolute inset-0 z-0 opacity-[0.12]">
         <img
           src="/images/v60_hero.jpg"
-          alt="V60 Ceremony"
+          alt="تحضير القهوة بالتقطير"
           className="w-full h-full object-cover object-center filter brightness-40 contrast-125"
         />
         <div className="header-primary-mix absolute inset-0" />
@@ -72,7 +72,7 @@ export const V60Section: React.FC = () => {
             </div>
 
             <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#20140F] leading-tight">
-              خدمات V60
+              خدمات التقطير
             </h2>
 
             <p className="font-arabic text-base sm:text-lg text-[#302019] leading-relaxed font-medium">
@@ -86,7 +86,7 @@ export const V60Section: React.FC = () => {
                 }}
                 className="inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/90 text-[#F8F4EC] text-sm font-medium hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow"
               >
-                <span>اكتشف خدمات V60</span>
+                <span>اكتشف خدمات التقطير</span>
                 <ArrowLeft className="w-4 h-4" />
               </button>
             </div>

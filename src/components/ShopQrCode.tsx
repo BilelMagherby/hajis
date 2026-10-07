@@ -37,10 +37,10 @@ export const ShopQrCode: React.FC<ShopQrCodeProps> = ({ className, imageClassNam
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      aria-label="افتح متجر هاجس hajiss.shop"
+      aria-label="افتح متجر هاجس"
     >
       {dataUrl ? (
-        <img className={imageClassName} src={dataUrl} alt="رمز QR لزيارة متجر hajiss.shop" />
+        <img className={imageClassName} src={dataUrl} alt="رمز للاستدلال على متجر هاجس" />
       ) : (
         <span className="shop-qr-placeholder" role={error ? 'alert' : undefined}>
           {error || 'جارٍ إنشاء رمز المتجر...'}

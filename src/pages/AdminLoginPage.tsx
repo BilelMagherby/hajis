@@ -34,7 +34,7 @@ export const AdminLoginPage: React.FC = () => {
       </Link>
       <section className="admin-login-card">
         <img src="/images/logo.png" alt="شعار هاجس" className="admin-logo" />
-        <span className="admin-eyebrow">HAJISS • لوحة الإدارة</span>
+        <span className="admin-eyebrow">هاجس • لوحة الإدارة</span>
         <h1>مرحباً بعودتك</h1>
         <p className="admin-muted">سجّل الدخول لمتابعة إدارة هاجس.</p>
         <div className="admin-demo-warning" role="note">
@@ -50,7 +50,7 @@ export const AdminLoginPage: React.FC = () => {
               autoComplete="username"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="name@example.com"
+              placeholder="أدخل بريدك الإلكتروني"
               required
             />
           </div>

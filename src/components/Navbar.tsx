@@ -18,7 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<'ar' | 'en'>('ar');
   const logoClickCount = React.useRef(0);
   const logoClickTimer = React.useRef<number | null>(null);
 
@@ -32,12 +31,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { id: 'hero', labelAr: 'الرئيسية', labelEn: 'Home' },
-    { id: 'about', labelAr: 'من نحن', labelEn: 'About' },
-    { id: 'philosophy', labelAr: 'ماذا يميّزنا', labelEn: 'Philosophy' },
-    { id: 'menu', labelAr: 'القائمة', labelEn: 'Menu' },
-    { id: 'v60', labelAr: 'خدمات V60', labelEn: 'V60 Ritual' },
-    { id: 'visit', labelAr: 'زيارة هاجس', labelEn: 'Visit Us' },
+    { id: 'hero', labelAr: 'الرئيسية' },
+    { id: 'about', labelAr: 'من نحن' },
+    { id: 'philosophy', labelAr: 'ماذا يميّزنا' },
+    { id: 'menu', labelAr: 'القائمة' },
+    { id: 'v60', labelAr: 'خدمات التقطير' },
+    { id: 'visit', labelAr: 'زيارة هاجس' },
   ];
 
   const handleLinkClick = (id: string) => {
@@ -95,14 +94,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="w-28 sm:w-36 flex items-center justify-center p-1 transition-transform group-hover:scale-105">
               <img
                 src="/images/logo.png"
-                alt="Hajiss"
+                alt="شعار هاجس"
                 className="w-full h-auto object-contain filter invert contrast-125"
               />
             </div>
           </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="القائمة الرئيسية">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -130,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="Instagram"
+                aria-label="إنستغرام"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
@@ -139,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="TikTok"
+                aria-label="تيك توك"
               >
                 <TikTokIcon className="w-4 h-4" />
               </a>
@@ -148,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="Snapchat"
+                aria-label="سناب شات"
               >
                 <SnapchatIcon className="w-4 h-4" />
               </a>
@@ -157,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="Threads"
+                aria-label="ثريدز"
               >
                 <ThreadsIcon className="w-4 h-4" />
               </a>
@@ -166,7 +165,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="X Twitter"
+                aria-label="إكس"
               >
                 <XIcon className="w-3.5 h-3.5" />
               </a>
@@ -175,22 +174,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="YouTube"
+                aria-label="يوتيوب"
               >
                 <YoutubeIcon className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Subtle Divider */}
-            <div className="w-[1px] h-4 bg-[#3D281C]" />
-
-            {/* Language Selector */}
-            <button
-              onClick={() => setActiveLang(activeLang === 'ar' ? 'en' : 'ar')}
-              className="px-2.5 py-1 text-xs rounded border border-[#C8A46A]/30 text-[#E3C994] hover:border-[#E3C994] transition-colors font-arabic"
-            >
-              {activeLang === 'ar' ? 'عربي' : 'EN'}
-            </button>
           </div>
 
           {/* MOBILE HAMBURGER BUTTON */}
@@ -198,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#F8F4EC] hover:text-[#E3C994] focus:outline-none"
-              aria-label="Toggle mobile menu"
+              aria-label="فتح وإغلاق القائمة"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -226,19 +215,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="mt-8 pt-6 border-t border-[#3D281C] flex items-center justify-between">
             <div className="flex items-center space-x-4 space-x-reverse text-[#C8A46A]">
-              <a href={brandData.contact.instagram} target="_blank" rel="noopener noreferrer">
+              <a href={brandData.contact.instagram} target="_blank" rel="noopener noreferrer" aria-label="إنستغرام">
                 <InstagramIcon className="w-5 h-5" />
               </a>
-              <a href={brandData.contact.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <a href={brandData.contact.tiktok} target="_blank" rel="noopener noreferrer" aria-label="تيك توك">
                 <TikTokIcon className="w-5 h-5" />
               </a>
-              <a href={brandData.contact.snapchat} target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+              <a href={brandData.contact.snapchat} target="_blank" rel="noopener noreferrer" aria-label="سناب شات">
                 <SnapchatIcon className="w-5 h-5" />
               </a>
-              <a href={brandData.contact.x} target="_blank" rel="noopener noreferrer">
+              <a href={brandData.contact.x} target="_blank" rel="noopener noreferrer" aria-label="إكس">
                 <XIcon className="w-4 h-4" />
               </a>
-              <a href={brandData.contact.youtube} target="_blank" rel="noopener noreferrer">
+              <a href={brandData.contact.youtube} target="_blank" rel="noopener noreferrer" aria-label="يوتيوب">
                 <YoutubeIcon className="w-5 h-5" />
               </a>
             </div>

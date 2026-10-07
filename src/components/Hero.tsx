@@ -15,8 +15,8 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
       {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
-          src="/images/main_cafe.jpg"
-          alt="Hajiss Café Facade"
+          src="/images/hero_cafe_dusk.png"
+          alt="واجهة مقهى هاجس"
           className="w-full h-full object-cover object-center filter brightness-125 contrast-125 saturate-125"
         />
 
@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
               <div className="relative w-28 sm:w-32 flex items-center justify-center p-2">
                 <img
                   src="/images/logo.png"
-                  alt="Insignia"
+                  alt="شعار هاجس"
                   className="w-full h-auto object-contain filter invert contrast-125"
                 />
               </div>

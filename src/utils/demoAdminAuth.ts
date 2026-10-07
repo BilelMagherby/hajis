@@ -9,7 +9,7 @@ export const signInDemoAdmin = (email: string, password: string) => {
 
   if (!configuredEmail || !configuredPassword) {
     throw new Error(
-      'إعداد تسجيل الدخول التجريبي غير مكتمل. أضف VITE_DEMO_ADMIN_EMAIL و VITE_DEMO_ADMIN_PASSWORD إلى ملف .env.local محلياً أو إلى Environment Variables في Vercel، ثم أعد النشر.'
+      'إعداد تسجيل الدخول التجريبي غير مكتمل. أضف بيانات الدخول التجريبية إلى ملف الإعدادات المحلي أو إعدادات البيئة في منصة الاستضافة، ثم أعد النشر.'
     );
   }
 

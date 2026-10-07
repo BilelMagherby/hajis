@@ -16,9 +16,9 @@ const platforms: { id: PlatformId; label: string; glyph: string }[] = [
   { id: 'TikTok', label: 'تيك توك', glyph: '♪' },
   { id: 'Snapchat', label: 'سناب شات', glyph: '◉' },
   { id: 'Instagram', label: 'إنستغرام', glyph: '◎' },
-  { id: 'LinkedIn', label: 'لينكدإن', glyph: 'in' },
+  { id: 'LinkedIn', label: 'لينكدإن', glyph: 'ل' },
   { id: 'X', label: 'إكس', glyph: '𝕏' },
-  { id: 'Pinterest', label: 'بينترست', glyph: 'P' },
+  { id: 'Pinterest', label: 'بينترست', glyph: 'ب' },
   { id: 'YouTube', label: 'يوتيوب', glyph: '▶' }
 ];
 const connectedPlatforms: PlatformId[] = ['Instagram', 'X', 'TikTok'];
@@ -34,25 +34,6 @@ const sampleStats = [
   { label: 'متوسط وقت التصفح', value: '2:48', change: '+0:24', icon: CalendarClock }
 ];
 
-const DashboardBeanRain: React.FC = () => (
-  <div className="admin-coffee-rain" aria-hidden="true">
-    {Array.from({ length: 18 }, (_, index) => (
-      <span
-        className="admin-coffee-bean"
-        key={index}
-        style={{
-          left: `${(index * 47 + 9) % 100}%`,
-          width: `${10 + (index * 7) % 9}px`,
-          height: `${16 + (index * 7) % 13}px`,
-          animationDuration: `${12 + (index * 5) % 11}s`,
-          animationDelay: `${-((index * 3) % 19)}s`,
-          '--bean-drift': `${(index * 17) % 70 - 35}px`
-        } as React.CSSProperties}
-      />
-    ))}
-  </div>
-);
-
 const PlatformPostPreview: React.FC<{
   platform: PlatformId;
   caption: string;
@@ -61,7 +42,9 @@ const PlatformPostPreview: React.FC<{
 }> = ({ platform, caption, mediaUrl, mediaType }) => {
   const selected = platforms.find((entry) => entry.id === platform) ?? platforms[2];
   const media = mediaUrl
-    ? mediaType.startsWith('video/')
+    ? mediaType.startsWith('audio/')
+      ? <audio className="social-mockup-media social-mockup-media-audio" src={mediaUrl} controls preload="metadata" aria-label="معاينة الملف الصوتي" />
+      : mediaType.startsWith('video/')
       ? <video className="social-mockup-media" src={mediaUrl} controls />
       : <img className="social-mockup-media" src={mediaUrl} alt="معاينة الوسائط المرفوعة" />
     : <div className="social-mockup-placeholder"><ImagePlus size={30} /><span>ستظهر الوسائط هنا</span></div>;
@@ -69,7 +52,7 @@ const PlatformPostPreview: React.FC<{
   const account = (
     <div className="social-mockup-top">
       <img src="/images/logo.png" alt="" />
-      <span><b>Hajiss | هاجس</b><small>hajiss.coffee • الآن</small></span>
+      <span><b>هاجس</b><small>حساب هاجس • الآن</small></span>
       <span className="social-platform-mark">{selected.glyph}</span>
     </div>
   );
@@ -84,7 +67,7 @@ const PlatformPostPreview: React.FC<{
         </div>
         <div className="youtube-details">
           <img src="/images/logo.png" alt="" />
-          <div><b>{text}</b><small>هاجس Hajiss • ١٫٢ ألف مشاهدة • قبل لحظات</small></div>
+          <div><b>{text}</b><small>هاجس • ١٫٢ ألف مشاهدة • قبل لحظات</small></div>
           <button type="button">اشتراك</button>
         </div>
         <div className="youtube-actions"><span>👍 ١٢٨</span><span>مشاركة</span><span>حفظ</span></div>
@@ -98,7 +81,7 @@ const PlatformPostPreview: React.FC<{
         <div className="vertical-video-stage">
           {media}
           {account}
-          <div className="vertical-video-caption"><b>هاجس Hajiss</b><p>{text}</p><small>♬ الصوت الأصلي - هاجس</small></div>
+          <div className="vertical-video-caption"><b>هاجس</b><p>{text}</p><small>♬ الصوت الأصلي - هاجس</small></div>
           <div className="vertical-video-actions"><span>♥<small>١٫٢ ألف</small></span><span>●<small>٣٢</small></span><span>↗<small>مشاركة</small></span></div>
         </div>
       </div>
@@ -111,7 +94,7 @@ const PlatformPostPreview: React.FC<{
         <div className="pinterest-pin">
           {media}
           <button type="button" className="pinterest-save">حفظ</button>
-          <span className="pinterest-brand">HAJISS</span>
+          <span className="pinterest-brand">هاجس</span>
         </div>
         <div className="pinterest-details"><b>{text}</b><small>هاجس | قهوة مختصة في حائل</small></div>
       </div>
@@ -146,7 +129,7 @@ const PlatformPostPreview: React.FC<{
       {account}
       {media}
       <div className="instagram-actions"><Heart size={19} /><MessageCircle size={19} /><Send size={18} /><span>▱</span></div>
-      <div className="instagram-caption"><b>١٬٢٨٤ إعجاباً</b><p><strong>Hajiss</strong> {text}</p><small>عرض جميع التعليقات (٣٢)</small></div>
+      <div className="instagram-caption"><b>١٬٢٨٤ إعجاباً</b><p><strong>هاجس</strong> {text}</p><small>عرض جميع التعليقات (٣٢)</small></div>
     </div>
   );
 };
@@ -173,12 +156,14 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
   const handleMediaUpload: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const file = event.currentTarget.files?.[0];
     if (!file) return;
-    if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
-      setFeedback('يرجى اختيار صورة أو مقطع فيديو.');
+    const isMp3 = file.type === 'audio/mpeg' || file.name.toLowerCase().endsWith('.mp3');
+    if (!file.type.startsWith('image/') && !file.type.startsWith('video/') && !isMp3) {
+      setFeedback('يرجى اختيار صورة أو مقطع فيديو أو ملف MP3.');
       return;
     }
     setMediaUrl(URL.createObjectURL(file));
-    setMediaType(file.type);
+    setMediaType(isMp3 ? 'audio/mpeg' : file.type);
+    event.currentTarget.value = '';
     setFeedback('');
   };
 
@@ -210,11 +195,10 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
 
   return (
     <main className="admin-shell" dir="rtl">
-      <DashboardBeanRain />
       <aside className="admin-sidebar">
         <a className="admin-sidebar-brand" href="/" aria-label="هاجس">
           <img src="/images/logo.png" alt="" />
-          <span><b>HAJISS</b><small>لوحة الإدارة</small></span>
+          <span><b>هاجس</b><small>لوحة الإدارة</small></span>
         </a>
         <div className="admin-sidebar-caption">القائمة الرئيسية</div>
         <nav className="admin-side-nav" aria-label="أقسام لوحة الإدارة">
@@ -301,8 +285,8 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
                 <div className="admin-caption-meta"><span>اقتراحات الوسوم</span><small>{caption.length} / 1000</small></div>
                 <div className="admin-hashtags">{['#هاجس', '#قهوة_مختصة', '#حائل', '#قهوتك_طقسك_مكانك'].map((tag) => <button type="button" key={tag} onClick={() => setCaption((value) => `${value}${value ? ' ' : ''}${tag}`)}>{tag}</button>)}</div>
                 <label className="admin-upload-box">
-                  <input type="file" accept="image/*,video/*" onChange={handleMediaUpload} />
-                  <Upload size={19} /><span>أضف صورة أو فيديو</span><small>PNG, JPG, MP4</small>
+                  <input type="file" accept="image/*,video/*,audio/mpeg,.mp3" onChange={handleMediaUpload} />
+                  <Upload size={19} /><span>أضف صورة أو فيديو أو MP3</span><small>صورة أو مقطع مرئي أو ملف صوتي</small>
                 </label>
                 {mediaUrl && <div className="admin-upload-status"><Check size={15} /> تمت إضافة الوسائط للمعاينة <button type="button" onClick={() => { setMediaUrl(''); setMediaType(''); }} aria-label="إزالة الوسائط"><X size={15} /></button></div>}
                 <label className="admin-field-label" htmlFor="schedule-time">موعد النشر (اختياري للجدولة)</label>
@@ -317,7 +301,7 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
                 </article>
                 <article className="admin-panel admin-recent-posts">
                   <div className="admin-panel-heading"><div><h2>المنشورات الأخيرة</h2><p>سجل محلي تجريبي</p></div><Video size={19} /></div>
-                  {posts.slice(0, 4).map((post) => <div className="admin-post-row" key={post.id}><span className="admin-post-platform">{platforms.find((platform) => platform.id === post.platform)?.glyph}</span><div><b>{post.caption}</b><small>{post.date} • {post.platform}</small></div><span className={`admin-post-status ${post.status === 'بانتظار الموافقة' ? 'is-pending' : ''}`}>{post.status}</span></div>)}
+                  {posts.slice(0, 4).map((post) => <div className="admin-post-row" key={post.id}><span className="admin-post-platform">{platforms.find((platform) => platform.id === post.platform)?.glyph}</span><div><b>{post.caption}</b><small>{post.date} • {platforms.find((platform) => platform.id === post.platform)?.label}</small></div><span className={`admin-post-status ${post.status === 'بانتظار الموافقة' ? 'is-pending' : ''}`}>{post.status}</span></div>)}
                 </article>
               </aside>
             </div>

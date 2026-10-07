@@ -22,16 +22,13 @@ export const VisitSection: React.FC = () => {
           <div className="lg:col-span-6 lg:col-start-1 relative group overflow-hidden rounded-3xl border border-[#C8A46A]/30 shadow-2xl">
             <img
               src="/images/visit_v60.jpeg"
-              alt="Hajiss iced V60 coffee being poured over berries"
+              alt="قهوة هاجس المثلجة مع التوت"
               className="w-full h-[380px] sm:h-[440px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#202418] via-transparent to-transparent pointer-events-none" />
             
             {/* Overlay badge */}
             <div className="absolute bottom-5 right-5 left-5 p-4 rounded-xl bg-[#160D08]/85 backdrop-blur-md border border-[#C8A46A]/30 text-right">
-              <span className="font-brand text-xs text-[#E3C994] uppercase tracking-widest">
-                Atmosphere & View
-              </span>
               <p className="font-arabic text-sm text-[#F8F4EC] font-medium mt-0.5">
                 إطلالة بانورامية على جبال حائل الشامخة وجلسات خارجية دافئة
               </p>

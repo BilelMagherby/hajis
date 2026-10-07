@@ -3,7 +3,7 @@ import { MapPin, Navigation } from 'lucide-react';
 import { brandData } from '../data/brand';
 
 export const LocationMapSection: React.FC = () => {
-  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(brandData.location.address)}&output=embed`;
+  const mapEmbedUrl = `https://www.google.com/maps?q=${brandData.location.coordinates.lat},${brandData.location.coordinates.lng}&output=embed`;
 
   return (
     <section
@@ -28,7 +28,7 @@ export const LocationMapSection: React.FC = () => {
           </h2>
           <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[#D8CEBF]">
             <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[#E3C994]" />
-            <span>{brandData.location.address}</span>
+            <span>{brandData.location.placeAr}، {brandData.location.cityAr}</span>
           </p>
           <a
             href={brandData.location.mapUrl}
@@ -37,7 +37,7 @@ export const LocationMapSection: React.FC = () => {
             className="mt-4 inline-flex items-center gap-2 font-arabic text-sm text-[#E3C994] transition-colors hover:text-[#F8F4EC]"
           >
             <Navigation className="h-4 w-4" />
-            افتح في خرائط Google
+            افتح الموقع على الخريطة
           </a>
         </div>
       </div>

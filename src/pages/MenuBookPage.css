@@ -160,15 +160,33 @@
   place-items: center;
   color: var(--book-gold);
   background:
-    radial-gradient(ellipse at 50% 42%, rgba(150, 99, 47, 0.18), transparent 52%),
-    repeating-linear-gradient(135deg, rgba(226, 184, 111, 0.025) 0 1px, transparent 1px 5px),
-    linear-gradient(135deg, #26150d, #422718 48%, #27160e);
-  box-shadow: inset 0 0 0 7px rgba(20, 11, 7, 0.45), inset 0 0 0 8px rgba(198, 161, 91, 0.34), inset 0 0 35px rgba(0, 0, 0, 0.6);
+    linear-gradient(180deg, rgba(80, 56, 35, 0.08), rgba(80, 56, 35, 0.1) 34%, rgba(28, 17, 10, 0.12)),
+    linear-gradient(90deg, rgba(60, 42, 25, 0.06), rgba(24, 14, 10, 0.04) 42%, rgba(60, 42, 25, 0.06)),
+    url('/images/hajiss-menu-cover-luxury.png') center 52% / cover no-repeat;
+  box-shadow:
+    inset 0 0 0 10px rgba(28, 18, 11, 0.28),
+    inset 0 0 0 12px rgba(198, 161, 91, 0.22),
+    inset 0 0 0 18px rgba(18, 11, 7, 0.08),
+    inset 0 0 42px rgba(0, 0, 0, 0.12),
+    0 18px 24px rgba(0, 0, 0, 0.24);
+  filter: brightness(1.22) saturate(1.2) contrast(1.08);
 }
 
 .book-cover-leaf::before {
-  inset: 19px;
-  border-color: rgba(198, 161, 91, 0.28);
+  inset: 18px;
+  border-width: 2px;
+  border-color: rgba(198, 161, 91, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 225, 177, 0.06);
+}
+
+.book-cover-leaf::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 236, 192, 0.08), transparent 28%),
+    linear-gradient(90deg, rgba(22, 12, 7, 0.04), rgba(22, 12, 7, 0.01) 22%, rgba(22, 12, 7, 0.04) 80%, rgba(22, 12, 7, 0.06));
 }
 
 .book-front-cover {
@@ -217,6 +235,8 @@
 }
 
 .cover-emboss {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -35,7 +35,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             قائمة القهوة
           </h2>
           <p className="mt-3 font-arabic text-sm sm:text-base text-[#D8CEBF] font-light max-w-xl">
-            من القهوة الكلاسيكية إلى تجارب V60 الفريدة، كل كوب يروي حكاية حب وتفانٍ للمذاق الأصيل.
+            من القهوة الكلاسيكية إلى تجارب التقطير الفريدة، كل كوب يروي حكاية حب وتفانٍ للمذاق الأصيل.
           </p>
         </RevealOnScroll>
 
@@ -51,7 +51,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             <div className="w-full relative rounded-xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(200,164,106,0.1)]">
               <img 
                 src="/images/espresso_pour.jpg" 
-                alt="Hajiss Coffee Specialty"
+                alt="قهوة هاجس المختصة"
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -105,7 +105,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
                     {/* Category Title */}
                     <div>
                       <span className="font-brand text-[11px] tracking-widest text-[#C8A46A] uppercase">
-                        {cat.titleEn}
                       </span>
                       <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
                         {cat.titleAr}
@@ -133,7 +132,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             <button
               onClick={() => setSelectedCategory(null)}
               className="absolute top-5 left-5 p-2 rounded-full border border-[#C8A46A]/30 text-[#D8CEBF] hover:text-[#F8F4EC] hover:bg-[#24150E] transition-colors"
-              aria-label="Close"
+              aria-label="إغلاق"
             >
               <X className="w-5 h-5" />
             </button>
@@ -141,7 +140,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             {/* Modal Header */}
             <div className="text-right pb-6 border-b border-[#3D281C]">
               <span className="font-brand text-xs text-[#C8A46A] tracking-widest uppercase">
-                {selectedCategory.titleEn}
               </span>
               <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[#F8F4EC]">
                 {selectedCategory.titleAr}
@@ -170,7 +168,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
                         {item.nameAr}
                       </h4>
                       <span className="font-brand text-xs text-[#C8BAA6]">
-                        {item.nameEn}
                       </span>
                     </div>
                   </div>

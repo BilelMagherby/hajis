@@ -50,7 +50,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <div className="relative w-40 sm:w-48 mb-2 flex justify-center items-center">
           <img
             src="/images/logo.png"
-            alt="هاجس Hajiss"
+            alt="شعار هاجس"
             className="w-full h-auto object-contain filter invert contrast-125"
           />
         </div>
@@ -61,7 +61,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             هـاجـس
           </h1>
           <p className="font-brand text-lg md:text-xl font-semibold text-[#E3C994] tracking-[0.3em] drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
-            HAJISS CAFÉ
+            مقهى هاجس
           </p>
         </div>
 

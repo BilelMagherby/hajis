@@ -53,7 +53,7 @@ export const PhilosophySection: React.FC = () => {
               <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <img
                   src="/images/roaster_beans.jpg"
-                  alt="Roaster"
+                  alt="تحميص القهوة"
                   className="w-full h-full object-cover"
                 />
               </div>

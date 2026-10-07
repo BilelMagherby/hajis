@@ -15,15 +15,15 @@ export const AboutSection: React.FC = () => {
           <RevealOnScroll
             className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center"
           >
-            <div className="relative w-full max-w-lg">
+            <div className="relative w-full max-w-xl">
               {/* Soft decorative shadow background */}
               <div className="absolute -inset-4 bg-[#77764A]/40 rounded-3xl blur-2xl transform -rotate-2" />
 
               {/* The Image Container with subtle organic border */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
                 <img
-                  src="/images/about_coffee.jpeg"
-                  alt="Traditional V60 coffee and Arabic hospitality"
+                  src="/images/about_coffee_pourover.png"
+                  alt="قهوة مقطرة وكرم الضيافة العربية"
                   className="w-full h-[400px] sm:h-[480px] object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 
@@ -33,7 +33,6 @@ export const AboutSection: React.FC = () => {
 
               {/* Small Heritage Tag at bottom-right of image */}
               <div className="absolute -bottom-5 right-6 bg-[#160D08] text-[#E3C994] px-5 py-2.5 rounded-full border border-[#C8A46A]/40 shadow-xl flex items-center space-x-2 space-x-reverse">
-                <span className="font-brand text-xs tracking-widest uppercase">Hajiss</span>
                 <span className="text-[#C8A46A]">•</span>
                 <span className="font-arabic text-xs font-light">حائل منذ 2020</span>
               </div>
@@ -53,7 +52,7 @@ export const AboutSection: React.FC = () => {
               <div className="w-12 h-auto flex items-center justify-center">
                 <img
                   src="/images/logo.png"
-                  alt="Hajiss"
+                  alt="شعار هاجس"
                   className="w-full h-auto object-contain"
                 />
               </div>

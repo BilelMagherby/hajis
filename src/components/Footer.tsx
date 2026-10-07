@@ -30,16 +30,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="flex items-center space-x-3 space-x-reverse justify-end">
               <div className="flex flex-col text-right">
                 <span className="font-brand text-2xl font-light tracking-[0.25em] text-[#F8F4EC]">
-                  HAJISS
-                </span>
-                <span className="text-[10px] tracking-[0.4em] text-[#C8A46A] -mt-1 font-sans">
-                  CAFÉ
+                  مقهى هاجس
                 </span>
               </div>
               <div className="w-16 h-auto flex items-center justify-center">
                 <img
                   src="/images/logo.png"
-                  alt="Hajiss Logo"
+                  alt="شعار هاجس"
                   className="w-full h-auto object-contain filter invert contrast-125"
                 />
               </div>
@@ -56,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="Instagram"
+                aria-label="إنستغرام"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
@@ -65,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="TikTok"
+                aria-label="تيك توك"
               >
                 <TikTokIcon className="w-4 h-4" />
               </a>
@@ -74,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="Snapchat"
+                aria-label="سناب شات"
               >
                 <SnapchatIcon className="w-4 h-4" />
               </a>
@@ -83,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="Threads"
+                aria-label="ثريدز"
               >
                 <ThreadsIcon className="w-4 h-4" />
               </a>
@@ -92,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="Twitter X"
+                aria-label="إكس"
               >
                 <XIcon className="w-3.5 h-3.5" />
               </a>
@@ -101,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
-                aria-label="YouTube"
+                aria-label="يوتيوب"
               >
                 <YoutubeIcon className="w-4 h-4" />
               </a>
@@ -127,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
               <div className="flex items-start justify-end space-x-2 space-x-reverse">
                 <span className="leading-relaxed">
-                  {brandData.location.address}
+                  {brandData.location.placeAr}، {brandData.location.cityAr}
                 </span>
                 <MapPin className="w-4 h-4 text-[#C8A46A] mt-0.5 flex-shrink-0" />
               </div>
@@ -183,7 +180,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => scrollTo('v60')}
                   className="hover:text-[#E3C994] transition-colors"
                 >
-                  خدمات V60
+                  خدمات التقطير
                 </button>
               </li>
               <li>
