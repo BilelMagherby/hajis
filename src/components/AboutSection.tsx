@@ -8,6 +8,12 @@ export const AboutSection: React.FC = () => {
       data-bean-rain="off"
       className="relative w-full py-24 lg:py-32 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
+      <div
+        aria-hidden="true"
+        className="parallax-background pointer-events-none absolute inset-0 opacity-50"
+        style={{ backgroundImage: "url('/images/about-parallax.png')" }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -104,7 +110,7 @@ export const AboutSection: React.FC = () => {
         <RevealOnScroll className="mt-24 lg:mt-32" delay={100}>
           <div
             dir="rtl"
-            className="overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]"
+            className="overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]/85 backdrop-blur-sm"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-7 sm:p-10 lg:col-span-7 lg:p-14">

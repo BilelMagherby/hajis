@@ -16,8 +16,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
       data-bean-rain="off"
       className="relative w-full py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/35 via-[#292D1D] to-[#292D1D] pointer-events-none" />
+      <div
+        aria-hidden="true"
+        className="parallax-background pointer-events-none absolute inset-0 opacity-65"
+        style={{ backgroundImage: "url('/images/coffee-parallax.png')" }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/30 via-[#292D1D]/45 to-[#292D1D]/65" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

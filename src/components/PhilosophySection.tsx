@@ -7,7 +7,13 @@ export const PhilosophySection: React.FC = () => {
       id="philosophy"
       className="header-primary-mix relative w-full py-28 text-[#20140F] overflow-hidden"
     >
-      <div className="absolute inset-0 grain-overlay pointer-events-none opacity-20" />
+      <div
+        aria-hidden="true"
+        className="parallax-background pointer-events-none absolute inset-0 opacity-45"
+        style={{ backgroundImage: "url('/images/coffee-parallax.png')" }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[#E9D9C9]/35" />
+      <div className="grain-overlay pointer-events-none absolute inset-0 z-[1] opacity-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16" dir="ltr">
