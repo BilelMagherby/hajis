@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation } from 'lucide-react';
 
 import { brandData } from '../data/brand';
+import { SectionWaves } from './SectionWaves';
 
 export const VisitSection: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const VisitSection: React.FC = () => {
     >
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#77764A]/15 rounded-full blur-3xl pointer-events-none" />
+      <SectionWaves topColor="#17130F" bottomColor="#160D08" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

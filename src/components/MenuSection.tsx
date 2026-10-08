@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, X, Sparkles } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
 import { RevealOnScroll } from './RevealOnScroll';
+import { SectionWaves } from './SectionWaves';
 
 interface MenuSectionProps {
   onNavigate?: (sectionId: string) => void;
@@ -23,6 +24,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
       />
       <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/30 via-[#292D1D]/45 to-[#292D1D]/65" />
+      <SectionWaves topColor="#967C6D" bottomColor="#17130F" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
+import { SectionWaves } from './SectionWaves';
 
 export const AboutSection: React.FC = () => {
   const imageRef = React.useRef<HTMLImageElement>(null);
@@ -45,6 +46,7 @@ export const AboutSection: React.FC = () => {
         style={{ backgroundImage: "url('/images/about-parallax.png')" }}
       />
       <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
+      <SectionWaves topColor="#090604" bottomColor="#967C6D" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           

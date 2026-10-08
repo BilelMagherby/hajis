@@ -11,6 +11,7 @@ import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
 import { CustomCursor } from './components/CustomCursor';
+import { ChatbotWidget } from './components/ChatbotWidget';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuBookPage } from './pages/MenuBookPage';
 import { Navigate } from 'react-router-dom';
@@ -109,6 +110,8 @@ export const App: React.FC = () => {
 
       {/* 12. Dark Luxury Footer */}
       <Footer onNavigate={handleNavigate} />
+
+      <ChatbotWidget />
     </div>
   );
 };
