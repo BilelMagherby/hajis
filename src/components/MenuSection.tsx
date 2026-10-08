@@ -51,7 +51,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             dir="rtl"
             delay={120}
           >
-            <div className="visual-media relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
+            <div className="visual-media image-circle-hover relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
               <img
                 src="/images/espresso_pour.jpg"
                 alt="قهوة هاجس المختصة"
