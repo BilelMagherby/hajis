@@ -11,7 +11,6 @@ import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
 import { CustomCursor } from './components/CustomCursor';
-import { CoffeeBeanRain } from './components/CoffeeBeanRain';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuBookPage } from './pages/MenuBookPage';
 import { Navigate } from 'react-router-dom';
@@ -65,15 +64,12 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#090604] text-[#F8F4EC] selection:bg-[#C8A46A] selection:text-[#090604] overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#090604] text-[#F8F4EC] selection:bg-[#C8A46A] selection:text-[#090604] overflow-x-clip">
       {/* 1. Cinematic Loading Screen */}
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
       {/* 2. Custom Gold Desktop Cursor */}
       <CustomCursor />
-
-      {/* Coffee bean rain continues across the full home page while scrolling */}
-      <CoffeeBeanRain />
 
       {/* 3. Luxury Floating Navbar */}
       <Navbar

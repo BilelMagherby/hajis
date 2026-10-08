@@ -149,9 +149,30 @@
   background: #967C6D !important;
 }
 
+main > section:not(#hero) {
+  position: relative;
+  z-index: 10;
+}
+
 .visual-section-title {
   line-height: 1.35;
   text-wrap: balance;
+}
+
+.hero-slide-image {
+  animation: hero-slide-enter 550ms ease-out both;
+}
+
+@keyframes hero-slide-enter {
+  from {
+    opacity: 0.65;
+    transform: scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .visual-card {
@@ -228,6 +249,10 @@
   .visual-button,
   .visual-rating-control {
     transition: none;
+  }
+
+  .hero-slide-image {
+    animation: none;
   }
 
   .visual-card:hover,
