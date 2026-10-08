@@ -21,39 +21,39 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* SECTION HEADER */}
         <RevealOnScroll
           dir="rtl"
-          className="flex w-full flex-col items-start text-right mb-16"
+          className="mb-14 flex w-full flex-col items-start text-right"
         >
-          <div className="flex items-center justify-start mb-2">
-            <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
+          <div className="mb-3 flex items-center justify-start">
+            <span className="font-arabic text-xs font-medium tracking-[0.24em] text-[#E3C994]">
               إبداعات هاجس
             </span>
           </div>
-          <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC]">
+          <h2 className="font-kufi text-3xl font-bold text-[#F8F4EC] sm:text-4xl lg:text-5xl">
             قائمة القهوة
           </h2>
-          <p className="mt-3 font-arabic text-sm sm:text-base text-[#D8CEBF] font-light max-w-xl">
-            من القهوة الكلاسيكية إلى تجارب التقطير الفريدة، كل كوب يروي حكاية حب وتفانٍ للمذاق الأصيل.
+          <p className="mt-4 max-w-2xl font-arabic text-sm font-light leading-8 text-[#D8CEBF] sm:text-base">
+            من القهوة الكلاسيكية إلى تجارب V60 الفريدة، كل كوب يروي حكاية شغف وتفانٍ للمذاق الأصيل.
           </p>
         </RevealOnScroll>
 
-        {/* MAIN DISPLAY: 3D PRODUCT ON LEFT + 4 CATEGORY CARDS ON RIGHT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center" dir="ltr">
-          
-          {/* LEFT: IMAGE & BUTTON */}
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12" dir="ltr">
           <RevealOnScroll
-            className="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#252A1B]/80 border border-[#C8A46A]/25 backdrop-blur-md shadow-2xl"
+            className="flex flex-col items-center justify-center rounded-2xl border border-[#C8A46A]/25 bg-[#252A1B]/80 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
             dir="rtl"
             delay={120}
           >
-            <div className="w-full relative rounded-xl overflow-hidden mb-8 shadow-[0_0_20px_rgba(200,164,106,0.1)]">
-              <img 
-                src="/images/espresso_pour.jpg" 
+            <div className="relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
+              <img
+                src="/images/espresso_pour.jpg"
                 alt="قهوة هاجس المختصة"
-                className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#171A12]/60 via-transparent to-transparent" />
+              <span className="absolute bottom-4 right-4 font-arabic text-xs tracking-wide text-[#F8F4EC]">
+                مذاقٌ يُحضّر على مهل
+              </span>
             </div>
 
             <button
@@ -64,64 +64,60 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
                   setSelectedCategory(menuCategories[0]);
                 }
               }}
-              className="mt-6 w-full py-3.5 px-6 rounded-full border border-[#C8A46A] bg-[#24150E]/80 text-[#F8F4EC] hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 font-arabic text-sm font-medium flex items-center justify-center space-x-2 space-x-reverse shadow-gold-glow"
+              className="flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full border border-[#C8A46A]/80 bg-[#24150E]/80 px-6 py-3.5 font-arabic text-sm font-medium text-[#F8F4EC] shadow-gold-glow transition-all duration-300 hover:bg-[#C8A46A] hover:text-[#090604]"
             >
-              <span>استعرض القائمة الكاملة</span>
+              <span>اكتشف القائمة الكاملة</span>
               <ArrowLeft className="w-4 h-4" />
             </button>
           </RevealOnScroll>
 
-          {/* RIGHT: 4 CATEGORY CARDS */}
           <RevealOnScroll
-            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7"
             dir="rtl"
             delay={200}
           >
-            {menuCategories.map((cat, index) => (
-              <RevealOnScroll
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat)}
-                className="group relative h-64 rounded-2xl overflow-hidden cursor-pointer border border-[#C8A46A]/25 hover:border-[#E3C994] transition-all duration-500 shadow-xl"
-                delay={index * 80}
+            {[
+              {
+                number: '01',
+                title: 'مشروبات ساخنة',
+                description: 'محضّرة بعناية لترافق لحظاتك.'
+              },
+              {
+                number: '02',
+                title: 'مشروبات باردة',
+                description: 'خيارات منعشة من قائمة هاجس.'
+              },
+              {
+                number: '03',
+                title: 'حلى حايلنا',
+                description: 'حلوياتنا من حلى حايلنا، بنكهة محلية أصيلة.'
+              },
+              {
+                number: '04',
+                title: 'محاصيل القهوة',
+                description: 'نختارها من أطيب وأميز محامص مملكتنا الغالية.'
+              }
+            ].map((item) => (
+              <article
+                key={item.number}
+                className="group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-gradient-to-br from-[#353927]/90 to-[#222619]/80 p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] transition-colors duration-300 hover:border-[#C8A46A]/55 sm:p-6"
               >
-                {/* Background Image with Zoom on Hover */}
-                <img
-                  src={cat.image}
-                  alt={cat.titleAr}
-                  className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-
-                {/* Dark Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#202418] via-[#202418]/60 to-transparent group-hover:via-[#202418]/40 transition-colors duration-500" />
-
-                {/* Card Content at Bottom */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end text-right z-10">
-                  <div className="flex items-center justify-between">
-                    {/* Gold arrow indicator */}
-                    <div className="w-9 h-9 rounded-full border border-[#C8A46A]/50 bg-[#252A1B]/90 flex items-center justify-center text-[#E3C994] group-hover:bg-[#C8A46A] group-hover:text-[#090604] group-hover:-translate-x-1 transition-all duration-300">
-                      <ArrowLeft className="w-4 h-4" />
-                    </div>
-
-                    {/* Category Title */}
-                    <div>
-                      <span className="font-brand text-[11px] tracking-widest text-[#C8A46A] uppercase">
-                      </span>
-                      <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
-                        {cat.titleAr}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="mt-2 font-arabic text-xs text-[#D8CEBF]/80 line-clamp-2 font-light">
-                    {cat.descriptionAr}
-                  </p>
+                <div className="flex flex-col items-start gap-2">
+                  <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">
+                    {item.number}
+                  </span>
+                  <h3 className="font-kufi text-lg font-semibold text-[#F8F4EC] transition-colors group-hover:text-[#E3C994] sm:text-xl">
+                    {item.title}
+                  </h3>
                 </div>
-              </RevealOnScroll>
+                <p className="mt-5 font-arabic text-sm font-light leading-7 text-[#D8CEBF]">
+                  {item.description}
+                </p>
+                <div className="mt-4 h-px w-10 self-end bg-[#C8A46A]/55 transition-all duration-300 group-hover:w-16" />
+              </article>
             ))}
           </RevealOnScroll>
-
         </div>
-
       </div>
 
       {/* LUXURY MENU MODAL / DRAWER */}

@@ -40,10 +40,6 @@ export const StoreTeaser: React.FC = () => {
                 <span>تسوق أونلاين وتوصيل فوري</span>
               </div>
 
-              <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[#20140F]">
-                زوروا متجرنا الإلكتروني
-              </h3>
-
               <p className="font-arabic text-sm text-[#302019] max-w-lg leading-relaxed font-medium">
                 للحصول على عروض خاصة ومحاصيل هاجس الطازجة، وأدوات القهوة المختصة مع التوصيل لجميع مناطق المملكة.
               </p>

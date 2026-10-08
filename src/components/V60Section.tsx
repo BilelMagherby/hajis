@@ -1,97 +1,110 @@
 import React from 'react';
-import { ArrowLeft, Clock, Thermometer, Scale, Waves } from 'lucide-react';
+import { Clock, Scale, Thermometer, Waves } from 'lucide-react';
 
 export const V60Section: React.FC = () => {
-  const steps = [
+  const brewingDetails = [
     {
-      icon: <Scale className="w-5 h-5 text-[#E3C994]" />,
-      titleAr: 'نسبة استخلاص متوازنة',
-      descAr: 'وزن دقيق بمعيار 1:15 لحبيبات البن مقابل الماء النقي المفلتر.',
+      icon: Scale,
+      title: 'نسبة استخلاص متوازنة',
+      description: 'وزن دقيق بمعيار 1:15 لحبيبات البن مقابل الماء النقي المفلتر.'
     },
     {
-      icon: <Thermometer className="w-5 h-5 text-[#E3C994]" />,
-      titleAr: 'درجة حرارة 92° مئوية',
-      descAr: 'استخلاص متناغم يحافظ على المركبات الزيتية الخفيفة دون احتراق.',
+      icon: Thermometer,
+      title: 'درجة حرارة 92° مئوية',
+      description: 'استخلاص متناغم يحافظ على المركبات الزيتية الخفيفة دون احتراق.'
     },
     {
-      icon: <Waves className="w-5 h-5 text-[#E3C994]" />,
-      titleAr: 'صب حلزوني مدروس',
-      descAr: 'ترطيب تدريجي لمدة 45 ثانية يطلق أرقى النوتات العطرية.',
+      icon: Waves,
+      title: 'صب حلزوني مدروس',
+      description: 'ترطيب تدريجي (Bloom) لمدة 45 ثانية يطلق أرقى النوتات العطرية.'
     },
     {
-      icon: <Clock className="w-5 h-5 text-[#E3C994]" />,
-      titleAr: 'توقيت تقطير مثالي',
-      descAr: 'دقيقتان ونصف من العناية لإنتاج فنجان متوازن الحمضية والحلاوة.',
+      icon: Clock,
+      title: 'توقيت تقطير مثالي',
+      description: 'دقيقتان ونصف من العناية لإنتاج فنجان متوازن الحموضة والحلاوة.'
     }
   ];
 
   return (
     <section
       id="v60"
-      className="header-primary-mix relative w-full py-28 text-[#20140F] overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#17130F] py-24 text-[#F8F4EC] sm:py-28"
     >
-      {/* Background Image with Dark Gradient Vignette */}
-      <div className="absolute inset-0 z-0 opacity-[0.12]">
+      <div className="pointer-events-none absolute inset-0">
         <img
           src="/images/v60_hero.jpg"
-          alt="تحضير القهوة بالتقطير"
-          className="w-full h-full object-cover object-center filter brightness-40 contrast-125"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center opacity-20"
         />
-        <div className="header-primary-mix absolute inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-l from-[#17130F]/95 via-[#17130F]/80 to-[#17130F]/65" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(200,164,106,0.12),transparent_55%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start lg:items-center" dir="ltr">
-          
-          {/* RIGHT: V60 RITUAL STEPS GRID */}
-          <div className="lg:col-span-6 lg:col-start-1 grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1" dir="rtl">
-            {steps.map((step, idx) => (
-              <div
-                key={idx}
-                className="bg-[#24150E]/95 p-5 rounded-2xl border border-[#C8A46A]/35 shadow-[0_12px_32px_rgba(0,0,0,0.28)] backdrop-blur-md hover:bg-[#1A100B] hover:border-[#C8A46A]/70 transition-all text-right group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#160D08] border border-[#C8A46A]/35 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  {step.icon}
-                </div>
-                <h4 className="font-kufi text-base font-bold text-[#F8F4EC] group-hover:text-[#E3C994] transition-colors">
-                  {step.titleAr}
-                </h4>
-                <p className="font-arabic text-xs text-[#D8CEBF] mt-1.5 leading-relaxed font-medium">
-                  {step.descAr}
-                </p>
-              </div>
-            ))}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-right" dir="rtl">
+          <span className="font-arabic text-xs font-medium tracking-[0.24em] text-[#E3C994]">
+            خدمات V60
+          </span>
+
+          <h2 className="mt-5 font-kufi text-3xl font-bold leading-relaxed text-[#F8F4EC] sm:text-4xl lg:text-5xl">
+            V60 في هاجس... هنا تبدأ الحكاية.
+          </h2>
+
+          <div className="my-8 h-px w-20 bg-[#C8A46A]" />
+
+          <div className="space-y-5 font-arabic text-base leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
+            <p>
+              الـ <span dir="ltr" className="font-semibold text-[#E3C994]">V60</span> عندنا مو مجرد طريقة لتحضير القهوة...
+            </p>
+            <p className="font-kufi text-xl font-semibold text-[#F8F4EC] sm:text-2xl">
+              هو فن، وكل خطوة فيه لها أثر.
+            </p>
+            <p>
+              الماء، ودرجة الطحن، والوقت، وطريقة الصب...
+              <br className="hidden sm:block" />
+              كلها تتحكم فيها يد الباريستا لحظة بلحظة.
+            </p>
+            <p>ما فيه زر يشتغل، ولا إعدادات جاهزة.</p>
+            <p className="border-r-2 border-[#C8A46A] pr-5 text-[#F8F4EC]">
+              في <strong className="font-bold text-[#E3C994]">هاجس</strong>، كل كوب يُحضَّر بعناية، لأننا نؤمن أن التفاصيل الصغيرة هي اللي تصنع الفرق الكبير.
+            </p>
           </div>
 
-          {/* LEFT: TEXT & INTRO */}
-          <div className="lg:col-span-6 lg:col-start-7 text-right order-1 lg:order-2 space-y-6 self-start" dir="rtl">
-            <div className="flex items-center justify-end gap-3">
-                <span className="font-arabic text-xs tracking-widest text-[#3D281C] uppercase font-medium">
+          <div className="mt-14 border-t border-[#C8A46A]/25 pt-10" dir="rtl">
+            <div className="mb-7 text-right">
+              <span className="font-arabic text-xs font-medium tracking-[0.2em] text-[#E3C994]">
                 طقس التقطير اليدوي
               </span>
+              <p className="mt-4 max-w-4xl font-arabic text-base leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
+                تجربة قهوة مختصة تُحضَّر أمامك بكل عناية، من انتقاء أجود الحبوب حتى آخر قطرة. نختار لك أندر المحاصيل من حول العالم، ونحضّرها بحرفية تُبرز أدق تفاصيل النكهة وغنى المذاق.
+              </p>
             </div>
 
-            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#20140F] leading-tight">
-              خدمات التقطير
-            </h2>
-
-            <p className="font-arabic text-base sm:text-lg text-[#302019] leading-relaxed font-medium">
-              تجربة قهوة مختصة تُحضَّر أمامك بعناية، من اختيار الحبة حتى آخر قطرة. نختار لك أندر المحاصيل العالمية ونقطرها بحرفية تكشف أدق تفاصيل المذاق.
-            </p>
-
-            <div className="pt-2 flex w-full justify-start">
-              <button
-                onClick={() => {
-                  document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/90 text-[#F8F4EC] text-sm font-medium hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow"
-              >
-                <span>اكتشف خدمات التقطير</span>
-                <ArrowLeft className="w-4 h-4" />
-              </button>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {brewingDetails.map(({ icon: Icon, title, description }, index) => (
+                <article
+                  key={title}
+                  className="rounded-2xl border border-[#C8A46A]/25 bg-[#241D16]/80 p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors duration-300 hover:border-[#C8A46A]/60"
+                >
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#C8A46A]/30 bg-[#17130F]">
+                      <Icon className="h-5 w-5 text-[#E3C994]" aria-hidden="true" />
+                    </span>
+                  </div>
+                  <h3 className="font-kufi text-base font-semibold leading-7 text-[#F8F4EC]">
+                    {title}
+                  </h3>
+                  <p className="mt-2 font-arabic text-sm leading-7 text-[#D8CEBF]">
+                    {description}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -108,34 +108,34 @@ export const AboutSection: React.FC = () => {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-7 sm:p-10 lg:col-span-7 lg:p-14">
-                <div className="mb-7 flex items-center gap-3">
+                <div className="story-copy-reveal story-reveal-delay-1 mb-7 flex items-center gap-3">
                   <span className="h-px w-9 bg-[#C8A46A]" />
                   <span className="font-arabic text-xs font-bold tracking-[0.18em] text-[#20140F]">
                     حكاية المكان
                   </span>
                 </div>
 
-                <h3 className="font-kufi text-3xl font-bold tracking-tight text-[#160D08] sm:text-4xl">
+                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold tracking-tight text-[#160D08] sm:text-4xl">
                   قصتنا
                 </h3>
 
-                <blockquote className="mt-6 border-r-2 border-[#C8A46A] pr-5 font-kufi text-xl font-bold leading-relaxed text-[#20140F] sm:text-2xl">
+                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-6 border-r-2 border-[#C8A46A] pr-5 font-kufi text-xl font-bold leading-relaxed text-[#20140F] sm:text-2xl">
                   «بدأت قصتنا من الوجار»
                 </blockquote>
 
                 <div className="mt-7 space-y-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
-                  <p>
+                  <p className="story-copy-reveal story-reveal-delay-4">
                     في منتصف التسعينيات، أنشأنا مقهى صغيرًا باسم «الوجار» في مبنى قديم بالموقع نفسه. والوجار اسمٌ تقليديٌّ في حائل، يُطلق على الموقد الذي يجتمع حوله الناس شتاءً طلبًا للدفء، وتبادلًا للأحاديث بين الأهل والأصدقاء.
                   </p>
-                  <p>
+                  <p className="story-copy-reveal story-reveal-delay-5">
                     فبعض القصص لا تنتهي؛ بل تتجدّد.
                   </p>
-                  <p>
+                  <p className="story-copy-reveal story-reveal-delay-6">
                     واليوم يعود هاجس بحلّة جديدة، بروحٍ لم تتغيّر. ليس بداية قصة جديدة، بل امتداد لحكاية بدأت قبل أكثر من ثلاثين عامًا؛ المكان نفسه، والشغف نفسه، والحرص ذاته على صناعة مساحة يجتمع فيها الناس حول ما يستحق التقدير. كان الوجار البداية، وهاجس هو الجمر الذي لم ينطفئ، واللّهب الذي اشتعل من جديد.
                   </p>
                 </div>
 
-                <div className="mt-9 flex items-center gap-3 border-t border-[#C8A46A]/20 pt-6">
+                <div className="story-copy-reveal story-reveal-delay-7 mt-9 flex items-center gap-3 border-t border-[#C8A46A]/20 pt-6">
                   <span className="h-2 w-2 rounded-full bg-[#C8A46A]" />
                   <span className="font-arabic text-xs font-medium tracking-wide text-[#20140F] sm:text-sm">
                     حائل · حكاية تمتد لأكثر من ثلاثين عامًا
@@ -147,7 +147,7 @@ export const AboutSection: React.FC = () => {
                 <img
                   src="/images/story-majlis.png"
                   alt="مجلس حائلي يجتمع حول نار الوجار عند الغروب"
-                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  className="story-image-reveal absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#160D08]/75 via-[#160D08]/10 to-transparent lg:bg-gradient-to-l lg:from-[#967C6D]/25 lg:via-transparent lg:to-[#967C6D]/25" />

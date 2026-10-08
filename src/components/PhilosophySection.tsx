@@ -46,31 +46,27 @@ export const PhilosophySection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8">
           {featuresData.map((item) => (
-            <div
+            <article
               key={item.id}
-              className="coffee-card group outline-none"
-              tabIndex={0}
-              aria-label={item.titleAr}
+              dir="rtl"
+              className="group relative overflow-hidden rounded-2xl border border-[#C8A46A]/35 bg-gradient-to-br from-[#F4EADF] to-[#E9D9C9] p-7 text-right shadow-[0_18px_38px_rgba(0,0,0,0.14)] transition-all duration-300 hover:-translate-y-1 hover:border-[#C8A46A]/70 sm:p-9"
             >
-              <div className="coffee-card-inner">
-                <div className="coffee-card-face coffee-card-front">
-                  <div className="coffee-card-front-content">
-                    <span className="coffee-card-number font-arabic">{item.number}</span>
-                    <h4 className="coffee-card-title font-kufi">{item.titleAr}</h4>
-                    <p className="coffee-card-subtitle font-arabic">{item.subtitleAr}</p>
-                  </div>
-                </div>
-
-                <div className="coffee-card-face coffee-card-back">
-                  <div className="coffee-card-back-content">
-                    <span className="font-arabic text-[10px] tracking-[0.2em] text-[#5B3626] opacity-80">
-                      {item.number}
-                    </span>
-                    <p className="font-arabic">{item.descriptionAr}</p>
-                  </div>
-                </div>
+              <div className="absolute inset-y-0 right-0 w-1 bg-[#C8A46A]/75 transition-all duration-300 group-hover:w-1.5" />
+              <div className="relative">
+                <span className="font-arabic text-[10px] font-medium tracking-[0.2em] text-[#8A6843]">
+                  {item.number}
+                </span>
+                <h3 className="mt-4 font-kufi text-xl font-bold leading-relaxed text-[#20140F] sm:text-2xl">
+                  {item.titleAr}
+                </h3>
+                <p className="mt-1 font-arabic text-sm font-medium text-[#6D4E38]">
+                  {item.subtitleAr}
+                </p>
+                <p className="mt-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
+                  {item.descriptionAr}
+                </p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
