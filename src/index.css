@@ -167,8 +167,17 @@
   transform: translateX(56px);
 }
 
+.scroll-reveal-from-left {
+  opacity: 0;
+  transform: translateX(-56px);
+}
+
 .scroll-reveal-from-right.is-visible {
   animation: reveal-from-right 750ms ease-out both;
+}
+
+.scroll-reveal-from-left.is-visible {
+  animation: reveal-from-left 750ms ease-out both;
 }
 
 @keyframes reveal-from-right {
@@ -183,8 +192,21 @@
   }
 }
 
+@keyframes reveal-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-56px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal-from-right {
+  .scroll-reveal-from-right,
+  .scroll-reveal-from-left {
     opacity: 1;
     transform: none;
     animation: none;
@@ -257,10 +279,46 @@
   }
 }
 
+.philosophy-background-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.scroll-reveal-from-right.philosophy-background-reveal,
+.scroll-reveal-from-right.philosophy-background-reveal.is-visible {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy-background-reveal.is-visible .philosophy-background-zoom {
+  animation: philosophy-background-zoom 20s ease-out both;
+}
+
+@keyframes philosophy-background-zoom {
+  from {
+    transform: scale(1.04);
+  }
+
+  to {
+    transform: scale(1.14);
+  }
+}
+
+.philosophy-card-reveal.is-visible {
+  animation-duration: 600ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal-from-right .story-copy-reveal,
+  .scroll-reveal-from-left .story-copy-reveal,
   .story-image-reveal {
     opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .philosophy-background-reveal .philosophy-background-zoom {
     transform: none;
     animation: none;
   }

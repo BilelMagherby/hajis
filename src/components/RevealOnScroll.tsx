@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface RevealOnScrollProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'> {
   delay?: number;
+  direction?: 'left' | 'right';
 }
 
 export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   children,
   className = '',
   delay = 0,
+  direction = 'right',
   ...elementProps
 }) => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -18,7 +20,6 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
     if (!element) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setIsVisible(true);
       return;
     }
 
@@ -44,8 +45,8 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
     <div
       {...elementProps}
       ref={elementRef}
-      className={`scroll-reveal-from-right${isVisible ? ' is-visible' : ''} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`scroll-reveal-from-${direction}${isVisible ? ' is-visible' : ''} ${className}`}
+      style={{ animationDelay: `${delay}ms` }}
     >
       {children}
     </div>

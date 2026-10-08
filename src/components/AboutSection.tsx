@@ -2,6 +2,37 @@ import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const AboutSection: React.FC = () => {
+  const imageRef = React.useRef<HTMLImageElement>(null);
+
+  React.useEffect(() => {
+    const image = imageRef.current;
+    if (!image || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let frameId = 0;
+    const updateParallax = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        const bounds = image.getBoundingClientRect();
+        const progress = Math.min(
+          1,
+          Math.max(0, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height))
+        );
+        const offset = (progress * 2 - 1) * 12;
+        image.style.translate = `0 ${offset.toFixed(2)}px`;
+      });
+    };
+
+    updateParallax();
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    window.addEventListener('resize', updateParallax);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('scroll', updateParallax);
+      window.removeEventListener('resize', updateParallax);
+    };
+  }, []);
+
   return (
     <section
       id="about"
@@ -19,6 +50,7 @@ export const AboutSection: React.FC = () => {
           
           {/* IMAGE CONTAINER (Will appear on LEFT in RTL if it's order-2) */}
           <RevealOnScroll
+            direction="left"
             className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center"
           >
             <div className="relative w-full max-w-xl">
@@ -28,6 +60,7 @@ export const AboutSection: React.FC = () => {
               {/* The Image Container with subtle organic border */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
                 <img
+                  ref={imageRef}
                   src="/images/about_cafe_pourover.jpeg"
                   alt="قهوة مقطرة وكرم الضيافة العربية"
                   className="w-full h-[400px] sm:h-[480px] object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
@@ -47,6 +80,7 @@ export const AboutSection: React.FC = () => {
 
           {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
           <RevealOnScroll
+            direction="right"
             className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6"
             delay={160}
           >
