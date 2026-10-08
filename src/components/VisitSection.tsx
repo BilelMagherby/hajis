@@ -8,7 +8,7 @@ export const VisitSection: React.FC = () => {
     <section
       id="visit"
       data-bean-rain="off"
-      className="relative w-full py-28 bg-[#3B4028] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#77764A]/15 rounded-full blur-3xl pointer-events-none" />

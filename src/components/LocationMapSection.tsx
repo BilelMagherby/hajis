@@ -8,7 +8,7 @@ export const LocationMapSection: React.FC = () => {
   return (
     <section
       aria-labelledby="location-map-title"
-      className="w-full bg-[#3B4028] py-12 text-[#F8F4EC]"
+      className="w-full bg-[#292D1D] py-12 text-[#F8F4EC]"
       dir="rtl"
     >
       <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">

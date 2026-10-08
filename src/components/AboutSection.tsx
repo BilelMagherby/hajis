@@ -6,7 +6,7 @@ export const AboutSection: React.FC = () => {
     <section
       id="about"
       data-bean-rain="off"
-      className="relative w-full py-24 lg:py-32 bg-[#3B4028] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-24 lg:py-32 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -60,27 +60,29 @@ export const AboutSection: React.FC = () => {
 
             {/* Main Title */}
             <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC] tracking-tight">
-              ما هو هاجس ؟
+               هاجس ؟
             </h2>
 
             {/* Introductory sentence */}
             <p className="font-arabic text-base sm:text-lg text-[#E8DCC5] font-medium leading-relaxed">
-              في هاجس، تلتقي ثلاث أشياء في مكان واحد:
+             
             </p>
 
             {/* The 3 Pillars List */}
             <ul dir="rtl" className="space-y-4 font-arabic text-sm sm:text-base text-[#F3EBDD] leading-relaxed">
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
-                <span>مقهى متخصص، ما هو أي مقهى.</span>
+                <span>مقهى متخصص يقدم أفضل منتجات علامات التحميص المميزة في المملكة العربية السعودية.
+</span>
               </li>
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
-                <span>مكان للتجمّعات، جذوره من الوجار، عادة أهل حائل الأصيلة بالكرم والدفا..</span>
+                <span>يحضى بجلسات خرجية جميلة يلتقي فيه عشاق وشغوفي القهوة في أهم المواقع بمدينة حائل.
+</span>
               </li>
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
-                <span>انتماء، مو مجرد راحة تجيك وتروح.</span>
+                <span>خدمة العملاء هدف ملزم لتحقيق راحتهم وثقتتهم بهاجس. .</span>
               </li>
             </ul>
 
@@ -98,6 +100,64 @@ export const AboutSection: React.FC = () => {
           </RevealOnScroll>
 
         </div>
+
+        <RevealOnScroll className="mt-24 lg:mt-32" delay={100}>
+          <div
+            dir="rtl"
+            className="overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+              <div className="p-7 sm:p-10 lg:col-span-7 lg:p-14">
+                <div className="mb-7 flex items-center gap-3">
+                  <span className="h-px w-9 bg-[#C8A46A]" />
+                  <span className="font-arabic text-xs font-bold tracking-[0.18em] text-[#20140F]">
+                    حكاية المكان
+                  </span>
+                </div>
+
+                <h3 className="font-kufi text-3xl font-bold tracking-tight text-[#160D08] sm:text-4xl">
+                  قصتنا
+                </h3>
+
+                <blockquote className="mt-6 border-r-2 border-[#C8A46A] pr-5 font-kufi text-xl font-bold leading-relaxed text-[#20140F] sm:text-2xl">
+                  «بدأت قصتنا من الوجار»
+                </blockquote>
+
+                <div className="mt-7 space-y-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
+                  <p>
+                    في منتصف التسعينيات، أنشأنا مقهى صغيرًا باسم «الوجار» في مبنى قديم بالموقع نفسه. والوجار اسمٌ تقليديٌّ في حائل، يُطلق على الموقد الذي يجتمع حوله الناس شتاءً طلبًا للدفء، وتبادلًا للأحاديث بين الأهل والأصدقاء.
+                  </p>
+                  <p>
+                    فبعض القصص لا تنتهي؛ بل تتجدّد.
+                  </p>
+                  <p>
+                    واليوم يعود هاجس بحلّة جديدة، بروحٍ لم تتغيّر. ليس بداية قصة جديدة، بل امتداد لحكاية بدأت قبل أكثر من ثلاثين عامًا؛ المكان نفسه، والشغف نفسه، والحرص ذاته على صناعة مساحة يجتمع فيها الناس حول ما يستحق التقدير. كان الوجار البداية، وهاجس هو الجمر الذي لم ينطفئ، واللّهب الذي اشتعل من جديد.
+                  </p>
+                </div>
+
+                <div className="mt-9 flex items-center gap-3 border-t border-[#C8A46A]/20 pt-6">
+                  <span className="h-2 w-2 rounded-full bg-[#C8A46A]" />
+                  <span className="font-arabic text-xs font-medium tracking-wide text-[#20140F] sm:text-sm">
+                    حائل · حكاية تمتد لأكثر من ثلاثين عامًا
+                  </span>
+                </div>
+              </div>
+
+              <div className="relative min-h-[280px] overflow-hidden lg:col-span-5 lg:min-h-full">
+                <img
+                  src="/images/story-majlis.png"
+                  alt="مجلس حائلي يجتمع حول نار الوجار عند الغروب"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#160D08]/75 via-[#160D08]/10 to-transparent lg:bg-gradient-to-l lg:from-[#967C6D]/25 lg:via-transparent lg:to-[#967C6D]/25" />
+                <span className="absolute bottom-5 right-5 rounded-full border border-[#E3C994]/40 bg-[#160D08]/65 px-4 py-2 font-arabic text-xs text-[#F3EBDD] backdrop-blur-sm sm:bottom-7 sm:right-7">
+                  من الوجار إلى هاجس
+                </span>
+              </div>
+            </div>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

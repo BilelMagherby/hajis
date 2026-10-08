@@ -14,10 +14,10 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
     <section
       id="menu"
       data-bean-rain="off"
-      className="relative w-full py-28 bg-[#303522] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#59603B]/35 via-[#303522] to-[#303522] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/35 via-[#292D1D] to-[#292D1D] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
