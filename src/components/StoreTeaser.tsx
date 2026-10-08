@@ -20,7 +20,7 @@ export const StoreTeaser: React.FC = () => {
   };
 
   return (
-    <section className="header-primary-mix relative w-full py-20 border-t border-b border-[#C8A46A]/30 overflow-hidden">
+    <section className="store-teaser-section header-primary-mix relative w-full py-20 border-t border-b border-[#C8A46A]/30 overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">

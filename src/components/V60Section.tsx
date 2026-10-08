@@ -85,7 +85,7 @@ export const V60Section: React.FC = () => {
               {brewingDetails.map(({ icon: Icon, title, description }, index) => (
                 <article
                   key={title}
-                  className="rounded-2xl border border-[#C8A46A]/25 bg-[#241D16]/80 p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors duration-300 hover:border-[#C8A46A]/60"
+                  className="rounded-2xl border border-[#C8A46A]/25 bg-[#30271F]/80 p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors duration-300 hover:border-[#C8A46A]/60"
                 >
                   <div className="mb-5 flex items-center justify-between">
                     <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">
