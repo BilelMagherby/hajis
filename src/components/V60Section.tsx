@@ -28,7 +28,7 @@ export const V60Section: React.FC = () => {
   return (
     <section
       id="v60"
-      className="relative w-full overflow-hidden bg-[#17130F] py-24 text-[#F8F4EC] sm:py-28"
+      className="relative w-full overflow-hidden bg-[#17130F] py-20 text-[#F8F4EC] sm:py-24 lg:py-28"
     >
       <div className="pointer-events-none absolute inset-0">
         <img
@@ -47,7 +47,7 @@ export const V60Section: React.FC = () => {
             خدمات V60
           </span>
 
-          <h2 className="mt-5 font-kufi text-3xl font-bold leading-relaxed text-[#F8F4EC] sm:text-4xl lg:text-5xl">
+          <h2 className="visual-section-title mt-5 font-kufi text-3xl font-bold leading-relaxed text-[#F8F4EC] sm:text-4xl lg:text-5xl">
             V60 في هاجس... هنا تبدأ الحكاية.
           </h2>
 
@@ -71,7 +71,7 @@ export const V60Section: React.FC = () => {
             </p>
           </div>
 
-          <div className="mt-14 border-t border-[#C8A46A]/25 pt-10" dir="rtl">
+          <div className="mt-12 border-t border-[#C8A46A]/25 pt-8 sm:mt-14 sm:pt-10" dir="rtl">
             <div className="mb-7 text-right">
               <span className="font-arabic text-xs font-medium tracking-[0.2em] text-[#E3C994]">
                 طقس التقطير اليدوي
@@ -85,7 +85,7 @@ export const V60Section: React.FC = () => {
               {brewingDetails.map(({ icon: Icon, title, description }, index) => (
                 <article
                   key={title}
-                  className="rounded-2xl border border-[#C8A46A]/25 bg-[#705747]/95 p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm transition-colors duration-300 hover:border-[#C8A46A]/60"
+                  className="visual-card rounded-2xl border border-[#C8A46A]/25 bg-[#705747]/95 p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-[#C8A46A]/60"
                 >
                   <div className="mb-5 flex items-center justify-between">
                     <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">

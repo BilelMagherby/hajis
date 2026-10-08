@@ -14,7 +14,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
     <section
       id="menu"
       data-bean-rain="off"
-      className="relative w-full py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -35,7 +35,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
               إبداعات هاجس
             </span>
           </div>
-          <h2 className="font-kufi text-3xl font-bold text-[#F8F4EC] sm:text-4xl lg:text-5xl">
+          <h2 className="visual-section-title font-kufi text-3xl font-bold text-[#F8F4EC] sm:text-4xl lg:text-5xl">
             قائمة القهوة
           </h2>
           <p className="mt-4 max-w-2xl font-arabic text-sm font-light leading-8 text-[#D8CEBF] sm:text-base">
@@ -45,15 +45,15 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12" dir="ltr">
           <RevealOnScroll
-            className="flex flex-col items-center justify-center rounded-2xl border border-[#C8A46A]/25 bg-[#252A1B]/80 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
+            className="visual-card flex flex-col items-center justify-center rounded-2xl border border-[#C8A46A]/25 bg-[#252A1B]/80 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
             dir="rtl"
             delay={120}
           >
-            <div className="relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
+            <div className="visual-media relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
               <img
                 src="/images/espresso_pour.jpg"
                 alt="قهوة هاجس المختصة"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="aspect-[4/3] w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#171A12]/60 via-transparent to-transparent" />
               <span className="absolute bottom-4 right-4 font-arabic text-xs tracking-wide text-[#F8F4EC]">
@@ -69,7 +69,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
                   setSelectedCategory(menuCategories[0]);
                 }
               }}
-              className="flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full border border-[#C8A46A]/80 bg-[#24150E]/80 px-6 py-3.5 font-arabic text-sm font-medium text-[#F8F4EC] shadow-gold-glow transition-all duration-300 hover:bg-[#C8A46A] hover:text-[#090604]"
+              className="visual-button flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full border border-[#C8A46A]/80 bg-[#24150E]/80 px-6 py-3.5 font-arabic text-sm font-medium text-[#F8F4EC] shadow-gold-glow transition-all duration-300 hover:bg-[#C8A46A] hover:text-[#090604]"
             >
               <span>اكتشف القائمة الكاملة</span>
               <ArrowLeft className="w-4 h-4" />
@@ -105,7 +105,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             ].map((item) => (
               <article
                 key={item.number}
-                className="group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-gradient-to-br from-[#353927]/90 to-[#222619]/80 p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] transition-colors duration-300 hover:border-[#C8A46A]/55 sm:p-6"
+                className="visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-gradient-to-br from-[#353927]/90 to-[#222619]/80 p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[#C8A46A]/55 sm:p-6"
               >
                 <div className="flex flex-col items-start gap-2">
                   <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">
@@ -132,7 +132,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             {/* Close Button */}
             <button
               onClick={() => setSelectedCategory(null)}
-              className="absolute top-5 left-5 p-2 rounded-full border border-[#C8A46A]/30 text-[#D8CEBF] hover:text-[#F8F4EC] hover:bg-[#24150E] transition-colors"
+              className="visual-icon-control absolute top-5 left-5 rounded-full border border-[#C8A46A]/30 text-[#D8CEBF] hover:text-[#F8F4EC] hover:bg-[#24150E] transition-colors"
               aria-label="إغلاق"
             >
               <X className="w-5 h-5" />

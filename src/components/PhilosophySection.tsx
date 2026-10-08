@@ -6,7 +6,7 @@ export const PhilosophySection: React.FC = () => {
   return (
     <section
       id="philosophy"
-      className="header-primary-mix relative w-full py-28 text-[#20140F] overflow-hidden"
+      className="header-primary-mix relative w-full py-20 sm:py-24 lg:py-28 text-[#20140F] overflow-hidden"
     >
       <RevealOnScroll
         aria-hidden="true"
@@ -29,13 +29,13 @@ export const PhilosophySection: React.FC = () => {
                 معايير الجودة والكمال
               </span>
             </div>
-            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#20140F]">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#20140F]">
               يميّز هاجس؟
             </h2>
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7 text-right" dir="rtl">
-            <div className="header-primary-mix relative rounded-2xl overflow-hidden border border-[#C8A46A]/40 p-8 backdrop-blur-md shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
+            <div className="visual-card header-primary-mix relative rounded-2xl overflow-hidden border border-[#C8A46A]/40 p-6 sm:p-8 backdrop-blur-md shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
               <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <img
                   src="/images/roaster_beans.jpg"
@@ -65,7 +65,7 @@ export const PhilosophySection: React.FC = () => {
             >
               <article
                 dir="rtl"
-                className="group relative h-full overflow-hidden rounded-2xl border border-[#C8A46A]/35 bg-gradient-to-br from-[#F4EADF] to-[#E9D9C9] p-7 text-right shadow-[0_18px_38px_rgba(0,0,0,0.14)] transition-all duration-300 hover:-translate-y-1 hover:border-[#C8A46A]/70 sm:p-9"
+              className="visual-card group relative h-full overflow-hidden rounded-2xl border border-[#C8A46A]/35 bg-gradient-to-br from-[#F4EADF] to-[#E9D9C9] p-6 text-right shadow-[0_18px_38px_rgba(0,0,0,0.14)] hover:border-[#C8A46A]/70 sm:p-8"
               >
                 <div className="absolute inset-y-0 right-0 w-1 bg-[#C8A46A]/75 transition-all duration-300 group-hover:w-1.5" />
                 <div className="relative">
@@ -89,7 +89,7 @@ export const PhilosophySection: React.FC = () => {
 
         <div
           dir="rtl"
-          className="relative mt-16 overflow-hidden rounded-3xl border border-[#C8A46A]/35 bg-[#20140F] px-7 py-10 text-right shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:px-12 sm:py-14"
+          className="visual-card relative mt-12 overflow-hidden rounded-3xl border border-[#C8A46A]/35 bg-[#20140F] px-6 py-8 text-right shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:mt-14 sm:px-12 sm:py-12"
         >
           <div className="absolute inset-y-0 right-0 w-1 bg-[#C8A46A]" />
           <div className="relative mx-auto max-w-4xl">

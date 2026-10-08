@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="إنستغرام"
               >
                 <InstagramIcon className="w-4 h-4" />
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="تيك توك"
               >
                 <TikTokIcon className="w-4 h-4" />
@@ -70,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.snapchat}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="سناب شات"
               >
                 <SnapchatIcon className="w-4 h-4" />
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.threads}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="ثريدز"
               >
                 <ThreadsIcon className="w-4 h-4" />
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="إكس"
               >
                 <XIcon className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href={brandData.contact.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
+                className="visual-icon-control rounded-full bg-[#160D08] border border-[#3D281C] hover:border-[#E3C994] hover:text-[#E3C994] transition-colors"
                 aria-label="يوتيوب"
               >
                 <YoutubeIcon className="w-4 h-4" />

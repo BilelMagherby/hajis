@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
                 onClick={onDiscoverClick || (() => {
                   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                 })}
-                className="group relative inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/80 backdrop-blur-md text-[#F8F4EC] text-sm font-medium tracking-wide hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow hover:shadow-gold-glow-lg"
+                className="visual-button group relative inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/80 backdrop-blur-md text-[#F8F4EC] text-sm font-medium tracking-wide hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow hover:shadow-gold-glow-lg"
               >
                 <span>اكتشف قصتنا</span>
                 <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
@@ -70,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
                 onClick={() => {
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-3.5 rounded-full text-[#C8BAA6] hover:text-[#E3C994] text-sm font-arabic transition-colors border border-transparent hover:border-[#C8A46A]/30 bg-[#160D08]/40"
+                className="visual-button px-6 py-3.5 rounded-full text-[#C8BAA6] hover:text-[#E3C994] text-sm font-arabic transition-colors border border-transparent hover:border-[#C8A46A]/30 bg-[#160D08]/40"
               >
                 اكتشف القائمة
               </button>

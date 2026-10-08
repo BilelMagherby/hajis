@@ -37,7 +37,7 @@ export const AboutSection: React.FC = () => {
     <section
       id="about"
       data-bean-rain="off"
-      className="relative w-full py-24 lg:py-32 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -58,12 +58,12 @@ export const AboutSection: React.FC = () => {
               <div className="absolute -inset-4 bg-[#77764A]/40 rounded-3xl blur-2xl transform -rotate-2" />
 
               {/* The Image Container with subtle organic border */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
+              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
                 <img
                   ref={imageRef}
                   src="/images/about_cafe_pourover.jpeg"
                   alt="قهوة مقطرة وكرم الضيافة العربية"
-                  className="w-full h-[400px] sm:h-[480px] object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-[400px] sm:h-[480px] object-cover object-center"
                 />
                 
                 {/* Subtle vignette */}
@@ -99,7 +99,7 @@ export const AboutSection: React.FC = () => {
             </div>
 
             {/* Main Title */}
-            <h2 className="font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC] tracking-tight">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC] tracking-tight">
                هاجس ؟
             </h2>
 
@@ -141,10 +141,10 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
-        <RevealOnScroll className="mt-24 lg:mt-32" delay={100}>
+        <RevealOnScroll className="mt-20 lg:mt-24" delay={100}>
           <div
             dir="rtl"
-            className="overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]/85 backdrop-blur-sm"
+            className="visual-card overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]/85 backdrop-blur-sm"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-7 sm:p-10 lg:col-span-7 lg:p-14">
@@ -163,7 +163,7 @@ export const AboutSection: React.FC = () => {
                   «بدأت قصتنا من الوجار»
                 </blockquote>
 
-                <div className="mt-7 space-y-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
+                <div className="mt-7 max-w-prose space-y-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
                   <p className="story-copy-reveal story-reveal-delay-4">
                     في منتصف التسعينيات، أنشأنا مقهى صغيرًا باسم «الوجار» في مبنى قديم بالموقع نفسه. والوجار اسمٌ تقليديٌّ في حائل، يُطلق على الموقد الذي يجتمع حوله الناس شتاءً طلبًا للدفء، وتبادلًا للأحاديث بين الأهل والأصدقاء.
                   </p>
@@ -183,7 +183,7 @@ export const AboutSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative min-h-[280px] overflow-hidden lg:col-span-5 lg:min-h-full">
+              <div className="visual-media relative min-h-[280px] overflow-hidden lg:col-span-5 lg:min-h-full">
                 <img
                   src="/images/story-majlis.png"
                   alt="مجلس حائلي يجتمع حول نار الوجار عند الغروب"

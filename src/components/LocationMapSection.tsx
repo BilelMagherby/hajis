@@ -8,11 +8,11 @@ export const LocationMapSection: React.FC = () => {
   return (
     <section
       aria-labelledby="location-map-title"
-      className="w-full bg-[#292D1D] py-12 text-[#F8F4EC]"
+      className="w-full bg-[#292D1D] py-16 text-[#F8F4EC] sm:py-20"
       dir="rtl"
     >
       <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">
-        <div className="relative overflow-hidden rounded-xl">
+        <div className="visual-media relative overflow-hidden rounded-2xl border border-[#C8A46A]/25 shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
           <iframe
             title="موقع مقهى هاجس على الخريطة"
             src={mapEmbedUrl}
@@ -30,7 +30,7 @@ export const LocationMapSection: React.FC = () => {
         </div>
 
         <div className="self-start text-right" dir="rtl">
-          <h2 id="location-map-title" className="font-kufi text-2xl font-bold sm:text-3xl">
+          <h2 id="location-map-title" className="visual-section-title font-kufi text-3xl font-bold sm:text-4xl">
             موقعنا
           </h2>
           <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[#D8CEBF]">
@@ -41,7 +41,7 @@ export const LocationMapSection: React.FC = () => {
             href={brandData.location.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 font-arabic text-sm text-[#E3C994] transition-colors hover:text-[#F8F4EC]"
+            className="visual-button mt-4 inline-flex items-center gap-2 rounded-full border border-transparent px-4 font-arabic text-sm text-[#E3C994] transition-colors hover:border-[#C8A46A]/35 hover:text-[#F8F4EC]"
           >
             <Navigation className="h-4 w-4" />
             افتح الموقع على الخريطة
