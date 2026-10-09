@@ -1,7 +1,6 @@
 import React from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 import { brandData } from '../data/brand';
-import { SectionWaves } from './SectionWaves';
 
 export const LocationMapSection: React.FC = () => {
   const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(brandData.location.mapQuery)}&output=embed`;
@@ -12,7 +11,6 @@ export const LocationMapSection: React.FC = () => {
       className="relative w-full overflow-hidden bg-[#292D1D] py-16 text-[#F8F4EC] sm:py-20"
       dir="rtl"
     >
-      <SectionWaves topColor="#160D08" bottomColor="#090604" />
       <div className="relative z-10 mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">
         <div className="visual-media relative overflow-hidden rounded-2xl border border-[#C8A46A]/25 shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
           <iframe

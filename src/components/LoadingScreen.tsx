@@ -39,29 +39,30 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         src="/images/loading-pour-over.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100 motion-reduce:hidden"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/45 via-[#160D08]/10 to-[#090604]/55"
       />
       <div className="relative z-10 flex flex-col items-center space-y-6 px-4 text-center">
-        {/* Logo Monogram */}
-        <div className="relative w-40 sm:w-48 mb-2 flex justify-center items-center">
+        <div className="relative mb-2 flex w-40 items-center justify-center rounded-xl bg-white p-2 shadow-lg sm:w-48">
           <img
             src="/images/logo.png"
             alt="شعار هاجس"
-            className="w-full h-auto object-contain filter invert contrast-125"
+            className="h-auto w-full object-contain"
           />
         </div>
 
-        {/* Brand Name */}
         <div className="space-y-1">
           <h1 className="font-kufi text-3xl md:text-4xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
             هـاجـس
           </h1>
           <p className="font-brand text-lg md:text-xl font-semibold text-[#E3C994] tracking-[0.3em] drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
             مقهى هاجس
+          </p>
+          <p className="pt-3 font-arabic text-sm leading-7 text-[#F8F4EC] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-base">
+            أهلاً بك في هاجس، حيث تبدأ حكاية القهوة.
           </p>
         </div>
 

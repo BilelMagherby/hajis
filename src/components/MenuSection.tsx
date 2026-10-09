@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ArrowLeft, X, Sparkles } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
 import { RevealOnScroll } from './RevealOnScroll';
-import { SectionWaves } from './SectionWaves';
 
 interface MenuSectionProps {
   onNavigate?: (sectionId: string) => void;
@@ -24,8 +23,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
       />
       <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/30 via-[#292D1D]/45 to-[#292D1D]/65" />
-      <SectionWaves topColor="#967C6D" bottomColor="#17130F" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <RevealOnScroll
@@ -107,7 +104,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             ].map((item) => (
               <article
                 key={item.number}
-                className="visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-gradient-to-br from-[#353927]/90 to-[#222619]/80 p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[#C8A46A]/55 sm:p-6"
+                className="visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-[#303522] p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[#C8A46A]/55 sm:p-6"
               >
                 <div className="flex flex-col items-start gap-2">
                   <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">

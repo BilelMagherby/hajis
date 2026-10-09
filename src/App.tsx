@@ -58,9 +58,10 @@ export const App: React.FC = () => {
 
   if (location.pathname === '/menu') {
     return (
-      <MenuBookPage
-        onNavigate={handleNavigate}
-      />
+      <>
+        <MenuBookPage onNavigate={handleNavigate} />
+        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      </>
     );
   }
 

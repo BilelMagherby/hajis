@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
   return (
     <section
       id="hero"
-      className="sticky top-16 z-0 mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[#090604] select-none"
+      className="relative mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[#090604] select-none"
     >
       {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
       <div

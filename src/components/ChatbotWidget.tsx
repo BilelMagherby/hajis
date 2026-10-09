@@ -156,28 +156,28 @@ export const ChatbotWidget: React.FC = () => {
         <section
           aria-labelledby="hajiss-chat-title"
           aria-modal="false"
-          className="flex h-[min(580px,calc(100dvh-7rem))] w-[min(370px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-[#C8A46A]/45 bg-[#160D08] text-right shadow-[0_24px_70px_rgba(0,0,0,0.5)]"
+          className="flex h-[min(580px,calc(100dvh-7rem))] w-[min(370px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-[#C8A46A]/50 bg-[#F8F4EC] text-right text-[#292D1D] shadow-[0_24px_70px_rgba(0,0,0,0.35)]"
           dir="rtl"
         >
-          <header className="flex items-center justify-between border-b border-[#C8A46A]/25 bg-[#24150E] px-4 py-3">
+          <header className="flex items-center justify-between border-b border-[#C8A46A]/35 bg-[#F3EBDD] px-4 py-3">
             <div className="flex items-center gap-3">
               <img
-                src="/images/hajiss-chat-avatar.png"
+                src="/images/chatbot-avatar.png"
                 alt=""
                 className="h-11 w-11 rounded-full border border-[#C8A46A]/60 object-cover"
               />
               <div>
-                <h2 id="hajiss-chat-title" className="font-kufi text-sm font-bold text-[#F8F4EC]">
+                <h2 id="hajiss-chat-title" className="font-kufi text-sm font-bold text-[#292D1D]">
                   مساعد هاجس
                 </h2>
-                <p className="mt-0.5 font-arabic text-xs text-[#E3C994]">يا هلا والله، حياك!</p>
+                <p className="mt-0.5 font-arabic text-xs text-[#686B4B]">يا هلا والله، حياك!</p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="إغلاق المحادثة"
-              className="visual-icon-control rounded-full text-[#D8CEBF] transition-colors hover:bg-[#3D281C] hover:text-[#F8F4EC]"
+              className="visual-icon-control rounded-full text-[#686B4B] transition-colors hover:bg-[#E7DDCC] hover:text-[#292D1D]"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -185,7 +185,7 @@ export const ChatbotWidget: React.FC = () => {
 
           <div
             ref={messageListRef}
-            className="flex-1 space-y-3 overflow-y-auto bg-[#090604] p-4"
+            className="flex-1 space-y-3 overflow-y-auto bg-[#8B6B4A] p-4"
             role="log"
             aria-live="polite"
             aria-relevant="additions"
@@ -195,8 +195,8 @@ export const ChatbotWidget: React.FC = () => {
                 key={message.id}
                 className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 font-arabic text-sm leading-7 ${
                   message.sender === 'assistant'
-                    ? 'ml-auto rounded-tr-sm bg-[#24150E] text-[#F3EBDD]'
-                    : 'mr-auto rounded-tl-sm bg-[#3D281C] text-[#F8F4EC]'
+                    ? 'ml-auto rounded-tr-sm border border-[#E5D8C3] bg-white text-[#292D1D] shadow-sm'
+                    : 'mr-auto rounded-tl-sm bg-[#604832] text-[#F8F4EC] shadow-sm'
                 }`}
               >
                 <p>{message.text}</p>
@@ -205,7 +205,7 @@ export const ChatbotWidget: React.FC = () => {
                     href={message.link.href}
                     target={message.link.href.startsWith('http') ? '_blank' : undefined}
                     rel={message.link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="mt-1 inline-flex font-semibold text-[#E3C994] underline decoration-[#C8A46A]/50 underline-offset-4 hover:text-[#F8F4EC]"
+                    className="mt-1 inline-flex font-semibold text-[#686B4B] underline decoration-[#A8A078] underline-offset-4 hover:text-[#292D1D]"
                   >
                     {message.link.label}
                   </a>
@@ -220,7 +220,7 @@ export const ChatbotWidget: React.FC = () => {
                     key={question}
                     type="button"
                     onClick={() => sendMessage(question)}
-                    className="rounded-full border border-[#C8A46A]/35 px-3 py-1.5 font-arabic text-xs text-[#E3C994] transition-colors hover:bg-[#24150E]"
+                    className="rounded-full border border-[#F8F4EC]/60 bg-[#F8F4EC] px-3 py-1.5 font-arabic text-xs text-[#50533B] transition-colors hover:bg-[#E5E8D9]"
                   >
                     {question}
                   </button>
@@ -232,7 +232,7 @@ export const ChatbotWidget: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowQuestionList(true)}
-                className="mr-auto inline-flex min-h-10 items-center gap-2 rounded-full border border-[#C8A46A]/35 px-3 py-1.5 font-arabic text-xs text-[#E3C994] transition-colors hover:bg-[#24150E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C994]"
+                className="mr-auto inline-flex min-h-10 items-center gap-2 rounded-full border border-[#F8F4EC]/60 bg-[#F8F4EC] px-3 py-1.5 font-arabic text-xs text-[#50533B] transition-colors hover:bg-[#E5E8D9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F8F4EC]"
               >
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 <span>الرجوع لقائمة الأسئلة</span>
@@ -245,20 +245,20 @@ export const ChatbotWidget: React.FC = () => {
               event.preventDefault();
               sendMessage(draft);
             }}
-            className="flex items-center gap-2 border-t border-[#C8A46A]/25 bg-[#160D08] p-3"
+            className="flex items-center gap-2 border-t border-[#DED3C0] bg-[#F3EBDD] p-3"
           >
             <input
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
               aria-label="اكتب رسالتك"
               placeholder="اكتب سؤالك..."
-              className="min-w-0 flex-1 rounded-full border border-[#C8A46A]/25 bg-[#24150E] px-4 py-2.5 font-arabic text-sm text-[#F8F4EC] outline-none placeholder:text-[#C8BAA6] focus:border-[#C8A46A]"
+              className="min-w-0 flex-1 rounded-full border border-[#D6C9B3] bg-white px-4 py-2.5 font-arabic text-sm text-[#292D1D] outline-none placeholder:text-[#777762] focus:border-[#8A895E]"
             />
             <button
               type="submit"
               aria-label="إرسال الرسالة"
               disabled={!draft.trim()}
-              className="visual-icon-control rounded-full bg-[#C8A46A] text-[#160D08] transition-colors hover:bg-[#E3C994] disabled:cursor-not-allowed disabled:opacity-50"
+              className="visual-icon-control rounded-full bg-[#686B4B] text-white transition-colors hover:bg-[#50533B] disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Send className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -271,14 +271,14 @@ export const ChatbotWidget: React.FC = () => {
         onClick={() => setIsOpen((open) => !open)}
         aria-label={isOpen ? 'إغلاق محادثة هاجس' : 'افتح محادثة هاجس'}
         aria-expanded={isOpen}
-        className="group relative h-[68px] w-[68px] overflow-hidden rounded-full border-2 border-[#C8A46A] bg-[#160D08] shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E3C994]"
+        className="group relative h-[68px] w-[68px] overflow-hidden rounded-full border-2 border-[#A8A078] bg-[#F8F4EC] shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#686B4B]"
       >
         <img
-          src="/images/hajiss-chat-avatar.png"
+          src="/images/chatbot-avatar.png"
           alt=""
           className={`h-full w-full object-cover transition-opacity duration-200 ${isOpen ? 'opacity-70' : 'opacity-100'}`}
         />
-        <span className="absolute inset-0 flex items-center justify-center bg-[#160D08]/50 text-[#F8F4EC] opacity-0 transition-opacity group-hover:opacity-100">
+        <span className="absolute inset-0 flex items-center justify-center bg-[#292D1D]/50 text-white opacity-0 transition-opacity group-hover:opacity-100">
           {isOpen
             ? <X className="h-6 w-6" aria-hidden="true" />
             : <MessageCircle className="h-6 w-6" aria-hidden="true" />}
