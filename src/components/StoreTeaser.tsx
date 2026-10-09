@@ -20,27 +20,27 @@ export const StoreTeaser: React.FC = () => {
   };
 
   return (
-    <section className="store-teaser-section header-primary-mix relative w-full py-16 sm:py-20 lg:py-24 border-t border-b border-[#C8A46A]/30 overflow-hidden">
+    <section className="store-teaser-section relative w-full overflow-hidden border-y border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[var(--color-brand-linen)] py-16 sm:py-20 lg:py-24">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
-          <article className="visual-card header-primary-mix flex h-full flex-col justify-center gap-6 rounded-3xl border border-[#C8A46A]/40 p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.22)] sm:gap-8 sm:p-9 md:flex-row md:items-center md:justify-between">
+          <article className="brand-texture-linen visual-card flex h-full flex-col justify-center gap-6 rounded-3xl border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.2)] p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:gap-8 sm:p-9 md:flex-row md:items-center md:justify-between">
             {/* QR CODE & BADGE */}
-            <div className="visual-card header-primary-mix flex shrink-0 flex-col items-center rounded-2xl border border-[#C8A46A]/30 p-4 shadow-lg">
-              <ShopQrCode className="w-28 h-28 bg-[#F8F4EC] p-2 rounded-xl flex items-center justify-center" imageClassName="w-full h-full object-contain" />
-              <span className="font-arabic text-[11px] text-[#302019] mt-2 font-medium">
+            <div className="visual-card flex shrink-0 flex-col items-center rounded-2xl border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.2)] bg-[var(--color-brand-linen)] p-4 shadow-lg">
+              <ShopQrCode className="w-28 h-28 bg-[var(--color-brand-linen)] p-2 rounded-xl flex items-center justify-center" imageClassName="w-full h-full object-contain" />
+              <span className="font-arabic text-[11px] text-[var(--color-brand-chocolate)] mt-2 font-medium">
                 امسح الكود لزيارة المتجر
               </span>
             </div>
 
             {/* TEXT & CALL TO ACTION */}
             <div className="space-y-3 md:flex-1">
-              <div className="header-primary-mix inline-flex items-center space-x-2 space-x-reverse px-3 py-1 rounded-full border border-[#3D281C]/40 text-[#302019] text-xs font-arabic">
+              <div className="inline-flex items-center space-x-2 space-x-reverse rounded-full border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-linen)] px-3 py-1 text-xs font-arabic text-[var(--color-brand-chocolate)]">
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>تسوق أونلاين وتوصيل فوري</span>
               </div>
 
-              <p className="font-arabic text-sm text-[#302019] max-w-lg leading-relaxed font-medium">
+              <p className="font-arabic text-sm text-[var(--color-brand-chocolate)] max-w-lg leading-relaxed font-medium">
                 لآ يفوتكم متجرنا بهاجس ومتجره الإلكتروني "عروضنا مستمرة" 
 
 محاصيل مميزة، وأدوات قهوة متنوعة مع التوصيل لجميع مناطق المملكة. 
@@ -52,7 +52,7 @@ export const StoreTeaser: React.FC = () => {
                   href="https://hajiss.shop"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="visual-button inline-flex items-center space-x-3 space-x-reverse px-7 py-3 rounded-full bg-[#3D281C] text-[#F8F4EC] font-arabic font-medium text-sm hover:bg-[#24150E] transition-all shadow-lg"
+                  className="brand-button-primary visual-button inline-flex items-center space-x-3 space-x-reverse rounded-full px-7 py-3 font-arabic text-sm font-medium transition-all shadow-lg"
                 >
                   <span>زيارة المتجر الإلكتروني</span>
                   <ArrowLeft className="w-4 h-4" />
@@ -61,15 +61,15 @@ export const StoreTeaser: React.FC = () => {
             </div>
           </article>
 
-          <form onSubmit={handleSubmit} className="visual-card bg-[#A88F81] flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[#3D281C]/45 p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8">
+          <form onSubmit={handleSubmit} className="brand-texture-clay visual-card flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.3)] p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
-                <h4 className="mt-1 font-kufi text-xl text-[#20140F]">
+                <h4 className="mt-1 font-kufi text-xl text-[var(--color-brand-black)]">
                   قيّم تجربتك
                 </h4>
               </div>
 
-              <div className="bg-[#E9D9C9] flex items-center gap-1 rounded-full border border-[#3D281C]/40 px-2 py-1">
+              <div className="flex items-center gap-1 rounded-full border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-linen)] px-2 py-1">
                 {[1, 2, 3, 4, 5].map((value) => (
                   <button
                     key={value}
@@ -78,7 +78,7 @@ export const StoreTeaser: React.FC = () => {
                     onClick={() => setSelectedRating(value)}
                     className="visual-rating-control rounded-full transition-transform hover:scale-110 focus:outline-none"
                   >
-                    <Star className={`h-4 w-4 ${selectedRating >= value ? 'fill-[#3D281C] text-[#3D281C]' : 'text-[#7A5849]'}`} />
+                    <Star className={`h-4 w-4 ${selectedRating >= value ? 'fill-[var(--color-brand-chocolate)] text-[var(--color-brand-chocolate)]' : 'text-[var(--color-brand-chocolate)]'}`} />
                   </button>
                 ))}
               </div>
@@ -92,17 +92,17 @@ export const StoreTeaser: React.FC = () => {
               }}
               rows={4}
               placeholder="شاركنا رأيك عن المتجر وتجربة التسوق..."
-              className="w-full resize-none rounded-2xl border border-[#3D281C]/45 bg-[#F9EFE3] px-4 py-4 text-sm leading-7 text-[#20140F] placeholder:text-[#5B463A] focus:border-[#3D281C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3D281C]/40"
+              className="w-full resize-none rounded-2xl border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.45)] bg-[var(--color-brand-linen)] px-4 py-4 text-sm leading-7 text-[var(--color-brand-chocolate)] placeholder:text-[var(--color-brand-chocolate)] focus:border-[var(--color-brand-chocolate)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)]"
             />
 
             <div className="mt-4 flex items-center justify-between gap-3">
-              <span className="text-xs font-medium text-[#302019]">
+              <span className="text-xs font-medium text-[var(--color-brand-black)]">
                 {isSubmitted ? 'شكرًا لك! تم تسجيل رأيك.' : 'نقرأ كل الآراء بعناية.'}
               </span>
               <button
                 type="submit"
                 disabled={!selectedRating || !opinion.trim()}
-                className="visual-button rounded-full bg-[#3D281C] px-5 py-2 text-sm font-medium text-[#FDF4EC] transition enabled:hover:bg-[#24150E] disabled:cursor-not-allowed disabled:bg-[#72594B] disabled:text-[#F5E7D6]"
+                className="brand-button-primary visual-button rounded-full px-5 py-2 text-sm font-medium transition disabled:cursor-not-allowed"
               >
                 إرسال
               </button>

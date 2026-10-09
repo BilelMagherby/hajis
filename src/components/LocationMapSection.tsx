@@ -8,11 +8,11 @@ export const LocationMapSection: React.FC = () => {
   return (
     <section
       aria-labelledby="location-map-title"
-      className="relative w-full overflow-hidden bg-[#292D1D] py-16 text-[#F8F4EC] sm:py-20"
+      className="relative w-full overflow-hidden bg-[var(--color-brand-olive)] py-16 text-[var(--color-brand-linen)] sm:py-20"
       dir="rtl"
     >
       <div className="relative z-10 mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">
-        <div className="visual-media relative overflow-hidden rounded-2xl border border-[#C8A46A]/25 shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
+        <div className="visual-media relative overflow-hidden rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
           <iframe
             title="موقع مقهى هاجس على الخريطة"
             src={mapEmbedUrl}
@@ -33,15 +33,15 @@ export const LocationMapSection: React.FC = () => {
           <h2 id="location-map-title" className="visual-section-title font-kufi text-3xl font-bold sm:text-4xl">
             موقعنا
           </h2>
-          <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[#D8CEBF]">
-            <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[#E3C994]" />
+          <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]">
+            <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--color-brand-sand)]" />
             <span>{brandData.location.placeAr}، {brandData.location.cityAr}</span>
           </p>
           <a
             href={brandData.location.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="visual-button mt-4 inline-flex items-center gap-2 rounded-full border border-transparent px-4 font-arabic text-sm text-[#E3C994] transition-colors hover:border-[#C8A46A]/35 hover:text-[#F8F4EC]"
+            className="brand-button-primary visual-button mt-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-arabic text-sm transition-colors"
           >
             <Navigation className="h-4 w-4" />
             افتح الموقع على الخريطة

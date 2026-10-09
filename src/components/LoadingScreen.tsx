@@ -31,7 +31,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 isolate flex flex-col items-center justify-center overflow-hidden bg-[#160D08] transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 isolate flex flex-col items-center justify-center overflow-hidden bg-[var(--color-brand-black)] transition-opacity duration-700 ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
@@ -43,7 +43,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/45 via-[#160D08]/10 to-[#090604]/55"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgb(var(--color-brand-black-rgb)_/_0.45)] via-[rgb(var(--color-brand-black-rgb)_/_0.1)] to-[rgb(var(--color-brand-black-rgb)_/_0.55)]"
       />
       <div className="relative z-10 flex flex-col items-center space-y-6 px-4 text-center">
         <div className="relative mb-2 flex w-44 items-center justify-center sm:w-52">
@@ -57,21 +57,21 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <div className="space-y-1">
           
           
-          <p className="pt-3 font-arabic text-sm leading-7 text-[#F8F4EC] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-base">
+          <p className="pt-3 font-arabic text-sm leading-7 text-[var(--color-brand-linen)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-base">
             أهلاً بك في هاجس، حيث تبدأ حكاية القهوة.
           </p>
         </div>
 
         {/* Progress Bar Container */}
-        <div className="w-56 h-[2px] bg-[#2A180E] rounded-full overflow-hidden mt-6 relative">
+        <div className="w-56 h-[2px] bg-[var(--color-brand-chocolate)] rounded-full overflow-hidden mt-6 relative">
           <div
-            className="h-full bg-gradient-to-r from-[#C8A46A] via-[#E3C994] to-[#C8A46A] transition-all duration-75 ease-out shadow-[0_0_12px_#E3C994]"
+            className="h-full bg-gradient-to-r from-[var(--color-brand-sand)] via-[var(--color-brand-sand)] to-[var(--color-brand-sand)] transition-all duration-75 ease-out shadow-[0_0_12px_rgb(var(--color-brand-sand-rgb)_/_0.65)]"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         {/* Percentage Counter */}
-        <span className="font-mono text-xs font-medium text-[#C8A46A]/80 tracking-widest">
+        <span className="font-mono text-xs font-medium text-[rgb(var(--color-brand-sand-rgb)_/_0.8)] tracking-widest">
           {progress}%
         </span>
       </div>

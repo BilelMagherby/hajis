@@ -48,9 +48,9 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     }
     planeGeo.computeVertexNormals();
 
-    // Dark espresso terrain mesh with gold contour lines
+    // Warm-black terrain mesh with sand contour lines
     const terrainMat = new THREE.MeshStandardMaterial({
-      color: 0x1A100A,
+      color: 0x191817,
       roughness: 0.8,
       metalness: 0.2,
       wireframe: false,
@@ -60,7 +60,7 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     mapGroup.add(terrainMesh);
 
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0xC8A46A,
+      color: 0xD2BE9D,
       wireframe: true,
       transparent: true,
       opacity: 0.25,
@@ -70,7 +70,7 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     wireMesh.position.y = 0.005;
     mapGroup.add(wireMesh);
 
-    // 2. Gold Pin for "Dani Square - Hail"
+    // 2. Sand Pin for "Dani Square - Hail"
     const pinGroup = new THREE.Group();
     pinGroup.position.set(0.4, 0.45, -0.2); // Elevation above Hail mountain spot
     mapGroup.add(pinGroup);
@@ -78,8 +78,8 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     // Glowing Pin Head
     const pinHeadGeo = new THREE.SphereGeometry(0.12, 16, 16);
     const pinMat = new THREE.MeshStandardMaterial({
-      color: 0xE3C994,
-      emissive: 0xC8A46A,
+      color: 0xD2BE9D,
+      emissive: 0xD2BE9D,
       emissiveIntensity: 0.8,
       metalness: 0.9,
       roughness: 0.1,
@@ -98,7 +98,7 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     const pulseRingGeo = new THREE.RingGeometry(0.1, 0.22, 32);
     pulseRingGeo.rotateX(-Math.PI / 2);
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xC8A46A,
+      color: 0xD2BE9D,
       transparent: true,
       opacity: 0.7,
       side: THREE.DoubleSide
@@ -108,11 +108,11 @@ export const Map3D: React.FC<Map3DProps> = ({ className = '' }) => {
     pinGroup.add(pulseRing);
 
     // Dynamic light
-    const pointLight = new THREE.PointLight(0xE3C994, 2, 4);
+    const pointLight = new THREE.PointLight(0xD2BE9D, 2, 4);
     pointLight.position.set(0.4, 1.2, -0.2);
     scene.add(pointLight);
 
-    const ambLight = new THREE.AmbientLight(0xfff3e0, 0.6);
+    const ambLight = new THREE.AmbientLight(0xF3EBDD, 0.6);
     scene.add(ambLight);
 
     // Animation Loop

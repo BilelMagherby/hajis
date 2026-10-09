@@ -76,20 +76,45 @@
 
 @layer base {
   :root {
-    --color-espresso: #160D08;
-    --color-espresso-dark: #090604;
-    --color-espresso-deep: #24150E;
-    --color-cream: #F3EBDD;
-    --color-cream-light: #F8F4EC;
-    --color-gold: #C8A46A;
-    --color-gold-light: #E3C994;
-    --color-coffee-brown: #4A2B1C;
+    --color-brand-black: #191817;
+    --color-brand-black-rgb: 25 24 23;
+    --color-brand-olive: #646044;
+    --color-brand-olive-rgb: 100 96 68;
+    --color-brand-chocolate: #4B2B1D;
+    --color-brand-chocolate-rgb: 75 43 29;
+    --color-brand-sand: #D2BE9D;
+    --color-brand-sand-rgb: 210 190 157;
+    --color-brand-terracotta: #A4755F;
+    --color-brand-terracotta-rgb: 164 117 95;
+    --color-brand-linen: #F3EBDD;
+    --color-brand-linen-rgb: 243 235 221;
+    --color-brand-stripes: repeating-linear-gradient(
+      0deg,
+      var(--color-brand-black) 0 2px,
+      var(--color-brand-linen) 2px 4px
+    );
+    --color-espresso: var(--color-brand-black);
+    --color-espresso-dark: var(--color-brand-black);
+    --color-espresso-deep: var(--color-brand-chocolate);
+    --color-olive: var(--color-brand-olive);
+    --color-olive-soft: var(--color-brand-olive);
+    --color-chocolate: var(--color-brand-chocolate);
+    --color-sand: var(--color-brand-sand);
+    --color-sand-soft: var(--color-brand-sand);
+    --color-gold: var(--color-brand-sand);
+    --color-gold-light: var(--color-brand-sand);
+    --color-linen: var(--color-brand-linen);
+    --color-cream: var(--color-brand-linen);
+    --color-terra-cotta: var(--color-brand-terracotta);
+    --color-coffee-brown: var(--color-chocolate);
+    --shadow-brand: rgba(25, 24, 23, 0.6);
+    --texture-stripes: var(--color-brand-stripes);
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #090604;
-    color: #F8F4EC;
+    background-color: var(--color-brand-black);
+    color: var(--color-brand-linen);
     font-family: 'Almarai', sans-serif;
     direction: rtl;
   }
@@ -100,8 +125,8 @@
     padding: 0;
     direction: rtl;
     text-align: start;
-    background-color: #090604;
-    color: #F8F4EC;
+    background-color: var(--color-brand-black);
+    color: var(--color-brand-linen);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Almarai', sans-serif;
@@ -117,8 +142,8 @@
   }
 
   ::selection {
-    background-color: #C8A46A;
-    color: #090604;
+    background-color: var(--color-brand-sand);
+    color: var(--color-brand-black);
   }
 }
 
@@ -128,16 +153,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #090604;
+  background: var(--color-brand-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3D281C;
+  background: var(--color-brand-chocolate);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C8A46A;
+  background: var(--color-sand);
 }
 
 /* Grain Noise Overlay */
@@ -145,8 +170,71 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-.header-primary-mix {
-  background: #967C6D !important;
+.brand-logo-warm {
+  filter: brightness(0) saturate(100%) invert(81%) sepia(14%) saturate(457%) hue-rotate(359deg) brightness(102%) contrast(91%);
+}
+
+.brand-stripe-divider {
+  height: 5px;
+  background: var(--texture-stripes);
+  opacity: 0.5;
+}
+
+.brand-texture-olive {
+  background-color: var(--color-brand-olive);
+  background-image:
+    radial-gradient(ellipse at 20% 15%, rgba(243, 235, 221, 0.07), transparent 55%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+}
+
+.brand-texture-clay {
+  background-color: var(--color-brand-terracotta);
+  background-image:
+    radial-gradient(ellipse at 80% 12%, rgba(243, 235, 221, 0.08), transparent 58%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+}
+
+.brand-texture-linen {
+  background-color: var(--color-brand-linen);
+  background-image:
+    repeating-linear-gradient(0deg, rgb(var(--color-brand-chocolate-rgb) / 0.025) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgb(var(--color-brand-chocolate-rgb) / 0.018) 0 1px, transparent 1px 5px);
+}
+
+.brand-button-primary {
+  border: 1px solid var(--color-brand-sand);
+  background-color: var(--color-brand-sand);
+  color: var(--color-brand-black);
+}
+
+.brand-button-primary:hover:not(:disabled) {
+  border-color: var(--color-brand-linen);
+  background-color: var(--color-brand-linen);
+  color: var(--color-brand-black);
+}
+
+.brand-button-primary:disabled {
+  border-color: var(--color-brand-chocolate);
+  background-color: var(--color-brand-chocolate);
+  color: var(--color-brand-linen);
+  cursor: not-allowed;
+}
+
+.brand-button-secondary {
+  border: 1px solid var(--color-brand-sand);
+  background-color: var(--color-brand-chocolate);
+  color: var(--color-brand-linen);
+}
+
+.brand-button-secondary:hover:not(:disabled) {
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-sand);
+}
+
+.brand-button-primary:focus-visible,
+.brand-button-secondary:focus-visible {
+  outline: 2px solid var(--color-brand-sand);
+  outline-offset: 3px;
 }
 
 main > section:not(#hero) {
@@ -209,7 +297,7 @@ main > section:not(#hero) {
 
 .visual-button:focus-visible,
 .visual-icon-control:focus-visible {
-  outline: 2px solid #E3C994;
+  outline: 2px solid var(--color-sand-soft);
   outline-offset: 3px;
 }
 
@@ -231,7 +319,7 @@ main > section:not(#hero) {
 }
 
 .visual-rating-control:focus-visible {
-  outline: 2px solid #3D281C;
+  outline: 2px solid var(--color-brand-chocolate);
   outline-offset: 1px;
 }
 
@@ -458,10 +546,10 @@ main > section:not(#hero) {
 
 /* Luxury Glassmorphism */
 .glass-espresso {
-  background: rgba(36, 21, 14, 0.65);
+  background: rgb(25 24 23 / 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(200, 164, 106, 0.2);
+  border: 1px solid rgb(var(--color-brand-sand-rgb) / 0.2);
 }
 
 .glass-espresso-hover {
@@ -469,15 +557,15 @@ main > section:not(#hero) {
 }
 
 .glass-espresso-hover:hover {
-  background: rgba(36, 21, 14, 0.85);
-  border-color: rgba(200, 164, 106, 0.6);
-  box-shadow: 0 10px 30px -10px rgba(200, 164, 106, 0.25);
+  background: rgb(25 24 23 / 0.85);
+  border-color: rgb(var(--color-brand-sand-rgb) / 0.6);
+  box-shadow: 0 10px 30px -10px rgb(var(--color-brand-sand-rgb) / 0.25);
   transform: translateY(-4px);
 }
 
-/* Gold Gradient text */
+/* Restrained sand gradient for brand highlights */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #F8F4EC 0%, #E3C994 40%, #C8A46A 75%, #A68249 100%);
+  background: linear-gradient(135deg, var(--color-brand-linen) 0%, var(--color-brand-sand) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -515,8 +603,8 @@ main > section:not(#hero) {
 }
 
 .coffee-card-front {
-  background: linear-gradient(180deg, rgba(168, 143, 129, 0.96) 0%, rgba(141, 117, 101, 0.96) 100%);
-  border: 1px solid rgba(61, 40, 28, 0.45);
+  background: var(--color-brand-olive);
+  border: 1px solid rgb(var(--color-brand-sand-rgb) / 0.45);
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
 }
 
@@ -532,29 +620,29 @@ main > section:not(#hero) {
 .coffee-card-number {
   font-size: 0.7rem;
   letter-spacing: 0.25em;
-  color: rgba(61, 40, 28, 0.8);
+  color: rgb(var(--color-brand-linen-rgb, 243 235 221) / 0.8);
 }
 
 .coffee-card-title {
   text-align: center;
   font-size: clamp(1.55rem, 2vw, 2.2rem);
   line-height: 1.8;
-  color: #20140F;
+  color: var(--color-brand-linen);
   font-weight: 700;
 }
 
 .coffee-card-subtitle {
   margin: 0;
   font-size: 0.8rem;
-  color: #3D281C;
+  color: var(--color-brand-sand);
 }
 
 .coffee-card-back {
   transform: rotateY(180deg);
-  background: linear-gradient(180deg, rgba(233, 217, 201, 0.96) 0%, rgba(214, 190, 170, 0.96) 100%);
-  border: 1px solid rgba(61, 40, 28, 0.7);
+  background: var(--color-brand-linen);
+  border: 1px solid rgb(var(--color-brand-chocolate-rgb, 75 43 29) / 0.7);
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
-  color: #20140F;
+  color: var(--color-brand-black);
 }
 
 .coffee-card-back-content {
@@ -573,7 +661,7 @@ main > section:not(#hero) {
   margin: 0;
   font-size: 0.82rem;
   line-height: 1.9;
-  color: #302019;
+  color: var(--color-brand-chocolate);
   text-align: center;
 }
 
@@ -583,16 +671,16 @@ main > section:not(#hero) {
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 60%, transparent 100%);
 }
 
-/* Animated gold border pulse */
+/* Animated sand border pulse */
 @keyframes goldBorderGlow {
 
   0%,
   100% {
-    border-color: rgba(200, 164, 106, 0.3);
+    border-color: rgb(var(--color-brand-sand-rgb) / 0.3);
   }
 
   50% {
-    border-color: rgba(227, 201, 148, 0.7);
+    border-color: rgb(var(--color-brand-sand-rgb) / 0.7);
   }
 }
 

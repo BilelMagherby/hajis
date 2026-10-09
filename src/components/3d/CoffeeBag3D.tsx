@@ -34,11 +34,11 @@ export const CoffeeBag3D: React.FC<CoffeeBag3DProps> = ({ className = '' }) => {
     const ambientLight = new THREE.AmbientLight(0xfff8ee, 0.8);
     scene.add(ambientLight);
 
-    const goldDirLight = new THREE.DirectionalLight(0xE3C994, 2.5);
-    goldDirLight.position.set(3, 4, 3);
-    scene.add(goldDirLight);
+    const sandDirLight = new THREE.DirectionalLight(0xD2BE9D, 2.5);
+    sandDirLight.position.set(3, 4, 3);
+    scene.add(sandDirLight);
 
-    const rimLight = new THREE.PointLight(0xC8A46A, 2, 8);
+    const rimLight = new THREE.PointLight(0xD2BE9D, 2, 8);
     rimLight.position.set(-2, 1, -2);
     scene.add(rimLight);
 
@@ -53,27 +53,25 @@ export const CoffeeBag3D: React.FC<CoffeeBag3DProps> = ({ className = '' }) => {
     const ctx = labelCanvas.getContext('2d');
     if (ctx) {
       // Matte dark espresso bag background
-      ctx.fillStyle = '#160D08';
+      ctx.fillStyle = '#191817';
       ctx.fillRect(0, 0, 1024, 1024);
 
       // Subtle textured border
-      ctx.strokeStyle = '#2A180E';
+      ctx.strokeStyle = '#4B2B1D';
       ctx.lineWidth = 12;
       ctx.strokeRect(30, 30, 964, 964);
 
-      // Gold foil brand typography
-      ctx.fillStyle = '#E3C994';
+      ctx.fillStyle = '#D2BE9D';
       ctx.font = '800 84px "Almarai", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('هاجس', 512, 340);
 
-      ctx.fillStyle = '#C8A46A';
+      ctx.fillStyle = '#D2BE9D';
       ctx.font = '500 32px "Almarai", sans-serif';
       ctx.letterSpacing = '6px';
       ctx.fillText('قهوة مختصة', 512, 410);
 
-      // Gold divider line
-      ctx.strokeStyle = '#C8A46A';
+      ctx.strokeStyle = '#D2BE9D';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(380, 450);
@@ -81,18 +79,18 @@ export const CoffeeBag3D: React.FC<CoffeeBag3DProps> = ({ className = '' }) => {
       ctx.stroke();
 
       // Coffee origin details
-      ctx.fillStyle = '#F8F4EC';
+      ctx.fillStyle = '#F3EBDD';
       ctx.font = '400 24px "Almarai", sans-serif';
       ctx.fillText('محصول إثيوبيا', 512, 510);
       ctx.fillText('محصول إثيوبيا يرغاتشيف الفاخر', 512, 555);
 
-      ctx.fillStyle = '#C8BAA6';
+      ctx.fillStyle = '#D2BE9D';
       ctx.font = '300 20px "Almarai", sans-serif';
       ctx.fillText('تحميص هاجس — حائل', 512, 630);
       ctx.fillText('٢٥٠ غراماً', 512, 680);
 
       // Saudi emblem / palm icon
-      ctx.fillStyle = '#E3C994';
+      ctx.fillStyle = '#D2BE9D';
       ctx.font = '400 36px "Almarai", sans-serif';
       ctx.fillText('✦ ✦ ✦', 512, 760);
     }

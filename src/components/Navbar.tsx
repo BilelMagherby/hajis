@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { InstagramIcon, SnapchatIcon, ThreadsIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
-import { brandData } from '../data/brand';
 
 interface NavbarProps {
   onNavigate?: (sectionId: string) => void;
@@ -79,8 +77,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header
         className={`fixed top-0 left-0 right-0 z-40 border-b transition-all duration-500 ${
           isScrolled
-            ? 'border-[#C8A46A]/25 bg-[#160D08]/85 backdrop-blur-md shadow-lg shadow-black/40 py-2'
-            : 'border-transparent bg-transparent shadow-none py-1'
+            ? 'border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] bg-[rgb(var(--color-brand-black-rgb)_/_0.85)] backdrop-blur-md shadow-lg shadow-black/40 py-2'
+            : 'border-[rgb(var(--color-brand-sand-rgb)_/_0.15)] bg-[rgb(var(--color-brand-black-rgb)_/_0.75)] backdrop-blur-md shadow-none py-2'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between -translate-y-2">
@@ -95,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src="/images/logo.png"
                 alt="شعار هاجس"
-                className="w-full h-auto object-contain filter invert contrast-125"
+                className="brand-logo-warm w-full h-auto object-contain"
               />
             </div>
           </button>
@@ -108,85 +106,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
                 className={`visual-button relative inline-flex items-center py-1 font-arabic text-sm font-medium transition-colors tracking-wide group ${
-                  activeSection === link.id ? 'text-[#E3C994]' : 'text-[#F3EBDD]/90 hover:text-[#E3C994]'
+                  activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] hover:text-[var(--color-brand-sand)]'
                 }`}
               >
                 {link.labelAr}
-                {/* Gold Underline Animation */}
-                <span className={`absolute bottom-0 right-0 h-[2px] bg-gradient-to-l from-[#C8A46A] to-[#E3C994] transition-all duration-300 ${
+                {/* Sand Underline Animation */}
+                <span className={`absolute bottom-0 right-0 h-[2px] bg-gradient-to-l from-[var(--color-brand-sand)] to-[var(--color-brand-sand)] transition-all duration-300 ${
                   activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
                 }`} />
               </button>
             ))}
           </nav>
 
-          {/* RIGHT: ACTIONS & SOCIALS */}
-          <div className="hidden xl:flex items-center space-x-5 space-x-reverse">
-            {/* Social Icons */}
-            <div className="flex items-center space-x-3 space-x-reverse text-[#C8BAA6]">
-              <a
-                href={brandData.contact.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="إنستغرام"
-              >
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={brandData.contact.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="تيك توك"
-              >
-                <TikTokIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={brandData.contact.snapchat}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="سناب شات"
-              >
-                <SnapchatIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={brandData.contact.threads}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="ثريدز"
-              >
-                <ThreadsIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={brandData.contact.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="إكس"
-              >
-                <XIcon className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href={brandData.contact.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="visual-icon-control rounded-full hover:text-[#E3C994] hover:bg-[#24150E] transition-all"
-                aria-label="يوتيوب"
-              >
-                <YoutubeIcon className="w-4 h-4" />
-              </a>
-            </div>
-
-          </div>
-
           {/* MOBILE HAMBURGER BUTTON */}
           <div className="flex lg:hidden items-center space-x-3 space-x-reverse">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="visual-icon-control rounded-full text-[#F8F4EC] hover:text-[#E3C994] focus:outline-none"
+              className="visual-icon-control rounded-full text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)] focus:outline-none"
               aria-label="فتح وإغلاق القائمة"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -197,15 +133,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-[rgba(150,124,109,0.8)] backdrop-blur-xl flex flex-col pt-24 px-6 lg:hidden">
+        <div className="fixed inset-0 z-30 flex flex-col bg-[rgb(var(--color-brand-black-rgb)_/_0.95)] px-6 pt-24 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col space-y-5 text-right">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
-                className={`visual-button w-full font-arabic text-xl py-2 border-b border-[#2A180E] text-right ${
-                  activeSection === link.id ? 'text-[#E3C994]' : 'text-[#F8F4EC] hover:text-[#E3C994]'
+                className={`visual-button w-full font-arabic text-xl py-2 border-b border-[var(--color-brand-chocolate)] text-right ${
+                  activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)]'
                 }`}
               >
                 {link.labelAr}
@@ -213,29 +149,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#3D281C] flex items-center justify-between">
-            <div className="flex items-center space-x-4 space-x-reverse text-[#C8A46A]">
-              <a className="visual-icon-control rounded-full" href={brandData.contact.instagram} target="_blank" rel="noopener noreferrer" aria-label="إنستغرام">
-                <InstagramIcon className="w-5 h-5" />
-              </a>
-              <a className="visual-icon-control rounded-full" href={brandData.contact.tiktok} target="_blank" rel="noopener noreferrer" aria-label="تيك توك">
-                <TikTokIcon className="w-5 h-5" />
-              </a>
-              <a className="visual-icon-control rounded-full" href={brandData.contact.snapchat} target="_blank" rel="noopener noreferrer" aria-label="سناب شات">
-                <SnapchatIcon className="w-5 h-5" />
-              </a>
-              <a className="visual-icon-control rounded-full" href={brandData.contact.x} target="_blank" rel="noopener noreferrer" aria-label="إكس">
-                <XIcon className="w-4 h-4" />
-              </a>
-              <a className="visual-icon-control rounded-full" href={brandData.contact.youtube} target="_blank" rel="noopener noreferrer" aria-label="يوتيوب">
-                <YoutubeIcon className="w-5 h-5" />
-              </a>
-            </div>
-
-            <span className="font-arabic text-xs text-[#C8BAA6]">
-              ميدان داني • حائل
-            </span>
-          </div>
         </div>
       )}
     </>

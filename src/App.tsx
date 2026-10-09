@@ -66,11 +66,11 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#090604] text-[#F8F4EC] selection:bg-[#C8A46A] selection:text-[#090604] overflow-x-clip">
+    <div className="relative min-h-screen bg-[var(--color-brand-black)] text-[var(--color-brand-linen)] selection:bg-[var(--color-brand-sand)] selection:text-[var(--color-brand-black)] overflow-x-clip">
       {/* 1. Cinematic Loading Screen */}
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
-      {/* 2. Custom Gold Desktop Cursor */}
+      {/* 2. Custom Sand Desktop Cursor */}
       <CustomCursor />
 
       {/* 3. Luxury Floating Navbar */}

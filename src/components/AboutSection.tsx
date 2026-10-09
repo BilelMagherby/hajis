@@ -37,14 +37,14 @@ export const AboutSection: React.FC = () => {
     <section
       id="about"
       data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] overflow-hidden"
     >
       <div
         aria-hidden="true"
         className="parallax-background pointer-events-none absolute inset-0 opacity-50"
         style={{ backgroundImage: "url('/images/about-parallax.png')" }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
+      <div className="pointer-events-none absolute inset-0 bg-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -55,10 +55,10 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative w-full max-w-xl">
               {/* Soft decorative shadow background */}
-              <div className="absolute -inset-4 bg-[#77764A]/40 rounded-3xl blur-2xl transform -rotate-2" />
+              <div className="absolute -inset-4 bg-[rgb(var(--color-brand-olive-rgb)_/_0.4)] rounded-3xl blur-2xl transform -rotate-2" />
 
               {/* The Image Container with subtle organic border */}
-              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[#C8A46A]/35 bg-[#292D1D]">
+              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[var(--color-brand-olive)]">
                 <img
                   ref={imageRef}
                   src="/images/about_cafe_pourover.jpeg"
@@ -67,12 +67,12 @@ export const AboutSection: React.FC = () => {
                 />
                 
                 {/* Subtle vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#160D08]/30 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Small Heritage Tag at bottom-right of image */}
-              <div className="absolute -bottom-5 right-6 bg-[#160D08] text-[#E3C994] px-5 py-2.5 rounded-full border border-[#C8A46A]/40 shadow-xl flex items-center space-x-2 space-x-reverse">
-                <span className="text-[#C8A46A]">•</span>
+              <div className="absolute -bottom-5 right-6 bg-[var(--color-brand-black)] text-[var(--color-brand-sand)] px-5 py-2.5 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] shadow-xl flex items-center space-x-2 space-x-reverse">
+                <span className="text-[var(--color-brand-sand)]">•</span>
                 <span className="font-arabic text-xs font-light">حائل منذ 2020</span>
               </div>
             </div>
@@ -81,59 +81,59 @@ export const AboutSection: React.FC = () => {
           {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
           <RevealOnScroll
             direction="right"
-            className="lg:col-span-6 text-right order-1 lg:order-1 space-y-6"
+            className="lg:col-span-6 order-1 space-y-5 text-right lg:order-1 lg:space-y-6"
             delay={160}
           >
             {/* Top Insignia Emblem */}
             <div dir="rtl" className="flex items-center justify-start gap-3">
-              <span className="font-arabic text-xs tracking-widest text-[#E3C994] uppercase font-medium">
+              <span className="font-arabic text-sm tracking-widest text-[var(--color-brand-sand)] uppercase font-semibold">
                 أصالة المكان وروح الضيافة
               </span>
               <div className="w-12 h-auto flex items-center justify-center">
                 <img
                   src="/images/logo.png"
                   alt="شعار هاجس"
-                  className="w-full h-auto object-contain"
+                  className="brand-logo-warm w-full h-auto object-contain"
                 />
               </div>
             </div>
 
             {/* Main Title */}
-            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8F4EC] tracking-tight">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-linen)] tracking-tight">
                هاجس ؟
             </h2>
 
             {/* Introductory sentence */}
-            <p className="font-arabic text-base sm:text-lg text-[#E8DCC5] font-medium leading-relaxed">
+            <p className="font-arabic text-base sm:text-lg text-[var(--color-brand-linen)] font-medium leading-relaxed">
              
             </p>
 
             {/* The 3 Pillars List */}
-            <ul dir="rtl" className="space-y-4 font-arabic text-sm sm:text-base text-[#F3EBDD] leading-relaxed">
+            <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>مقهى متخصص يقدم أفضل منتجات علامات التحميص المميزة في المملكة العربية السعودية.
 </span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>يحضى بجلسات خرجية جميلة يلتقي فيه عشاق وشغوفي القهوة في أهم المواقع بمدينة حائل.
 </span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#C8A46A] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>خدمة العملاء هدف ملزم لتحقيق راحتهم وثقتتهم بهاجس. .</span>
               </li>
             </ul>
 
             {/* Unifying statement */}
-            <p className="font-arabic text-sm sm:text-base text-[#E8DCC5] leading-relaxed pt-2">
+            <p className="pt-1 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
               وهذي الأشياء الثلاث مو متفرقة عن بعض، أصلها واحد، بس كل وحدة تعبّر عنه بطريقتها.
             </p>
 
             {/* Final Statement / Punchline */}
-            <div className="pt-4 border-t border-[#C8A46A]/35">
-              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[#E3C994] tracking-wide">
+            <div className="pt-4 border-t border-[rgb(var(--color-brand-sand-rgb)_/_0.35)]">
+              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-sand)] tracking-wide">
                 القهوة... طقس نعيشه.
               </p>
             </div>
@@ -141,29 +141,29 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
-        <RevealOnScroll className="mt-20 lg:mt-24" delay={100}>
+        <RevealOnScroll className="mt-16 sm:mt-20 lg:mt-24" delay={100}>
           <div
             dir="rtl"
-            className="visual-card overflow-hidden rounded-3xl border border-[#C8A46A]/25 bg-[#967C6D]/85 backdrop-blur-sm"
+            className="brand-texture-clay visual-card overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)]"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              <div className="p-7 sm:p-10 lg:col-span-7 lg:p-14">
-                <div className="story-copy-reveal story-reveal-delay-1 mb-7 flex items-center gap-3">
-                  <span className="h-px w-9 bg-[#C8A46A]" />
-                  <span className="font-arabic text-xs font-bold tracking-[0.18em] text-[#20140F]">
+              <div className="p-6 sm:p-10 lg:col-span-7 lg:p-14">
+                <div className="story-copy-reveal story-reveal-delay-1 mb-4 flex items-center gap-3 sm:mb-5">
+                  <span className="h-px w-9 bg-[var(--color-brand-sand)]" />
+                  <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-black)]">
                     حكاية المكان
                   </span>
                 </div>
 
-                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold tracking-tight text-[#160D08] sm:text-4xl">
+                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold leading-[1.5] tracking-tight text-[var(--color-brand-black)] sm:text-4xl">
                   قصتنا
                 </h3>
 
-                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-6 border-r-2 border-[#C8A46A] pr-5 font-kufi text-xl font-bold leading-relaxed text-[#20140F] sm:text-2xl">
+                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-4 border-r-2 border-[var(--color-brand-chocolate)] pr-5 font-kufi text-xl font-bold leading-[1.8] text-[var(--color-brand-black)] sm:mt-5 sm:text-2xl">
                   «بدأت قصتنا من الوجار»
                 </blockquote>
 
-                <div className="mt-7 max-w-prose space-y-5 font-arabic text-sm leading-8 text-[#302019] sm:text-base sm:leading-9">
+                <div className="mt-5 max-w-prose space-y-4 font-arabic text-base leading-[1.9] text-[var(--color-brand-black)] sm:mt-6 sm:space-y-5 sm:text-lg">
                   <p className="story-copy-reveal story-reveal-delay-4">
                     في منتصف التسعينيات، أنشأنا مقهى صغيرًا باسم «الوجار» في مبنى قديم بالموقع نفسه. والوجار اسمٌ تقليديٌّ في حائل، يُطلق على الموقد الذي يجتمع حوله الناس شتاءً طلبًا للدفء، وتبادلًا للأحاديث بين الأهل والأصدقاء.
                   </p>
@@ -175,9 +175,9 @@ export const AboutSection: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="story-copy-reveal story-reveal-delay-7 mt-9 flex items-center gap-3 border-t border-[#C8A46A]/20 pt-6">
-                  <span className="h-2 w-2 rounded-full bg-[#C8A46A]" />
-                  <span className="font-arabic text-xs font-medium tracking-wide text-[#20140F] sm:text-sm">
+                <div className="story-copy-reveal story-reveal-delay-7 mt-6 flex items-center gap-3 border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.25)] pt-5 sm:mt-8 sm:pt-6">
+                  <span className="h-2 w-2 rounded-full bg-[var(--color-brand-sand)]" />
+                  <span className="font-arabic text-sm font-semibold tracking-wide text-[var(--color-brand-black)] sm:text-base">
                     حائل · حكاية تمتد لأكثر من ثلاثين عامًا
                   </span>
                 </div>
@@ -190,8 +190,8 @@ export const AboutSection: React.FC = () => {
                   className="story-image-reveal absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#160D08]/75 via-[#160D08]/10 to-transparent lg:bg-gradient-to-l lg:from-[#967C6D]/25 lg:via-transparent lg:to-[#967C6D]/25" />
-                <span className="absolute bottom-5 right-5 rounded-full border border-[#E3C994]/40 bg-[#160D08]/65 px-4 py-2 font-arabic text-xs text-[#F3EBDD] backdrop-blur-sm sm:bottom-7 sm:right-7">
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.75)] via-[rgb(var(--color-brand-black-rgb)_/_0.1)] to-transparent lg:bg-gradient-to-l lg:from-[rgb(var(--color-brand-terracotta-rgb)_/_0.25)] lg:via-transparent lg:to-[rgb(var(--color-brand-terracotta-rgb)_/_0.25)]" />
+                <span className="absolute bottom-5 right-5 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] bg-[rgb(var(--color-brand-black-rgb)_/_0.65)] px-4 py-2 font-arabic text-xs text-[var(--color-brand-linen)] backdrop-blur-sm sm:bottom-7 sm:right-7">
                   من الوجار إلى هاجس
                 </span>
               </div>

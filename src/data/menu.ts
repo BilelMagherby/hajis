@@ -442,11 +442,12 @@ const menuPages = orderedBookCategories.flatMap((category) => {
     const itemsOnPage = Math.ceil((category.items.length - itemOffset) / pagesRemaining);
     const items = category.items.slice(itemOffset, itemOffset + itemsOnPage);
     itemOffset += itemsOnPage;
+    const pageLabel = pageCount > 1 ? ` — ${pageIndex + 1}/${pageCount}` : '';
 
     return {
       id: nextPageId++,
       type: 'menu' as const,
-      titleAr: category.titleAr,
+      titleAr: `${category.titleAr}${pageLabel}`,
       descriptionAr: category.descriptionAr,
       image: category.image,
       items

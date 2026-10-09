@@ -17,7 +17,7 @@ export const ShopQrCode: React.FC<ShopQrCodeProps> = ({ className, imageClassNam
       errorCorrectionLevel: 'M',
       margin: 2,
       width: 256,
-      color: { dark: '#160D08', light: '#F8F4EC' }
+      color: { dark: '#191817', light: '#F3EBDD' }
     }).then((url) => {
       if (isActive) setDataUrl(url);
     }).catch((qrError: unknown) => {

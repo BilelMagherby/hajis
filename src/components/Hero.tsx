@@ -10,68 +10,54 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
   return (
     <section
       id="hero"
-      className="relative mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[#090604] select-none"
+      className="relative mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[var(--color-brand-black)] select-none"
     >
-      {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
       <div className="absolute inset-0 overflow-hidden">
         <img
           src="/images/hero_cafe_dusk.png"
           alt="واجهة مقهى هاجس"
           draggable={false}
-          className="hero-slide-image w-full h-full object-cover object-[center_40%] filter brightness-125 contrast-125 saturate-125"
+          className="hero-slide-image h-full w-full object-cover object-[center_40%] brightness-125 contrast-125 saturate-125"
         />
 
-        {/* Very light vignette so the image stays crisp and bright */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090604]/10 via-transparent to-[#090604]/5" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#090604]/10 via-transparent to-[#090604]/10" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-transparent to-[rgb(var(--color-brand-black-rgb)_/_0.1)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[rgb(var(--color-brand-black-rgb)_/_0.15)] via-transparent to-[rgb(var(--color-brand-black-rgb)_/_0.15)]" />
       </div>
 
-      {/* Subtle Grain Texture Overlay */}
       <div className="absolute inset-0 grain-overlay pointer-events-none z-10 opacity-30" />
 
-      {/* FOREGROUND CONTENT CONTAINER */}
-      <div className="pointer-events-none relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-[75vh] items-center justify-center">
-          <div className="pointer-events-none opacity-0 h-0 w-0 overflow-hidden">
-            <div className="inline-flex items-center justify-center">
-              <div className="relative w-28 sm:w-32 flex items-center justify-center p-2">
-                <img
-                  src="/images/logo.png"
-                  alt="شعار هاجس"
-                  className="w-full h-auto object-contain filter invert contrast-125"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-1">
-              <h1 className="font-kufi text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#F8F4EC] tracking-tight leading-none drop-shadow-md">
+      <div className="relative z-20 w-full pl-4 pr-2 sm:pl-6 sm:pr-2 lg:pl-8 lg:pr-2">
+        <div className="flex min-h-[75vh] items-center justify-end" dir="ltr">
+          <div dir="rtl" className="w-full max-w-2xl rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] bg-gradient-to-br from-[rgb(var(--color-brand-black-rgb)_/_0.95)] to-[rgb(var(--color-brand-chocolate-rgb)_/_0.9)] p-5 text-right shadow-[0_24px_80px_rgba(0,0,0,0.6)] sm:p-7 md:p-8">
+            <div className="space-y-2">
+              <h1 className="font-kufi text-5xl font-black tracking-[-0.05em] text-[var(--color-brand-linen)] drop-shadow-[0_4px_18px_rgba(0,0,0,0.8)] sm:text-6xl lg:text-7xl">
                 هاجس
               </h1>
-              <h2 className="font-kufi text-2xl sm:text-3xl lg:text-4xl font-light text-[#E3C994] tracking-wide pt-1">
+              <p className="font-kufi text-xl font-bold tracking-[0.08em] text-[var(--color-brand-sand)] drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] sm:text-2xl lg:text-3xl">
                 هوس التذوّق
-              </h2>
+              </p>
             </div>
 
-            <p className="mt-5 font-arabic text-sm sm:text-base text-[#D8CEBF] leading-relaxed max-w-xl font-light">
+            <p className="mt-4 w-full text-sm font-medium leading-8 text-[var(--color-brand-linen)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] sm:text-base md:text-lg">
               {brandData.heroQuote}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4 justify-end">
+            <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
               <button
                 onClick={onDiscoverClick || (() => {
                   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                 })}
-                className="visual-button group relative inline-flex items-center space-x-3 space-x-reverse px-8 py-3.5 rounded-full border border-[#C8A46A] bg-[#24150E]/80 backdrop-blur-md text-[#F8F4EC] text-sm font-medium tracking-wide hover:bg-[#C8A46A] hover:text-[#090604] transition-all duration-300 shadow-gold-glow hover:shadow-gold-glow-lg"
+                className="brand-button-primary visual-button group inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-sm font-medium tracking-[0.08em] shadow-[0_0_26px_rgb(var(--color-brand-sand-rgb)_/_0.22)] transition-all duration-300"
               >
                 <span>اكتشف قصتنا</span>
-                <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
               </button>
 
               <button
                 onClick={() => {
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="visual-button px-6 py-3.5 rounded-full text-[#C8BAA6] hover:text-[#E3C994] text-sm font-arabic transition-colors border border-transparent hover:border-[#C8A46A]/30 bg-[#160D08]/40"
+                className="brand-button-secondary visual-button inline-flex items-center rounded-full px-6 py-3.5 text-sm font-medium transition-colors"
               >
                 اكتشف القائمة
               </button>
@@ -80,14 +66,11 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
         </div>
       </div>
 
-      {/* SCROLL INDICATOR ON LEFT/RIGHT EDGE */}
-      <div className="hidden lg:flex absolute bottom-8 left-8 z-20 flex-col items-center space-y-2 opacity-75 hover:opacity-100 transition-opacity pointer-events-none">
-        <div className="w-5 h-8 rounded-full border border-[#C8A46A]/50 flex justify-center p-1">
-          <div className="w-1 h-2 bg-[#E3C994] rounded-full animate-bounce" />
+      <div className="absolute bottom-8 left-8 z-20 hidden flex-col items-center gap-2 opacity-80 transition-opacity hover:opacity-100 lg:flex pointer-events-none">
+        <div className="flex h-8 w-5 justify-center rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] p-1">
+          <div className="h-2 w-1 rounded-full bg-[var(--color-brand-sand)] animate-bounce" />
         </div>
-        <span className="font-brand text-[9px] tracking-[0.25em] text-[#C8A46A]">
-          SCROLL
-        </span>
+        <span className="text-[9px] tracking-[0.25em] text-[var(--color-brand-sand)]">SCROLL</span>
       </div>
     </section>
   );

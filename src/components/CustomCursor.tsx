@@ -6,30 +6,29 @@ export const CustomCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only enable on desktop/mouse devices
     if (window.matchMedia('(pointer: coarse)').matches) {
       return;
     }
 
     const onMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
 
       const target = e.target as HTMLElement;
-      if (
+      const hovered =
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
-        target.closest('button') ||
-        target.closest('a') ||
-        target.getAttribute('role') === 'button'
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
+        Boolean(target.closest('button')) ||
+        Boolean(target.closest('a')) ||
+        target.getAttribute('role') === 'button';
+
+      setIsHovered(hovered);
     };
 
-    const onMouseLeave = () => setIsVisible(false);
+    const onMouseLeave = () => {
+      setIsVisible(false);
+      setIsHovered(false);
+    };
 
     window.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseleave', onMouseLeave);
@@ -38,7 +37,7 @@ export const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, [isVisible]);
+  }, []);
 
   if (!isVisible) return null;
 
@@ -54,8 +53,8 @@ export const CustomCursor: React.FC = () => {
       <div
         className={`rounded-full transition-all duration-300 ${
           isHovered
-            ? 'w-10 h-10 border border-[#E3C994] bg-[#C8A46A]/20 backdrop-blur-[1px] shadow-[0_0_15px_rgba(200,164,106,0.4)]'
-            : 'w-4 h-4 rounded-full bg-[#E3C994]/80 shadow-[0_0_8px_rgba(200,164,106,0.5)]'
+            ? 'w-10 h-10 border border-[var(--color-brand-sand)] bg-[rgb(var(--color-brand-sand-rgb)_/_0.2)] backdrop-blur-[1px] shadow-[0_0_15px_rgb(var(--color-brand-sand-rgb)_/_0.4)]'
+            : 'w-4 h-4 rounded-full bg-[rgb(var(--color-brand-sand-rgb)_/_0.8)] shadow-[0_0_8px_rgb(var(--color-brand-sand-rgb)_/_0.5)]'
         }`}
       />
     </div>

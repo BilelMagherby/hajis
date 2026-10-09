@@ -7,30 +7,48 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          black: '#191817',
+          olive: '#646044',
+          chocolate: '#4B2B1D',
+          sand: '#D2BE9D',
+          terracotta: '#A4755F',
+          linen: '#F3EBDD',
+        },
         espresso: {
-          DEFAULT: '#160D08',
-          dark: '#090604',
-          deep: '#24150E',
-          card: '#1F130C',
-          surface: '#2A1A12',
-          border: '#3D281C',
+          DEFAULT: '#191817',
+          dark: '#191817',
+          deep: '#4B2B1D',
+          card: '#191817',
+          surface: '#4B2B1D',
+          border: '#4B2B1D',
         },
         cream: {
           DEFAULT: '#F3EBDD',
-          light: '#F8F4EC',
-          muted: '#D8CEBF',
-          dark: '#C8BAA6',
+          light: '#F3EBDD',
+          muted: '#D2BE9D',
+          dark: '#D2BE9D',
+        },
+        olive: {
+          DEFAULT: '#646044',
+          soft: '#646044',
+        },
+        linen: '#F3EBDD',
+        terracotta: '#A4755F',
+        sand: {
+          DEFAULT: '#D2BE9D',
+          light: '#D2BE9D',
         },
         gold: {
-          DEFAULT: '#C8A46A',
-          light: '#E3C994',
-          dark: '#A68249',
-          glow: 'rgba(200, 164, 106, 0.25)',
-          border: 'rgba(200, 164, 106, 0.35)',
+          DEFAULT: '#D2BE9D',
+          light: '#D2BE9D',
+          dark: '#D2BE9D',
+          glow: 'rgba(210, 190, 157, 0.25)',
+          border: 'rgba(210, 190, 157, 0.35)',
         },
         coffee: {
-          brown: '#4A2B1C',
-          accent: '#82543A',
+          brown: '#4B2B1D',
+          accent: '#4B2B1D',
         }
       },
       fontFamily: {
@@ -40,11 +58,14 @@ export default {
         brand: ['Almarai', 'sans-serif'],
         mono: ['Almarai', 'sans-serif'],
       },
+      backgroundImage: {
+        'brand-stripes': 'var(--color-brand-stripes)',
+      },
       boxShadow: {
-        'gold-glow': '0 0 25px rgba(200, 164, 106, 0.15)',
-        'gold-glow-lg': '0 0 45px rgba(200, 164, 106, 0.28)',
-        'luxury-card': '0 20px 40px -15px rgba(9, 6, 4, 0.7)',
-        'soft-inner': 'inset 0 1px 1px 0 rgba(227, 201, 148, 0.2)',
+        'gold-glow': '0 0 25px rgba(210, 190, 157, 0.15)',
+        'gold-glow-lg': '0 0 45px rgba(210, 190, 157, 0.28)',
+        'luxury-card': '0 20px 40px -15px rgba(25, 24, 23, 0.7)',
+        'soft-inner': 'inset 0 1px 1px 0 rgba(210, 190, 157, 0.2)',
       },
       animation: {
         'steam': 'steam 4s ease-in-out infinite',

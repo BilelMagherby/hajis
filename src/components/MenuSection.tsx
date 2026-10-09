@@ -14,15 +14,15 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
     <section
       id="menu"
       data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#292D1D] text-[#F8F4EC] overflow-hidden"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] overflow-hidden"
     >
       <div
         aria-hidden="true"
         className="parallax-background pointer-events-none absolute inset-0 opacity-65"
         style={{ backgroundImage: "url('/images/coffee-parallax.png')" }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[#202418]/65" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#3B4028]/30 via-[#292D1D]/45 to-[#292D1D]/65" />
+      <div className="pointer-events-none absolute inset-0 bg-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-[rgb(var(--color-brand-olive-rgb)_/_0.45)] to-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <RevealOnScroll
@@ -30,32 +30,32 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
           className="mb-14 flex w-full flex-col items-start text-right"
         >
           <div className="mb-3 flex items-center justify-start">
-            <span className="font-arabic text-xs font-medium tracking-[0.24em] text-[#E3C994]">
+            <span className="font-arabic text-xs font-medium tracking-[0.24em] text-[var(--color-brand-sand)]">
               إبداعات هاجس
             </span>
           </div>
-          <h2 className="visual-section-title font-kufi text-3xl font-bold text-[#F8F4EC] sm:text-4xl lg:text-5xl">
+          <h2 className="visual-section-title font-kufi text-3xl font-bold text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
             قائمة القهوة
           </h2>
-          <p className="mt-4 max-w-2xl font-arabic text-sm font-light leading-8 text-[#D8CEBF] sm:text-base">
+          <p className="mt-4 max-w-2xl font-arabic text-sm font-light leading-8 text-[var(--color-brand-linen)] sm:text-base">
             من القهوة الكلاسيكية إلى تجارب V60 الفريدة، كل كوب يروي حكاية شغف وتفانٍ للمذاق الأصيل.
           </p>
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12" dir="ltr">
           <RevealOnScroll
-            className="visual-card flex flex-col items-center justify-center rounded-2xl border border-[#C8A46A]/25 bg-[#252A1B]/80 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
+            className="brand-texture-olive visual-card flex flex-col items-center justify-center rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
             dir="rtl"
             delay={120}
           >
-            <div className="visual-media image-circle-hover relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgba(200,164,106,0.12)]">
+            <div className="visual-media image-circle-hover relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgb(var(--color-brand-sand-rgb)_/_0.12)]">
               <img
                 src="/images/espresso_pour.jpg"
                 alt="قهوة هاجس المختصة"
                 className="aspect-[4/3] w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#171A12]/60 via-transparent to-transparent" />
-              <span className="absolute bottom-4 right-4 font-arabic text-xs tracking-wide text-[#F8F4EC]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.6)] via-transparent to-transparent" />
+              <span className="absolute bottom-4 right-4 font-arabic text-xs tracking-wide text-[var(--color-brand-linen)]">
                 مذاقٌ يُحضّر على مهل
               </span>
             </div>
@@ -68,7 +68,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
                   setSelectedCategory(menuCategories[0]);
                 }
               }}
-              className="visual-button flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full border border-[#C8A46A]/80 bg-[#24150E]/80 px-6 py-3.5 font-arabic text-sm font-medium text-[#F8F4EC] shadow-gold-glow transition-all duration-300 hover:bg-[#C8A46A] hover:text-[#090604]"
+              className="brand-button-primary visual-button flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full px-6 py-3.5 font-arabic text-sm font-medium shadow-gold-glow transition-all duration-300"
             >
               <span>اكتشف القائمة الكاملة</span>
               <ArrowLeft className="w-4 h-4" />
@@ -104,20 +104,20 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
             ].map((item) => (
               <article
                 key={item.number}
-                className="visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[#C8A46A]/20 bg-[#303522] p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[#C8A46A]/55 sm:p-6"
+                className="brand-texture-olive visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.55)] sm:p-6"
               >
                 <div className="flex flex-col items-start gap-2">
-                  <span className="font-arabic text-[10px] tracking-[0.2em] text-[#C8A46A]/80">
+                  <span className="font-arabic text-[10px] tracking-[0.2em] text-[rgb(var(--color-brand-sand-rgb)_/_0.8)]">
                     {item.number}
                   </span>
-                  <h3 className="font-kufi text-lg font-semibold text-[#F8F4EC] transition-colors group-hover:text-[#E3C994] sm:text-xl">
+                  <h3 className="font-kufi text-lg font-semibold text-[var(--color-brand-linen)] transition-colors group-hover:text-[var(--color-brand-sand)] sm:text-xl">
                     {item.title}
                   </h3>
                 </div>
-                <p className="mt-5 font-arabic text-sm font-light leading-7 text-[#D8CEBF]">
+                <p className="mt-5 font-arabic text-sm font-light leading-7 text-[var(--color-brand-linen)]">
                   {item.description}
                 </p>
-                <div className="mt-4 h-px w-10 self-end bg-[#C8A46A]/55 transition-all duration-300 group-hover:w-16" />
+                <div className="mt-4 h-px w-10 self-end bg-[rgb(var(--color-brand-sand-rgb)_/_0.55)] transition-all duration-300 group-hover:w-16" />
               </article>
             ))}
           </RevealOnScroll>
@@ -127,24 +127,24 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
       {/* LUXURY MENU MODAL / DRAWER */}
       {selectedCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-[#160D08] border border-[#C8A46A]/40 rounded-3xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl">
+          <div className="relative w-full max-w-2xl bg-[var(--color-brand-black)] border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] rounded-3xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl">
             {/* Close Button */}
             <button
               onClick={() => setSelectedCategory(null)}
-              className="visual-icon-control absolute top-5 left-5 rounded-full border border-[#C8A46A]/30 text-[#D8CEBF] hover:text-[#F8F4EC] hover:bg-[#24150E] transition-colors"
+              className="visual-icon-control absolute top-5 left-5 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] text-[var(--color-brand-linen)] hover:text-[var(--color-brand-linen)] hover:bg-[var(--color-brand-chocolate)] transition-colors"
               aria-label="إغلاق"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Modal Header */}
-            <div className="text-right pb-6 border-b border-[#3D281C]">
-              <span className="font-brand text-xs text-[#C8A46A] tracking-widest uppercase">
+            <div className="text-right pb-6 border-b border-[var(--color-brand-chocolate)]">
+              <span className="font-brand text-xs text-[var(--color-brand-sand)] tracking-widest uppercase">
               </span>
-              <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[#F8F4EC]">
+              <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-linen)]">
                 {selectedCategory.titleAr}
               </h3>
-              <p className="font-arabic text-sm text-[#D8CEBF] mt-1">
+              <p className="font-arabic text-sm text-[var(--color-brand-linen)] mt-1">
                 {selectedCategory.descriptionAr}
               </p>
             </div>
@@ -154,30 +154,30 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
               {selectedCategory.items.map((item: MenuItem) => (
                 <div
                   key={item.id}
-                  className="p-4 rounded-xl bg-[#24150E]/60 border border-[#C8A46A]/15 hover:border-[#C8A46A]/50 transition-colors text-right flex flex-col justify-between"
+                  className="p-4 rounded-xl bg-[rgb(var(--color-brand-chocolate-rgb)_/_0.6)] border border-[rgb(var(--color-brand-sand-rgb)_/_0.15)] hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] transition-colors text-right flex flex-col justify-between"
                 >
                   <div className="flex items-start justify-between">
                     {/* Price */}
-                    <span className="font-mono text-base font-bold text-[#E3C994]">
+                    <span className="font-mono text-base font-bold text-[var(--color-brand-sand)]">
                       {item.price}
                     </span>
 
                     {/* Name */}
                     <div>
-                      <h4 className="font-kufi text-lg font-bold text-[#F8F4EC]">
+                      <h4 className="font-kufi text-lg font-bold text-[var(--color-brand-linen)]">
                         {item.nameAr}
                       </h4>
-                      <span className="font-brand text-xs text-[#C8BAA6]">
+                      <span className="font-brand text-xs text-[var(--color-brand-sand)]">
                       </span>
                     </div>
                   </div>
 
-                  <p className="font-arabic text-xs text-[#D8CEBF]/90 mt-2 font-light">
+                  <p className="font-arabic text-xs text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] mt-2 font-light">
                     {item.descriptionAr}
                   </p>
 
                   {item.notes && (
-                    <div className="mt-2 flex items-center justify-end space-x-1 space-x-reverse text-[11px] text-[#C8A46A]">
+                    <div className="mt-2 flex items-center justify-end space-x-1 space-x-reverse text-[11px] text-[var(--color-brand-sand)]">
                       <Sparkles className="w-3 h-3" />
                       <span>{item.notes}</span>
                     </div>

@@ -38,11 +38,11 @@ export const Hero3D: React.FC<Hero3DProps> = ({ className = '' }) => {
     const ambientLight = new THREE.AmbientLight(0xfff5e6, 0.7);
     scene.add(ambientLight);
 
-    const goldKeyLight = new THREE.DirectionalLight(0xE3C994, 2.5);
-    goldKeyLight.position.set(3, 4, 3);
-    scene.add(goldKeyLight);
+    const sandKeyLight = new THREE.DirectionalLight(0xD2BE9D, 2.5);
+    sandKeyLight.position.set(3, 4, 3);
+    scene.add(sandKeyLight);
 
-    const warmRimLight = new THREE.PointLight(0xC8A46A, 3, 10);
+    const warmRimLight = new THREE.PointLight(0xD2BE9D, 3, 10);
     warmRimLight.position.set(-3, 2, -2);
     scene.add(warmRimLight);
 
@@ -69,7 +69,7 @@ export const Hero3D: React.FC<Hero3DProps> = ({ className = '' }) => {
       ior: 1.52,
       thickness: 0.4,
       specularIntensity: 1,
-      specularColor: new THREE.Color(0xE3C994),
+      specularColor: new THREE.Color(0xD2BE9D),
       envMapIntensity: 1.5,
     });
 
@@ -99,16 +99,16 @@ export const Hero3D: React.FC<Hero3DProps> = ({ className = '' }) => {
     v60Group.add(coneMesh);
 
     // Dripper Gold Base Ring
-    const goldRingGeo = new THREE.TorusGeometry(0.5, 0.04, 16, 32);
-    goldRingGeo.rotateX(Math.PI / 2);
-    const goldMat = new THREE.MeshStandardMaterial({
-      color: 0xC8A46A,
+    const sandRingGeo = new THREE.TorusGeometry(0.5, 0.04, 16, 32);
+    sandRingGeo.rotateX(Math.PI / 2);
+    const sandMat = new THREE.MeshStandardMaterial({
+      color: 0xD2BE9D,
       metalness: 0.85,
       roughness: 0.25,
     });
-    const goldRing = new THREE.Mesh(goldRingGeo, goldMat);
-    goldRing.position.y = 0.02;
-    v60Group.add(goldRing);
+    const sandRing = new THREE.Mesh(sandRingGeo, sandMat);
+    sandRing.position.y = 0.02;
+    v60Group.add(sandRing);
 
     // Paper Filter Inside Cone
     const filterGeo = new THREE.ConeGeometry(0.7, 0.8, 24, 1, true);
@@ -217,7 +217,7 @@ export const Hero3D: React.FC<Hero3DProps> = ({ className = '' }) => {
     if (ctx) {
       const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
       grad.addColorStop(0, 'rgba(243, 235, 221, 0.45)');
-      grad.addColorStop(0.5, 'rgba(200, 164, 106, 0.2)');
+      grad.addColorStop(0.5, 'rgba(210, 190, 157, 0.2)');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 64, 64);
