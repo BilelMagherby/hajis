@@ -21,8 +21,8 @@ export const PhilosophySection: React.FC = () => {
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[1] opacity-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mb-12 grid grid-cols-1 items-center gap-6 lg:mb-16 lg:grid-cols-12 lg:gap-12" dir="ltr">
-          <div className="lg:col-span-6 lg:col-start-1 text-right" dir="rtl">
+        <div className="mb-12 grid grid-cols-1 items-center gap-6 md:mb-16 md:grid-cols-12 md:gap-12" dir="ltr">
+          <div className="md:col-span-6 md:col-start-7 md:row-start-1 text-right" dir="rtl">
             <div className="flex items-center justify-start mb-3">
               <span className="font-arabic text-sm font-semibold tracking-widest text-[var(--color-brand-chocolate)] uppercase">
                 معايير الجودة والكمال
@@ -33,7 +33,7 @@ export const PhilosophySection: React.FC = () => {
             </h2>
           </div>
 
-          <div className="lg:col-span-6 lg:col-start-7 text-right" dir="rtl">
+          <div className="md:col-span-6 md:col-start-1 md:row-start-1 text-right" dir="rtl">
             <div className="visual-card relative overflow-hidden rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.45)] bg-[var(--color-brand-chocolate)] p-6 text-[var(--color-brand-linen)] shadow-[0_18px_44px_rgba(0,0,0,0.22)] sm:p-8">
               <div className="pointer-events-none absolute inset-0 opacity-15">
                 <img
@@ -100,7 +100,8 @@ export const PhilosophySection: React.FC = () => {
               سوّها صح
             </h3>
             <p className="mt-3 font-arabic text-base leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-              القهوة المميّزة ما تجي بالصدفة؛ تجي من اهتمامٍ بكل خطوة.
+              القهوة المميزة ماهي بالصدفة...أساسها الاهتمام بكل خطوة.
+
             </p>
           </div>
         </div>

@@ -112,17 +112,15 @@ export const AboutSection: React.FC = () => {
             <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>مقهى متخصص يقدم أفضل منتجات علامات التحميص المميزة في المملكة العربية السعودية.
-</span>
+                <span>مقهى متخصص يقدم أفضل منتجات القهوة المحمصة والمميزة في السوق السعودي "هاجس بيت لأجود أنواع القهوة".</span>
               </li>
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>يحضى بجلسات خرجية جميلة يلتقي فيه عشاق وشغوفي القهوة في أهم المواقع بمدينة حائل.
-</span>
+                <span>وجهة لشغوفي وعشاق القهوة، في ارقى مجمع يحظى بجلسات خارجية جميلة في أهم المواقع بمدينة حائل.</span>
               </li>
               <li className="flex items-start gap-3 text-right">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>خدمة العملاء هدف ملزم لتحقيق راحتهم وثقتتهم بهاجس. .</span>
+                <span>راحة زبائننا هدف ملزم لتحقيق ثقتهم بهاجس.</span>
               </li>
             </ul>
 
@@ -149,7 +147,6 @@ export const AboutSection: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-6 sm:p-10 lg:col-span-7 lg:p-14">
                 <div className="story-copy-reveal story-reveal-delay-1 mb-4 flex items-center gap-3 sm:mb-5">
-                  <span className="h-px w-9 bg-[var(--color-brand-sand)]" />
                   <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-black)]">
                     حكاية المكان
                   </span>
@@ -160,26 +157,19 @@ export const AboutSection: React.FC = () => {
                 </h3>
 
                 <blockquote className="story-copy-reveal story-reveal-delay-3 mt-4 border-r-2 border-[var(--color-brand-chocolate)] pr-5 font-kufi text-xl font-bold leading-[1.8] text-[var(--color-brand-black)] sm:mt-5 sm:text-2xl">
-                  «بدأت قصتنا من الوجار»
+                  "بدأت قصتنا من الوجار"
                 </blockquote>
 
                 <div className="mt-5 max-w-prose space-y-4 font-arabic text-base leading-[1.9] text-[var(--color-brand-black)] sm:mt-6 sm:space-y-5 sm:text-lg">
                   <p className="story-copy-reveal story-reveal-delay-4">
-                    في منتصف التسعينيات، أنشأنا مقهى صغيرًا باسم «الوجار» في مبنى قديم بالموقع نفسه. والوجار اسمٌ تقليديٌّ في حائل، يُطلق على الموقد الذي يجتمع حوله الناس شتاءً طلبًا للدفء، وتبادلًا للأحاديث بين الأهل والأصدقاء.
+                    في منتصف التسعينيات، أنشأنا مقهى صغيرًا بمسمى "الوجار" في مبنى قديم بنفس الموقع، فالوجار أسم تقليدي حائلي يشير إلى مجمر ناري يجتمع حوله الناس بالشتاء للدفء وكذلك للتفاعل والمناقشات بين الأهل والأصحاب.
                   </p>
                   <p className="story-copy-reveal story-reveal-delay-5">
-                    فبعض القصص لا تنتهي؛ بل تتجدّد.
+                    فبعض القصص لا تنتهي... بل تتجدد.
                   </p>
                   <p className="story-copy-reveal story-reveal-delay-6">
-                    واليوم يعود هاجس بحلّة جديدة، بروحٍ لم تتغيّر. ليس بداية قصة جديدة، بل امتداد لحكاية بدأت قبل أكثر من ثلاثين عامًا؛ المكان نفسه، والشغف نفسه، والحرص ذاته على صناعة مساحة يجتمع فيها الناس حول ما يستحق التقدير. كان الوجار البداية، وهاجس هو الجمر الذي لم ينطفئ، واللّهب الذي اشتعل من جديد.
+                    اليوم نرجع بهاجس بحلّة جديدة تواكب العصر لبداية قصة جديدة امتدادً لحكاية بدأت من أكثر من ثلاثين سنة…. نفس المكان... ونفس الشغف... ونفس الحرص على صناعة مكان يجتمع فيه الناس حول شيء يستحق التقدير. وكان الوجار هو البداية... وهاجس هو الجمر اللي ما طفى، واللّهب اللي اشتعل من جديد.
                   </p>
-                </div>
-
-                <div className="story-copy-reveal story-reveal-delay-7 mt-6 flex items-center gap-3 border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.25)] pt-5 sm:mt-8 sm:pt-6">
-                  <span className="h-2 w-2 rounded-full bg-[var(--color-brand-sand)]" />
-                  <span className="font-arabic text-sm font-semibold tracking-wide text-[var(--color-brand-black)] sm:text-base">
-                    حائل · حكاية تمتد لأكثر من ثلاثين عامًا
-                  </span>
                 </div>
               </div>
 

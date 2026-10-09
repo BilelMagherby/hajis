@@ -91,17 +91,11 @@ const BookLeaf: React.FC<{
                 </div>
                 <span className="leaf-item-price">{item.price}</span>
               </div>
-              <p>{item.descriptionAr}</p>
-              {item.notes && <span className="leaf-item-notes">ملاحظات التذوق: {item.notes}</span>}
             </div>
           </button>
         ))}
       </div>
 
-      <footer className="leaf-footer">
-        <span>{page.descriptionAr}</span>
-        <span className="leaf-page-number">{String(page.id).padStart(2, '0')}</span>
-      </footer>
     </article>
   );
 };

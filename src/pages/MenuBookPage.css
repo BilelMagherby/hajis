@@ -61,7 +61,8 @@
 .book-frame {
   width: min(1280px, calc(100vw - 130px));
   height: min(75vh, 700px);
-  min-height: 390px;
+  min-height: 0;
+  max-height: 100%;
   transition: width 1600ms cubic-bezier(0.48, 0.04, 0.18, 1), transform 220ms ease-out;
   transform-style: preserve-3d;
   animation: book-arrive 900ms ease-out both;
@@ -153,6 +154,12 @@
   border-radius: 0 5px 5px 0;
   transform-origin: left center;
   box-shadow: inset 14px 0 20px -18px rgba(62, 38, 21, 0.75);
+}
+
+.book-menu-leaf {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
 }
 
 .book-cover-leaf {
@@ -289,8 +296,7 @@
 }
 
 .leaf-heading,
-.leaf-items,
-.leaf-footer {
+.leaf-items {
   position: relative;
   z-index: 1;
 }
@@ -330,6 +336,8 @@
 }
 
 .leaf-items {
+  min-height: 0;
+  flex: 1;
   margin: 9px clamp(24px, 3.8vw, 54px) 0;
 }
 
@@ -425,19 +433,6 @@
   font-family: 'Almarai', sans-serif;
   font-size: clamp(7px, 0.66vw, 9px);
   letter-spacing: 0.025em;
-}
-
-.leaf-footer {
-  position: absolute;
-  right: clamp(24px, 3.8vw, 54px);
-  bottom: clamp(24px, 3.6vw, 46px);
-  left: clamp(24px, 3.8vw, 54px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--color-brand-olive);
-  font-size: clamp(8px, 0.72vw, 10px);
 }
 
 .product-detail-backdrop {
@@ -553,16 +548,6 @@
   border-radius: 999px;
   color: var(--color-brand-chocolate);
   font-size: 12px;
-}
-
-.leaf-footer > span:first-child {
-  max-width: 85%;
-  line-height: 1.6;
-}
-
-.leaf-page-number {
-  font-family: 'Almarai', sans-serif;
-  font-size: 11px;
 }
 
 .book-closing-leaf {
@@ -843,7 +828,7 @@
   45%, 60% { opacity: 0.88; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1100px) {
   .menu-book-experience {
     min-height: 560px;
   }
@@ -855,7 +840,8 @@
   .book-frame {
     width: calc(100vw - 26px);
     height: min(66vh, 660px);
-    min-height: 390px;
+    min-height: 0;
+    max-height: 100%;
   }
 
   .book-frame:not(.book-frame--open),
@@ -967,13 +953,6 @@
     font-size: 9px;
   }
 
-  .leaf-footer {
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    font-size: 9px;
-  }
-
   .product-detail-backdrop {
     padding: 16px;
   }
@@ -1025,7 +1004,7 @@
 
   .book-frame {
     width: calc(100vw - 20px);
-    min-height: 370px;
+    min-height: 0;
   }
 
   .leaf-heading {

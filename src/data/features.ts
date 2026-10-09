@@ -13,7 +13,7 @@ export const featuresData: FeatureCardItem[] = [
     number: '01',
     titleAr: 'استخلاص بدقة وعناية',
     subtitleAr: 'كل تفصيلة محسوبة',
-    descriptionAr: 'تقديم أجود أنواع البن التي تهتم بدقة التفاصيل و التي تحضى على تقييم عالي في السوق.',
+    descriptionAr: 'تقديم أجود أنواع البن التي تهتم بدقة التفاصيل و التي تحضى على تقييم عالي في السوق السعودي.',
     icon: 'droplet'
   },
   {

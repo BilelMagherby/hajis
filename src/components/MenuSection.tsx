@@ -99,7 +99,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
               {
                 number: '04',
                 title: 'محاصيل القهوة',
-                description: 'نختارها من أطيب وأميز محامص مملكتنا الغالية.'
+                description: 'محاصيلنا من أطيب وأميز محامص مملكتنا الغالية.'
               }
             ].map((item) => (
               <article

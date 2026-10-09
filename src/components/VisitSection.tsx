@@ -28,7 +28,7 @@ export const VisitSection: React.FC = () => {
                 ضيافة هاجس
               </span>
               <p className="mt-2 font-kufi text-lg font-semibold leading-relaxed text-[var(--color-brand-linen)] sm:text-xl">
-                مكان تحس إنك منه... من أول خطوة تدخل فيها الباب.
+                هاجس تحس إنه منك... من أول لحظة تزوره.
               </p>
             </div>
           </div>
@@ -42,15 +42,14 @@ export const VisitSection: React.FC = () => {
                 زيارة هاجس
               </h2>
               <p className="mt-5 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
+                هاجس مو مجرد مكان تشرب فيه قهوتك المختصة...
               </p>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                مكان يحافظ على روح الماضي وتقاليده، لكنه مصمّم لناس اليوم.
+                هو مكان رايق لأحلى السوالف و لأحلى الهواجيس، وتبقى فيه أحلى الذكريات.
               </p>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-هو مكان رايق لأحلى السوالف و لأحلى الهواجيس، وتبقى فيه أحلى الذكريات.
-
-مكان مصمّم لناس اليوم، لكن محافظ على روح الماضي الجميل.
-</p>
+                مكان مصمّم لناس اليوم، لكن محافظ على روح الماضي الجميل.
+              </p>
             </div>
 
             <div className="border-t border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] pt-6">
@@ -58,10 +57,13 @@ export const VisitSection: React.FC = () => {
                 فلسفتنا
               </span>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                اللي يميّز المقهى مو بس القهوة الي يقدّمها... اللي يميّزه هو الشعور اللي يتركه في نفوس الناس.
+                اللي يميّز المقهى مو بس القهوة الي يقدّمها...
               </p>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                والدليل الحقيقي على هالشعور بسيط جدًا: هاجس تحس انه منك .. من أول لحظة تزوره
+                اللي يميّزه هو الشعور اللي يتركه في نفوس الناس.
+              </p>
+              <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
+                والدليل الحقيقي على هالشعور بسيط جدًا "هاجس تحس انه منك .. من أول لحظة تزوره".
               </p>
             </div>
 
