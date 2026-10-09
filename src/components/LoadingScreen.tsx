@@ -36,7 +36,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       }`}
     >
       <img
-        src="/images/loading-pour-over.png"
+        src="/images/loading-background.png"
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100"

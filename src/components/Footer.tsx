@@ -7,9 +7,10 @@ import { brandData } from '../data/brand';
 
 interface FooterProps {
   onNavigate?: (id: string) => void;
+  onOpenCookieSettings?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => {
   const scrollTo = (id: string) => {
     if (onNavigate) {
       onNavigate(id);
@@ -192,6 +193,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   زيارة هاجس
                 </button>
               </li>
+              {onOpenCookieSettings && (
+                <li>
+                  <button
+                    type="button"
+                    onClick={onOpenCookieSettings}
+                    className="hover:text-[var(--color-brand-sand)] transition-colors"
+                  >
+                    إعدادات ملفات تعريف الارتباط
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 

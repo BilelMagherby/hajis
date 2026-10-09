@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
 import { CustomCursor } from './components/CustomCursor';
 import { ChatbotWidget } from './components/ChatbotWidget';
+import { CookieConsent } from './components/CookieConsent';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuBookPage } from './pages/MenuBookPage';
 import { Navigate } from 'react-router-dom';
@@ -21,6 +22,7 @@ import { hasDemoAdminSession } from './utils/demoAdminAuth';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -61,6 +63,11 @@ export const App: React.FC = () => {
       <>
         <MenuBookPage onNavigate={handleNavigate} />
         {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+        <CookieConsent
+          isLoading={isLoading}
+          openSettings={isCookieSettingsOpen}
+          onCloseSettings={() => setIsCookieSettingsOpen(false)}
+        />
       </>
     );
   }
@@ -109,9 +116,17 @@ export const App: React.FC = () => {
       </main>
 
       {/* 12. Dark Luxury Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer
+        onNavigate={handleNavigate}
+        onOpenCookieSettings={() => setIsCookieSettingsOpen(true)}
+      />
 
-      <ChatbotWidget />
+      {!isLoading && <ChatbotWidget />}
+      <CookieConsent
+        isLoading={isLoading}
+        openSettings={isCookieSettingsOpen}
+        onCloseSettings={() => setIsCookieSettingsOpen(false)}
+      />
     </div>
   );
 };
