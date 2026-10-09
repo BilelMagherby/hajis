@@ -6,13 +6,15 @@ interface NavbarProps {
   onAdminAccess?: () => void;
   enableAdminShortcut?: boolean;
   activeSection?: string;
+  inFlow?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigate,
   onAdminAccess,
   enableAdminShortcut = false,
-  activeSection
+  activeSection,
+  inFlow = false
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -75,13 +77,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 border-b transition-all duration-500 ${
-          isScrolled
-            ? 'border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] bg-[rgb(var(--color-brand-black-rgb)_/_0.85)] backdrop-blur-md shadow-lg shadow-black/40 py-2'
-            : 'border-[rgb(var(--color-brand-sand-rgb)_/_0.15)] bg-[rgb(var(--color-brand-black-rgb)_/_0.75)] backdrop-blur-md shadow-none py-2'
-        }`}
+        className={`${
+          inFlow
+            ? 'sticky top-0 h-16'
+            : `fixed top-0 left-0 right-0 ${isScrolled ? 'py-2' : 'py-1'}`
+        } z-40 border-b border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] bg-[var(--color-brand-black)] shadow-lg shadow-black/20`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between -translate-y-2">
+        <div className={`max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between ${inFlow ? '' : '-translate-y-2'}`}>
           {/* LEFT: HAJISS BRAND LOGO */}
           <button
             type="button"
@@ -89,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="العودة إلى الرئيسية"
             className="flex items-center cursor-pointer group bg-transparent border-0 p-0"
           >
-            <div className="w-28 sm:w-36 flex items-center justify-center p-1 transition-transform group-hover:scale-105">
+            <div className="w-24 sm:w-28 flex items-center justify-center p-1 transition-transform group-hover:scale-105">
               <img
                 src="/images/logo.png"
                 alt="شعار هاجس"
@@ -99,13 +101,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="القائمة الرئيسية">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="القائمة الرئيسية">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
-                className={`visual-button relative inline-flex items-center py-1 font-arabic text-sm font-medium transition-colors tracking-wide group ${
+                className={`visual-button relative inline-flex items-center py-1 font-arabic text-[13px] font-medium transition-colors group ${
                   activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] hover:text-[var(--color-brand-sand)]'
                 }`}
               >

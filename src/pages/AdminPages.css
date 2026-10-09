@@ -136,7 +136,7 @@
   padding: 13px 0;
   border: 0;
   outline: 0;
-  color: #f8f4ec;
+  color: var(--color-brand-linen);
   background: transparent;
   direction: rtl;
   text-align: right;

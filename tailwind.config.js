@@ -12,7 +12,7 @@ export default {
           olive: '#646044',
           chocolate: '#4B2B1D',
           sand: '#D2BE9D',
-          terracotta: '#A4755F',
+          terracotta: '#AA7A63',
           linen: '#F3EBDD',
         },
         espresso: {
@@ -34,7 +34,7 @@ export default {
           soft: '#646044',
         },
         linen: '#F3EBDD',
-        terracotta: '#A4755F',
+        terracotta: '#AA7A63',
         sand: {
           DEFAULT: '#D2BE9D',
           light: '#D2BE9D',

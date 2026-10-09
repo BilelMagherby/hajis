@@ -79,13 +79,12 @@ export const App: React.FC = () => {
         onAdminAccess={() => navigate('/admin/login')}
         enableAdminShortcut={location.pathname === '/'}
         activeSection={location.pathname === '/menu' ? 'menu' : undefined}
+        inFlow
       />
 
       {/* 4. Fullscreen Hero matching mockup */}
       <main>
-        <Hero
-          onDiscoverClick={() => handleNavigate('about')}
-        />
+        <Hero />
 
         {/* 5. What is Hajiss? Section (Warm Cream) */}
         <AboutSection />
