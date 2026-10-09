@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { LoadingScreen, shouldPlayEntrance } from './components/LoadingScreen';
+import React, { useState } from 'react';
+import { LoadingScreen } from './components/LoadingScreen';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -20,10 +20,9 @@ import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { hasDemoAdminSession } from './utils/demoAdminAuth';
 
 export const App: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(() => shouldPlayEntrance(location.pathname));
   const navigate = useNavigate();
-  const completeLoadingScreen = useCallback(() => setIsLoading(false), []);
 
   if (location.pathname === '/admin/login') {
     return hasDemoAdminSession()
@@ -68,7 +67,7 @@ export const App: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-[#090604] text-[#F8F4EC] selection:bg-[#C8A46A] selection:text-[#090604] overflow-x-clip">
       {/* 1. Cinematic Loading Screen */}
-      {isLoading && <LoadingScreen onComplete={completeLoadingScreen} />}
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
       {/* 2. Custom Gold Desktop Cursor */}
       <CustomCursor />
