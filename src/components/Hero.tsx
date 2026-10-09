@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { brandData } from '../data/brand';
 
@@ -6,75 +6,17 @@ interface HeroProps {
   onDiscoverClick?: () => void;
 }
 
-const heroSlides = [
-  { src: '/images/hero_cafe_dusk.png', alt: 'واجهة مقهى هاجس' },
-  { src: '/images/hero-cafe-interior.jpeg', alt: 'المساحة الداخلية لمقهى هاجس' },
-  { src: '/images/hero-cafe-counter.jpeg', alt: 'منطقة تحضير القهوة في هاجس' },
-  { src: '/images/hero-cafe-lounge.jpeg', alt: 'جلسات الضيافة في مقهى هاجس' }
-];
-
 export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef<number | null>(null);
-
-  const showPreviousSlide = () => {
-    setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length);
-  };
-
-  const showNextSlide = () => {
-    setActiveSlide((current) => (current + 1) % heroSlides.length);
-  };
-
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-
-    dragStartX.current = event.clientX;
-    setIsDragging(true);
-    event.currentTarget.setPointerCapture(event.pointerId);
-  };
-
-  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (dragStartX.current === null) return;
-
-    const dragDistance = event.clientX - dragStartX.current;
-    dragStartX.current = null;
-    setIsDragging(false);
-
-    if (Math.abs(dragDistance) < 48) return;
-    if (dragDistance < 0) {
-      showNextSlide();
-    } else {
-      showPreviousSlide();
-    }
-  };
-
-  const handlePointerCancel = () => {
-    dragStartX.current = null;
-    setIsDragging(false);
-  };
-
   return (
     <section
       id="hero"
       className="relative mt-[64px] flex h-[calc(100svh-64px)] min-h-[420px] w-full items-center overflow-hidden bg-[#090604] select-none"
     >
       {/* FULLSCREEN BACKGROUND: Hajiss Café Storefront Facade */}
-      <div
-        className={`absolute inset-0 overflow-hidden touch-pan-y ${
-          isDragging ? 'cursor-grabbing' : 'cursor-grab'
-        }`}
-        role="group"
-        aria-roledescription="carousel"
-        aria-label="صور مقهى هاجس"
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerCancel}
-      >
+      <div className="absolute inset-0 overflow-hidden">
         <img
-          key={heroSlides[activeSlide].src}
-          src={heroSlides[activeSlide].src}
-          alt={heroSlides[activeSlide].alt}
+          src="/images/hero_cafe_dusk.png"
+          alt="واجهة مقهى هاجس"
           draggable={false}
           className="hero-slide-image w-full h-full object-cover object-[center_40%] filter brightness-125 contrast-125 saturate-125"
         />
@@ -86,25 +28,6 @@ export const Hero: React.FC<HeroProps> = ({ onDiscoverClick }) => {
 
       {/* Subtle Grain Texture Overlay */}
       <div className="absolute inset-0 grain-overlay pointer-events-none z-10 opacity-30" />
-
-      <div
-        className="absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[#C8A46A]/35 bg-[#160D08]/60 px-3 py-1.5 backdrop-blur-sm"
-        role="group"
-        aria-label="اختيار صورة مقهى هاجس"
-      >
-        {heroSlides.map((slide, index) => (
-          <button
-            key={slide.src}
-            type="button"
-            onClick={() => setActiveSlide(index)}
-            aria-label={`عرض الصورة ${index + 1}`}
-            aria-pressed={activeSlide === index}
-            className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C994] ${
-              activeSlide === index ? 'w-7 bg-[#E3C994]' : 'w-2.5 bg-[#F8F4EC]/70 hover:bg-[#F8F4EC]'
-            }`}
-          />
-        ))}
-      </div>
 
       {/* FOREGROUND CONTENT CONTAINER */}
       <div className="pointer-events-none relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">

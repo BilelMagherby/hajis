@@ -41,7 +41,10 @@ export const StoreTeaser: React.FC = () => {
               </div>
 
               <p className="font-arabic text-sm text-[#302019] max-w-lg leading-relaxed font-medium">
-                للحصول على عروض خاصة ومحاصيل هاجس الطازجة، وأدوات القهوة المختصة مع التوصيل لجميع مناطق المملكة.
+                لآ يفوتكم متجرنا بهاجس ومتجره الإلكتروني "عروضنا مستمرة" 
+
+محاصيل مميزة، وأدوات قهوة متنوعة مع التوصيل لجميع مناطق المملكة. 
+.
               </p>
 
               <div className="pt-2 flex justify-end">

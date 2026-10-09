@@ -42,11 +42,15 @@ export const VisitSection: React.FC = () => {
                 زيارة هاجس
               </h2>
               <p className="mt-5 font-arabic text-base font-light leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
-                هاجس مو مجرد مكان تشرب فيه قهوتك المختصة... هو مكان تبدأ فيه السوالف، وتقوى فيه العلاقات، وتبقى فيه الذكريات.
               </p>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
                 مكان يحافظ على روح الماضي وتقاليده، لكنه مصمّم لناس اليوم.
               </p>
+              <p className="mt-4 font-arabic text-base font-light leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
+هو مكان رايق لأحلى السوالف و لأحلى الهواجيس، وتبقى فيه أحلى الذكريات.
+
+مكان مصمّم لناس اليوم، لكن محافظ على روح الماضي الجميل.
+</p>
             </div>
 
             <div className="border-t border-[#C8A46A]/25 pt-6">
@@ -57,7 +61,7 @@ export const VisitSection: React.FC = () => {
                 اللي يميّز المقهى مو بس القهوة الي يقدّمها... اللي يميّزه هو الشعور اللي يتركه في نفوس الناس.
               </p>
               <p className="mt-4 font-arabic text-base font-light leading-8 text-[#E3D9C8] sm:text-lg sm:leading-9">
-                والدليل الحقيقي على هالشعور بسيط جدًا: كم الوقت اللي يختار الضيف يقضيه فيه... وهو ما أحد طلب منه يبقى.
+                والدليل الحقيقي على هالشعور بسيط جدًا: هاجس تحس انه منك .. من أول لحظة تزوره
               </p>
             </div>
 
