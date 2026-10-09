@@ -46,21 +46,17 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#090604]/45 via-[#160D08]/10 to-[#090604]/55"
       />
       <div className="relative z-10 flex flex-col items-center space-y-6 px-4 text-center">
-        <div className="relative mb-2 flex w-40 items-center justify-center rounded-xl bg-white p-2 shadow-lg sm:w-48">
+        <div className="relative mb-2 flex w-44 items-center justify-center sm:w-52">
           <img
-            src="/images/logo.png"
+            src="/images/logo-loading.png"
             alt="شعار هاجس"
             className="h-auto w-full object-contain"
           />
         </div>
 
         <div className="space-y-1">
-          <h1 className="font-kufi text-3xl md:text-4xl font-bold text-white tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-            هـاجـس
-          </h1>
-          <p className="font-brand text-lg md:text-xl font-semibold text-[#E3C994] tracking-[0.3em] drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
-            مقهى هاجس
-          </p>
+          
+          
           <p className="pt-3 font-arabic text-sm leading-7 text-[#F8F4EC] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-base">
             أهلاً بك في هاجس، حيث تبدأ حكاية القهوة.
           </p>

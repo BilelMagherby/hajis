@@ -202,20 +202,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة
           </p>
 
-          <p className="text-[11px] text-[#6E5F52]">
-            مشغّل بواسطة أنود — رقم واحد للتجارة الإلكترونية مفتوحة المصدر
-          </p>
+         
 
-          <a
-            href="#privacy"
-            onClick={(e) => {
-              e.preventDefault();
-              alert('سياسة الخصوصية: نحترم خصوصية زوارنا الكرام وبياناتهم بما يتوافق مع الأنظمة المعمول بها في المملكة العربية السعودية.');
-            }}
-            className="hover:text-[#E3C994] transition-colors"
-          >
-            سياسة الخصوصية
-          </a>
+          
         </div>
 
       </div>
