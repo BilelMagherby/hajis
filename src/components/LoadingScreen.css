@@ -1,0 +1,422 @@
+.hajiss-intro {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  background: #130b07;
+  color: #f8f4ec;
+  opacity: 1;
+  perspective: 1800px;
+  transform-origin: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  contain: layout paint;
+}
+
+.hajiss-intro *,
+.hajiss-intro *::before,
+.hajiss-intro *::after {
+  box-sizing: border-box;
+}
+
+.hajiss-intro__sanctuary {
+  position: absolute;
+  inset: -3%;
+  overflow: hidden;
+  transform: scale(1);
+  transform-origin: center 55%;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(213, 170, 105, 0.16), transparent 52%),
+    #2a1b11;
+}
+
+.hajiss-intro__sanctuary-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  filter: brightness(0.58) saturate(0.78);
+}
+
+.hajiss-intro__room-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(17, 10, 6, 0.58), transparent 25%, transparent 75%, rgba(17, 10, 6, 0.58)),
+    linear-gradient(0deg, rgba(13, 8, 5, 0.54), transparent 48%, rgba(13, 8, 5, 0.19));
+}
+
+.hajiss-intro__light {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 47%;
+  width: min(52vw, 660px);
+  height: 120vh;
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0.12) rotate(12deg);
+  transform-origin: center;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 227, 173, 0.035) 23%,
+    rgba(255, 225, 168, 0.36) 50%,
+    rgba(255, 227, 173, 0.035) 77%,
+    transparent
+  );
+  filter: blur(17px);
+  pointer-events: none;
+}
+
+.hajiss-intro__particle {
+  position: absolute;
+  z-index: 3;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  opacity: 0;
+  background: #f9dda5;
+  box-shadow: 0 0 9px 2px rgba(255, 218, 151, 0.5);
+  animation: hajiss-dust-drift 6s ease-in-out infinite alternate;
+}
+
+.hajiss-intro__frame {
+  position: relative;
+  z-index: 4;
+  width: min(82vw, 1120px);
+  height: min(78vh, 790px);
+  min-height: 360px;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 26px 48px rgba(0, 0, 0, 0.6));
+}
+
+.hajiss-intro__frame::before {
+  position: absolute;
+  z-index: -1;
+  inset: -13px -17px;
+  content: '';
+  border: 1px solid rgba(202, 158, 99, 0.54);
+  background: linear-gradient(105deg, #28180f, #765033 5%, #24150d 7%, #3a2415 94%, #9c7143 97%, #20130c);
+  box-shadow:
+    inset 0 0 0 5px rgba(17, 10, 6, 0.75),
+    inset 0 0 0 7px rgba(192, 145, 86, 0.34),
+    0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+.hajiss-intro__frame-inset {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(217, 174, 115, 0.38);
+  box-shadow: inset 0 0 42px rgba(12, 7, 4, 0.55);
+}
+
+.hajiss-intro__door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hajiss-intro__door--left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.hajiss-intro__door--right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.hajiss-intro__door-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  backface-visibility: hidden;
+  border: 1px solid rgba(11, 6, 4, 0.72);
+  background:
+    linear-gradient(90deg, rgba(12, 7, 4, 0.84), transparent 5%, rgba(244, 203, 143, 0.045) 48%, transparent 93%, rgba(10, 5, 3, 0.7)),
+    repeating-linear-gradient(90deg, rgba(18, 10, 5, 0.23) 0 1px, transparent 1px 8px, rgba(205, 153, 92, 0.045) 8px 9px, transparent 9px 42px),
+    linear-gradient(105deg, #382115, #57351f 18%, #3e2618 47%, #603b23 72%, #301b10);
+  box-shadow:
+    inset 0 0 0 6px rgba(13, 7, 4, 0.57),
+    inset 0 0 0 8px rgba(183, 132, 76, 0.28),
+    inset 12px 0 18px rgba(9, 5, 3, 0.38),
+    inset -12px 0 18px rgba(9, 5, 3, 0.32);
+}
+
+.hajiss-intro__door-face::before {
+  position: absolute;
+  inset: 8% 10%;
+  content: '';
+  border: 1px solid rgba(211, 163, 105, 0.42);
+  box-shadow:
+    inset 0 0 0 5px rgba(15, 8, 4, 0.38),
+    inset 0 0 0 7px rgba(206, 153, 91, 0.22),
+    0 0 0 1px rgba(16, 9, 5, 0.58);
+}
+
+.hajiss-intro__door-panel {
+  position: absolute;
+  inset: 11% 13%;
+  border: 1px solid rgba(13, 7, 4, 0.65);
+  background:
+    repeating-linear-gradient(0deg, rgba(210, 160, 100, 0.025) 0 2px, transparent 2px 28px),
+    linear-gradient(90deg, rgba(15, 8, 4, 0.28), rgba(99, 59, 34, 0.3) 18%, rgba(22, 12, 6, 0.14) 48%, rgba(99, 59, 34, 0.25) 80%, rgba(13, 7, 4, 0.3));
+  box-shadow:
+    inset 0 0 0 5px rgba(16, 9, 5, 0.43),
+    inset 0 0 0 7px rgba(205, 155, 99, 0.19),
+    0 0 0 1px rgba(224, 177, 117, 0.14);
+}
+
+.hajiss-intro__door--left .hajiss-intro__door-face {
+  box-shadow:
+    inset 0 0 0 6px rgba(13, 7, 4, 0.57),
+    inset 0 0 0 8px rgba(183, 132, 76, 0.28),
+    inset 14px 0 24px rgba(9, 5, 3, 0.32),
+    inset -16px 0 26px rgba(9, 5, 3, 0.5);
+}
+
+.hajiss-intro__door--right .hajiss-intro__door-face {
+  box-shadow:
+    inset 0 0 0 6px rgba(13, 7, 4, 0.57),
+    inset 0 0 0 8px rgba(183, 132, 76, 0.28),
+    inset 14px 0 24px rgba(9, 5, 3, 0.5),
+    inset -16px 0 26px rgba(9, 5, 3, 0.32);
+}
+
+.hajiss-intro__hinge {
+  position: absolute;
+  z-index: 2;
+  width: 9px;
+  height: 39px;
+  top: 20%;
+  border: 1px solid rgba(239, 196, 125, 0.52);
+  border-radius: 5px;
+  background: linear-gradient(90deg, #402714, #b28751 38%, #d0a76e 52%, #53351d);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+.hajiss-intro__hinge--bottom {
+  top: auto;
+  bottom: 20%;
+}
+
+.hajiss-intro__door--left .hajiss-intro__hinge {
+  left: 3px;
+}
+
+.hajiss-intro__door--right .hajiss-intro__hinge {
+  right: 3px;
+}
+
+.hajiss-intro__handle {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  width: 10px;
+  height: 72px;
+  border: 1px solid rgba(255, 224, 168, 0.68);
+  border-radius: 8px;
+  background: linear-gradient(90deg, #53381f 0%, #c3a06b 24%, #f0d59c 43%, #977042 70%, #392414 100%);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 0 11px rgba(222, 173, 102, 0.22),
+    inset 1px 0 2px rgba(255, 247, 219, 0.72);
+  transform: translateY(-50%);
+}
+
+.hajiss-intro__handle::before,
+.hajiss-intro__handle::after {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  content: '';
+  border: 1px solid #d3ad72;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fae3ac, #8e6538 70%);
+  transform: translateX(-50%);
+}
+
+.hajiss-intro__handle::before {
+  top: -8px;
+}
+
+.hajiss-intro__handle::after {
+  bottom: -8px;
+}
+
+.hajiss-intro__handle--left {
+  right: 9%;
+}
+
+.hajiss-intro__handle--right {
+  left: 9%;
+}
+
+.hajiss-intro__door-mark {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 106px;
+  height: 72px;
+  place-items: center;
+  padding: 13px 10px;
+  border: 1px solid rgba(209, 164, 105, 0.58);
+  background: rgba(30, 18, 10, 0.8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 0 0 3px rgba(12, 7, 4, 0.72);
+  transform: translate(-50%, -50%);
+}
+
+.hajiss-intro__door-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1) grayscale(1) brightness(1.7);
+}
+
+.hajiss-intro__copy {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: min(90vw, 640px);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 2px 24px rgba(24, 14, 7, 0.8);
+}
+
+.hajiss-intro__logo {
+  display: block;
+  width: clamp(120px, 17vw, 205px);
+  height: auto;
+  margin-bottom: clamp(14px, 2vh, 24px);
+  filter: invert(1) grayscale(1) brightness(1.55) drop-shadow(0 0 22px rgba(255, 222, 164, 0.52));
+}
+
+.hajiss-intro__welcome {
+  margin: 0;
+  color: #fff9ed;
+  font-size: clamp(27px, 4vw, 49px);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.hajiss-intro__subtitle {
+  margin: 14px 0 0;
+  color: #f1dbb8;
+  font-family: 'Almarai', sans-serif;
+  font-size: clamp(11px, 1.15vw, 14px);
+  font-weight: 300;
+  letter-spacing: 0.17em;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hajiss-intro__skip {
+  position: absolute;
+  z-index: 8;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid rgba(227, 201, 148, 0.45);
+  border-radius: 999px;
+  background: rgba(22, 13, 8, 0.68);
+  color: #f8f4ec;
+  font-family: 'Almarai', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.hajiss-intro__skip:hover,
+.hajiss-intro__skip:focus-visible {
+  border-color: #e3c994;
+  background: rgba(50, 32, 18, 0.92);
+}
+
+.hajiss-intro__skip:focus-visible {
+  outline: 2px solid #e3c994;
+  outline-offset: 3px;
+}
+
+@keyframes hajiss-dust-drift {
+  from {
+    margin-left: -4px;
+    margin-top: 5px;
+  }
+
+  to {
+    margin-left: 7px;
+    margin-top: -9px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hajiss-intro__frame {
+    width: 88vw;
+    height: min(70vh, 640px);
+    min-height: 330px;
+  }
+
+  .hajiss-intro__frame::before {
+    inset: -9px -11px;
+  }
+
+  .hajiss-intro__door-face {
+    background:
+      repeating-linear-gradient(90deg, rgba(18, 10, 5, 0.18) 0 1px, transparent 1px 7px, rgba(205, 153, 92, 0.035) 7px 8px, transparent 8px 35px),
+      linear-gradient(105deg, #382115, #57351f 18%, #3e2618 47%, #603b23 72%, #301b10);
+  }
+
+  .hajiss-intro__door-mark {
+    width: 82px;
+    height: 58px;
+    padding: 11px 8px;
+  }
+
+  .hajiss-intro__handle {
+    width: 8px;
+    height: 56px;
+  }
+
+  .hajiss-intro__skip {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hajiss-intro__particle {
+    animation: none;
+  }
+
+  .hajiss-intro__skip {
+    transition: none;
+  }
+}
