@@ -18,7 +18,7 @@ export const VisitSection: React.FC = () => {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14" dir="ltr">
           <div className="visual-media group relative overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] shadow-2xl lg:col-span-5">
             <img
-              src="/images/visit_v60.jpeg"
+              src="/images/haijs.jpeg"
               alt="قهوة هاجس المثلجة مع التوت"
               className="h-[420px] w-full object-cover object-center sm:h-[560px]"
             />
