@@ -2,37 +2,6 @@ import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 export const AboutSection: React.FC = () => {
-  const imageRef = React.useRef<HTMLImageElement>(null);
-
-  React.useEffect(() => {
-    const image = imageRef.current;
-    if (!image || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let frameId = 0;
-    const updateParallax = () => {
-      cancelAnimationFrame(frameId);
-      frameId = requestAnimationFrame(() => {
-        const bounds = image.getBoundingClientRect();
-        const progress = Math.min(
-          1,
-          Math.max(0, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height))
-        );
-        const offset = (progress * 2 - 1) * 12;
-        image.style.translate = `0 ${offset.toFixed(2)}px`;
-      });
-    };
-
-    updateParallax();
-    window.addEventListener('scroll', updateParallax, { passive: true });
-    window.addEventListener('resize', updateParallax);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('scroll', updateParallax);
-      window.removeEventListener('resize', updateParallax);
-    };
-  }, []);
-
   return (
     <section
       id="about"
@@ -60,7 +29,6 @@ export const AboutSection: React.FC = () => {
               {/* The Image Container with subtle organic border */}
               <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[var(--color-brand-olive)]">
                 <img
-                  ref={imageRef}
                   src="/images/about_cafe_pourover.jpeg"
                   alt="قهوة مقطرة وكرم الضيافة العربية"
                   className="w-full h-[400px] sm:h-[480px] object-cover object-center"
@@ -175,7 +143,7 @@ export const AboutSection: React.FC = () => {
 
               <div className="visual-media relative min-h-[280px] overflow-hidden lg:col-span-5 lg:min-h-full">
                 <img
-                  src="/images/story-majlis.png"
+                  src="/images/555.jpeg"
                   alt="مجلس حائلي يجتمع حول نار الوجار عند الغروب"
                   className="story-image-reveal absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"

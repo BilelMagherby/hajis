@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { LoadingScreen } from './components/LoadingScreen';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -10,7 +9,6 @@ import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
-import { CustomCursor } from './components/CustomCursor';
 import { ChatbotWidget } from './components/ChatbotWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -21,7 +19,6 @@ import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { hasDemoAdminSession } from './utils/demoAdminAuth';
 
 export const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -62,9 +59,8 @@ export const App: React.FC = () => {
     return (
       <>
         <MenuBookPage onNavigate={handleNavigate} />
-        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
         <CookieConsent
-          isLoading={isLoading}
+          isLoading={false}
           openSettings={isCookieSettingsOpen}
           onCloseSettings={() => setIsCookieSettingsOpen(false)}
         />
@@ -74,13 +70,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[var(--color-brand-black)] text-[var(--color-brand-linen)] selection:bg-[var(--color-brand-sand)] selection:text-[var(--color-brand-black)] overflow-x-clip">
-      {/* 1. Cinematic Loading Screen */}
-      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-
-      {/* 2. Custom Sand Desktop Cursor */}
-      <CustomCursor />
-
-      {/* 3. Luxury Floating Navbar */}
+      {/* Luxury Floating Navbar */}
       <Navbar
         onNavigate={handleNavigate}
         onAdminAccess={() => navigate('/admin/login')}
@@ -121,9 +111,9 @@ export const App: React.FC = () => {
         onOpenCookieSettings={() => setIsCookieSettingsOpen(true)}
       />
 
-      {!isLoading && <ChatbotWidget />}
+      <ChatbotWidget />
       <CookieConsent
-        isLoading={isLoading}
+        isLoading={false}
         openSettings={isCookieSettingsOpen}
         onCloseSettings={() => setIsCookieSettingsOpen(false)}
       />

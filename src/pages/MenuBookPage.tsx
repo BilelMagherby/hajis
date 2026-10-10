@@ -139,7 +139,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
     setTurnDirection(direction);
     setFlippingPage(direction === 'next' ? rightPage : leftPage);
     setIsTurning(true);
-    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 2000;
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 1200;
     pageCommitTimer.current = window.setTimeout(() => {
       setPageNumber(nextNumber);
       pageCommitTimer.current = null;

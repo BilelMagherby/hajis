@@ -1,6 +1,5 @@
 import React from 'react';
 import { Clock, Scale, Thermometer, Waves } from 'lucide-react';
-import { RevealOnScroll } from './RevealOnScroll';
 
 export const V60Section: React.FC = () => {
   const brewingDetails = [
@@ -37,7 +36,7 @@ export const V60Section: React.FC = () => {
             خدمات V60
           </span>
 
-          <h2 className="visual-section-title mt-5 font-kufi text-3xl font-bold leading-relaxed text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
+          <h2 className="mt-5 font-kufi text-3xl font-bold leading-relaxed text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
             V60 في هاجس... هنا تبدأ الحكاية.
           </h2>
 
@@ -73,37 +72,34 @@ export const V60Section: React.FC = () => {
 
             <div className="space-y-4">
               {brewingDetails.map(({ icon: Icon, title, description }, index) => (
-                <RevealOnScroll
+                <article
                   key={title}
-                  direction="left"
-                  delay={index * 90}
+                  className="rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] bg-[rgb(var(--color-brand-chocolate-rgb)_/_0.95)] p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.6)] sm:p-6"
                 >
-                  <article className="visual-card rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] bg-[rgb(var(--color-brand-chocolate-rgb)_/_0.95)] p-5 text-right shadow-[0_12px_32px_rgba(0,0,0,0.2)] backdrop-blur-sm hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.6)] sm:p-6">
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="font-arabic text-[10px] tracking-[0.2em] text-[rgb(var(--color-brand-sand-rgb)_/_0.8)]">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[var(--color-brand-black)]">
-                        <Icon className="h-5 w-5 text-[var(--color-brand-sand)]" aria-hidden="true" />
-                      </span>
-                    </div>
-                    <h3 className="font-kufi text-base font-semibold leading-7 text-[var(--color-brand-linen)]">
-                      {title}
-                    </h3>
-                    <p className="mt-2 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]">
-                      {description}
-                    </p>
-                  </article>
-                </RevealOnScroll>
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="font-arabic text-[10px] tracking-[0.2em] text-[rgb(var(--color-brand-sand-rgb)_/_0.8)]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[var(--color-brand-black)]">
+                      <Icon className="h-5 w-5 text-[var(--color-brand-sand)]" aria-hidden="true" />
+                    </span>
+                  </div>
+                  <h3 className="font-kufi text-base font-semibold leading-7 text-[var(--color-brand-linen)]">
+                    {title}
+                  </h3>
+                  <p className="mt-2 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]">
+                    {description}
+                  </p>
+                </article>
               ))}
             </div>
           </div>
         </div>
 
         <div className="lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
-          <div className="visual-media relative h-[55svh] min-h-[320px] overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] shadow-[0_24px_60px_rgba(0,0,0,0.4)] lg:h-[78svh] lg:max-h-[760px] lg:min-h-[480px]">
+          <div className="relative h-[55svh] min-h-[320px] overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] shadow-[0_24px_60px_rgba(0,0,0,0.4)] lg:h-[78svh] lg:max-h-[760px] lg:min-h-[480px]">
             <img
-              src="/images/v60-ritual.png"
+              src="/images/machine.jpeg"
               alt="تحضير قهوة V60 بالتقطير اليدوي"
               className="h-full w-full object-cover object-center"
             />
