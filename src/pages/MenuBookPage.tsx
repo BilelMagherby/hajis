@@ -123,7 +123,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
   const openBook = () => {
     if (isBookOpen || isOpening) return;
     setIsOpening(true);
-    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 1600;
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 1800;
     turnTimer.current = window.setTimeout(() => {
       setIsBookOpen(true);
       setIsOpening(false);
@@ -139,7 +139,7 @@ export const MenuBookPage: React.FC<MenuBookPageProps> = ({
     setTurnDirection(direction);
     setFlippingPage(direction === 'next' ? rightPage : leftPage);
     setIsTurning(true);
-    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 1200;
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 80 : 1500;
     pageCommitTimer.current = window.setTimeout(() => {
       setPageNumber(nextNumber);
       pageCommitTimer.current = null;

@@ -24,11 +24,11 @@ export const PhilosophySection: React.FC = () => {
         <div className="mb-12 grid grid-cols-1 items-center gap-6 md:mb-16 md:grid-cols-12 md:gap-12" dir="ltr">
           <div className="md:col-span-6 md:col-start-7 md:row-start-1 text-right" dir="rtl">
             <div className="flex items-center justify-start mb-3">
-              <span className="font-arabic text-sm font-semibold tracking-widest text-[var(--color-brand-chocolate)] uppercase">
+              <span className="font-arabic text-sm font-semibold tracking-widest text-[var(--color-brand-linen)] uppercase">
                 معايير الجودة والكمال
               </span>
             </div>
-            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-chocolate)]">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-linen)]">
               يميّز هاجس؟
             </h2>
           </div>
