@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
     >
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="/images/hero_cafe_dusk.png"
+          src="/images/hero-hajis-night.jpg"
           alt="واجهة مقهى هاجس"
           draggable={false}
           className="hero-slide-image h-full w-full object-cover object-[center_40%] brightness-125 contrast-125 saturate-125"

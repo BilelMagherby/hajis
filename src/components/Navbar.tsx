@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           inFlow
             ? 'sticky top-0 h-16'
             : `fixed top-0 left-0 right-0 ${isScrolled ? 'py-2' : 'py-1'}`
-        } z-40 border-b border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] bg-[var(--color-brand-black)] shadow-lg shadow-black/20`}
+        } z-40 border-b border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] bg-[#4A2C17] shadow-lg shadow-black/20`}
       >
         <div className={`max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between ${inFlow ? '' : '-translate-y-2'}`}>
           {/* LEFT: HAJISS BRAND LOGO */}
@@ -135,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 flex flex-col bg-[rgb(var(--color-brand-black-rgb)_/_0.95)] px-6 pt-24 backdrop-blur-xl lg:hidden">
+        <div className="fixed inset-0 z-30 flex flex-col bg-[rgb(74_44_23_/_0.95)] px-6 pt-24 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col space-y-5 text-right">
             {navLinks.map((link) => (
               <button

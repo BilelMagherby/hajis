@@ -169,17 +169,24 @@ export const menuCategories: MenuCategory[] = [
     image: productImage(1),
     items: [
       {
+        id: 'magic-bar-25',
+        nameAr: 'ماجيك بار — 25 قطعة',
+        descriptionAr: 'صينية ماجيك بار بحجم 25 قطعة للمشاركة.',
+        price: '16 ر.س',
+        image: productImage(6)
+      },
+      {
         id: 'magic-bar-20',
         nameAr: 'ماجيك بار — 20 قطعة',
         descriptionAr: 'قطع ماجيك بار للمشاركة.',
-        price: '16 ر.س',
+        price: '18 ر.س',
         image: productImage(4)
       },
       {
         id: 'magic-bar-16',
         nameAr: 'ماجيك بار — 16 قطعة',
         descriptionAr: 'صينية ماجيك بار بحجم 16 قطعة.',
-        price: '18 ر.س',
+        price: '20 ر.س',
         image: productImage(2)
       },
       {
