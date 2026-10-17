@@ -15,41 +15,32 @@ export const AboutSection: React.FC = () => {
       />
       <div className="pointer-events-none absolute inset-0 bg-[#ECE3D2]/75" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0 items-stretch">
           
-          {/* IMAGE CONTAINER (Will appear on LEFT in RTL if it's order-2) */}
+          {/* IMAGE BOX */}
           <RevealOnScroll
             direction="left"
-            className="lg:col-span-6 relative order-2 lg:order-2 flex justify-center"
+            className="brand-texture-clay visual-card relative order-2 lg:order-2 flex min-w-0 justify-center overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[#785b40] p-3 sm:p-4 lg:h-[480px] lg:rounded-r-none lg:border-r-0"
           >
-            <div className="relative w-full max-w-xl">
-              {/* Soft decorative shadow background */}
-              <div className="absolute -inset-4 bg-[#C8BCA7]/30 rounded-3xl blur-2xl transform -rotate-2" />
-
-              {/* The Image Container with subtle organic border */}
-              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[rgba(120,91,64,0.25)] bg-[#ECE3D2]">
-                <img
-                  src="/images/about_cafe_pourover.jpeg"
-                  alt="قهوة مقطرة وكرم الضيافة العربية"
-                  className="w-full h-[400px] sm:h-[480px] object-cover object-center"
-                />
-                
-                {/* Subtle vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(64,55,45,0.25)] via-transparent to-transparent pointer-events-none" />
-              </div>
-
+            <div className="visual-media relative h-[360px] w-full overflow-hidden rounded-2xl sm:h-[440px] lg:h-full">
+              <img
+                src="/images/about_cafe_drinks.png"
+                alt="مشروبات هاجس المختصة"
+                className="h-full w-full object-cover object-center"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(64,55,45,0.25)] via-transparent to-transparent" />
             </div>
           </RevealOnScroll>
 
-          {/* TEXT CONTAINER (Will appear on RIGHT in RTL if it's order-1) */}
+          {/* TEXT BOX */}
           <RevealOnScroll
             direction="right"
-            className="lg:col-span-6 order-1 space-y-5 text-right lg:order-1 lg:space-y-6"
+            className="brand-texture-clay visual-card order-1 flex min-w-0 flex-col justify-center space-y-5 overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[#785b40] p-6 text-right text-[var(--color-brand-linen)] lg:order-1 lg:h-[480px] lg:space-y-6 lg:p-10 lg:rounded-l-none lg:border-l-0 lg:-ml-px"
             delay={160}
           >
             {/* Top Insignia Emblem */}
             <div dir="rtl" className="flex items-center justify-start gap-3">
-              <span className="font-arabic text-sm tracking-widest text-[#785B40] uppercase font-semibold">
+              <span className="font-arabic text-sm tracking-widest text-[var(--color-brand-sand)] uppercase font-semibold">
                 أصالة المكان وروح الضيافة
               </span>
               <div className="w-12 h-auto flex items-center justify-center">
@@ -62,34 +53,34 @@ export const AboutSection: React.FC = () => {
             </div>
 
             {/* Main Title */}
-            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#40372D] tracking-tight">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-linen)] tracking-tight">
                هاجس ؟
             </h2>
 
             {/* The 3 Pillars List */}
-            <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[#40372D] sm:text-lg">
+            <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>مقهى متخصص يقدم أفضل منتجات القهوة المحمصة والمميزة في السوق السعودي "هاجس بيت لأجود أنواع القهوة".</span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>وجهة لشغوفي وعشاق القهوة، في ارقى مجمع يحظى بجلسات خارجية جميلة في أهم المواقع بمدينة حائل.</span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
                 <span>راحة زبائننا هدف ملزم لتحقيق ثقتهم بهاجس.</span>
               </li>
             </ul>
 
             {/* Unifying statement */}
-            <p className="pt-1 font-arabic text-base leading-[1.8] text-[#40372D] sm:text-lg">
+            <p className="pt-1 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
               وهذي الأشياء الثلاث مو متفرقة عن بعض، أصلها واحد، بس كل وحدة تعبّر عنه بطريقتها.
             </p>
 
             {/* Final Statement / Punchline */}
-            <div className="pt-4 border-t border-[rgba(120,91,64,0.25)]">
-              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[#785B40] tracking-wide">
+            <div className="pt-4">
+              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-sand)] tracking-wide">
                 القهوة... طقس نعيشه.
               </p>
             </div>
@@ -102,8 +93,8 @@ export const AboutSection: React.FC = () => {
             dir="rtl"
             className="brand-texture-clay visual-card overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[#785b40]"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12">
-              <div className="p-6 sm:p-10 lg:col-span-7 lg:p-14">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+              <div className="p-6 sm:p-10 lg:p-14">
                 <div className="story-copy-reveal story-reveal-delay-1 mb-4 flex items-center gap-3 sm:mb-5">
                   <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-sand)]">
                     حكاية المكان
@@ -131,7 +122,7 @@ export const AboutSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="visual-media relative min-h-[280px] overflow-hidden lg:col-span-5 lg:min-h-full">
+              <div className="visual-media relative min-h-[280px] overflow-hidden lg:min-h-full">
                 <img
                   src="/images/555.jpeg"
                   alt="مجلس حائلي يجتمع حول نار الوجار عند الغروب"

@@ -6,7 +6,6 @@ import {
   CupSoda,
   Leaf,
   Package,
-  Plus,
   ShoppingBag,
   X
 } from 'lucide-react';
@@ -95,14 +94,6 @@ const ProductCard: React.FC<{
           <h3>{item.nameAr}</h3>
           {itemEnglish[item.id] && <span lang="en" dir="ltr">{itemEnglish[item.id]}</span>}
         </div>
-        <button
-          type="button"
-          className="menu-product-add"
-          onClick={() => onSelect({ ...item, image: item.image || category.image })}
-          aria-label={`عرض تفاصيل ${item.nameAr}`}
-        >
-          <Plus aria-hidden="true" />
-        </button>
       </div>
       <p className="menu-product-price">{item.price}</p>
     </div>
