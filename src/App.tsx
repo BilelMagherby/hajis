@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { PhilosophySection } from './components/PhilosophySection';
 import { MenuSection } from './components/MenuSection';
-import { V60Section } from './components/V60Section';
 import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
@@ -12,7 +11,7 @@ import { LocationMapSection } from './components/LocationMapSection';
 import { ChatbotWidget } from './components/ChatbotWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MenuBookPage } from './pages/MenuBookPage';
+import { MenuPage } from './pages/MenuPage';
 import { Navigate } from 'react-router-dom';
 import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
@@ -58,7 +57,10 @@ export const App: React.FC = () => {
   if (location.pathname === '/menu') {
     return (
       <>
-        <MenuBookPage onNavigate={handleNavigate} />
+        <MenuPage
+          onNavigate={handleNavigate}
+          onOpenCookieSettings={() => setIsCookieSettingsOpen(true)}
+        />
         <CookieConsent
           isLoading={false}
           openSettings={isCookieSettingsOpen}
@@ -92,10 +94,7 @@ export const App: React.FC = () => {
         {/* 7. Coffee Menu & 3D Interactive Coffee Bag */}
         <MenuSection onNavigate={handleNavigate} />
 
-        {/* 8. Dedicated V60 Pour-Over Ritual Section */}
-        <V60Section />
-
-        {/* 9. Visit Hajiss & 3D Hail Topographic Map */}
+        {/* 8. Visit Hajiss & 3D Hail Topographic Map */}
         <VisitSection />
 
         {/* 10. Online Store Teaser & QR Code */}

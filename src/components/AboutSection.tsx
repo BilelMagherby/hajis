@@ -38,11 +38,6 @@ export const AboutSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Small Heritage Tag at bottom-right of image */}
-              <div className="absolute -bottom-5 right-6 bg-[var(--color-brand-black)] text-[var(--color-brand-sand)] px-5 py-2.5 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] shadow-xl flex items-center space-x-2 space-x-reverse">
-                <span className="text-[var(--color-brand-sand)]">•</span>
-                <span className="font-arabic text-xs font-light">حائل منذ 2020</span>
-              </div>
             </div>
           </RevealOnScroll>
 
@@ -110,25 +105,25 @@ export const AboutSection: React.FC = () => {
         <RevealOnScroll className="mt-16 sm:mt-20 lg:mt-24" delay={100}>
           <div
             dir="rtl"
-            className="brand-texture-clay visual-card overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)]"
+            className="brand-texture-clay visual-card overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[#785b40]"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-6 sm:p-10 lg:col-span-7 lg:p-14">
                 <div className="story-copy-reveal story-reveal-delay-1 mb-4 flex items-center gap-3 sm:mb-5">
-                  <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-black)]">
+                  <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-sand)]">
                     حكاية المكان
                   </span>
                 </div>
 
-                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold leading-[1.5] tracking-tight text-[var(--color-brand-black)] sm:text-4xl">
+                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold leading-[1.5] tracking-tight text-[var(--color-brand-linen)] sm:text-4xl">
                   قصتنا
                 </h3>
 
-                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-4 border-r-2 border-[var(--color-brand-chocolate)] pr-5 font-kufi text-xl font-bold leading-[1.8] text-[var(--color-brand-black)] sm:mt-5 sm:text-2xl">
+                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-4 border-r-2 border-[var(--color-brand-sand)] pr-5 font-kufi text-xl font-bold leading-[1.8] text-[var(--color-brand-linen)] sm:mt-5 sm:text-2xl">
                   "بدأت قصتنا من الوجار"
                 </blockquote>
 
-                <div className="mt-5 max-w-prose space-y-4 font-arabic text-base leading-[1.9] text-[var(--color-brand-black)] sm:mt-6 sm:space-y-5 sm:text-lg">
+                <div className="mt-5 max-w-prose space-y-4 font-arabic text-base leading-[1.9] text-[var(--color-brand-linen)] sm:mt-6 sm:space-y-5 sm:text-lg">
                   <p className="story-copy-reveal story-reveal-delay-4">
                     في منتصف التسعينيات، أنشأنا مقهى صغيرًا بمسمى "الوجار" في مبنى قديم بنفس الموقع، فالوجار أسم تقليدي حائلي يشير إلى مجمر ناري يجتمع حوله الناس بالشتاء للدفء وكذلك للتفاعل والمناقشات بين الأهل والأصحاب.
                   </p>

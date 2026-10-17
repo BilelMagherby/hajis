@@ -7,6 +7,7 @@ interface NavbarProps {
   enableAdminShortcut?: boolean;
   activeSection?: string;
   inFlow?: boolean;
+  variant?: 'default' | 'menu';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,7 +15,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onAdminAccess,
   enableAdminShortcut = false,
   activeSection,
-  inFlow = false
+  inFlow = false,
+  variant = 'default'
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,11 +35,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'hero', labelAr: 'الرئيسية' },
     { id: 'about', labelAr: 'من نحن' },
-    { id: 'philosophy', labelAr: 'ماذا يميّزنا' },
     { id: 'menu', labelAr: 'القائمة' },
-    { id: 'v60', labelAr: 'خدمات التقطير' },
     { id: 'visit', labelAr: 'زيارة هاجس' },
   ];
+  const isMenuVariant = variant === 'menu';
 
   const handleLinkClick = (id: string) => {
     setMobileMenuOpen(false);
@@ -81,7 +82,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           inFlow
             ? 'sticky top-0 h-16'
             : `fixed top-0 left-0 right-0 ${isScrolled ? 'py-2' : 'py-1'}`
-        } z-40 border-b border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] bg-[#4A2C17] shadow-lg shadow-black/20`}
+        } z-40 border-b shadow-lg ${isMenuVariant
+          ? 'border-[rgb(var(--color-brand-chocolate-rgb)_/_0.12)] bg-[#F5F0E8] shadow-black/5'
+          : 'border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] bg-[#2B180E] shadow-black/20'}`}
       >
         <div className={`max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between ${inFlow ? '' : '-translate-y-2'}`}>
           {/* LEFT: HAJISS BRAND LOGO */}
@@ -95,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src="/images/logo.png"
                 alt="شعار هاجس"
-                className="brand-logo-warm w-full h-auto object-contain"
+                className={`${isMenuVariant ? 'brand-logo-ink' : 'brand-logo-warm'} w-full h-auto object-contain`}
               />
             </div>
           </button>
@@ -108,7 +111,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
                 className={`visual-button relative inline-flex items-center py-1 font-arabic text-[13px] font-medium transition-colors group ${
-                  activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] hover:text-[var(--color-brand-sand)]'
+                  isMenuVariant
+                    ? activeSection === link.id ? 'text-[var(--color-brand-olive)]' : 'text-[rgb(var(--color-brand-chocolate-rgb)_/_0.82)] hover:text-[var(--color-brand-olive)]'
+                    : activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] hover:text-[var(--color-brand-sand)]'
                 }`}
               >
                 {link.labelAr}
@@ -124,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex lg:hidden items-center space-x-3 space-x-reverse">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="visual-icon-control rounded-full text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)] focus:outline-none"
+              className={`visual-icon-control rounded-full focus:outline-none ${isMenuVariant ? 'text-[var(--color-brand-chocolate)] hover:text-[var(--color-brand-olive)]' : 'text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)]'}`}
               aria-label="فتح وإغلاق القائمة"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -135,15 +140,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 flex flex-col bg-[rgb(74_44_23_/_0.95)] px-6 pt-24 backdrop-blur-xl lg:hidden">
+        <div className={`fixed inset-0 z-30 flex flex-col px-6 pt-24 backdrop-blur-xl lg:hidden ${isMenuVariant ? 'bg-[rgb(245_240_232_/_0.98)]' : 'bg-[rgb(43_24_14_/_0.95)]'}`}>
           <div className="flex flex-col space-y-5 text-right">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
                 aria-current={activeSection === link.id ? 'page' : undefined}
-                className={`visual-button w-full font-arabic text-xl py-2 border-b border-[var(--color-brand-chocolate)] text-right ${
-                  activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)]'
+                className={`visual-button w-full font-arabic text-xl py-2 border-b text-right ${
+                  isMenuVariant
+                    ? `border-[rgb(var(--color-brand-chocolate-rgb)_/_0.14)] ${activeSection === link.id ? 'text-[var(--color-brand-olive)]' : 'text-[var(--color-brand-chocolate)] hover:text-[var(--color-brand-olive)]'}`
+                    : `border-[var(--color-brand-chocolate)] ${activeSection === link.id ? 'text-[var(--color-brand-sand)]' : 'text-[var(--color-brand-linen)] hover:text-[var(--color-brand-sand)]'}`
                 }`}
               >
                 {link.labelAr}

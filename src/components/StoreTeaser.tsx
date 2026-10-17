@@ -61,15 +61,19 @@ export const StoreTeaser: React.FC = () => {
             </div>
           </article>
 
-          <form onSubmit={handleSubmit} className="brand-texture-clay visual-card flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.3)] p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8">
+          <form
+            onSubmit={handleSubmit}
+            style={{ backgroundColor: '#785b40' }}
+            className="visual-card flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[#785b40] p-6 text-right shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8"
+          >
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
-                <h4 className="mt-1 font-kufi text-xl text-[var(--color-brand-black)]">
+                <h4 className="mt-1 font-kufi text-xl text-[var(--color-brand-linen)]">
                   قيّم تجربتك
                 </h4>
               </div>
 
-              <div className="flex items-center gap-1 rounded-full border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-linen)] px-2 py-1">
+              <div className="flex items-center gap-1 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] bg-[var(--color-brand-linen)] px-2 py-1">
                 {[1, 2, 3, 4, 5].map((value) => (
                   <button
                     key={value}
@@ -92,11 +96,11 @@ export const StoreTeaser: React.FC = () => {
               }}
               rows={4}
               placeholder="شاركنا رأيك عن المتجر وتجربة التسوق..."
-              className="w-full resize-none rounded-2xl border border-[rgb(var(--color-brand-chocolate-rgb)_/_0.45)] bg-[var(--color-brand-linen)] px-4 py-4 text-sm leading-7 text-[var(--color-brand-chocolate)] placeholder:text-[var(--color-brand-chocolate)] focus:border-[var(--color-brand-chocolate)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)]"
+              className="w-full resize-none rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.45)] bg-[var(--color-brand-linen)] px-4 py-4 text-sm leading-7 text-[var(--color-brand-chocolate)] placeholder:text-[var(--color-brand-chocolate)]/75 focus:border-[var(--color-brand-sand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-brand-sand-rgb)_/_0.4)]"
             />
 
             <div className="mt-4 flex items-center justify-between gap-3">
-              <span className="text-xs font-medium text-[var(--color-brand-black)]">
+              <span className="text-xs font-medium text-[var(--color-brand-linen)]">
                 {isSubmitted ? 'شكرًا لك! تم تسجيل رأيك.' : 'نقرأ كل الآراء بعناية.'}
               </span>
               <button

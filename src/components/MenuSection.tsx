@@ -1,189 +1,224 @@
-import React, { useState } from 'react';
-import { ArrowLeft, X, Sparkles } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import {
+  ArrowLeft,
+  CakeSlice,
+  Coffee,
+  CupSoda,
+  Leaf,
+  Package,
+  Plus,
+  ShoppingBag,
+  X
+} from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
-import { RevealOnScroll } from './RevealOnScroll';
+import '../pages/MenuPage.css';
 
 interface MenuSectionProps {
   onNavigate?: (sectionId: string) => void;
 }
 
-export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate }) => {
-  const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
+const categoryEnglish: Record<string, string> = {
+  'hot-drinks': 'HOT COFFEE',
+  'cold-drinks': 'COLD COFFEE',
+  desserts: 'DESSERTS',
+  'coffee-beans': 'COFFEE BEANS',
+  'drip-bags': 'DRIP BAGS',
+  'tea-syrups': 'TEA & ADD-ONS'
+};
+
+const itemEnglish: Record<string, string> = {
+  'espresso-double-shot': 'Espresso Double Shot',
+  'espresso-single-shot': 'Espresso Single Shot',
+  macchiato: 'Macchiato',
+  cortado: 'Cortado',
+  'flat-white': 'Flat White',
+  cappuccino: 'Cappuccino',
+  latte: 'Latte',
+  'coffee-of-the-day-drip': 'Coffee of the Day (Drip)',
+  americano: 'Americano',
+  'matcha-hot': 'Matcha Hot',
+  'v60-hot': 'V60 Hot',
+  alfredo: 'Alfredo',
+  'iced-americano': 'Iced Americano',
+  'iced-latte': 'Iced Latte',
+  'v60-iced': 'V60 Iced',
+  'matcha-iced': 'Matcha Iced',
+  'cold-hibiscus': 'Cold Hibiscus',
+  'cold-coffee-of-the-day': 'Iced Coffee of the Day',
+  'magic-bar-25': 'Magic Bar',
+  'magic-bar-20': 'Magic Bar',
+  'magic-bar-16': 'Magic Bar',
+  'chocolate-chip-cookies': 'Chocolate Chip Cookies',
+  'fudge-brownies-16': 'Fudge Brownies',
+  'fudge-brownies-12': 'Fudge Brownies',
+  'fudge-brownies-9': 'Fudge Brownies',
+  'lemon-cake-16': 'Lemon Cake',
+  'lemon-cake-12': 'Lemon Cake',
+  'lemon-cake-9': 'Lemon Cake'
+};
+
+const brandedDrinkIds = new Set([
+  'espresso-double-shot', 'espresso-single-shot', 'macchiato', 'cortado', 'flat-white',
+  'cappuccino', 'latte', 'coffee-of-the-day-drip', 'americano', 'matcha-hot', 'v60-hot',
+  'alfredo', 'iced-americano', 'iced-latte', 'v60-iced', 'matcha-iced', 'cold-hibiscus',
+  'cold-coffee-of-the-day'
+]);
+
+const getCategoryIcon = (categoryId: string) => {
+  switch (categoryId) {
+    case 'cold-drinks': return CupSoda;
+    case 'desserts': return CakeSlice;
+    case 'coffee-beans': return ShoppingBag;
+    case 'drip-bags': return Package;
+    case 'tea-syrups': return Leaf;
+    default: return Coffee;
+  }
+};
+
+const ProductCard: React.FC<{
+  category: MenuCategory;
+  item: MenuItem;
+  onSelect: (item: MenuItem) => void;
+}> = ({ category, item, onSelect }) => (
+  <article className="menu-product-card">
+    <button
+      type="button"
+      className={`menu-product-photo${category.id === 'hot-drinks' || category.id === 'cold-drinks' ? ' menu-product-photo--branded' : ''}`}
+      onClick={() => onSelect({ ...item, image: item.image || category.image })}
+      aria-label={`عرض تفاصيل ${item.nameAr}`}
+    >
+      <img src={item.image || category.image} alt="" loading="lazy" />
+    </button>
+    <div className="menu-product-copy" dir="rtl">
+      <div className="menu-product-heading">
+        <div className="menu-product-names">
+          <h3>{item.nameAr}</h3>
+          {itemEnglish[item.id] && <span lang="en" dir="ltr">{itemEnglish[item.id]}</span>}
+        </div>
+        <button
+          type="button"
+          className="menu-product-add"
+          onClick={() => onSelect({ ...item, image: item.image || category.image })}
+          aria-label={`عرض تفاصيل ${item.nameAr}`}
+        >
+          <Plus aria-hidden="true" />
+        </button>
+      </div>
+      <p className="menu-product-price">{item.price}</p>
+    </div>
+  </article>
+);
+
+const CategorySection: React.FC<{
+  category: MenuCategory;
+  onSelect: (item: MenuItem) => void;
+  featured?: boolean;
+}> = ({ category, onSelect, featured = false }) => {
+  const Icon = getCategoryIcon(category.id);
 
   return (
     <section
-      id="menu"
-      data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] overflow-hidden"
+      id={category.id}
+      dir="rtl"
+      className={`menu-category-section${featured ? ' menu-category-section--featured' : ''}`}
+      aria-labelledby={`${category.id}-title`}
     >
-      <div
-        aria-hidden="true"
-        className="parallax-background pointer-events-none absolute inset-0 opacity-65"
-        style={{ backgroundImage: "url('/images/coffee-parallax.png')" }}
-      />
-      <div className="pointer-events-none absolute inset-0 bg-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-[rgb(var(--color-brand-olive-rgb)_/_0.45)] to-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <RevealOnScroll
-          dir="rtl"
-          className="mb-14 flex w-full flex-col items-start text-right"
-        >
-          <div className="mb-3 flex items-center justify-start">
-            <span className="font-arabic text-xs font-medium tracking-[0.24em] text-[var(--color-brand-sand)]">
-              إبداعات هاجس
-            </span>
-          </div>
-          <h2 className="visual-section-title font-kufi text-3xl font-bold text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
-            قائمة القهوة
-          </h2>
-          <p className="mt-4 max-w-2xl font-arabic text-sm font-light leading-8 text-[var(--color-brand-linen)] sm:text-base">
-            من القهوة الكلاسيكية إلى تجارب V60 الفريدة، كل كوب يروي حكاية شغف وتفانٍ للمذاق الأصيل.
-          </p>
-        </RevealOnScroll>
+      <header className="menu-category-heading" dir="rtl">
+        <span className="menu-category-icon"><Icon aria-hidden="true" /></span>
+        <div className="menu-category-title-wrap">
+          <h2 id={`${category.id}-title`}>{category.titleAr}</h2>
+          <span lang="en" dir="ltr">{categoryEnglish[category.id]}</span>
+        </div>
+        <span className="menu-category-rule" aria-hidden="true" />
+      </header>
+      <p className="menu-category-description">{category.descriptionAr}</p>
+      <div className="menu-product-grid">
+        {category.items.map((item) => (
+          <ProductCard key={item.id} category={category} item={item} onSelect={onSelect} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12" dir="ltr">
-          <RevealOnScroll
-            className="brand-texture-olive visual-card flex flex-col items-center justify-center rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:col-span-5"
-            dir="rtl"
-            delay={120}
-          >
-            <div className="visual-media relative mb-6 w-full overflow-hidden rounded-xl shadow-[0_0_30px_rgb(var(--color-brand-sand-rgb)_/_0.12)]">
-              <img
-                src="/images/espresso_pour.jpg"
-                alt="قهوة هاجس المختصة"
-                className="aspect-[4/3] w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.6)] via-transparent to-transparent" />
-              <span className="absolute bottom-4 right-4 font-arabic text-xs tracking-wide text-[var(--color-brand-linen)]">
-                مذاقٌ يُحضّر على مهل
-              </span>
-            </div>
+export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate: _onNavigate }) => {
+  const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
+  const drinks = menuCategories.slice(0, 2);
+  const moreCategories = menuCategories.slice(2);
 
-            <button
-              onClick={() => {
-                if (onNavigate) {
-                  onNavigate('menu');
-                } else {
-                  setSelectedCategory(menuCategories[0]);
-                }
-              }}
-              className="brand-button-primary visual-button flex w-full items-center justify-center space-x-2 space-x-reverse rounded-full px-6 py-3.5 font-arabic text-sm font-medium shadow-gold-glow transition-all duration-300"
-            >
-              <span>اكتشف القائمة الكاملة</span>
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-          </RevealOnScroll>
+  useEffect(() => {
+    if (!selectedProduct) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProduct(null);
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [selectedProduct]);
 
-          <RevealOnScroll
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7"
-            dir="rtl"
-            delay={200}
-          >
-            {[
-              {
-                number: '01',
-                title: 'مشروبات ساخنة',
-                description: 'محضّرة بعناية لترافق لحظاتك.'
-              },
-              {
-                number: '02',
-                title: 'مشروبات باردة',
-                description: 'خيارات منعشة من قائمة هاجس.'
-              },
-              {
-                number: '03',
-                title: 'حلى حايلنا',
-                description: 'حلوياتنا من حلى حايلنا، بنكهة محلية أصيلة.'
-              },
-              {
-                number: '04',
-                title: 'محاصيل القهوة',
-                description: 'محاصيلنا من أطيب وأميز محامص مملكتنا الغالية.'
-              }
-            ].map((item) => (
-              <article
-                key={item.number}
-                className="brand-texture-olive visual-card group flex min-h-36 flex-col justify-between rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.2)] p-5 text-right shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.55)] sm:p-6"
-              >
-                <div className="flex flex-col items-start gap-2">
-                  <span className="font-arabic text-[10px] tracking-[0.2em] text-[rgb(var(--color-brand-sand-rgb)_/_0.8)]">
-                    {item.number}
-                  </span>
-                  <h3 className="font-kufi text-lg font-semibold text-[var(--color-brand-linen)] transition-colors group-hover:text-[var(--color-brand-sand)] sm:text-xl">
-                    {item.title}
-                  </h3>
-                </div>
-                <p className="mt-5 font-arabic text-sm font-light leading-7 text-[var(--color-brand-linen)]">
-                  {item.description}
-                </p>
-                <div className="mt-4 h-px w-10 self-end bg-[rgb(var(--color-brand-sand-rgb)_/_0.55)] transition-all duration-300 group-hover:w-16" />
-              </article>
+  return (
+    <section id="menu" className="menu-page w-full relative pt-8 sm:pt-12 pb-28 sm:pb-36 lg:pb-44" dir="rtl">
+      <div>
+        <div className="menu-catalog-content">
+          <div className="menu-featured-groups">
+            {drinks.map((category) => (
+              <CategorySection key={category.id} category={category} onSelect={setSelectedProduct} featured />
             ))}
-          </RevealOnScroll>
+          </div>
+
+          <aside className="menu-story-banner" dir="rtl">
+            <div>
+              <span>هاجس — قهوة مختصة</span>
+              <h2>كل كوب يحكي قصة</h2>
+              <p>لحظات متوازنة، ونكهات نحضّرها لك بعناية.</p>
+            </div>
+            <a href="#desserts" aria-label="اكتشف الحلويات">
+              <ArrowLeft aria-hidden="true" />
+            </a>
+          </aside>
+
+          <div className="menu-more-categories">
+            {moreCategories.map((category) => (
+              <CategorySection key={category.id} category={category} onSelect={setSelectedProduct} />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* LUXURY MENU MODAL / DRAWER */}
-      {selectedCategory && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-[var(--color-brand-black)] border border-[rgb(var(--color-brand-sand-rgb)_/_0.4)] rounded-3xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto shadow-2xl">
-            {/* Close Button */}
+      {selectedProduct && (
+        <div
+          className="menu-product-dialog-backdrop"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setSelectedProduct(null);
+          }}
+        >
+          <div
+            className="menu-product-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="menu-product-dialog-title"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
-              onClick={() => setSelectedCategory(null)}
-              className="visual-icon-control absolute top-5 left-5 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] text-[var(--color-brand-linen)] hover:text-[var(--color-brand-linen)] hover:bg-[var(--color-brand-chocolate)] transition-colors"
-              aria-label="إغلاق"
+              type="button"
+              className="menu-product-dialog-close"
+              onClick={() => setSelectedProduct(null)}
+              aria-label="إغلاق تفاصيل المنتج"
             >
-              <X className="w-5 h-5" />
+              <X aria-hidden="true" />
             </button>
-
-            {/* Modal Header */}
-            <div className="text-right pb-6 border-b border-[var(--color-brand-chocolate)]">
-              <span className="font-brand text-xs text-[var(--color-brand-sand)] tracking-widest uppercase">
-              </span>
-              <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-linen)]">
-                {selectedCategory.titleAr}
-              </h3>
-              <p className="font-arabic text-sm text-[var(--color-brand-linen)] mt-1">
-                {selectedCategory.descriptionAr}
-              </p>
-            </div>
-
-            {/* Items List */}
-            <div className="mt-6 space-y-4">
-              {selectedCategory.items.map((item: MenuItem) => (
-                <div
-                  key={item.id}
-                  className="p-4 rounded-xl bg-[rgb(var(--color-brand-chocolate-rgb)_/_0.6)] border border-[rgb(var(--color-brand-sand-rgb)_/_0.15)] hover:border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] transition-colors text-right flex flex-col justify-between"
-                >
-                  <div className="flex items-start justify-between">
-                    {/* Price */}
-                    <span className="font-mono text-base font-bold text-[var(--color-brand-sand)]">
-                      {item.price}
-                    </span>
-
-                    {/* Name */}
-                    <div>
-                      <h4 className="font-kufi text-lg font-bold text-[var(--color-brand-linen)]">
-                        {item.nameAr}
-                      </h4>
-                      <span className="font-brand text-xs text-[var(--color-brand-sand)]">
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="font-arabic text-xs text-[rgb(var(--color-brand-linen-rgb)_/_0.9)] mt-2 font-light">
-                    {item.descriptionAr}
-                  </p>
-
-                  {item.notes && (
-                    <div className="mt-2 flex items-center justify-end space-x-1 space-x-reverse text-[11px] text-[var(--color-brand-sand)]">
-                      <Sparkles className="w-3 h-3" />
-                      <span>{item.notes}</span>
-                    </div>
-                  )}
-                </div>
-              ))}
+            <img
+              className={brandedDrinkIds.has(selectedProduct.id) ? 'menu-product-dialog-image--branded' : undefined}
+              src={selectedProduct.image || '/images/main_cafe.jpg'}
+              alt={selectedProduct.nameAr}
+            />
+            <div className="menu-product-dialog-copy" dir="rtl">
+              <h2 id="menu-product-dialog-title">{selectedProduct.nameAr}</h2>
+              <span>{selectedProduct.price}</span>
+              <p>{selectedProduct.descriptionAr}</p>
+              {selectedProduct.notes && <p>ملاحظات التذوق: {selectedProduct.notes}</p>}
+              {selectedProduct.tags && selectedProduct.tags.length > 0 && (
+                <ul>{selectedProduct.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+              )}
             </div>
           </div>
         </div>

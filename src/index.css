@@ -76,18 +76,32 @@
 
 @layer base {
   :root {
-    --color-brand-black: #191817;
-    --color-brand-black-rgb: 25 24 23;
-    --color-brand-olive: #646044;
-    --color-brand-olive-rgb: 100 96 68;
-    --color-brand-chocolate: #4B2B1D;
-    --color-brand-chocolate-rgb: 75 43 29;
-    --color-brand-sand: #D2BE9D;
-    --color-brand-sand-rgb: 210 190 157;
-    --color-brand-terracotta: #AA7A63;
-    --color-brand-terracotta-rgb: 170 122 99;
-    --color-brand-linen: #F3EBDD;
-    --color-brand-linen-rgb: 243 235 221;
+    --color-brand-black: #40372D;
+    --color-brand-black-rgb: 64 55 45;
+    --color-brand-espresso: #40372D;
+    --color-brand-espresso-rgb: 64 55 45;
+    --color-brand-olive: #555A40;
+    --color-brand-olive-rgb: 85 90 64;
+    --color-brand-sage: #77795F;
+    --color-brand-sage-rgb: 119 121 95;
+    --color-brand-chocolate: #785B40;
+    --color-brand-chocolate-rgb: 120 91 64;
+    --color-brand-coffee: #785B40;
+    --color-brand-coffee-rgb: 120 91 64;
+    --color-brand-sand: #C8BCA7;
+    --color-brand-sand-rgb: 200 188 167;
+    --color-brand-taupe: #C8BCA7;
+    --color-brand-taupe-rgb: 200 188 167;
+    --color-brand-beige: #E9E1D3;
+    --color-brand-beige-rgb: 233 225 211;
+    --color-brand-terracotta: #785B40;
+    --color-brand-terracotta-rgb: 120 91 64;
+    --color-brand-linen: #F5F1E7;
+    --color-brand-linen-rgb: 245 241 231;
+    --color-brand-ivory: #F5F1E7;
+    --color-brand-ivory-rgb: 245 241 231;
+    --color-brand-white: #FFFFFF;
+    --color-brand-white-rgb: 255 255 255;
     --color-brand-stripes: repeating-linear-gradient(
       0deg,
       var(--color-brand-black) 0 2px,
@@ -97,7 +111,7 @@
     --color-espresso-dark: var(--color-brand-black);
     --color-espresso-deep: var(--color-brand-chocolate);
     --color-olive: var(--color-brand-olive);
-    --color-olive-soft: var(--color-brand-olive);
+    --color-olive-soft: var(--color-brand-sage);
     --color-chocolate: var(--color-brand-chocolate);
     --color-sand: var(--color-brand-sand);
     --color-sand-soft: var(--color-brand-sand);
@@ -106,8 +120,8 @@
     --color-linen: var(--color-brand-linen);
     --color-cream: var(--color-brand-linen);
     --color-terra-cotta: var(--color-brand-terracotta);
-    --color-coffee-brown: var(--color-chocolate);
-    --shadow-brand: rgba(25, 24, 23, 0.6);
+    --color-coffee-brown: var(--color-brand-coffee);
+    --shadow-brand: rgba(64, 55, 45, 0.6);
     --texture-stripes: var(--color-brand-stripes);
   }
 
@@ -193,6 +207,10 @@
   filter: brightness(0) saturate(100%) invert(81%) sepia(14%) saturate(457%) hue-rotate(359deg) brightness(102%) contrast(91%);
 }
 
+.brand-logo-ink {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(16%) saturate(1102%) hue-rotate(347deg) brightness(88%) contrast(90%);
+}
+
 .brand-stripe-divider {
   height: 5px;
   background: var(--texture-stripes);
@@ -207,7 +225,7 @@
 }
 
 .brand-texture-clay {
-  background-color: #C8AD86;
+  background-color: #785b40;
   background-image:
     radial-gradient(ellipse at 80% 12%, rgba(243, 235, 221, 0.08), transparent 58%),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");

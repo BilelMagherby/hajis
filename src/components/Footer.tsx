@@ -179,14 +179,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
               </li>
               <li>
                 <button
-                  onClick={() => scrollTo('v60')}
-                  className="hover:text-[var(--color-brand-sand)] transition-colors"
-                >
-                  خدمات التقطير
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => scrollTo('visit')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
