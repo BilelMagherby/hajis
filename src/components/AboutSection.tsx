@@ -6,14 +6,14 @@ export const AboutSection: React.FC = () => {
     <section
       id="about"
       data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] overflow-hidden"
+      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#ECE3D2] text-[#40372D] overflow-hidden"
     >
       <div
         aria-hidden="true"
-        className="parallax-background pointer-events-none absolute inset-0 opacity-50"
+        className="parallax-background pointer-events-none absolute inset-0 opacity-40"
         style={{ backgroundImage: "url('/images/about-parallax.png')" }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[rgb(var(--color-brand-olive-rgb)_/_0.65)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[#ECE3D2]/75" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -24,10 +24,10 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative w-full max-w-xl">
               {/* Soft decorative shadow background */}
-              <div className="absolute -inset-4 bg-[rgb(var(--color-brand-olive-rgb)_/_0.4)] rounded-3xl blur-2xl transform -rotate-2" />
+              <div className="absolute -inset-4 bg-[#C8BCA7]/30 rounded-3xl blur-2xl transform -rotate-2" />
 
               {/* The Image Container with subtle organic border */}
-              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[var(--color-brand-olive)]">
+              <div className="visual-media relative rounded-2xl overflow-hidden shadow-2xl border border-[rgba(120,91,64,0.25)] bg-[#ECE3D2]">
                 <img
                   src="/images/about_cafe_pourover.jpeg"
                   alt="قهوة مقطرة وكرم الضيافة العربية"
@@ -35,7 +35,7 @@ export const AboutSection: React.FC = () => {
                 />
                 
                 {/* Subtle vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-brand-black-rgb)_/_0.3)] via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(64,55,45,0.25)] via-transparent to-transparent pointer-events-none" />
               </div>
 
             </div>
@@ -49,52 +49,47 @@ export const AboutSection: React.FC = () => {
           >
             {/* Top Insignia Emblem */}
             <div dir="rtl" className="flex items-center justify-start gap-3">
-              <span className="font-arabic text-sm tracking-widest text-[var(--color-brand-sand)] uppercase font-semibold">
+              <span className="font-arabic text-sm tracking-widest text-[#785B40] uppercase font-semibold">
                 أصالة المكان وروح الضيافة
               </span>
               <div className="w-12 h-auto flex items-center justify-center">
                 <img
                   src="/images/logo.png"
                   alt="شعار هاجس"
-                  className="brand-logo-warm w-full h-auto object-contain"
+                  className="brand-logo-ink w-full h-auto object-contain"
                 />
               </div>
             </div>
 
             {/* Main Title */}
-            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-linen)] tracking-tight">
+            <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#40372D] tracking-tight">
                هاجس ؟
             </h2>
 
-            {/* Introductory sentence */}
-            <p className="font-arabic text-base sm:text-lg text-[var(--color-brand-linen)] font-medium leading-relaxed">
-             
-            </p>
-
             {/* The 3 Pillars List */}
-            <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
+            <ul dir="rtl" className="space-y-4 font-arabic text-base leading-[1.8] text-[#40372D] sm:text-lg">
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
                 <span>مقهى متخصص يقدم أفضل منتجات القهوة المحمصة والمميزة في السوق السعودي "هاجس بيت لأجود أنواع القهوة".</span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
                 <span>وجهة لشغوفي وعشاق القهوة، في ارقى مجمع يحظى بجلسات خارجية جميلة في أهم المواقع بمدينة حائل.</span>
               </li>
               <li className="flex items-start gap-3 text-right">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#785B40] mt-2 flex-shrink-0" />
                 <span>راحة زبائننا هدف ملزم لتحقيق ثقتهم بهاجس.</span>
               </li>
             </ul>
 
             {/* Unifying statement */}
-            <p className="pt-1 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
+            <p className="pt-1 font-arabic text-base leading-[1.8] text-[#40372D] sm:text-lg">
               وهذي الأشياء الثلاث مو متفرقة عن بعض، أصلها واحد، بس كل وحدة تعبّر عنه بطريقتها.
             </p>
 
             {/* Final Statement / Punchline */}
-            <div className="pt-4 border-t border-[rgb(var(--color-brand-sand-rgb)_/_0.35)]">
-              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-sand)] tracking-wide">
+            <div className="pt-4 border-t border-[rgba(120,91,64,0.25)]">
+              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[#785B40] tracking-wide">
                 القهوة... طقس نعيشه.
               </p>
             </div>

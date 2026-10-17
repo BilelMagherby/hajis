@@ -8,11 +8,11 @@ export const LocationMapSection: React.FC = () => {
   return (
     <section
       aria-labelledby="location-map-title"
-      className="relative w-full overflow-hidden bg-[var(--color-brand-olive)] py-16 text-[var(--color-brand-linen)] sm:py-20"
+      className="relative w-full overflow-hidden bg-[#ECE3D2] py-16 text-[#40372D] sm:py-20"
       dir="rtl"
     >
       <div className="relative z-10 mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">
-        <div className="visual-media relative overflow-hidden rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] shadow-[0_16px_36px_rgba(0,0,0,0.18)]">
+        <div className="visual-media relative overflow-hidden rounded-2xl border border-[rgba(120,91,64,0.25)] shadow-[0_16px_36px_rgba(0,0,0,0.1)]">
           <iframe
             title="موقع مقهى هاجس على الخريطة"
             src={mapEmbedUrl}
@@ -30,11 +30,11 @@ export const LocationMapSection: React.FC = () => {
         </div>
 
         <div className="self-start text-right" dir="rtl">
-          <h2 id="location-map-title" className="visual-section-title font-kufi text-3xl font-bold sm:text-4xl">
+          <h2 id="location-map-title" className="visual-section-title font-kufi text-3xl font-bold text-[#40372D] sm:text-4xl">
             موقعنا
           </h2>
-          <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]">
-            <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[var(--color-brand-sand)]" />
+          <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[#40372D]">
+            <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[#785B40]" />
             <span>{brandData.location.placeAr}، {brandData.location.cityAr}</span>
           </p>
           <a

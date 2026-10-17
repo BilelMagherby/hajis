@@ -16,16 +16,11 @@ export const PhilosophySection: React.FC = () => {
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         <img
-          src="/images/philosophy-pourover.png"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover blur-2xl scale-125 opacity-60"
+          src="/images/philosophy-pourover.jpg"
+          alt="معايير الجودة والكمال - يميّز هاجس"
+          className="h-full w-full object-cover object-center brightness-90"
         />
-        <img
-          src="/images/philosophy-pourover.png"
-          alt="تحضير القهوة المختصة"
-          className="relative h-full w-full object-contain mx-auto"
-        />
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[1] opacity-20" />
 
