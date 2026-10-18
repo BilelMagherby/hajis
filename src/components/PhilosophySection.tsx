@@ -27,19 +27,17 @@ export const PhilosophySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" dir="rtl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           
-          {/* TOP RIGHT: Section Header */}
+          {/* Section Header */}
           <div className="lg:col-start-1 lg:row-start-1 flex flex-col justify-center text-right py-4">
-            <div className="flex items-center justify-start mb-3">
-              <span className="font-arabic text-sm font-semibold tracking-widest text-[var(--color-brand-sand)] uppercase">
-                معايير الجودة والكمال
-              </span>
-            </div>
             <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#D5C7B3]">
-              يميّز هاجس؟
+              ما الذي يميز هاجس؟
             </h2>
+            <p className="mt-3 font-kufi text-lg font-semibold leading-relaxed text-[var(--color-brand-sand)] sm:text-xl">
+              أكثر من مقهى... وجهتك المتكاملة للقهوة في حائل
+            </p>
           </div>
 
-          {/* TOP CENTER: Box 1 (كل كوب محضر بعناية فائقة) */}
+          {/* TOP CENTER: Shop */}
           <div className="lg:col-start-2 lg:row-start-1">
             <div className="visual-card relative h-full overflow-hidden rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.45)] bg-[var(--color-brand-chocolate)] p-6 text-[var(--color-brand-sand)] shadow-[0_18px_44px_rgba(0,0,0,0.22)] sm:p-8 flex flex-col justify-center">
               <div className="pointer-events-none absolute inset-0 opacity-15">
@@ -53,18 +51,16 @@ export const PhilosophySection: React.FC = () => {
 
               <div className="relative z-10 space-y-2">
                 <h3 className="font-kufi text-2xl sm:text-3xl font-bold leading-snug text-[#D5C7B3]">
-                  كل كوب محضر <span className="text-[var(--color-brand-sand)]">بعناية فائقة.</span>
+                  متجر في المقهى وعبر الإنترنت
                 </h3>
                 <p className="font-arabic text-base font-medium leading-[1.8] text-[var(--color-brand-sand)] sm:text-lg">
-                  كل كوب يُقدَّم لأنه يستحق تذوّقه. لا شيء عندنا صدفة.
+                  محاصيل مختارة وأدوات تحضير متنوعة، متوفرة في متجرنا داخل المقهى وعبر متجرنا الإلكتروني، مع التوصيل إلى جميع مناطق المملكة.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* TOP LEFT (lg:col-start-3 lg:row-start-1) is intentionally empty */}
-
-          {/* MIDDLE RIGHT: Box 2 (Card 01 - استخلاص بدقة وعناية) */}
+          {/* MIDDLE RIGHT: Coffee preparation */}
           {item1 && (
             <div className="lg:col-start-1 lg:row-start-2">
               <RevealOnScroll delay={100} className="philosophy-card-reveal h-full">
@@ -80,9 +76,11 @@ export const PhilosophySection: React.FC = () => {
                     <h3 className="mt-3 font-kufi text-xl font-bold leading-[1.7] text-[#D5C7B3] sm:mt-4 sm:text-2xl">
                       {item1.titleAr}
                     </h3>
-                    <p className="mt-2 font-arabic text-base font-semibold text-[var(--color-brand-sand)]">
-                      {item1.subtitleAr}
-                    </p>
+                    {item1.subtitleAr && (
+                      <p className="mt-2 font-arabic text-base font-semibold text-[var(--color-brand-sand)]">
+                        {item1.subtitleAr}
+                      </p>
+                    )}
                     <p className="mt-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-sand)] sm:mt-5 sm:text-lg">
                       {item1.descriptionAr}
                     </p>
@@ -95,7 +93,7 @@ export const PhilosophySection: React.FC = () => {
           {/* MIDDLE CENTER: Empty space revealing the pour-over visual */}
           <div className="hidden lg:block lg:col-start-2 lg:row-start-2 min-h-[220px] pointer-events-none" aria-hidden="true" />
 
-          {/* MIDDLE LEFT: Box 3 (Card 02 - درجة تحميص مدروسة) */}
+          {/* MIDDLE LEFT: Location and seating */}
           {item2 && (
             <div className="lg:col-start-3 lg:row-start-2">
               <RevealOnScroll delay={200} className="philosophy-card-reveal h-full">
@@ -123,7 +121,7 @@ export const PhilosophySection: React.FC = () => {
             </div>
           )}
 
-          {/* BOTTOM: Box 4 (سوّها صح) spanning full width */}
+          {/* BOTTOM: Wholesale services */}
           <div className="lg:col-span-3 lg:row-start-3 mt-4 sm:mt-6">
             <div
               dir="rtl"
@@ -131,15 +129,14 @@ export const PhilosophySection: React.FC = () => {
             >
               <div className="absolute inset-y-0 right-0 w-1 bg-[var(--color-brand-sand)]" />
               <div className="relative mx-auto max-w-4xl">
-                <span className="font-arabic text-xs font-bold tracking-[0.2em] text-[var(--color-brand-sand)]">
-                  المفهوم الأساسي
-                </span>
-                <h3 className="mt-5 font-kufi text-2xl font-bold leading-relaxed text-[#D5C7B3] sm:text-3xl lg:text-4xl">
-                  سوّها صح
-                </h3>
-                <p className="mt-3 font-arabic text-base leading-8 text-[var(--color-brand-sand)] sm:text-lg sm:leading-9">
-                  القهوة المميزة ماهي بالصدفة...أساسها الاهتمام بكل خطوة.
-                </p>
+                <div>
+                  <h3 className="font-kufi text-2xl font-bold leading-relaxed text-[#D5C7B3] sm:text-3xl">
+                    توزيع ومستودعات لخدمة المقاهي في حائل
+                  </h3>
+                  <p className="mt-3 font-arabic text-base leading-8 text-[var(--color-brand-sand)] sm:text-lg sm:leading-9">
+                    نمتلك مستودعات مجهزة تمكّننا من تزويد المقاهي والمشاريع في حائل بالبُن ومستلزمات القهوة، بتوريد منتظم وسريع.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
