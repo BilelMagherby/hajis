@@ -27,15 +27,8 @@ export const menuCategories: MenuCategory[] = [
     image: '/images/menu-drinks/hot-single.jpg',
     items: [
       {
-        id: 'espresso-single-shot',
-        nameAr: 'إسبريسو — سنغل شوت',
-        descriptionAr: 'جرعة إسبريسو واحدة مركّزة بطعم غني.',
-        price: '10 ر.س',
-        image: '/images/menu-drinks/hot-single.jpg'
-      },
-      {
         id: 'espresso-double-shot',
-        nameAr: 'إسبريسو — دبل شوت',
+        nameAr: 'إسبريسو دبل شوت',
         descriptionAr: 'جرعتان مركزتان من الإسبريسو بطعم غني ومتوازن.',
         price: '10 ر.س',
         image: '/images/menu-drinks/hot-double.jpg'
@@ -77,7 +70,7 @@ export const menuCategories: MenuCategory[] = [
       },
       {
         id: 'coffee-of-the-day-drip',
-        nameAr: 'قهوة اليوم — تقطير',
+        nameAr: 'قهوة اليوم تقطير',
         descriptionAr: 'قهوة اليوم محضّرة بالتقطير، تتغير باختيار محصولنا.',
         price: '12 ر.س',
         image: '/images/menu-drinks/hot-drip.jpg'
@@ -170,21 +163,21 @@ export const menuCategories: MenuCategory[] = [
     items: [
       {
         id: 'magic-bar-25',
-        nameAr: 'ماجيك بار — 25 قطعة',
+        nameAr: 'ماجيك بار 25 قطعة',
         descriptionAr: 'صينية ماجيك بار بحجم 25 قطعة للمشاركة.',
         price: '16 ر.س',
         image: productImage(6)
       },
       {
         id: 'magic-bar-20',
-        nameAr: 'ماجيك بار — 20 قطعة',
+        nameAr: 'ماجيك بار 20 قطعة',
         descriptionAr: 'قطع ماجيك بار للمشاركة.',
         price: '18 ر.س',
         image: productImage(4)
       },
       {
         id: 'magic-bar-16',
-        nameAr: 'ماجيك بار — 16 قطعة',
+        nameAr: 'ماجيك بار 16 قطعة',
         descriptionAr: 'صينية ماجيك بار بحجم 16 قطعة.',
         price: '20 ر.س',
         image: productImage(2)
@@ -198,42 +191,42 @@ export const menuCategories: MenuCategory[] = [
       },
       {
         id: 'fudge-brownies-16',
-        nameAr: 'فادج براونيز — 16 قطعة',
+        nameAr: 'فادج براونيز 16 قطعة',
         descriptionAr: 'صينية فادج براونيز بحجم 16 قطعة.',
         price: '15 ر.س',
         image: productImage(11)
       },
       {
         id: 'fudge-brownies-12',
-        nameAr: 'فادج براونيز — 12 قطعة',
+        nameAr: 'فادج براونيز 12 قطعة',
         descriptionAr: 'صينية فادج براونيز بحجم 12 قطعة.',
         price: '16 ر.س',
         image: productImage(9)
       },
       {
         id: 'fudge-brownies-9',
-        nameAr: 'فادج براونيز — 9 قطع',
+        nameAr: 'فادج براونيز 9 قطع',
         descriptionAr: 'صينية فادج براونيز بحجم 9 قطع.',
         price: '18 ر.س',
         image: productImage(10)
       },
       {
         id: 'lemon-cake-16',
-        nameAr: 'كيك الليمون — 16 قطعة',
+        nameAr: 'كيك الليمون 16 قطعة',
         descriptionAr: 'كيك ليمون مقطع إلى 16 قطعة.',
         price: '20 ر.س',
         image: productImage(15)
       },
       {
         id: 'lemon-cake-12',
-        nameAr: 'كيك الليمون — 12 قطعة',
+        nameAr: 'كيك الليمون 12 قطعة',
         descriptionAr: 'كيك ليمون مقطع إلى 12 قطعة.',
         price: '14 ر.س',
         image: productImage(7)
       },
       {
         id: 'lemon-cake-9',
-        nameAr: 'كيك الليمون — 9 قطع',
+        nameAr: 'كيك الليمون 9 قطع',
         descriptionAr: 'كيك ليمون مقطع إلى 9 قطع.',
         price: '16 ر.س',
         image: productImage(1)
@@ -248,56 +241,56 @@ export const menuCategories: MenuCategory[] = [
     items: [
       {
         id: 'sound-colombia-excelso',
-        nameAr: 'صوت — كولومبيا اكسليسو 250 جرام',
+        nameAr: 'صوت كولومبيا اكسليسو 250 جرام',
         descriptionAr: 'بن محمص من محصول كولومبيا اكسليسو.',
         price: '44 ر.س',
         image: productImage(48)
       },
       {
         id: 'by-the-way-ethiopia-guji',
-        nameAr: 'باي ذا واي — إثيوبيا قوجي 250 جرام',
+        nameAr: 'باي ذا واي إثيوبيا قوجي 250 جرام',
         descriptionAr: 'بن محمص من محصول إثيوبيا قوجي.',
         price: '48 ر.س',
         image: productImage(49)
       },
       {
         id: 'cove-brazil-junior',
-        nameAr: 'كوف — برازيل جونيور 250 جرام',
+        nameAr: 'كوف برازيل جونيور 250 جرام',
         descriptionAr: 'بن محمص من محصول البرازيل.',
         price: '50 ر.س',
         image: productImage(47)
       },
       {
         id: 'el-tun-ethiopia-berry',
-        nameAr: 'ال تون — إثيوبيا بيري 250 جرام',
+        nameAr: 'ال تون إثيوبيا بيري 250 جرام',
         descriptionAr: 'بن محمص من محصول إثيوبيا بيري.',
         price: '58 ر.س',
         image: productImage(52)
       },
       {
         id: 'riyadh-elephant-mountain',
-        nameAr: 'الرياض — جبل الفيل 250 جرام',
+        nameAr: 'الرياض جبل الفيل 250 جرام',
         descriptionAr: 'محصول جبل الفيل من محمصة الرياض.',
         price: '59.8 ر.س',
         image: productImage(53)
       },
       {
         id: 'sueil-haraz-agate',
-        nameAr: 'سويل — عقيق حراز 250 جرام',
+        nameAr: 'سويل عقيق حراز 250 جرام',
         descriptionAr: 'محصول عقيق حراز من محمصة سويل.',
         price: '69 ر.س',
         image: productImage(54)
       },
       {
         id: 'geisha-ethiopia-hambela',
-        nameAr: 'جيشا — إثيوبيا هامبيلا 250 جرام',
+        nameAr: 'جيشا إثيوبيا هامبيلا 250 جرام',
         descriptionAr: 'محصول جيشا من منطقة هامبيلا في إثيوبيا.',
         price: '63 ر.س',
         image: productImage(50)
       },
       {
         id: 'haseel-colombia-qamar-al-deen',
-        nameAr: 'حصيل — كولومبيا قمر الدين 250 جرام',
+        nameAr: 'حصيل كولومبيا قمر الدين 250 جرام',
         descriptionAr: 'محصول كولومبيا قمر الدين من محمصة حصيل.',
         price: '85 ر.س',
         image: productImage(51)

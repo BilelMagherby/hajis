@@ -16,48 +16,8 @@ interface MenuSectionProps {
   onNavigate?: (sectionId: string) => void;
 }
 
-const categoryEnglish: Record<string, string> = {
-  'hot-drinks': 'HOT COFFEE',
-  'cold-drinks': 'COLD COFFEE',
-  desserts: 'DESSERTS',
-  'coffee-beans': 'COFFEE BEANS',
-  'drip-bags': 'DRIP BAGS',
-  'tea-syrups': 'TEA & ADD-ONS'
-};
-
-const itemEnglish: Record<string, string> = {
-  'espresso-double-shot': 'Espresso Double Shot',
-  'espresso-single-shot': 'Espresso Single Shot',
-  macchiato: 'Macchiato',
-  cortado: 'Cortado',
-  'flat-white': 'Flat White',
-  cappuccino: 'Cappuccino',
-  latte: 'Latte',
-  'coffee-of-the-day-drip': 'Coffee of the Day (Drip)',
-  americano: 'Americano',
-  'matcha-hot': 'Matcha Hot',
-  'v60-hot': 'V60 Hot',
-  alfredo: 'Alfredo',
-  'iced-americano': 'Iced Americano',
-  'iced-latte': 'Iced Latte',
-  'v60-iced': 'V60 Iced',
-  'matcha-iced': 'Matcha Iced',
-  'cold-hibiscus': 'Cold Hibiscus',
-  'cold-coffee-of-the-day': 'Iced Coffee of the Day',
-  'magic-bar-25': 'Magic Bar',
-  'magic-bar-20': 'Magic Bar',
-  'magic-bar-16': 'Magic Bar',
-  'chocolate-chip-cookies': 'Chocolate Chip Cookies',
-  'fudge-brownies-16': 'Fudge Brownies',
-  'fudge-brownies-12': 'Fudge Brownies',
-  'fudge-brownies-9': 'Fudge Brownies',
-  'lemon-cake-16': 'Lemon Cake',
-  'lemon-cake-12': 'Lemon Cake',
-  'lemon-cake-9': 'Lemon Cake'
-};
-
 const brandedDrinkIds = new Set([
-  'espresso-double-shot', 'espresso-single-shot', 'macchiato', 'cortado', 'flat-white',
+  'espresso-double-shot', 'macchiato', 'cortado', 'flat-white',
   'cappuccino', 'latte', 'coffee-of-the-day-drip', 'americano', 'matcha-hot', 'v60-hot',
   'alfredo', 'iced-americano', 'iced-latte', 'v60-iced', 'matcha-iced', 'cold-hibiscus',
   'cold-coffee-of-the-day'
@@ -92,10 +52,8 @@ const ProductCard: React.FC<{
       <div className="menu-product-heading">
         <div className="menu-product-names">
           <h3>{item.nameAr}</h3>
-          {itemEnglish[item.id] && <span lang="en" dir="ltr">{itemEnglish[item.id]}</span>}
         </div>
       </div>
-      <p className="menu-product-price">{item.price}</p>
     </div>
   </article>
 );
@@ -118,7 +76,6 @@ const CategorySection: React.FC<{
         <span className="menu-category-icon"><Icon aria-hidden="true" /></span>
         <div className="menu-category-title-wrap">
           <h2 id={`${category.id}-title`}>{category.titleAr}</h2>
-          <span lang="en" dir="ltr">{categoryEnglish[category.id]}</span>
         </div>
         <span className="menu-category-rule" aria-hidden="true" />
       </header>
@@ -172,6 +129,24 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate: _onNavigat
               <CategorySection key={category.id} category={category} onSelect={setSelectedProduct} />
             ))}
           </div>
+
+          <div className="menu-foodics-wrapper">
+            <a
+              href="https://hajiss.foodics.online/menu/-337793"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="menu-foodics-cta"
+              dir="rtl"
+              title="للإطلاع على القائمة الإلكترونية"
+            >
+              <span className="menu-foodics-cta__text">
+                للإطلاع على القائمة الإلكترونية
+              </span>
+              <div className="menu-foodics-cta__qr">
+                <img src="/images/foodics-menu-qr.png" alt="رمز QR للقائمة الإلكترونية" />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -204,7 +179,6 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onNavigate: _onNavigat
             />
             <div className="menu-product-dialog-copy" dir="rtl">
               <h2 id="menu-product-dialog-title">{selectedProduct.nameAr}</h2>
-              <span>{selectedProduct.price}</span>
               <p>{selectedProduct.descriptionAr}</p>
               {selectedProduct.notes && <p>ملاحظات التذوق: {selectedProduct.notes}</p>}
               {selectedProduct.tags && selectedProduct.tags.length > 0 && (

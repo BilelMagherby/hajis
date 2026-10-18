@@ -88,11 +88,11 @@ export const App: React.FC = () => {
         {/* 5. What is Hajiss? Section (Warm Cream) */}
         <AboutSection />
 
-        {/* 6. Philosophy & What Distinguishes Hajiss Section */}
-        <PhilosophySection />
-
-        {/* 7. Coffee Menu & 3D Interactive Coffee Bag */}
+        {/* 6. Coffee Menu & 3D Interactive Coffee Bag */}
         <MenuSection onNavigate={handleNavigate} />
+
+        {/* 7. Philosophy & What Distinguishes Hajiss Section */}
+        <PhilosophySection />
 
         {/* 8. Visit Hajiss & 3D Hail Topographic Map */}
         <VisitSection />

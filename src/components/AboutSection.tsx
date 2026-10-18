@@ -43,13 +43,6 @@ export const AboutSection: React.FC = () => {
               <span className="font-arabic text-sm tracking-widest text-[var(--color-brand-sand)] uppercase font-semibold">
                 أصالة المكان وروح الضيافة
               </span>
-              <div className="w-12 h-auto flex items-center justify-center">
-                <img
-                  src="/images/logo.png"
-                  alt="شعار هاجس"
-                  className="brand-logo-ink w-full h-auto object-contain"
-                />
-              </div>
             </div>
 
             {/* Main Title */}
