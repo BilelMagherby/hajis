@@ -6,7 +6,6 @@ import {
   CupSoda,
   Leaf,
   Package,
-  ShoppingBag,
   X
 } from 'lucide-react';
 import { menuCategories, type MenuCategory, type MenuItem } from '../data/menu';
@@ -27,7 +26,6 @@ const getCategoryIcon = (categoryId: string) => {
   switch (categoryId) {
     case 'cold-drinks': return CupSoda;
     case 'desserts': return CakeSlice;
-    case 'coffee-beans': return ShoppingBag;
     case 'drip-bags': return Package;
     case 'tea-syrups': return Leaf;
     default: return Coffee;
