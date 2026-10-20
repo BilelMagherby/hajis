@@ -6,7 +6,7 @@
 
 .menu-page main {
   padding-top: 58px;
-  padding-bottom: 42px;
+  padding-bottom: 0;
 }
 
 .menu-hero {
@@ -319,14 +319,12 @@
 }
 
 .menu-replacement {
-  display: flex;
-  justify-content: center;
-  padding: 30px 16px 44px;
+  width: 100%;
 }
 
 .menu-replacement img {
   display: block;
-  width: min(100%, 480px);
+  width: 100%;
   height: auto;
 }
 
