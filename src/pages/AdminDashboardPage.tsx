@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  BarChart3, CalendarClock, Check, ChevronLeft, Clapperboard, Heart,
+  BarChart3, CalendarClock, Check, ChevronLeft, Clapperboard, ExternalLink, Heart,
   ImagePlus, LayoutDashboard, LogOut, MessageCircle, Send, Share2,
   Settings2, ShieldCheck, Star, Upload, Users, Video, X
 } from 'lucide-react';
@@ -22,6 +22,7 @@ const platforms: { id: PlatformId; label: string; glyph: string }[] = [
   { id: 'YouTube', label: 'يوتيوب', glyph: '▶' }
 ];
 const connectedPlatforms: PlatformId[] = ['Instagram', 'X', 'TikTok'];
+const ZOHO_SOCIAL_URL = 'https://social.zoho.com/social/natheelco2030/1724487000000023009/Home.do#home';
 const initialReviews = [
   { name: 'ضيف هاجس', date: 'نموذج توضيحي', rating: 5, text: 'تجربة القهوة والأجواء مميزة، والمكان يعكس كرم أهل حائل.' },
   { name: 'زائر المقهى', date: 'نموذج توضيحي', rating: 5, text: 'قهوة مختصة بإتقان وجلسة هادئة تعود إليها بكل سرور.' },
@@ -261,9 +262,33 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
           <div className="admin-content">
             <div className="admin-page-heading">
               <div><span className="admin-eyebrow">إدارة المحتوى الاجتماعي</span><h1>مركز التواصل الاجتماعي</h1><p>اكتب منشورات هاجس وجهّزها للمنصات المختلفة.</p></div>
-              <span className="admin-date-pill"><Clapperboard size={16} /> مساحة تجريبية</span>
+              <div className="admin-heading-actions">
+                <a
+                  href={ZOHO_SOCIAL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="admin-zoho-button"
+                  title="الانتقال إلى منصة Zoho Social للنشر"
+                >
+                  <ExternalLink size={16} /> نشر عبر zoho
+                </a>
+                <span className="admin-date-pill"><Clapperboard size={16} /> مساحة تجريبية</span>
+              </div>
             </div>
-            <div className="admin-notice"><ShieldCheck size={17} /> النشر والجدولة هنا محليان للتجربة فقط؛ لا توجد اتصالات فعلية بحسابات المنصات.</div>
+            <div className="admin-notice">
+              <ShieldCheck size={17} />
+              <span>النشر والجدولة هنا محليان للتجربة فقط؛ لا توجد اتصالات فعلية بحسابات المنصات.</span>
+              <a
+                href={ZOHO_SOCIAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="admin-notice-zoho-link"
+                title="الانتقال إلى منصة Zoho Social"
+              >
+                <span>نشر عبر zoho</span>
+                <ExternalLink size={14} />
+              </a>
+            </div>
             <div className="admin-social-kpis">
               <article><span>المنصات</span><b>7</b><small>منصات مدعومة</small></article>
               <article><span>الحسابات المتصلة</span><b>{connectedPlatforms.length}</b><small>حالة توضيحية</small></article>
@@ -292,7 +317,19 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
                 <label className="admin-field-label" htmlFor="schedule-time">موعد النشر (اختياري للجدولة)</label>
                 <input className="admin-date-input" id="schedule-time" type="datetime-local" value={scheduleAt} onChange={(event) => setScheduleAt(event.target.value)} />
                 {feedback && <p className="admin-feedback" role="status">{feedback}</p>}
-                <div className="admin-form-actions"><button type="button" className="admin-primary-button" onClick={() => submitPost(false)}><Send size={16} /> انشر الآن</button><button type="button" className="admin-secondary-button" onClick={() => submitPost(true)}><CalendarClock size={16} /> جدولة المنشور</button></div>
+                <div className="admin-form-actions">
+                  <button type="button" className="admin-primary-button" onClick={() => submitPost(false)}><Send size={16} /> انشر الآن</button>
+                  <button type="button" className="admin-secondary-button" onClick={() => submitPost(true)}><CalendarClock size={16} /> جدولة المنشور</button>
+                  <a
+                    href={ZOHO_SOCIAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="admin-zoho-button"
+                    title="الانتقال إلى منصة Zoho Social للنشر"
+                  >
+                    <ExternalLink size={16} /> نشر عبر zoho
+                  </a>
+                </div>
               </article>
               <aside className="admin-preview-column">
                 <article className={`admin-panel admin-live-preview preview-${selectedPlatform.toLowerCase()}`}>
