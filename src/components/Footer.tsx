@@ -179,6 +179,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
               </li>
               <li>
                 <button
+                  onClick={() => scrollTo('news')}
+                  className="hover:text-[var(--color-brand-sand)] transition-colors"
+                >
+                  مستجدات هاجس
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => scrollTo('visit')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
@@ -206,10 +214,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           <p>
             حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة
           </p>
-
-         
-
-          
         </div>
 
       </div>

@@ -36,6 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'hero', labelAr: 'الرئيسية' },
     { id: 'about', labelAr: 'من نحن' },
     { id: 'menu', labelAr: 'القائمة' },
+    { id: 'news', labelAr: 'مستجدات هاجس' },
     { id: 'visit', labelAr: 'زيارة هاجس' },
   ];
   const isMenuVariant = variant === 'menu';
