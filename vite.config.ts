@@ -33,10 +33,15 @@ const vercelApiDev = (): Plugin => ({
         const response: Response = typeof handler === 'function'
           ? await handler(await readRequest(req, url))
           : new Response(JSON.stringify({ detail: 'Method not allowed' }), { status: 405 })
+        if (res.destroyed) return
         res.statusCode = response.status
         response.headers.forEach((value, key) => res.setHeader(key, value))
         res.end(Buffer.from(await response.arrayBuffer()))
       } catch (error) {
+        // The browser cancelled the request (e.g. a fetch aborted on unmount): nothing to answer,
+        // and passing it to next() would pop Vite's error overlay over the page.
+        if (req.destroyed || res.destroyed || (error as NodeJS.ErrnoException)?.code === 'ECONNRESET'
+          || (error instanceof Error && error.message === 'aborted')) return
         next(error)
       }
     })
