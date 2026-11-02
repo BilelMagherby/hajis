@@ -25,7 +25,10 @@ export const MenuPage: React.FC<MenuPageProps> = ({ onNavigate, onOpenCookieSett
           id="menu-poster"
           className="menu-replacement"
         >
-          <img src="/images/menu-coming-soon.png" alt={t('قريباً ترقبوا — هاجس، قهوة وأكثر', 'Coming soon — Hajiss, coffee and more')} />
+          <img
+          src={t('/images/menu-coming-soon.png', '/images/menu-coming-soon-en.png')}
+          alt={t('قريباً ترقبوا — هاجس، قهوة وأكثر', 'Stay tuned — Hajiss Coffee, more than a taste')}
+        />
         </div>
       </main>
 

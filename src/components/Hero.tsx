@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../i18n/language';
 
-const heroImages = [
+// `srcEn` swaps in an English-signage version of a slide when the site is in English.
+const heroImages: { src: string; srcEn?: string; alt: string; altEn: string }[] = [
   {
     src: '/images/hero-hajis-night.jpg',
+    srcEn: '/images/hero-hajis-night-en.png',
     alt: 'واجهة مقهى هاجس الخارجية ليلاً',
     altEn: 'The Hajiss café storefront at night',
   },
@@ -45,7 +47,7 @@ export const Hero: React.FC = () => {
         {heroImages.map((image, index) => (
           <img
             key={image.src}
-            src={image.src}
+            src={image.srcEn ? t(image.src, image.srcEn) : image.src}
             alt={t(image.alt, image.altEn)}
             draggable={false}
             className={`hero-slide-image absolute inset-0 h-full w-full object-cover object-center brightness-115 contrast-115 saturate-115 transition-opacity duration-1000 ease-in-out ${
