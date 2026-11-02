@@ -1,11 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
-  Check, Edit, ExternalLink, Eye, FileText, Film, Image as ImageIcon, Play, Plus,
+  Check, Edit, ExternalLink, Eye, FileText, Film, Image as ImageIcon, Loader2, Play, Plus,
   RotateCcw, Search, Send, Sparkles, Trash2, Upload, X
 } from 'lucide-react';
 import type { NewsItem } from '../data/news';
 import { newsCategories } from '../data/news';
-import { getStoredNews, saveStoredNews, resetStoredNews } from '../utils/newsStorage';
+import {
+  createBlogPost, deleteBlogPost, fetchBlogPosts, updateBlogPost, uploadBlogMedia, type BlogPostInput
+} from '../utils/blogApi';
+import { SessionExpiredError } from '../utils/socialHub';
 
 const presetMediaOptions = [
   { label: 'كيس المحصول', url: '/images/coffee_bag_cup.jpg' },
@@ -16,9 +19,15 @@ const presetMediaOptions = [
   { label: 'كاونتر المقهى', url: '/images/hero-cafe-counter.jpeg' },
 ];
 
-export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => void }> = ({ onCountChange }) => {
+export const AdminNewsManager: React.FC<{
+  onCountChange?: (count: number) => void;
+  onSessionExpired: () => void;
+}> = ({ onCountChange, onSessionExpired }) => {
   // News & Blog CRUD State
-  const [newsList, setNewsList] = useState<NewsItem[]>(() => getStoredNews());
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [blogTitle, setBlogTitle] = useState('');
   const [blogSubtitle, setBlogSubtitle] = useState('');
@@ -43,34 +52,82 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
     onCountChange?.(newsList.length);
   }, [newsList.length, onCountChange]);
 
-  // Handle Blog Media (Image/Video) file upload
-  const handleBlogMediaUpload: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const file = e.currentTarget.files?.[0];
+  const errorMessage = useCallback((error: unknown, fallback: string) => {
+    if (error instanceof SessionExpiredError) {
+      onSessionExpired();
+      return '';
+    }
+    return error instanceof Error && error.message ? error.message : fallback;
+  }, [onSessionExpired]);
+
+  const loadPosts = useCallback((signal?: AbortSignal) => fetchBlogPosts(signal)
+    .then((items) => setNewsList(items))
+    .catch((error) => {
+      if (!signal?.aborted) setBlogFeedback(errorMessage(error, 'تعذر تحميل التدوينات من الخادم.'));
+    })
+    .finally(() => {
+      if (!signal?.aborted) setIsLoading(false);
+    }), [errorMessage]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void loadPosts(controller.signal);
+    return () => controller.abort();
+  }, [loadPosts]);
+
+  // Handle Blog Media (Image/Video) file upload — stored on the blog server, not in the browser
+  const handleBlogMediaUpload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    input.value = '';
     if (!file) return;
 
-    const isVideo = file.type.startsWith('video/');
-    const isImage = file.type.startsWith('image/');
-
-    if (!isImage && !isVideo) {
+    if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
       setBlogFeedback('يرجى اختيار ملف صورة أو مقطع فيديو صالح.');
       return;
     }
 
-    setBlogMediaType(isVideo ? 'video' : 'image');
+    setIsUploading(true);
+    setBlogFeedback('جاري رفع الملف إلى الخادم...');
+    try {
+      const uploaded = await uploadBlogMedia(file);
+      setBlogMediaType(uploaded.mediaType);
+      setBlogMediaUrl(uploaded.url);
+      setBlogFeedback(`تم رفع ${uploaded.mediaType === 'video' ? 'الفيديو' : 'الصورة'} بنجاح.`);
+    } catch (error) {
+      setBlogFeedback(errorMessage(error, 'تعذر رفع الملف.'));
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        setBlogMediaUrl(reader.result);
-        setBlogFeedback(`تم رفع ${isVideo ? 'الفيديو' : 'الصورة'} بنجاح للمعاينة.`);
-      }
+  const buildPayload = (): BlogPostInput => {
+    const paragraphs = blogContentBody
+      .split('\n')
+      .map((p) => p.trim())
+      .filter(Boolean);
+
+    return {
+      title: blogTitle.trim(),
+      subtitle: blogSubtitle.trim(),
+      category: blogCategory,
+      readTime: blogReadTime.trim(),
+      mediaType: blogMediaType,
+      mediaUrl: blogMediaUrl.trim(),
+      badge: blogBadge.trim() || undefined,
+      featured: blogFeatured,
+      summary: blogSummary.trim(),
+      author: { name: blogAuthorName.trim(), role: blogAuthorRole.trim() },
+      tags: blogTagsInput.replace(/#/g, '').split(/[,\s]+/).map((t) => t.trim()).filter(Boolean),
+      content: {
+        lead: blogContentLead.trim(),
+        sections: paragraphs.length > 0 ? [{ paragraphs }] : [],
+      },
     };
-    reader.readAsDataURL(file);
-    e.currentTarget.value = '';
   };
 
   // Blog CRUD - Save (Create / Update)
-  const handleSaveBlogItem = (e: React.FormEvent) => {
+  const handleSaveBlogItem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!blogTitle.trim()) {
       setBlogFeedback('يرجى كتابة عنوان التدوينة أو الخبر.');
@@ -80,102 +137,28 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
       setBlogFeedback('يرجى كتابة ملخص أو نبذة سريعة عن الموضوع.');
       return;
     }
+    if (blogMediaType === 'video' && !blogMediaUrl.trim()) {
+      setBlogFeedback('يرجى رفع مقطع فيديو أو إدخال رابطه.');
+      return;
+    }
 
-    const categoryObj = newsCategories.find((c) => c.id === blogCategory);
-    const categoryLabel = categoryObj ? categoryObj.label : 'مستجدات';
-    const cleanTags = blogTagsInput
-      .replace(/#/g, '')
-      .split(/[,\s]+/)
-      .map((t) => t.trim())
-      .filter(Boolean);
-
-    const mediaLink = blogMediaUrl.trim() || (blogMediaType === 'video' ? '/images/espresso_pour.jpg' : '/images/coffee_bag_cup.jpg');
-
-    const paragraphs = blogContentBody
-      .split('\n')
-      .map((p) => p.trim())
-      .filter(Boolean);
-
-    if (editingId) {
-      // UPDATE
-      const updated = newsList.map((item) => {
-        if (item.id === editingId) {
-          return {
-            ...item,
-            title: blogTitle.trim(),
-            subtitle: blogSubtitle.trim(),
-            category: blogCategory as any,
-            categoryLabel,
-            readTime: blogReadTime.trim() || 'قراءة في 3 دقائق',
-            image: mediaLink,
-            mediaType: blogMediaType,
-            videoUrl: blogMediaType === 'video' ? mediaLink : undefined,
-            badge: blogBadge.trim() || undefined,
-            featured: blogFeatured,
-            summary: blogSummary.trim(),
-            author: {
-              name: blogAuthorName.trim() || 'فريق هاجس',
-              role: blogAuthorRole.trim() || 'إدارة المحتوى',
-            },
-            tags: cleanTags.length > 0 ? cleanTags : ['قهوة_مختصة', 'هاجس'],
-            content: {
-              lead: blogContentLead.trim() || blogSummary.trim(),
-              sections: [
-                {
-                  paragraphs: paragraphs.length > 0 ? paragraphs : [blogSummary.trim()],
-                },
-              ],
-            },
-          };
-        }
-        return item;
-      });
-
-      setNewsList(updated);
-      saveStoredNews(updated);
-      setBlogFeedback('✓ تم حفظ التعديلات وتحديث التدوينة على الموقع بنجاح.');
-      handleCancelEdit();
-    } else {
-      // CREATE
-      const now = new Date();
-      const arabicDate = `${now.getDate()} ${
-        ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'][now.getMonth()]
-      } ${now.getFullYear()}`;
-
-      const newItem: NewsItem = {
-        id: `blog-${Date.now()}`,
-        title: blogTitle.trim(),
-        subtitle: blogSubtitle.trim(),
-        category: blogCategory as any,
-        categoryLabel,
-        date: arabicDate,
-        readTime: blogReadTime.trim() || 'قراءة في 3 دقائق',
-        image: mediaLink,
-        mediaType: blogMediaType,
-        videoUrl: blogMediaType === 'video' ? mediaLink : undefined,
-        badge: blogBadge.trim() || undefined,
-        featured: blogFeatured,
-        summary: blogSummary.trim(),
-        author: {
-          name: blogAuthorName.trim() || 'فريق هاجس',
-          role: blogAuthorRole.trim() || 'إدارة المحتوى',
-        },
-        tags: cleanTags.length > 0 ? cleanTags : ['قهوة_مختصة', 'هاجس'],
-        content: {
-          lead: blogContentLead.trim() || blogSummary.trim(),
-          sections: [
-            {
-              paragraphs: paragraphs.length > 0 ? paragraphs : [blogSummary.trim()],
-            },
-          ],
-        },
-      };
-
-      const updated = [newItem, ...newsList];
-      setNewsList(updated);
-      saveStoredNews(updated);
-      setBlogFeedback('✓ تم نشر التدوينة بنجاح وظهرت في صفحة مستجدات هاجس.');
-      handleCancelEdit();
+    setIsSaving(true);
+    try {
+      if (editingId) {
+        const saved = await updateBlogPost(editingId, buildPayload());
+        setNewsList((list) => list.map((item) => (item.id === saved.id ? saved : item)));
+        handleCancelEdit();
+        setBlogFeedback('✓ تم حفظ التعديلات وتحديث التدوينة على الموقع بنجاح.');
+      } else {
+        const saved = await createBlogPost(buildPayload());
+        setNewsList((list) => [saved, ...list]);
+        handleCancelEdit();
+        setBlogFeedback('✓ تم نشر التدوينة بنجاح وظهرت في صفحة مستجدات هاجس.');
+      }
+    } catch (error) {
+      setBlogFeedback(errorMessage(error, 'تعذر حفظ التدوينة.'));
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -218,23 +201,15 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
   };
 
   // Blog CRUD - Delete
-  const handleDeleteBlogItem = (id: string, title: string) => {
-    if (window.confirm(`هل أنت متأكد من حذف خبر / تدوينة: "${title}"؟`)) {
-      const updated = newsList.filter((item) => item.id !== id);
-      setNewsList(updated);
-      saveStoredNews(updated);
+  const handleDeleteBlogItem = async (id: string, title: string) => {
+    if (!window.confirm(`هل أنت متأكد من حذف خبر / تدوينة: "${title}"؟`)) return;
+    try {
+      await deleteBlogPost(id);
+      setNewsList((list) => list.filter((item) => item.id !== id));
       if (editingId === id) handleCancelEdit();
       setBlogFeedback('تم حذف التدوينة بنجاح.');
-    }
-  };
-
-  // Blog CRUD - Reset to Default
-  const handleResetNewsDefaults = () => {
-    if (window.confirm('هل تريد استعادة المقالات والمستجدات الافتراضية؟ سيتم استرجاع المحتوى التأسيسي.')) {
-      const fresh = resetStoredNews();
-      setNewsList(fresh);
-      handleCancelEdit();
-      setBlogFeedback('تمت استعادة البيانات الافتراضية بنجاح.');
+    } catch (error) {
+      setBlogFeedback(errorMessage(error, 'تعذر حذف التدوينة.'));
     }
   };
 
@@ -274,11 +249,15 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
                 </a>
                 <button
                   type="button"
-                  onClick={handleResetNewsDefaults}
+                  onClick={() => {
+                    setIsLoading(true);
+                    void loadPosts();
+                  }}
                   className="admin-secondary-button"
-                  title="استعادة المقالات الافتراضية"
+                  title="إعادة تحميل التدوينات من الخادم"
+                  disabled={isLoading}
                 >
-                  <RotateCcw size={16} /> استعادة الافتراضي
+                  <RotateCcw size={16} /> تحديث القائمة
                 </button>
               </div>
             </div>
@@ -413,12 +392,13 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
                     <label className="admin-upload-box">
                       <input
                         type="file"
-                        accept={blogMediaType === 'video' ? 'video/*' : 'image/*,video/*'}
+                        accept={blogMediaType === 'video' ? 'video/mp4,video/webm' : 'image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm'}
                         onChange={handleBlogMediaUpload}
+                        disabled={isUploading}
                       />
-                      <Upload size={19} />
-                      <span>{blogMediaType === 'video' ? 'ارفع مقطع فيديو من جهازك' : 'ارفع صورة أو فيديو من جهازك'}</span>
-                      <small>يدعم ملفات MP4, WebM, PNG, JPG (حفظ فوري في المتصفح)</small>
+                      {isUploading ? <Loader2 size={19} className="animate-spin" /> : <Upload size={19} />}
+                      <span>{isUploading ? 'جاري الرفع...' : blogMediaType === 'video' ? 'ارفع مقطع فيديو من جهازك' : 'ارفع صورة أو فيديو من جهازك'}</span>
+                      <small>يدعم ملفات MP4, WebM, PNG, JPG, WEBP (تُحفظ على خادم الموقع)</small>
                     </label>
 
                     {/* Or URL input */}
@@ -547,9 +527,9 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
 
                   {/* Form Action Buttons */}
                   <div className="admin-form-actions pt-2">
-                    <button type="submit" className="admin-primary-button">
-                      {editingId ? <Check size={16} /> : <Send size={16} />}
-                      <span>{editingId ? 'حفظ التعديلات وتحديث المقال' : 'نشر التدوينة على الموقع'}</span>
+                    <button type="submit" className="admin-primary-button" disabled={isSaving || isUploading}>
+                      {isSaving ? <Loader2 size={16} className="animate-spin" /> : editingId ? <Check size={16} /> : <Send size={16} />}
+                      <span>{isSaving ? 'جاري الحفظ...' : editingId ? 'حفظ التعديلات وتحديث المقال' : 'نشر التدوينة على الموقع'}</span>
                     </button>
 
                     {editingId && (
@@ -752,7 +732,7 @@ export const AdminNewsManager: React.FC<{ onCountChange?: (count: number) => voi
                     ) : (
                       <tr>
                         <td colSpan={6} className="text-center py-8 text-[#a89d8c]">
-                          لم يتم العثور على تدوينات مطابقة لبحثك.
+                          {isLoading ? 'جاري تحميل التدوينات...' : 'لم يتم العثور على تدوينات مطابقة لبحثك.'}
                         </td>
                       </tr>
                     )}

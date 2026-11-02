@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Calendar, Clock, ChevronLeft, ArrowLeft, Play } from 'lucide-react';
-import { getStoredNews } from '../utils/newsStorage';
+import { fetchBlogPosts } from '../utils/blogApi';
 import type { NewsItem } from '../data/news';
 
 interface NewsSectionProps {
@@ -8,12 +8,12 @@ interface NewsSectionProps {
 }
 
 export const NewsSection: React.FC<NewsSectionProps> = ({ onNavigate }) => {
-  const [items, setItems] = useState<NewsItem[]>(() => getStoredNews());
+  const [items, setItems] = useState<NewsItem[]>([]);
 
   useEffect(() => {
-    const handleUpdate = () => setItems(getStoredNews());
-    window.addEventListener('hajiss_news_updated', handleUpdate);
-    return () => window.removeEventListener('hajiss_news_updated', handleUpdate);
+    const controller = new AbortController();
+    fetchBlogPosts(controller.signal).then(setItems).catch(() => {});
+    return () => controller.abort();
   }, []);
 
   // If there are no published items yet, hide section from landing page

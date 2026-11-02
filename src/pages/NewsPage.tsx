@@ -20,7 +20,7 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import type { NewsItem } from '../data/news';
 import { newsCategories } from '../data/news';
-import { getStoredNews } from '../utils/newsStorage';
+import { fetchBlogPosts } from '../utils/blogApi';
 import { brandData } from '../data/brand';
 import './NewsPage.css';
 
@@ -30,7 +30,8 @@ interface NewsPageProps {
 }
 
 export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSettings }) => {
-  const [itemsList, setItemsList] = useState<NewsItem[]>(() => getStoredNews());
+  const [itemsList, setItemsList] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeModalItem, setActiveModalItem] = useState<NewsItem | null>(null);
@@ -41,13 +42,31 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  // Sync with storage updates
+  // Load published posts from the blog API, and refresh when the visitor returns to the tab
   useEffect(() => {
-    const handleUpdate = () => {
-      setItemsList(getStoredNews());
+    let controller = new AbortController();
+    const load = () => {
+      controller.abort();
+      controller = new AbortController();
+      const { signal } = controller;
+      fetchBlogPosts(signal)
+        .then((items) => setItemsList(items))
+        .catch((error) => {
+          if (!signal.aborted) console.error('Error loading news:', error);
+        })
+        .finally(() => {
+          if (!signal.aborted) setIsLoading(false);
+        });
     };
-    window.addEventListener('hajiss_news_updated', handleUpdate);
-    return () => window.removeEventListener('hajiss_news_updated', handleUpdate);
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') load();
+    };
+    load();
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      controller.abort();
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, []);
 
   // Handle ESC key to close modal
@@ -517,7 +536,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             <div className="text-center py-20 px-6 bg-[rgba(64,55,45,0.2)] rounded-3xl border border-[rgba(200,188,167,0.15)] max-w-lg mx-auto space-y-4">
               <Coffee className="w-12 h-12 text-[var(--color-brand-sand)] mx-auto opacity-50" />
               <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[var(--color-brand-linen)]">
-                لا توجد مستجدات منشورة حالياً
+                {isLoading ? 'جاري تحميل المستجدات...' : 'لا توجد مستجدات منشورة حالياً'}
               </h3>
               <p className="font-arabic text-sm text-[var(--color-brand-sand)] leading-relaxed">
                 ترقبوا قريباً جديد هاجس — يمكنكم متابعة حساباتنا الرسمية لمعرفة آخر الأخبار وأحدث المحاصيل أولاً بأول، أو زيارة المقهى في داني سكوير بحائل.

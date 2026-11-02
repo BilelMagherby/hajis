@@ -97,9 +97,15 @@ export type ZohoPost = {
 
 type Json = Record<string, unknown>;
 
-// Caches live per serverless instance. Access tokens last 1h and Zoho allows at most 10
-// refreshes per 10 minutes per refresh token, so never mint one per request.
-const tokenCache = new Map<string, { token: string; expires: number }>();
+// Access tokens last 1h. Zoho allows at most 10 refreshes per 10 minutes per refresh token,
+// and answers "Access Denied" once that cap is hit. The cache lives on globalThis so a Vite
+// reload of this module does not forget the token and mint another one.
+type TokenCache = Map<string, { token: string; expires: number }>;
+type ZohoRuntime = { tokens: TokenCache; pending: Map<string, Promise<string>> };
+const zohoRuntime: ZohoRuntime = ((globalThis as typeof globalThis & { __hajissZoho?: ZohoRuntime }).__hajissZoho ??= {
+  tokens: new Map(),
+  pending: new Map(),
+});
 const channelCache = new Map<string, { channels: ZohoChannel[]; expires: number }>();
 const boardCache = new Map<string, string>();
 // Zoho's Channels API has no profile link; derive one per network from its latest post.
@@ -129,9 +135,22 @@ async function errorText(response: Response): Promise<string> {
   return (text || `HTTP ${response.status}`).slice(0, 300);
 }
 
-async function accessToken(config: ZohoConfig): Promise<string> {
-  const cached = tokenCache.get(config.refreshToken);
-  if (cached && cached.expires > Date.now()) return cached.token;
+function zohoOAuthFailure(data: Json, status: number) {
+  const error = asText(data.error);
+  const description = asText(data.error_description);
+  if (error === 'Access Denied') {
+    return 'Zoho OAuth: too many token refreshes (max 10 every 10 minutes). Wait a few minutes and try again.';
+  }
+  if (error === 'invalid_code') {
+    return 'Zoho OAuth: refresh token was rejected. Create a new refresh token on the same Zoho data center as the account, put it in ZOHO_REFRESH_TOKEN, and restart the dev server.';
+  }
+  if (error === 'invalid_client' || error === 'invalid_client_secret') {
+    return `Zoho OAuth: ${error}. Check the client id, client secret, and that ZOHO_ACCOUNTS_URL matches the account data center.`;
+  }
+  return `Zoho OAuth: ${[error, description].filter(Boolean).join(' — ') || `HTTP ${status}`}`;
+}
+
+async function mintAccessToken(config: ZohoConfig): Promise<string> {
   const url = new URL(`${config.accountsUrl}/oauth/v2/token`);
   url.searchParams.set('client_id', config.clientId);
   url.searchParams.set('client_secret', config.clientSecret);
@@ -140,12 +159,23 @@ async function accessToken(config: ZohoConfig): Promise<string> {
   const response = await fetch(url, { method: 'POST', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
   const data = asObject(await response.json().catch(() => ({})));
   const token = asText(data.access_token);
-  if (!response.ok || !token) {
-    throw new Error(`Zoho OAuth: ${asText(data.error) || `HTTP ${response.status}`}`);
-  }
+  if (!response.ok || !token) throw new Error(zohoOAuthFailure(data, response.status));
   // Refresh 10 minutes before the 3600s expiry.
-  tokenCache.set(config.refreshToken, { token, expires: Date.now() + 50 * 60 * 1000 });
+  zohoRuntime.tokens.set(config.refreshToken, { token, expires: Date.now() + 50 * 60 * 1000 });
   return token;
+}
+
+async function accessToken(config: ZohoConfig): Promise<string> {
+  const cached = zohoRuntime.tokens.get(config.refreshToken);
+  if (cached && cached.expires > Date.now()) return cached.token;
+  // Status and posts load together, and React Strict Mode runs that twice. Share one refresh.
+  const inflight = zohoRuntime.pending.get(config.refreshToken);
+  if (inflight) return inflight;
+  const request = mintAccessToken(config).finally(() => {
+    if (zohoRuntime.pending.get(config.refreshToken) === request) zohoRuntime.pending.delete(config.refreshToken);
+  });
+  zohoRuntime.pending.set(config.refreshToken, request);
+  return request;
 }
 
 async function zohoFetch(

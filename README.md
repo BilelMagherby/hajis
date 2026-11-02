@@ -21,6 +21,15 @@ For local development, copy `.env.example` to `.env.local` and fill it in. `npm 
 
 For Vercel, add the same variables under **Project Settings → Environment Variables** and redeploy. Existing `VITE_DEMO_ADMIN_EMAIL` / `VITE_DEMO_ADMIN_PASSWORD` values still work as the admin login until `ADMIN_EMAIL` / `ADMIN_PASSWORD` are set.
 
+## Blog (مستجدات هاجس)
+
+Posts created in the admin dashboard are stored in Postgres and shown on `/news`. Uploaded images and videos go to Vercel Blob. Both are serverless functions in `api/blog/`, and there is no separate backend to run.
+
+- `api/blog/posts.ts`: `GET` lists posts (`?category=&q=&featured=&limit=&offset=`) or returns one (`?id=`). `POST` creates, `PUT ?id=` replaces, and `DELETE ?id=` removes a post and its uploaded file. Writes need the admin session.
+- `api/blog/uploads.ts`: signs a direct browser upload to Vercel Blob (JPG, PNG, WEBP, GIF, MP4, WEBM). Files skip the function, so videos are not capped by Vercel's 4.5MB request limit.
+
+Setup: in Vercel, open **Storage**, create a Postgres database (Neon) and a Blob store, and connect both to the project. That adds `DATABASE_URL` (or `POSTGRES_URL`) and `BLOB_READ_WRITE_TOKEN`. Copy the same values into `.env.local` for `npm run dev`. The `blog_posts` table is created on first use.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).

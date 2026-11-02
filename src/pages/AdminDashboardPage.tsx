@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   BarChart3, CalendarClock, Check, ChevronLeft, LayoutDashboard, LogOut, MessageCircle, Newspaper, Share2,
   Settings2, ShieldCheck, Star, Users
@@ -8,7 +8,7 @@ import { signOutAdmin } from '../utils/adminAuth';
 import { platforms } from '../data/socialPlatforms';
 import { AdminSocialHub } from './AdminSocialHub';
 import { AdminNewsManager } from './AdminNewsManager';
-import { getStoredNews } from '../utils/newsStorage';
+import { fetchBlogPosts } from '../utils/blogApi';
 import './AdminPages.css';
 
 type DashboardSection = 'overview' | 'news' | 'social' | 'reviews';
@@ -26,7 +26,12 @@ const sampleStats = [
 
 export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [section, setSection] = useState<DashboardSection>('overview');
-  const [newsCount, setNewsCount] = useState(() => getStoredNews().length);
+  const [newsCount, setNewsCount] = useState<number | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchBlogPosts(controller.signal).then((posts) => setNewsCount(posts.length)).catch(() => {});
+    return () => controller.abort();
+  }, []);
   const productCount = useMemo(() => menuCategories.reduce((total, category) => total + category.items.length, 0), []);
 
   const logout = () => {
@@ -49,7 +54,7 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
           <button className={section === 'news' ? 'is-active' : ''} onClick={() => setSection('news')}>
             <Newspaper size={19} /> مستجدات هاجس والمدونة
             <span className="text-[11px] mr-auto bg-[rgba(200,188,167,0.2)] text-[var(--color-brand-sand)] px-2 py-0.5 rounded-full">
-              {newsCount}
+              {newsCount ?? '…'}
             </span>
           </button>
           <button className={section === 'social' ? 'is-active' : ''} onClick={() => setSection('social')}>
@@ -104,7 +109,7 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
           </div>
         )}
 
-        {section === 'news' && <AdminNewsManager onCountChange={setNewsCount} />}
+        {section === 'news' && <AdminNewsManager onCountChange={setNewsCount} onSessionExpired={logout} />}
 
         {section === 'social' && <AdminSocialHub onSessionExpired={logout} />}
 
