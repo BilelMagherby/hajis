@@ -214,6 +214,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           <p>
             حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة
           </p>
+
+         
+
+          
         </div>
 
       </div>

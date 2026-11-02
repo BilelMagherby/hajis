@@ -667,7 +667,7 @@
 
 .admin-platform-list {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 9px;
   margin-bottom: 16px;
 }
@@ -763,6 +763,27 @@
 .admin-platform-list > .platform-youtube i {
   border-color: rgba(255, 103, 103, 0.42);
   color: #ff6565;
+}
+
+.admin-platform-list > .platform-facebook {
+  border-color: rgba(24, 119, 242, 0.55);
+  background: linear-gradient(140deg, #173a6b, #112540);
+}
+
+.admin-platform-list > .platform-facebook i {
+  border-color: rgba(120, 172, 245, 0.45);
+  color: #7fb0f6;
+  font-family: Arial, sans-serif;
+}
+
+.admin-platform-list > .platform-threads {
+  border-color: rgba(240, 240, 240, 0.28);
+  background: linear-gradient(140deg, #202020, #0d0d0d);
+}
+
+.admin-platform-list > .platform-threads i {
+  border-color: rgba(240, 240, 240, 0.3);
+  color: #f2f2f2;
 }
 
 .admin-platform-list > span.is-connected {
@@ -1566,6 +1587,324 @@
   color: var(--color-brand-sand);
 }
 
+/* ---- Zoho Social hub ---------------------------------------------------------------- */
+
+.admin-spin {
+  animation: admin-spin 900ms linear infinite;
+}
+
+@keyframes admin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-content .admin-zoho-status.is-ok svg {
+  color: #1f5d27;
+}
+
+.admin-content .admin-zoho-status.is-error {
+  color: #5b120d;
+  background: rgb(214, 160, 146) !important;
+}
+
+.admin-content .admin-zoho-status.is-error svg {
+  color: #8f1d14;
+}
+
+.admin-notice-refresh,
+.admin-icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  border: 1px solid rgba(32, 20, 15, 0.28);
+  border-radius: 8px;
+  color: #20140f;
+  background: rgba(240, 228, 210, 0.55);
+  cursor: pointer;
+}
+
+.admin-notice-refresh:hover,
+.admin-icon-button:hover:not(:disabled) {
+  background: #f0e4d2;
+}
+
+.admin-icon-button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.admin-zoho-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -8px 0 18px;
+}
+
+.admin-zoho-channels a {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 11px 6px 9px;
+  border: 1px solid var(--admin-border);
+  border-radius: 20px;
+  color: var(--color-brand-linen);
+  background: rgb(var(--color-brand-sand-rgb) / 0.07);
+  font-size: 0.74rem;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.admin-zoho-channels a:hover {
+  border-color: rgb(var(--color-brand-sand-rgb) / 0.5);
+  background: rgb(var(--color-brand-sand-rgb) / 0.13);
+}
+
+.admin-zoho-channels img,
+.admin-zoho-channels i {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  border-radius: 50%;
+  object-fit: cover;
+  color: #e2c88f;
+  background: rgb(var(--color-brand-sand-rgb) / 0.14);
+  font-style: normal;
+  font-size: 0.68rem;
+}
+
+.admin-zoho-channels b {
+  overflow: hidden;
+  max-width: 180px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-zoho-channels small {
+  color: #b5a690;
+  font-size: 0.66rem;
+}
+
+.admin-zoho-channels a > span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #d9a441;
+}
+
+.admin-zoho-channels a > span.is-active {
+  background: #8dc783;
+}
+
+.admin-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-link-button {
+  margin-top: 3px;
+  padding: 0;
+  border: 0;
+  color: #20140f;
+  background: transparent;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.admin-link-button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.admin-content .admin-platform-select button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.admin-content .admin-platform-select button.is-selected i {
+  border-color: rgba(32, 20, 15, 0.45);
+  color: #f0e4d2;
+  background: #3a2618;
+}
+
+.admin-url-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid rgb(var(--color-brand-sand-rgb) / 0.16);
+  border-radius: 10px;
+  color: #6a4f3b;
+  background: #f0e4d2;
+}
+
+.admin-url-field:focus-within {
+  border-color: rgb(var(--color-brand-sand-rgb) / 0.62);
+}
+
+.admin-url-input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  outline: 0;
+  color: #20140f;
+  background: transparent;
+  font: inherit;
+  font-size: 0.81rem;
+  text-align: left;
+}
+
+.admin-url-input::placeholder {
+  color: #8a7462;
+}
+
+.admin-url-input:disabled {
+  cursor: not-allowed;
+}
+
+.admin-field-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -5px;
+  color: #3a2a20;
+  font-size: 0.7rem;
+}
+
+.admin-content .admin-feedback {
+  color: #7d150d;
+  font-weight: 700;
+}
+
+.admin-content .admin-feedback.is-success {
+  color: #1f5d27;
+}
+
+.admin-publish-results {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(32, 20, 15, 0.2);
+  border-radius: 10px;
+  background: rgba(240, 228, 210, 0.55);
+  list-style: none;
+}
+
+.admin-publish-results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: #20140f;
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.admin-publish-results svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: #8f1d14;
+}
+
+.admin-publish-results li.is-published svg {
+  color: #1f5d27;
+}
+
+.admin-publish-results b {
+  flex: 0 0 auto;
+}
+
+.admin-publish-results span {
+  overflow-wrap: anywhere;
+}
+
+.admin-publish-confirm {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(32, 20, 15, 0.3);
+  border-radius: 11px;
+  background: rgba(240, 228, 210, 0.7);
+}
+
+.admin-publish-confirm p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  color: #20140f;
+  font-size: 0.8rem;
+}
+
+.admin-primary-button:disabled,
+.admin-secondary-button:disabled {
+  cursor: not-allowed;
+  filter: none;
+  opacity: 0.55;
+  transform: none;
+}
+
+.admin-preview-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.admin-preview-tabs button {
+  padding: 5px 10px;
+  border: 1px solid rgba(32, 20, 15, 0.25);
+  border-radius: 20px;
+  color: #20140f;
+  background: rgba(240, 228, 210, 0.5);
+  font: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.admin-preview-tabs button.is-active {
+  color: #f0e4d2;
+  background: #3a2618;
+}
+
+.admin-content .admin-recent-posts .admin-panel-heading {
+  align-items: center;
+}
+
+.admin-empty-note {
+  margin: 14px 0 4px;
+  color: #3a2a20;
+  font-size: 0.76rem;
+}
+
+a.admin-post-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+}
+
+.admin-content .admin-post-status {
+  color: #1f5d27;
+  font-weight: 700;
+}
+
 .admin-review-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1675,6 +2014,12 @@
   font-size: 0.68rem;
 }
 
+@media (max-width: 1280px) {
+  .admin-platform-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1050px) {
   .admin-sidebar {
     width: 230px;
@@ -1776,7 +2121,7 @@
   }
 
   .admin-platform-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .admin-platform-select {
@@ -1803,6 +2148,10 @@
   .admin-input-wrap,
   .admin-platform-list > span {
     transition: none;
+  }
+
+  .admin-spin {
+    animation-duration: 2.4s;
   }
 
   .admin-coffee-bean {

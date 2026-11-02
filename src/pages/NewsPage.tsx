@@ -141,7 +141,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           {/* Branded background image layer */}
           <div aria-hidden="true" className="news-hero-bg-layer">
             <img
-              src="/images/news-hero-bg.jpg"
+              src="/images/news-hero-bg.png"
               alt="مدونة وأخبار هاجس"
               className="news-hero-bg-img"
             />

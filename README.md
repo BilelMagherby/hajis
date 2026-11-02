@@ -7,13 +7,19 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Demo admin login
+## Admin login & Zoho Social publishing
 
-The admin login is a client-side demo only and is not secure for protecting real data. Vite embeds `VITE_` variables in the public website bundle, so do not use a real or reused password.
+The admin dashboard (`/admin`) publishes posts to one or several social networks at once through Zoho Social. The secrets stay on the server: the Vercel functions in `api/` check the admin login and call the Zoho Social API, and the website bundle never contains them.
 
-For local development, copy `.env.example` to `.env.local` and set your demo email and password there.
+- `api/admin/login.ts`: checks `ADMIN_EMAIL` / `ADMIN_PASSWORD` and returns a signed 12-hour session token.
+- `api/hub/status.ts`: returns the live Zoho connection state and the channels connected to the brand.
+- `api/hub/posts.ts`: `GET` returns recent published posts from Zoho, and `POST` publishes a caption plus an optional image or public HTTPS video URL.
 
-For Vercel, add `VITE_DEMO_ADMIN_EMAIL` and `VITE_DEMO_ADMIN_PASSWORD` under **Project Settings → Environment Variables** for the deployment environments you use (Production and, if needed, Preview). Redeploy after saving the variables because Vite reads them at build time.
+Zoho Social has no direct video upload, so a video must be a public HTTPS URL. Images are uploaded directly as JPG, PNG, or GIF (up to 4MB). The dashboard converts and compresses other images automatically.
+
+For local development, copy `.env.example` to `.env.local` and fill it in. `npm run dev` serves the `api/` functions too.
+
+For Vercel, add the same variables under **Project Settings → Environment Variables** and redeploy. Existing `VITE_DEMO_ADMIN_EMAIL` / `VITE_DEMO_ADMIN_PASSWORD` values still work as the admin login until `ADMIN_EMAIL` / `ADMIN_PASSWORD` are set.
 
 ## React Compiler
 

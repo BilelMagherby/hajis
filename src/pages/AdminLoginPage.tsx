@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 import { ArrowRight, LockKeyhole, Mail } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInDemoAdmin } from '../utils/demoAdminAuth';
+import { signInAdmin } from '../utils/adminAuth';
 import './AdminPages.css';
 
 export const AdminLoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     setError('');
+    setIsSubmitting(true);
 
     try {
-      if (!signInDemoAdmin(email, password)) {
+      if (!await signInAdmin(email, password)) {
         setError('البريد الإلكتروني أو كلمة المرور غير صحيحة.');
         return;
       }
       navigate('/admin', { replace: true });
     } catch (authError) {
       setError(authError instanceof Error ? authError.message : 'تعذر تسجيل الدخول.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -37,9 +41,6 @@ export const AdminLoginPage: React.FC = () => {
         <span className="admin-eyebrow">هاجس • لوحة الإدارة</span>
         <h1>مرحباً بعودتك</h1>
         <p className="admin-muted">سجّل الدخول لمتابعة إدارة هاجس.</p>
-        <div className="admin-demo-warning" role="note">
-          وضع تجريبي محلي: تسجيل الدخول هذا ليس وسيلة حماية آمنة للاستخدام الفعلي.
-        </div>
         <form className="admin-login-form" onSubmit={handleSubmit}>
           <label htmlFor="admin-email">البريد الإلكتروني</label>
           <div className="admin-input-wrap">
@@ -68,7 +69,9 @@ export const AdminLoginPage: React.FC = () => {
             />
           </div>
           {error && <p className="admin-form-error" role="alert">{error}</p>}
-          <button type="submit" className="admin-primary-button">تسجيل الدخول</button>
+          <button type="submit" className="admin-primary-button" disabled={isSubmitting}>
+            {isSubmitting ? 'جارٍ التحقق...' : 'تسجيل الدخول'}
+          </button>
         </form>
       </section>
       <span className="admin-login-footer">حائل، المملكة العربية السعودية</span>

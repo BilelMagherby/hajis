@@ -4,19 +4,19 @@ import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { PhilosophySection } from './components/PhilosophySection';
 import { MenuSection } from './components/MenuSection';
-import { NewsSection } from './components/NewsSection';
 import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
 import { ChatbotWidget } from './components/ChatbotWidget';
 import { CookieConsent } from './components/CookieConsent';
-import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuPage } from './pages/MenuPage';
 import { NewsPage } from './pages/NewsPage';
+import { Navigate } from 'react-router-dom';
 import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
-import { hasDemoAdminSession } from './utils/demoAdminAuth';
+import { hasAdminSession } from './utils/adminAuth';
 
 export const App: React.FC = () => {
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
@@ -24,13 +24,13 @@ export const App: React.FC = () => {
   const navigate = useNavigate();
 
   if (location.pathname === '/admin/login') {
-    return hasDemoAdminSession()
+    return hasAdminSession()
       ? <Navigate to="/admin" replace />
       : <AdminLoginPage />;
   }
 
   if (location.pathname === '/admin') {
-    return hasDemoAdminSession()
+    return hasAdminSession()
       ? <AdminDashboardPage onLogout={() => navigate('/admin/login', { replace: true })} />
       : <Navigate to="/admin/login" replace />;
   }
@@ -108,13 +108,7 @@ export const App: React.FC = () => {
         onNavigate={handleNavigate}
         onAdminAccess={() => navigate('/admin/login')}
         enableAdminShortcut={location.pathname === '/'}
-        activeSection={
-          location.pathname === '/menu'
-            ? 'menu'
-            : location.pathname === '/news'
-            ? 'news'
-            : undefined
-        }
+        activeSection={location.pathname === '/menu' ? 'menu' : undefined}
         inFlow
       />
 
@@ -131,10 +125,7 @@ export const App: React.FC = () => {
         {/* 7. Philosophy & What Distinguishes Hajiss Section */}
         <PhilosophySection />
 
-        {/* 8. News & Updates Teaser Section */}
-        <NewsSection onNavigate={handleNavigate} />
-
-        {/* 9. Visit Hajiss & 3D Hail Topographic Map */}
+        {/* 8. Visit Hajiss & 3D Hail Topographic Map */}
         <VisitSection />
 
         {/* 10. Online Store Teaser & QR Code */}
