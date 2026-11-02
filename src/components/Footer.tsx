@@ -4,6 +4,7 @@ import { InstagramIcon, SnapchatIcon, ThreadsIcon, TikTokIcon, XIcon, YoutubeIco
 import { ShopQrCode } from './ShopQrCode';
 import './ShopQrCode.css';
 import { brandData } from '../data/brand';
+import { useLanguage } from '../i18n/language';
 
 interface FooterProps {
   onNavigate?: (id: string) => void;
@@ -11,6 +12,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => {
+  const { t } = useLanguage();
   const scrollTo = (id: string) => {
     if (onNavigate) {
       onNavigate(id);
@@ -25,37 +27,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* TOP 4 COLUMNS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-right pb-12 border-b border-[var(--color-brand-chocolate)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-start pb-12 border-b border-[var(--color-brand-chocolate)]">
 
           {/* COL 1: BRAND LOGO & BIO */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 space-x-reverse justify-end">
-              <div className="flex flex-col text-right">
+            <div className="flex items-center gap-3 justify-end">
+              <div className="flex flex-col text-start">
                 <span className="font-brand text-2xl font-light tracking-[0.25em] text-[var(--color-brand-linen)]">
-                  مقهى هاجس
+                  {t('مقهى هاجس', 'Hajiss Café')}
                 </span>
               </div>
               <div className="w-16 h-auto flex items-center justify-center">
                 <img
                   src="/images/logo.png"
-                  alt="شعار هاجس"
+                  alt={t('شعار هاجس', 'Hajiss logo')}
                   className="brand-logo-warm w-full h-auto object-contain"
                 />
               </div>
             </div>
 
             <p className="font-arabic text-xs text-[var(--color-brand-sand)] leading-relaxed font-light">
-              مقهى هاجس — تجربة قهوة مختصة فريدة في حائل. نجمع بين عراقة التراث وكرم الوجار وأحدث أساليب التحميص والتقطير العالمية.
+              {t('مقهى هاجس — تجربة قهوة مختصة فريدة في حائل. نجمع بين عراقة التراث وكرم الوجار وأحدث أساليب التحميص والتقطير العالمية.', 'Hajiss Café — a unique specialty coffee experience in Hail, bringing together a rich heritage, the generosity of Al-Wijar, and the latest roasting and brewing methods from around the world.')}
             </p>
 
             {/* Social Icons */}
-            <div className="flex items-center space-x-3 space-x-reverse justify-end text-[var(--color-brand-sand)] pt-2">
+            <div className="flex items-center gap-3 justify-end text-[var(--color-brand-sand)] pt-2">
               <a
                 href={brandData.contact.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="إنستغرام"
+                aria-label={t('إنستغرام', 'Instagram')}
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
@@ -64,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="تيك توك"
+                aria-label={t('تيك توك', 'TikTok')}
               >
                 <TikTokIcon className="w-4 h-4" />
               </a>
@@ -73,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="سناب شات"
+                aria-label={t('سناب شات', 'Snapchat')}
               >
                 <SnapchatIcon className="w-4 h-4" />
               </a>
@@ -82,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="ثريدز"
+                aria-label={t('ثريدز', 'Threads')}
               >
                 <ThreadsIcon className="w-4 h-4" />
               </a>
@@ -91,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="إكس"
+                aria-label={t('إكس', 'X')}
               >
                 <XIcon className="w-3.5 h-3.5" />
               </a>
@@ -100,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visual-icon-control rounded-full bg-[var(--color-brand-black)] border border-[var(--color-brand-chocolate)] hover:border-[var(--color-brand-sand)] hover:text-[var(--color-brand-sand)] transition-colors"
-                aria-label="يوتيوب"
+                aria-label={t('يوتيوب', 'YouTube')}
               >
                 <YoutubeIcon className="w-4 h-4" />
               </a>
@@ -110,11 +112,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           {/* COL 2: CONTACT INFORMATION */}
           <div className="space-y-4">
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
-              التواصل
+              {t('التواصل', 'Contact')}
             </h4>
 
             <div className="space-y-3 font-arabic text-xs text-[var(--color-brand-linen)]">
-              <div className="flex items-center justify-end space-x-2 space-x-reverse">
+              <div className="flex items-center justify-end gap-2">
                 <a
                   href={`mailto:${brandData.contact.email}`}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
@@ -124,9 +126,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 <Mail className="w-4 h-4 text-[var(--color-brand-sand)]" />
               </div>
 
-              <div className="flex items-start justify-end space-x-2 space-x-reverse">
+              <div className="flex items-start justify-end gap-2">
                 <span className="leading-relaxed">
-                  {brandData.location.placeAr}، {brandData.location.cityAr}
+                  {brandData.location.placeAr}{t('، ', ', ')}{brandData.location.cityAr}
                 </span>
                 <MapPin className="w-4 h-4 text-[var(--color-brand-sand)] mt-0.5 flex-shrink-0" />
               </div>
@@ -136,10 +138,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           {/* COL 3: STORE & QR CODE */}
           <div className="space-y-3">
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
-              زوروا متجرنا الإلكتروني
+              {t('زوروا متجرنا الإلكتروني', 'Visit our online store')}
             </h4>
             <p className="font-arabic text-xs text-[var(--color-brand-sand)] font-light">
-              للحصول على عروض خاصة ومحاصيل طازجة
+              {t('للحصول على عروض خاصة ومحاصيل طازجة', 'For special offers and freshly roasted beans')}
             </p>
 
             <div className="flex justify-center pt-1 md:justify-end">
@@ -150,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           {/* COL 4: QUICK NAVIGATION LINKS */}
           <div className="space-y-3">
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
-              روابط سريعة
+              {t('روابط سريعة', 'Quick Links')}
             </h4>
             <ul className="space-y-2 font-arabic text-xs text-[var(--color-brand-linen)]">
               <li>
@@ -158,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   onClick={() => scrollTo('hero')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
-                  الرئيسية
+                  {t('الرئيسية', 'Home')}
                 </button>
               </li>
               <li>
@@ -166,7 +168,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   onClick={() => scrollTo('about')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
-                  من نحن
+                  {t('من نحن', 'About')}
                 </button>
               </li>
               <li>
@@ -174,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   onClick={() => scrollTo('menu')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
-                  القائمة
+                  {t('القائمة', 'Menu')}
                 </button>
               </li>
               <li>
@@ -182,7 +184,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   onClick={() => scrollTo('news')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
-                  مستجدات هاجس
+                  {t('مستجدات هاجس', 'Hajiss News')}
                 </button>
               </li>
               <li>
@@ -190,7 +192,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   onClick={() => scrollTo('visit')}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
                 >
-                  زيارة هاجس
+                  {t('زيارة هاجس', 'Visit Hajiss')}
                 </button>
               </li>
               {onOpenCookieSettings && (
@@ -200,7 +202,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                     onClick={onOpenCookieSettings}
                     className="hover:text-[var(--color-brand-sand)] transition-colors"
                   >
-                    إعدادات ملفات تعريف الارتباط
+                    {t('إعدادات ملفات تعريف الارتباط', 'Cookie settings')}
                   </button>
                 </li>
               )}
@@ -212,7 +214,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[rgb(var(--color-brand-sand-rgb)_/_0.65)] font-arabic gap-4">
           <p>
-            حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة
+            {t('حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة', 'Copyright © Hajiss Café — All rights reserved')}
           </p>
 
          

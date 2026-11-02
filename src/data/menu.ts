@@ -11,6 +11,7 @@ export interface MenuItem {
 export interface MenuCategory {
   id: string;
   titleAr: string;
+  titleEn: string;
   descriptionAr: string;
   image: string;
   items: MenuItem[];
@@ -23,6 +24,7 @@ export const menuCategories: MenuCategory[] = [
   {
     id: 'hot-drinks',
     titleAr: 'مشروبات ساخنة',
+    titleEn: 'hot drinks',
     descriptionAr: 'مشروبات هاجس الساخنة، محضّرة بعناية لترافق لحظاتك.',
     image: '/images/menu-drinks/hot-single.jpg',
     items: [
@@ -101,6 +103,7 @@ export const menuCategories: MenuCategory[] = [
   {
     id: 'cold-drinks',
     titleAr: 'مشروبات باردة',
+    titleEn: 'cold drinks',
     descriptionAr: 'مشروبات باردة منعشة من قائمة هاجس.',
     image: '/images/menu-drinks/cold-alfredo.jpg',
     items: [
@@ -158,6 +161,7 @@ export const menuCategories: MenuCategory[] = [
   {
     id: 'desserts',
     titleAr: 'حلويات',
+    titleEn: 'desserts',
     descriptionAr: 'حلويات هاجس للمشاركة والاستمتاع مع قهوتك.',
     image: productImage(1),
     items: [

@@ -7,6 +7,7 @@ import {
   Share2,
   Check,
   ChevronLeft,
+  ChevronRight,
   Coffee,
   Sparkles,
   MapPin,
@@ -22,6 +23,7 @@ import type { NewsItem } from '../data/news';
 import { newsCategories } from '../data/news';
 import { fetchBlogPosts } from '../utils/blogApi';
 import { brandData } from '../data/brand';
+import { useLanguage } from '../i18n/language';
 import './NewsPage.css';
 
 interface NewsPageProps {
@@ -30,6 +32,16 @@ interface NewsPageProps {
 }
 
 export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSettings }) => {
+  const { t, dir, isEnglish } = useLanguage();
+  // Post text is written by the admin and shown as authored; labels and dates follow the site language.
+  const categoryLabel = (item: NewsItem) => {
+    const category = newsCategories.find((cat) => cat.id === item.category);
+    return category ? t(category.label, category.labelEn) : item.categoryLabel;
+  };
+  const postDate = (item: NewsItem) => (isEnglish && item.createdAt
+    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(item.createdAt))
+    : item.date);
+  const ForwardChevron = isEnglish ? ChevronRight : ChevronLeft;
   const [itemsList, setItemsList] = useState<NewsItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -125,7 +137,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
   const handleShare = async (item: NewsItem) => {
     const shareUrl = window.location.href.split('?')[0];
-    const shareText = `${item.title} — مقهى هاجس، حائل`;
+    const shareText = `${item.title} — ${t('مقهى هاجس، حائل', 'Hajiss Café, Hail')}`;
 
     if (navigator.share) {
       try {
@@ -150,7 +162,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
   };
 
   return (
-    <div className="news-page" dir="rtl">
+    <div className="news-page" dir={dir}>
       {/* Luxury Navbar */}
       <Navbar onNavigate={onNavigate} activeSection="news" inFlow />
 
@@ -161,7 +173,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           <div aria-hidden="true" className="news-hero-bg-layer">
             <img
               src="/images/news-hero-bg.png"
-              alt="مدونة وأخبار هاجس"
+              alt={t('مدونة وأخبار هاجس', 'Hajiss blog and news')}
               className="news-hero-bg-img"
             />
             <div className="news-hero-overlay" />
@@ -174,29 +186,31 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             {/* Breadcrumb / Top Tag */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(43,24,14,0.8)] backdrop-blur-md border border-[rgba(200,188,167,0.3)] text-xs font-arabic text-[var(--color-brand-sand)] shadow-lg">
               <Sparkles className="w-3.5 h-3.5 text-[var(--color-brand-sand)]" />
-              <span>مستجدات وإعلانات هاجس • حائل 2026</span>
+              <span>{t('مستجدات وإعلانات هاجس • حائل 2026', 'Hajiss news & announcements • Hail 2026')}</span>
             </div>
 
             {/* Page Title */}
             <h1 className="font-kufi text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-brand-linen)] tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
-              مستجدات <span className="text-[var(--color-brand-sand)]">هاجس</span>
+              {isEnglish
+                ? <><span className="text-[var(--color-brand-sand)]">Hajiss</span> News</>
+                : <>مستجدات <span className="text-[var(--color-brand-sand)]">هاجس</span></>}
             </h1>
 
             {/* Subtitle */}
             <p className="font-arabic text-base sm:text-lg lg:text-xl text-[rgb(var(--color-brand-linen-rgb)_/_0.92)] max-w-2xl mx-auto leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              نافذتكم الحصرية على كل ما يستجد في هاجس: محاصيل القهوة النادرة، فعاليات حائل، تفاصيل التقطير، وأمسيات الشتاء في داني سكوير.
+              {t('نافذتكم الحصرية على كل ما يستجد في هاجس: محاصيل القهوة النادرة، فعاليات حائل، تفاصيل التقطير، وأمسيات الشتاء في داني سكوير.', 'Your exclusive window into everything new at Hajiss: rare coffee beans, events in Hail, brewing details, and winter evenings at Dani Square.')}
             </p>
 
             {/* Subtle Quick Meta Pills */}
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs font-arabic text-[var(--color-brand-sand)]">
               <span className="flex items-center gap-1.5 bg-[rgba(43,24,14,0.82)] backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-[rgba(200,188,167,0.22)] shadow-md">
-                <Coffee className="w-3.5 h-3.5" /> محاصيل مختارة عالمياً
+                <Coffee className="w-3.5 h-3.5" /> {t('محاصيل مختارة عالمياً', 'Beans selected worldwide')}
               </span>
               <span className="flex items-center gap-1.5 bg-[rgba(43,24,14,0.82)] backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-[rgba(200,188,167,0.22)] shadow-md">
-                <MapPin className="w-3.5 h-3.5" /> داني سكوير، حائل
+                <MapPin className="w-3.5 h-3.5" /> {t('داني سكوير، حائل', 'Dani Square, Hail')}
               </span>
               <span className="flex items-center gap-1.5 bg-[rgba(43,24,14,0.82)] backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-[rgba(200,188,167,0.22)] shadow-md">
-                <Flame className="w-3.5 h-3.5" /> طقوس قهوة يومية متجددة
+                <Flame className="w-3.5 h-3.5" /> {t('طقوس قهوة يومية متجددة', 'Fresh coffee rituals every day')}
               </span>
             </div>
           </div>
@@ -207,18 +221,18 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 font-arabic text-xs sm:text-sm text-[var(--color-brand-linen)]">
             <div className="flex items-center gap-2 flex-shrink-0 text-[var(--color-brand-sand)] font-semibold">
               <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-brand-sand)] animate-pulse" />
-              <span>إعلان هاجس:</span>
+              <span>{t('إعلان هاجس:', 'Hajiss announcement:')}</span>
             </div>
-            <p className="truncate text-right opacity-90">
-              {itemsList[0]?.title || 'مرحباً بكم في مقهى هاجس — داني سكوير، حائل • قهوتك، طقسك، ومكانك.'}
+            <p className="truncate text-start opacity-90">
+              {itemsList[0]?.title || t('مرحباً بكم في مقهى هاجس — داني سكوير، حائل • قهوتك، طقسك، ومكانك.', 'Welcome to Hajiss Café — Dani Square, Hail • Your coffee, your ritual, your place.')}
             </p>
             <button
               type="button"
               onClick={() => onNavigate('menu')}
               className="hidden md:inline-flex items-center gap-1 text-[var(--color-brand-sand)] hover:underline flex-shrink-0 font-medium"
             >
-              <span>استكشف القائمة</span>
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <span>{t('استكشف القائمة', 'Explore the menu')}</span>
+              <ForwardChevron className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
@@ -246,7 +260,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                           isActive ? 'active' : ''
                         }`}
                       >
-                        {cat.label}
+                        {t(cat.label, cat.labelEn)}
                       </button>
                     );
                   })}
@@ -254,10 +268,10 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
                 {/* Keyword Search Input */}
                 <div className="relative min-w-[260px] sm:min-w-[300px]">
-                  <Search className="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] pointer-events-none" />
+                  <Search className="w-4 h-4 absolute start-3.5 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] pointer-events-none" />
                   <input
                     type="text"
-                    placeholder="ابحث في المستجدات والمحاصيل..."
+                    placeholder={t('ابحث في المستجدات والمحاصيل...', 'Search news and beans...')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[rgba(64,55,45,0.35)] border border-[rgba(200,188,167,0.22)] focus:border-[var(--color-brand-sand)] focus:bg-[rgba(64,55,45,0.55)] text-sm text-[var(--color-brand-linen)] placeholder-[rgba(200,188,167,0.5)] outline-none font-arabic transition-all"
@@ -266,8 +280,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                     <button
                       type="button"
                       onClick={() => setSearchQuery('')}
-                      aria-label="مسح البحث"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] hover:text-white p-1"
+                      aria-label={t('مسح البحث', 'Clear search')}
+                      className="absolute end-3 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] hover:text-white p-1"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -279,8 +293,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
               {(searchQuery || selectedCategory !== 'all') && (
                 <div className="flex items-center justify-between text-xs font-arabic text-[var(--color-brand-sand)] bg-[rgba(64,55,45,0.2)] px-4 py-2 rounded-lg border border-[rgba(200,188,167,0.12)]">
                   <span>
-                    النتائج المعروضة: <b>{filteredItems.length}</b> مستجد
-                    {searchQuery && ` للبحث عن "${searchQuery}"`}
+                    {t('النتائج المعروضة:', 'Showing:')} <b>{filteredItems.length}</b> {t('مستجد', filteredItems.length === 1 ? 'post' : 'posts')}
+                    {searchQuery && t(` للبحث عن "${searchQuery}"`, ` for "${searchQuery}"`)}
                   </span>
                   <button
                     type="button"
@@ -290,7 +304,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                     }}
                     className="text-xs text-[var(--color-brand-linen)] hover:underline"
                   >
-                    إعادة ضبط الفلاتر
+                    {t('إعادة ضبط الفلاتر', 'Reset filters')}
                   </button>
                 </div>
               )}
@@ -303,7 +317,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
               <div className="flex items-center gap-2 mb-4">
                 <Bookmark className="w-4 h-4 text-[var(--color-brand-sand)]" />
                 <h2 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
-                  المستجد الأبرز لهذا الشهر
+                  {t('المستجد الأبرز لهذا الشهر', 'Featured story of the month')}
                 </h2>
               </div>
 
@@ -330,30 +344,30 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   
                   {/* Badge */}
                   {featuredItem.badge && (
-                    <div className="absolute top-4 right-4 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] text-xs font-arabic font-semibold px-3 py-1 rounded-full shadow-lg border border-[rgba(200,188,167,0.3)]">
+                    <div className="absolute top-4 start-4 bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] text-xs font-arabic font-semibold px-3 py-1 rounded-full shadow-lg border border-[rgba(200,188,167,0.3)]">
                       {featuredItem.badge}
                     </div>
                   )}
 
                   {featuredItem.mediaType === 'video' && (
-                    <div className="absolute top-4 left-4 bg-black/70 text-[var(--color-brand-sand)] text-xs font-arabic px-3 py-1 rounded-full border border-[rgba(200,188,167,0.3)] flex items-center gap-1.5">
+                    <div className="absolute top-4 end-4 bg-black/70 text-[var(--color-brand-sand)] text-xs font-arabic px-3 py-1 rounded-full border border-[rgba(200,188,167,0.3)] flex items-center gap-1.5">
                       <Film className="w-3.5 h-3.5" />
-                      <span>فيديو</span>
+                      <span>{t('فيديو', 'Video')}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Content Column */}
-                <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between text-right space-y-6">
+                <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between text-start space-y-6">
                   <div className="space-y-4">
                     {/* Meta info */}
                     <div className="flex flex-wrap items-center gap-3 text-xs font-arabic text-[var(--color-brand-sand)]">
                       <span className="bg-[rgba(64,55,45,0.7)] px-2.5 py-1 rounded border border-[rgba(200,188,167,0.18)]">
-                        {featuredItem.categoryLabel}
+                        {categoryLabel(featuredItem)}
                       </span>
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
-                        {featuredItem.date}
+                        {postDate(featuredItem)}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
@@ -393,16 +407,16 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                       onClick={() => setActiveModalItem(featuredItem)}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] hover:bg-[var(--color-brand-linen)] font-arabic text-sm font-bold transition-all shadow-md group cursor-pointer"
                     >
-                      <span>قراءة التفاصيل بالكامل</span>
-                      <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                      <span>{t('قراءة التفاصيل بالكامل', 'Read the full story')}</span>
+                      <ForwardChevron className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                     </button>
 
                     <button
                       type="button"
                       onClick={() => handleShare(featuredItem)}
                       className="p-2.5 rounded-xl bg-[rgba(64,55,45,0.5)] hover:bg-[rgba(64,55,45,0.8)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.2)] transition-colors cursor-pointer"
-                      title="مشاركة المستجد"
-                      aria-label="مشاركة المستجد"
+                      title={t('مشاركة المستجد', 'Share this story')}
+                      aria-label={t('مشاركة المستجد', 'Share this story')}
                     >
                       <Share2 className="w-4 h-4" />
                     </button>
@@ -419,7 +433,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 <div className="flex items-center gap-2">
                   <SlidersHorizontal className="w-4 h-4 text-[var(--color-brand-sand)]" />
                   <h3 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
-                    جميع المستجدات والأنشطة
+                    {t('جميع المستجدات والأنشطة', 'All news and activities')}
                   </h3>
                 </div>
               )}
@@ -454,9 +468,9 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,22,18,0.7)] via-transparent to-transparent pointer-events-none" />
 
                       {/* Top Badges */}
-                      <div className="absolute top-3 right-3 flex items-center gap-2">
+                      <div className="absolute top-3 start-3 flex items-center gap-2">
                         <span className="bg-[rgba(43,24,14,0.85)] backdrop-blur-md text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.25)] text-[11px] font-arabic font-semibold px-2.5 py-0.5 rounded-md">
-                          {item.categoryLabel}
+                          {categoryLabel(item)}
                         </span>
                         {item.badge && (
                           <span className="bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)] text-[11px] font-arabic font-semibold px-2.5 py-0.5 rounded-md">
@@ -466,21 +480,21 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                       </div>
 
                       {item.mediaType === 'video' && (
-                        <div className="absolute bottom-3 left-3 bg-black/75 text-[var(--color-brand-sand)] text-[10px] font-arabic px-2 py-0.5 rounded border border-[rgba(200,188,167,0.3)] flex items-center gap-1">
+                        <div className="absolute bottom-3 end-3 bg-black/75 text-[var(--color-brand-sand)] text-[10px] font-arabic px-2 py-0.5 rounded border border-[rgba(200,188,167,0.3)] flex items-center gap-1">
                           <Film className="w-3 h-3" />
-                          <span>فيديو</span>
+                          <span>{t('فيديو', 'Video')}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Card Body */}
-                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4 text-right">
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4 text-start">
                       <div className="space-y-3">
                         {/* Date and Read Time */}
                         <div className="flex items-center justify-between text-[11px] font-arabic text-[rgb(var(--color-brand-sand-rgb)_/_0.8)]">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
-                            {item.date}
+                            {postDate(item)}
                           </span>
                           <span className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
@@ -493,7 +507,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                           <button
                             type="button"
                             onClick={() => setActiveModalItem(item)}
-                            className="text-right cursor-pointer"
+                            className="text-start cursor-pointer"
                           >
                             {item.title}
                           </button>
@@ -512,16 +526,16 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                           onClick={() => setActiveModalItem(item)}
                           className="inline-flex items-center gap-1.5 text-xs font-arabic font-bold text-[var(--color-brand-sand)] hover:text-[var(--color-brand-linen)] transition-colors group cursor-pointer"
                         >
-                          <span>قراءة المزيد</span>
-                          <ChevronLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+                          <span>{t('قراءة المزيد', 'Read more')}</span>
+                          <ForwardChevron className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
                         </button>
 
                         <button
                           type="button"
                           onClick={() => handleShare(item)}
                           className="p-1.5 rounded-lg text-[rgb(var(--color-brand-sand-rgb)_/_0.7)] hover:text-[var(--color-brand-sand)] hover:bg-[rgba(64,55,45,0.4)] transition-colors cursor-pointer"
-                          title="مشاركة"
-                          aria-label={`مشاركة ${item.title}`}
+                          title={t('مشاركة', 'Share')}
+                          aria-label={t(`مشاركة ${item.title}`, `Share ${item.title}`)}
                         >
                           <Share2 className="w-3.5 h-3.5" />
                         </button>
@@ -536,49 +550,49 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             <div className="text-center py-20 px-6 bg-[rgba(64,55,45,0.2)] rounded-3xl border border-[rgba(200,188,167,0.15)] max-w-lg mx-auto space-y-4">
               <Coffee className="w-12 h-12 text-[var(--color-brand-sand)] mx-auto opacity-50" />
               <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[var(--color-brand-linen)]">
-                {isLoading ? 'جاري تحميل المستجدات...' : 'لا توجد مستجدات منشورة حالياً'}
+                {isLoading ? t('جاري تحميل المستجدات...', 'Loading news...') : t('لا توجد مستجدات منشورة حالياً', 'No news has been published yet')}
               </h3>
               <p className="font-arabic text-sm text-[var(--color-brand-sand)] leading-relaxed">
-                ترقبوا قريباً جديد هاجس — يمكنكم متابعة حساباتنا الرسمية لمعرفة آخر الأخبار وأحدث المحاصيل أولاً بأول، أو زيارة المقهى في داني سكوير بحائل.
+                {t('ترقبوا قريباً جديد هاجس — يمكنكم متابعة حساباتنا الرسمية لمعرفة آخر الأخبار وأحدث المحاصيل أولاً بأول، أو زيارة المقهى في داني سكوير بحائل.', 'Stay tuned for what\'s new at Hajiss — follow our official accounts for the latest news and newest beans, or visit the café at Dani Square in Hail.')}
               </p>
               <button
                 type="button"
                 onClick={() => onNavigate('visit')}
                 className="mt-3 inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] font-arabic text-xs font-bold hover:bg-[var(--color-brand-linen)] transition-colors cursor-pointer"
               >
-                زيارة فرع هاجس في حائل
+                {t('زيارة فرع هاجس في حائل', 'Visit Hajiss in Hail')}
               </button>
             </div>
           )}
 
           {/* STAY CONNECTED SECTION (Clean, without fake input holder) */}
-          <section className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2B180E] to-[#1A1612] border border-[rgba(200,188,167,0.2)] relative overflow-hidden text-right">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(200,188,167,0.1)_0%,transparent_70%)] pointer-events-none" />
+          <section className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2B180E] to-[#1A1612] border border-[rgba(200,188,167,0.2)] relative overflow-hidden text-start">
+            <div className="absolute top-0 start-0 w-80 h-80 bg-[radial-gradient(circle,rgba(200,188,167,0.1)_0%,transparent_70%)] pointer-events-none" />
 
-            <div className="max-w-3xl mx-auto space-y-5 relative z-10 text-center sm:text-right">
+            <div className="max-w-3xl mx-auto space-y-5 relative z-10 text-center sm:text-start">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(64,55,45,0.6)] border border-[rgba(200,188,167,0.2)] text-xs font-arabic text-[var(--color-brand-sand)]">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>تواصل مع هاجس</span>
+                <span>{t('تواصل مع هاجس', 'Connect with Hajiss')}</span>
               </div>
 
               <h3 className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-linen)]">
-                تابع يوميات هاجس وأحدث الفعاليات القادمة
+                {t('تابع يوميات هاجس وأحدث الفعاليات القادمة', 'Follow daily life at Hajiss and our upcoming events')}
               </h3>
 
               <p className="font-arabic text-sm sm:text-base text-[rgb(var(--color-brand-linen-rgb)_/_0.85)] font-light leading-relaxed">
-                يسعدنا انضمامكم لمجتمع هاجس عبر قنوات التواصل الاجتماعي لمتابعة كواليس التحميص، وصول المحاصيل الحصرية، وأمسيات حائل.
+                {t('يسعدنا انضمامكم لمجتمع هاجس عبر قنوات التواصل الاجتماعي لمتابعة كواليس التحميص، وصول المحاصيل الحصرية، وأمسيات حائل.', 'Join the Hajiss community on social media to go behind the scenes of roasting, catch exclusive bean arrivals, and enjoy Hail evenings with us.')}
               </p>
 
               {/* Direct Social Channels */}
               <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 text-xs sm:text-sm font-arabic text-[var(--color-brand-sand)]">
-                <span className="font-bold text-[var(--color-brand-linen)]">قنواتنا الرسمية:</span>
+                <span className="font-bold text-[var(--color-brand-linen)]">{t('قنواتنا الرسمية:', 'Our official channels:')}</span>
                 <a
                   href={brandData.contact.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3.5 py-1.5 rounded-lg bg-[rgba(64,55,45,0.5)] border border-[rgba(200,188,167,0.2)] hover:border-[var(--color-brand-sand)] hover:text-white transition-colors"
                 >
-                  إنستغرام
+                  {t('إنستغرام', 'Instagram')}
                 </a>
                 <a
                   href={brandData.contact.tiktok}
@@ -586,7 +600,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   rel="noopener noreferrer"
                   className="px-3.5 py-1.5 rounded-lg bg-[rgba(64,55,45,0.5)] border border-[rgba(200,188,167,0.2)] hover:border-[var(--color-brand-sand)] hover:text-white transition-colors"
                 >
-                  تيك توك
+                  {t('تيك توك', 'TikTok')}
                 </a>
                 <a
                   href={brandData.contact.snapchat}
@@ -594,7 +608,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   rel="noopener noreferrer"
                   className="px-3.5 py-1.5 rounded-lg bg-[rgba(64,55,45,0.5)] border border-[rgba(200,188,167,0.2)] hover:border-[var(--color-brand-sand)] hover:text-white transition-colors"
                 >
-                  سناب شات
+                  {t('سناب شات', 'Snapchat')}
                 </a>
                 <a
                   href={brandData.contact.x}
@@ -602,7 +616,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   rel="noopener noreferrer"
                   className="px-3.5 py-1.5 rounded-lg bg-[rgba(64,55,45,0.5)] border border-[rgba(200,188,167,0.2)] hover:border-[var(--color-brand-sand)] hover:text-white transition-colors"
                 >
-                  منصة إكس
+                  {t('منصة إكس', 'X')}
                 </a>
               </div>
             </div>
@@ -621,14 +635,14 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           aria-labelledby="modal-article-title"
         >
           <div
-            className="news-modal-dialog w-full max-w-3xl max-h-[90vh] bg-[#231D17] border border-[rgba(200,188,167,0.3)] rounded-3xl overflow-hidden shadow-2xl flex flex-col text-right relative"
+            className="news-modal-dialog w-full max-w-3xl max-h-[90vh] bg-[#231D17] border border-[rgba(200,188,167,0.3)] rounded-3xl overflow-hidden shadow-2xl flex flex-col text-start relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header with Close Button */}
             <div className="p-4 sm:p-5 border-b border-[rgba(200,188,167,0.15)] flex items-center justify-between bg-[rgba(43,24,14,0.7)] sticky top-0 z-20">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-arabic font-semibold px-3 py-1 rounded-full bg-[rgba(64,55,45,0.7)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.2)]">
-                  {activeModalItem.categoryLabel}
+                  {categoryLabel(activeModalItem)}
                 </span>
                 {activeModalItem.badge && (
                   <span className="text-xs font-arabic font-semibold px-2.5 py-1 rounded-full bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)]">
@@ -637,7 +651,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 )}
                 {activeModalItem.mediaType === 'video' && (
                   <span className="text-xs font-arabic font-semibold px-2.5 py-1 rounded-full bg-black/80 text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.2)] flex items-center gap-1">
-                    <Film className="w-3 h-3" /> مقطع فيديو
+                    <Film className="w-3 h-3" /> {t('مقطع فيديو', 'Video')}
                   </span>
                 )}
               </div>
@@ -647,8 +661,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   type="button"
                   onClick={() => handleShare(activeModalItem)}
                   className="p-2 rounded-full hover:bg-[rgba(200,188,167,0.15)] text-[var(--color-brand-sand)] transition-colors cursor-pointer"
-                  title="مشاركة"
-                  aria-label="مشاركة المستجد"
+                  title={t('مشاركة', 'Share')}
+                  aria-label={t('مشاركة المستجد', 'Share this story')}
                 >
                   <Share2 className="w-4 h-4" />
                 </button>
@@ -656,7 +670,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   type="button"
                   onClick={() => setActiveModalItem(null)}
                   className="p-2 rounded-full hover:bg-[rgba(200,188,167,0.15)] text-[var(--color-brand-linen)] transition-colors cursor-pointer"
-                  aria-label="إغلاق النافذة"
+                  aria-label={t('إغلاق النافذة', 'Close')}
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -691,7 +705,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
               <div className="flex flex-wrap items-center gap-4 text-xs font-arabic text-[var(--color-brand-sand)]">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  {activeModalItem.date}
+                  {postDate(activeModalItem)}
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
@@ -701,7 +715,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 {activeModalItem.author && (
                   <>
                     <span>•</span>
-                    <span>بواسطة: <b>{activeModalItem.author.name}</b> ({activeModalItem.author.role})</span>
+                    <span>{t('بواسطة:', 'By:')} <b>{activeModalItem.author.name}</b> ({activeModalItem.author.role})</span>
                   </>
                 )}
               </div>
@@ -722,7 +736,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
               </div>
 
               {/* Lead Paragraph */}
-              <p className="font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium bg-[rgba(64,55,45,0.3)] p-4 rounded-xl border-r-4 border-[var(--color-brand-sand)]">
+              <p className="font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium bg-[rgba(64,55,45,0.3)] p-4 rounded-xl border-s-4 border-[var(--color-brand-sand)]">
                 {activeModalItem.content?.lead || activeModalItem.summary}
               </p>
 
@@ -751,7 +765,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 <div className="p-5 rounded-2xl bg-[rgba(64,55,45,0.4)] border border-[rgba(200,188,167,0.2)] space-y-3">
                   <h4 className="font-kufi text-sm sm:text-base font-bold text-[var(--color-brand-sand)] flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[var(--color-brand-sand)]" />
-                    أبرز التفاصيل والمواصفات:
+                    {t('أبرز التفاصيل والمواصفات:', 'Highlights and details:')}
                   </h4>
                   <ul className="space-y-2 font-arabic text-xs sm:text-sm text-[var(--color-brand-linen)]">
                     {activeModalItem.content.highlights.map((highlight, idx) => (
@@ -766,7 +780,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
               {/* Quote if present */}
               {activeModalItem.content?.quote && (
-                <div className="p-4 rounded-xl bg-[rgba(43,24,14,0.6)] border-r-4 border-[var(--color-brand-sand)] font-arabic text-sm sm:text-base text-[var(--color-brand-sand)] italic">
+                <div className="p-4 rounded-xl bg-[rgba(43,24,14,0.6)] border-s-4 border-[var(--color-brand-sand)] font-arabic text-sm sm:text-base text-[var(--color-brand-sand)] italic">
                   {activeModalItem.content.quote}
                 </div>
               )}
@@ -797,7 +811,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   }}
                   className="px-5 py-2 rounded-xl bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] hover:bg-[var(--color-brand-linen)] font-arabic text-xs sm:text-sm font-bold transition-colors cursor-pointer"
                 >
-                  زيارة فرع هاجس في حائل
+                  {t('زيارة فرع هاجس في حائل', 'Visit Hajiss in Hail')}
                 </button>
                 <button
                   type="button"
@@ -807,7 +821,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   }}
                   className="px-4 py-2 rounded-xl bg-[rgba(64,55,45,0.5)] hover:bg-[rgba(64,55,45,0.8)] text-[var(--color-brand-linen)] border border-[rgba(200,188,167,0.2)] font-arabic text-xs sm:text-sm font-medium transition-colors cursor-pointer"
                 >
-                  استعراض القائمة
+                  {t('استعراض القائمة', 'View the menu')}
                 </button>
               </div>
 
@@ -817,7 +831,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 className="inline-flex items-center gap-1.5 text-xs font-arabic text-[var(--color-brand-sand)] hover:underline cursor-pointer"
               >
                 <Share2 className="w-3.5 h-3.5" />
-                <span>مشاركة هذا المستجد</span>
+                <span>{t('مشاركة هذا المستجد', 'Share this story')}</span>
               </button>
             </div>
           </div>
@@ -828,7 +842,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
       {copiedLink && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] px-4 py-2.5 rounded-full shadow-2xl font-arabic text-xs font-bold flex items-center gap-2 animate-bounce">
           <Check className="w-4 h-4" />
-          <span>تم نسخ الرابط بنجاح!</span>
+          <span>{t('تم نسخ الرابط بنجاح!', 'Link copied!')}</span>
         </div>
       )}
 

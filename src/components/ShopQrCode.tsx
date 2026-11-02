@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
+import { useLanguage } from '../i18n/language';
 
 interface ShopQrCodeProps {
   className: string;
@@ -7,8 +8,9 @@ interface ShopQrCodeProps {
 }
 
 export const ShopQrCode: React.FC<ShopQrCodeProps> = ({ className, imageClassName }) => {
+  const { t } = useLanguage();
   const [dataUrl, setDataUrl] = useState('');
-  const [error, setError] = useState('');
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -21,9 +23,8 @@ export const ShopQrCode: React.FC<ShopQrCodeProps> = ({ className, imageClassNam
     }).then((url) => {
       if (isActive) setDataUrl(url);
     }).catch((qrError: unknown) => {
-      if (isActive) {
-        setError(qrError instanceof Error ? qrError.message : 'تعذر إنشاء رمز المتجر.');
-      }
+      console.error('QR code generation failed:', qrError);
+      if (isActive) setFailed(true);
     });
 
     return () => {
@@ -37,13 +38,15 @@ export const ShopQrCode: React.FC<ShopQrCodeProps> = ({ className, imageClassNam
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      aria-label="افتح متجر هاجس"
+      aria-label={t('افتح متجر هاجس', 'Open the Hajiss store')}
     >
       {dataUrl ? (
-        <img className={imageClassName} src={dataUrl} alt="رمز للاستدلال على متجر هاجس" />
+        <img className={imageClassName} src={dataUrl} alt={t('رمز للاستدلال على متجر هاجس', 'QR code for the Hajiss store')} />
       ) : (
-        <span className="shop-qr-placeholder" role={error ? 'alert' : undefined}>
-          {error || 'جارٍ إنشاء رمز المتجر...'}
+        <span className="shop-qr-placeholder" role={failed ? 'alert' : undefined}>
+          {failed
+            ? t('تعذر إنشاء رمز المتجر.', 'Could not create the store code.')
+            : t('جارٍ إنشاء رمز المتجر...', 'Creating the store code...')}
         </span>
       )}
     </a>

@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../i18n/language';
 
 const heroImages = [
   {
     src: '/images/hero-hajis-night.jpg',
     alt: 'واجهة مقهى هاجس الخارجية ليلاً',
+    altEn: 'The Hajiss café storefront at night',
   },
   {
     src: '/images/hero-cafe-counter.jpeg',
     alt: 'بار قهوة مقهى هاجس',
+    altEn: 'The coffee bar at Hajiss café',
   },
   {
     src: '/images/hero-slide-1.jpeg',
     alt: 'صالة مقهى هاجس الداخلية وشجرة الزيتون',
+    altEn: 'The Hajiss indoor lounge and olive tree',
   },
   {
     src: '/images/hero-slide-2.jpeg',
     alt: 'ركن منتجات ومعدات قهوة هاجس',
+    altEn: 'The Hajiss coffee products and equipment corner',
   },
 ];
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -40,7 +46,7 @@ export const Hero: React.FC = () => {
           <img
             key={image.src}
             src={image.src}
-            alt={image.alt}
+            alt={t(image.alt, image.altEn)}
             draggable={false}
             className={`hero-slide-image absolute inset-0 h-full w-full object-cover object-center brightness-115 contrast-115 saturate-115 transition-opacity duration-1000 ease-in-out ${
               index === currentIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'
@@ -60,7 +66,7 @@ export const Hero: React.FC = () => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            aria-label={`الانتقال إلى الصورة ${index + 1}`}
+            aria-label={t(`الانتقال إلى الصورة ${index + 1}`, `Go to slide ${index + 1}`)}
             className={`transition-all duration-300 rounded-full ${
               index === currentIndex
                 ? 'w-5 sm:w-7 h-1.5 sm:h-2 bg-[var(--color-brand-gold,#d4af37)] shadow-sm'

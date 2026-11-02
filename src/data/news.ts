@@ -5,6 +5,8 @@ export interface NewsItem {
   category: 'all' | 'crops' | 'events' | 'drinks' | 'cafe' | 'blog' | string;
   categoryLabel: string;
   date: string;
+  /** ISO timestamp from the blog API; used to show the date in English. */
+  createdAt?: string;
   readTime: string;
   image: string;
   mediaType?: 'image' | 'video';
@@ -29,12 +31,12 @@ export interface NewsItem {
 }
 
 export const newsCategories = [
-  { id: 'all', label: 'جميع المستجدات' },
-  { id: 'crops', label: 'محاصيل جديدة' },
-  { id: 'events', label: 'فعاليات وورش عمل' },
-  { id: 'drinks', label: 'مشروبات الموسم' },
-  { id: 'cafe', label: 'أخبار هاجس' },
-  { id: 'blog', label: 'المدونة والمقالات' },
+  { id: 'all', label: 'جميع المستجدات', labelEn: 'All news' },
+  { id: 'crops', label: 'محاصيل جديدة', labelEn: 'New beans' },
+  { id: 'events', label: 'فعاليات وورش عمل', labelEn: 'Events & workshops' },
+  { id: 'drinks', label: 'مشروبات الموسم', labelEn: 'Seasonal drinks' },
+  { id: 'cafe', label: 'أخبار هاجس', labelEn: 'Hajiss news' },
+  { id: 'blog', label: 'المدونة والمقالات', labelEn: 'Blog & articles' },
 ] as const;
 
 export const newsItems: NewsItem[] = [];
