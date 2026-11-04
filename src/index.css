@@ -145,8 +145,9 @@
     animation-name: none !important;
     transition-duration: 0.01ms !important;
     transition: none !important;
+    /* Don't add `translate: none` here: the production minifier merges it with this line into
+       `transform: translate(0,0)`, which breaks every position:fixed element on the live site. */
     transform: none !important;
-    translate: none !important;
     scroll-behavior: auto !important;
   }
 

@@ -391,6 +391,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                         {featuredItem.tags.map((tag) => (
                           <span
                             key={tag}
+                            dir="auto"
                             className="text-[11px] font-arabic px-2.5 py-1 rounded-md bg-[rgba(64,55,45,0.5)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.1)]"
                           >
                             #{tag}
@@ -626,41 +627,60 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
       </main>
 
       {/* DETAILED ARTICLE MODAL */}
-      {activeModalItem && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md news-modal-backdrop"
-          onClick={() => setActiveModalItem(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-article-title"
-        >
-          <div
-            className="news-modal-dialog w-full max-w-3xl max-h-[90vh] bg-[#231D17] border border-[rgba(200,188,167,0.3)] rounded-3xl overflow-hidden shadow-2xl flex flex-col text-start relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header with Close Button */}
-            <div className="p-4 sm:p-5 border-b border-[rgba(200,188,167,0.15)] flex items-center justify-between bg-[rgba(43,24,14,0.7)] sticky top-0 z-20">
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-arabic font-semibold px-3 py-1 rounded-full bg-[rgba(64,55,45,0.7)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.2)]">
-                  {categoryLabel(activeModalItem)}
-                </span>
-                {activeModalItem.badge && (
-                  <span className="text-xs font-arabic font-semibold px-2.5 py-1 rounded-full bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)]">
-                    {activeModalItem.badge}
-                  </span>
-                )}
-                {activeModalItem.mediaType === 'video' && (
-                  <span className="text-xs font-arabic font-semibold px-2.5 py-1 rounded-full bg-black/80 text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.2)] flex items-center gap-1">
-                    <Film className="w-3 h-3" /> {t('مقطع فيديو', 'Video')}
-                  </span>
-                )}
-              </div>
+      {activeModalItem && (() => {
+        const isVideo = activeModalItem.mediaType === 'video';
+        const badges = (
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] sm:text-xs font-arabic font-semibold px-3 py-1 rounded-full bg-[rgba(26,22,18,0.75)] backdrop-blur-md text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.3)]">
+              {categoryLabel(activeModalItem)}
+            </span>
+            {activeModalItem.badge && (
+              <span className="text-[11px] sm:text-xs font-arabic font-semibold px-3 py-1 rounded-full bg-[var(--color-brand-olive)] text-[var(--color-brand-linen)]">
+                {activeModalItem.badge}
+              </span>
+            )}
+            {isVideo && (
+              <span className="text-[11px] sm:text-xs font-arabic font-semibold px-3 py-1 rounded-full bg-black/70 text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.25)] flex items-center gap-1">
+                <Film className="w-3 h-3" /> {t('مقطع فيديو', 'Video')}
+              </span>
+            )}
+          </div>
+        );
+        const heading = (
+          <div className="space-y-2">
+            <h2
+              id="modal-article-title"
+              dir="auto"
+              className="font-kufi text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-brand-linen)] leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+            >
+              {activeModalItem.title}
+            </h2>
+            {activeModalItem.subtitle && (
+              <p dir="auto" className="font-arabic text-sm sm:text-base text-[var(--color-brand-sand)]">
+                {activeModalItem.subtitle}
+              </p>
+            )}
+          </div>
+        );
 
-              <div className="flex items-center gap-2">
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md news-modal-backdrop"
+            onClick={() => setActiveModalItem(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-article-title"
+          >
+            <div
+              className="news-modal-dialog relative flex w-full max-w-3xl max-h-[calc(100dvh-1.5rem)] sm:max-h-[min(calc(100dvh-3rem),880px)] flex-col overflow-hidden rounded-3xl border border-[rgba(200,188,167,0.3)] bg-[#231D17] text-start shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Floating actions: stay visible while the article scrolls */}
+              <div className="absolute top-3 end-3 z-30 flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => handleShare(activeModalItem)}
-                  className="p-2 rounded-full hover:bg-[rgba(200,188,167,0.15)] text-[var(--color-brand-sand)] transition-colors cursor-pointer"
+                  className="w-9 h-9 grid place-items-center rounded-full bg-[rgba(26,22,18,0.7)] backdrop-blur-md border border-[rgba(200,188,167,0.3)] text-[var(--color-brand-sand)] hover:bg-[rgba(26,22,18,0.9)] transition-colors cursor-pointer"
                   title={t('مشاركة', 'Share')}
                   aria-label={t('مشاركة المستجد', 'Share this story')}
                 >
@@ -669,174 +689,172 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                 <button
                   type="button"
                   onClick={() => setActiveModalItem(null)}
-                  className="p-2 rounded-full hover:bg-[rgba(200,188,167,0.15)] text-[var(--color-brand-linen)] transition-colors cursor-pointer"
+                  className="w-9 h-9 grid place-items-center rounded-full bg-[rgba(26,22,18,0.7)] backdrop-blur-md border border-[rgba(200,188,167,0.3)] text-[var(--color-brand-linen)] hover:bg-[rgba(26,22,18,0.9)] transition-colors cursor-pointer"
                   aria-label={t('إغلاق النافذة', 'Close')}
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
-            </div>
 
-            {/* Modal Scrollable Body */}
-            <div className="overflow-y-auto custom-news-scrollbar p-6 sm:p-8 space-y-6">
-              {/* Cover Media (Video or Image) */}
-              {activeModalItem.mediaType === 'video' ? (
-                <div className="relative rounded-2xl overflow-hidden h-64 sm:h-80 border border-[rgba(200,188,167,0.15)] bg-black flex items-center justify-center">
-                  <video
-                    src={activeModalItem.videoUrl || activeModalItem.image}
-                    controls
-                    autoPlay
-                    playsInline
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              ) : (
-                <div className="relative rounded-2xl overflow-hidden h-56 sm:h-72 border border-[rgba(200,188,167,0.15)]">
-                  <img
-                    src={activeModalItem.image}
-                    alt={activeModalItem.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(35,29,23,0.8)] via-transparent to-transparent" />
-                </div>
-              )}
-
-              {/* Meta details */}
-              <div className="flex flex-wrap items-center gap-4 text-xs font-arabic text-[var(--color-brand-sand)]">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" />
-                  {postDate(activeModalItem)}
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  {activeModalItem.readTime}
-                </span>
-                {activeModalItem.author && (
-                  <>
-                    <span>•</span>
-                    <span>{t('بواسطة:', 'By:')} <b>{activeModalItem.author.name}</b> ({activeModalItem.author.role})</span>
-                  </>
+              {/* Scrollable article */}
+              <div className="min-h-0 flex-1 overflow-y-auto custom-news-scrollbar">
+                {/* Cover: images carry the category and title; videos keep their controls clear */}
+                {isVideo ? (
+                  <div className="bg-black aspect-video max-h-[50vh] w-full">
+                    <video
+                      src={activeModalItem.videoUrl || activeModalItem.image}
+                      controls
+                      autoPlay
+                      playsInline
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative h-60 sm:h-80 overflow-hidden">
+                    <img
+                      src={activeModalItem.image}
+                      alt={activeModalItem.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#231D17] via-[rgba(35,29,23,0.3)] to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:px-8 sm:pb-6 space-y-3">
+                      {badges}
+                      {heading}
+                    </div>
+                  </div>
                 )}
-              </div>
 
-              {/* Title & Subtitle */}
-              <div className="space-y-2">
-                <h2
-                  id="modal-article-title"
-                  className="font-kufi text-2xl sm:text-3xl font-extrabold text-[var(--color-brand-linen)] leading-snug"
-                >
-                  {activeModalItem.title}
-                </h2>
-                {activeModalItem.subtitle && (
-                  <p className="font-arabic text-sm sm:text-base text-[var(--color-brand-sand)] font-light">
-                    {activeModalItem.subtitle}
+                <div className="px-6 pb-8 pt-5 sm:px-8 space-y-6">
+                  {isVideo && (
+                    <div className="space-y-3 pt-1">
+                      {badges}
+                      {heading}
+                    </div>
+                  )}
+
+                  {/* Meta details */}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pb-5 border-b border-[rgba(200,188,167,0.12)] text-xs font-arabic text-[var(--color-brand-sand)]">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {postDate(activeModalItem)}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5" />
+                      {activeModalItem.readTime}
+                    </span>
+                    {activeModalItem.author && (
+                      <span>
+                        {t('بواسطة:', 'By:')} <b className="text-[var(--color-brand-linen)]">{activeModalItem.author.name}</b>
+                        {activeModalItem.author.role && <span className="opacity-80"> · {activeModalItem.author.role}</span>}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Lead paragraph with a clean accent bar */}
+                  <p dir="auto" className="relative ps-5 font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium">
+                    <span aria-hidden="true" className="absolute start-0 top-1 bottom-1 w-1 rounded-full bg-[var(--color-brand-sand)]" />
+                    {activeModalItem.content?.lead || activeModalItem.summary}
                   </p>
-                )}
-              </div>
 
-              {/* Lead Paragraph */}
-              <p className="font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium bg-[rgba(64,55,45,0.3)] p-4 rounded-xl border-s-4 border-[var(--color-brand-sand)]">
-                {activeModalItem.content?.lead || activeModalItem.summary}
-              </p>
-
-              {/* Content Sections */}
-              {activeModalItem.content?.sections && activeModalItem.content.sections.length > 0 && (
-                <div className="space-y-6 pt-2 font-arabic text-sm sm:text-base leading-relaxed text-[rgb(var(--color-brand-linen-rgb)_/_0.85)]">
-                  {activeModalItem.content.sections.map((section, idx) => (
-                    <div key={idx} className="space-y-3">
-                      {section.heading && (
-                        <h3 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
-                          {section.heading}
-                        </h3>
-                      )}
-                      {section.paragraphs?.map((p, pIdx) => (
-                        <p key={pIdx} className="leading-relaxed">
-                          {p}
-                        </p>
+                  {/* Content Sections */}
+                  {activeModalItem.content?.sections && activeModalItem.content.sections.length > 0 && (
+                    <div className="space-y-6 font-arabic text-sm sm:text-base leading-loose text-[rgb(var(--color-brand-linen-rgb)_/_0.85)]">
+                      {activeModalItem.content.sections.map((section, idx) => (
+                        <div key={idx} className="space-y-3">
+                          {section.heading && (
+                            <h3 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
+                              {section.heading}
+                            </h3>
+                          )}
+                          {section.paragraphs?.map((p, pIdx) => (
+                            <p key={pIdx} dir="auto">{p}</p>
+                          ))}
+                        </div>
                       ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {/* Highlights Box */}
-              {activeModalItem.content?.highlights && activeModalItem.content.highlights.length > 0 && (
-                <div className="p-5 rounded-2xl bg-[rgba(64,55,45,0.4)] border border-[rgba(200,188,167,0.2)] space-y-3">
-                  <h4 className="font-kufi text-sm sm:text-base font-bold text-[var(--color-brand-sand)] flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[var(--color-brand-sand)]" />
-                    {t('أبرز التفاصيل والمواصفات:', 'Highlights and details:')}
-                  </h4>
-                  <ul className="space-y-2 font-arabic text-xs sm:text-sm text-[var(--color-brand-linen)]">
-                    {activeModalItem.content.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-sand)] flex-shrink-0" />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                  {/* Highlights Box */}
+                  {activeModalItem.content?.highlights && activeModalItem.content.highlights.length > 0 && (
+                    <div className="p-5 rounded-2xl bg-[rgba(64,55,45,0.4)] border border-[rgba(200,188,167,0.2)] space-y-3">
+                      <h4 className="font-kufi text-sm sm:text-base font-bold text-[var(--color-brand-sand)] flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-[var(--color-brand-sand)]" />
+                        {t('أبرز التفاصيل والمواصفات:', 'Highlights and details:')}
+                      </h4>
+                      <ul className="space-y-2 font-arabic text-xs sm:text-sm text-[var(--color-brand-linen)]">
+                        {activeModalItem.content.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-sand)] flex-shrink-0" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
-              {/* Quote if present */}
-              {activeModalItem.content?.quote && (
-                <div className="p-4 rounded-xl bg-[rgba(43,24,14,0.6)] border-s-4 border-[var(--color-brand-sand)] font-arabic text-sm sm:text-base text-[var(--color-brand-sand)] italic">
-                  {activeModalItem.content.quote}
-                </div>
-              )}
+                  {/* Quote if present */}
+                  {activeModalItem.content?.quote && (
+                    <blockquote className="relative ps-5 font-kufi text-base sm:text-lg text-[var(--color-brand-sand)] leading-relaxed">
+                      <span aria-hidden="true" className="absolute start-0 top-1 bottom-1 w-1 rounded-full bg-[var(--color-brand-sand)]" />
+                      “{activeModalItem.content.quote}”
+                    </blockquote>
+                  )}
 
-              {/* Tags */}
-              {activeModalItem.tags && activeModalItem.tags.length > 0 && (
-                <div className="pt-4 flex flex-wrap gap-2">
-                  {activeModalItem.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-arabic px-3 py-1 rounded-lg bg-[rgba(64,55,45,0.5)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.15)]"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
+                  {/* Tags */}
+                  {activeModalItem.tags && activeModalItem.tags.length > 0 && (
+                    <div className="pt-2 flex flex-wrap gap-2">
+                      {activeModalItem.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          dir="auto"
+                          className="text-xs font-arabic px-3 py-1 rounded-full bg-[rgba(64,55,45,0.5)] text-[var(--color-brand-sand)] border border-[rgba(200,188,167,0.15)]"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-
-            {/* Modal Footer CTA */}
-            <div className="p-4 sm:p-5 border-t border-[rgba(200,188,167,0.15)] bg-[rgba(43,24,14,0.9)] flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActiveModalItem(null);
-                    onNavigate('visit');
-                  }}
-                  className="px-5 py-2 rounded-xl bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] hover:bg-[var(--color-brand-linen)] font-arabic text-xs sm:text-sm font-bold transition-colors cursor-pointer"
-                >
-                  {t('زيارة فرع هاجس في حائل', 'Visit Hajiss in Hail')}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setActiveModalItem(null);
-                    onNavigate('menu');
-                  }}
-                  className="px-4 py-2 rounded-xl bg-[rgba(64,55,45,0.5)] hover:bg-[rgba(64,55,45,0.8)] text-[var(--color-brand-linen)] border border-[rgba(200,188,167,0.2)] font-arabic text-xs sm:text-sm font-medium transition-colors cursor-pointer"
-                >
-                  {t('استعراض القائمة', 'View the menu')}
-                </button>
               </div>
 
-              <button
-                type="button"
-                onClick={() => handleShare(activeModalItem)}
-                className="inline-flex items-center gap-1.5 text-xs font-arabic text-[var(--color-brand-sand)] hover:underline cursor-pointer"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-                <span>{t('مشاركة هذا المستجد', 'Share this story')}</span>
-              </button>
+              {/* Modal Footer CTA */}
+              <div className="shrink-0 px-4 py-3 sm:px-6 sm:py-4 border-t border-[rgba(200,188,167,0.15)] bg-[rgba(43,24,14,0.9)] flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveModalItem(null);
+                      onNavigate('visit');
+                    }}
+                    className="px-5 py-2 rounded-xl bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] hover:bg-[var(--color-brand-linen)] font-arabic text-xs sm:text-sm font-bold transition-colors cursor-pointer"
+                  >
+                    {t('زيارة فرع هاجس في حائل', 'Visit Hajiss in Hail')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveModalItem(null);
+                      onNavigate('menu');
+                    }}
+                    className="px-4 py-2 rounded-xl bg-[rgba(64,55,45,0.5)] hover:bg-[rgba(64,55,45,0.8)] text-[var(--color-brand-linen)] border border-[rgba(200,188,167,0.2)] font-arabic text-xs sm:text-sm font-medium transition-colors cursor-pointer"
+                  >
+                    {t('استعراض القائمة', 'View the menu')}
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => handleShare(activeModalItem)}
+                  className="inline-flex items-center gap-1.5 text-xs font-arabic text-[var(--color-brand-sand)] hover:underline cursor-pointer"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>{t('مشاركة هذا المستجد', 'Share this story')}</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Copy link feedback toast */}
       {copiedLink && (
