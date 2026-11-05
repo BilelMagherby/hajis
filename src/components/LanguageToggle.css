@@ -111,7 +111,10 @@
 
 .coffee-lang-cup {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -152,7 +155,10 @@
 /* The coffee itself: crema with a swirl that stirs on every switch */
 .coffee-lang-crema {
   position: absolute;
-  inset: 3px;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
   border-radius: 50%;
   background:
     conic-gradient(from 0deg, transparent 0 20%, rgb(231 195 154 / 0.55) 28%, transparent 40% 62%, rgb(231 195 154 / 0.45) 72%, transparent 84%),
@@ -224,7 +230,10 @@
 /* ---- Bean burst on switch ----------------------------------------------------------------- */
 .coffee-lang-beans {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   pointer-events: none;
 }
 

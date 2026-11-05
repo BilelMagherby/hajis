@@ -22,7 +22,7 @@ export const StoreTeaser: React.FC = () => {
   };
 
   return (
-    <section className="store-teaser-section relative w-full overflow-hidden border-y border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[var(--color-brand-linen)] py-16 sm:py-20 lg:py-24">
+    <section className="store-teaser-section relative w-full overflow-hidden border-y border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[var(--color-brand-linen)] py-8 sm:py-20 lg:py-24">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
@@ -49,7 +49,7 @@ export const StoreTeaser: React.FC = () => {
                 )}
               </p>
 
-              <div className="pt-2 flex justify-end">
+              <div className="pt-2 flex justify-start">
                 <a
                   href="https://hajiss.shop"
                   target="_blank"
@@ -68,7 +68,7 @@ export const StoreTeaser: React.FC = () => {
             style={{ backgroundColor: '#785b40' }}
             className="visual-card flex h-full w-full flex-col justify-between rounded-[1.75rem] border border-[rgb(var(--color-brand-sand-rgb)_/_0.3)] bg-[#785b40] p-6 text-start shadow-[0_18px_50px_rgba(0,0,0,0.18)] sm:p-8"
           >
-            <div className="mb-4 flex items-center justify-between gap-3">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h4 className="mt-1 font-kufi text-xl text-[var(--color-brand-linen)]">
                   {t('قيّم تجربتك', 'Rate your experience')}

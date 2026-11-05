@@ -42,6 +42,9 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
     ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(item.createdAt))
     : item.date);
   const ForwardChevron = isEnglish ? ChevronRight : ChevronLeft;
+  // Post text keeps its own language, whatever the site language is. The older-browser CSS
+  // picks start/end sides from `lang`, so it has to be set wherever a post sets its own direction.
+  const textLang = (text?: string) => (/[\u0600-\u06FF]/.test(text ?? '') ? 'ar' : 'en');
   const [itemsList, setItemsList] = useState<NewsItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -166,13 +169,13 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
       {/* Luxury Navbar */}
       <Navbar onNavigate={onNavigate} activeSection="news" inFlow />
 
-      <main className="flex-1 pb-20">
+      <main className="flex-1 pb-8 sm:pb-20">
         {/* HERO SECTION */}
-        <section className="news-hero pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="news-hero pt-10 pb-12 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
           {/* Branded background image layer */}
           <div aria-hidden="true" className="news-hero-bg-layer">
             <img
-              src="/images/news-hero-bg.png"
+              src="/images/news-header.jpg"
               alt={t('مدونة وأخبار هاجس', 'Hajiss blog and news')}
               className="news-hero-bg-img"
             />
@@ -238,7 +241,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
         </div>
 
         {/* MAIN CONTENT AREA */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-14">
           
           {/* SEARCH & FILTERS BAR (Rendered only when items exist) */}
           {itemsList.length > 0 && (
@@ -268,7 +271,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
                 {/* Keyword Search Input */}
                 <div className="relative min-w-[260px] sm:min-w-[300px]">
-                  <Search className="w-4 h-4 absolute start-3.5 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] pointer-events-none" />
+                  <Search className="w-4 h-4 absolute start-3.5 inset-y-0 my-auto text-[var(--color-brand-sand)] pointer-events-none" />
                   <input
                     type="text"
                     placeholder={t('ابحث في المستجدات والمحاصيل...', 'Search news and beans...')}
@@ -281,7 +284,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                       type="button"
                       onClick={() => setSearchQuery('')}
                       aria-label={t('مسح البحث', 'Clear search')}
-                      className="absolute end-3 top-1/2 -translate-y-1/2 text-[var(--color-brand-sand)] hover:text-white p-1"
+                      className="absolute end-3 inset-y-0 my-auto h-fit text-[var(--color-brand-sand)] hover:text-white p-1"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -548,7 +551,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             </div>
           ) : (
             /* Clean Empty State (Zero Fake Data) */
-            <div className="text-center py-20 px-6 bg-[rgba(64,55,45,0.2)] rounded-3xl border border-[rgba(200,188,167,0.15)] max-w-lg mx-auto space-y-4">
+            <div className="text-center py-10 sm:py-20 px-6 bg-[rgba(64,55,45,0.2)] rounded-3xl border border-[rgba(200,188,167,0.15)] max-w-lg mx-auto space-y-4">
               <Coffee className="w-12 h-12 text-[var(--color-brand-sand)] mx-auto opacity-50" />
               <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[var(--color-brand-linen)]">
                 {isLoading ? t('جاري تحميل المستجدات...', 'Loading news...') : t('لا توجد مستجدات منشورة حالياً', 'No news has been published yet')}
@@ -567,7 +570,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           )}
 
           {/* STAY CONNECTED SECTION (Clean, without fake input holder) */}
-          <section className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2B180E] to-[#1A1612] border border-[rgba(200,188,167,0.2)] relative overflow-hidden text-start">
+          <section className="mt-6 sm:mt-20 p-6 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2B180E] to-[#1A1612] border border-[rgba(200,188,167,0.2)] relative overflow-hidden text-start">
             <div className="absolute top-0 start-0 w-80 h-80 bg-[radial-gradient(circle,rgba(200,188,167,0.1)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="max-w-3xl mx-auto space-y-5 relative z-10 text-center sm:text-start">
@@ -751,7 +754,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                   </div>
 
                   {/* Lead paragraph with a clean accent bar */}
-                  <p dir="auto" className="relative ps-5 font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium">
+                  <p dir="auto" lang={textLang(activeModalItem.content?.lead || activeModalItem.summary)} className="relative ps-5 font-arabic text-base sm:text-lg text-[rgb(var(--color-brand-linen-rgb)_/_0.95)] leading-relaxed font-medium">
                     <span aria-hidden="true" className="absolute start-0 top-1 bottom-1 w-1 rounded-full bg-[var(--color-brand-sand)]" />
                     {activeModalItem.content?.lead || activeModalItem.summary}
                   </p>
@@ -794,7 +797,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
                   {/* Quote if present */}
                   {activeModalItem.content?.quote && (
-                    <blockquote className="relative ps-5 font-kufi text-base sm:text-lg text-[var(--color-brand-sand)] leading-relaxed">
+                    <blockquote dir="auto" lang={textLang(activeModalItem.content.quote)} className="relative ps-5 font-kufi text-base sm:text-lg text-[var(--color-brand-sand)] leading-relaxed">
                       <span aria-hidden="true" className="absolute start-0 top-1 bottom-1 w-1 rounded-full bg-[var(--color-brand-sand)]" />
                       “{activeModalItem.content.quote}”
                     </blockquote>
@@ -858,7 +861,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
       {/* Copy link feedback toast */}
       {copiedLink && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] px-4 py-2.5 rounded-full shadow-2xl font-arabic text-xs font-bold flex items-center gap-2 animate-bounce">
+        <div className="fixed bottom-6 inset-x-0 mx-auto w-fit z-50 bg-[var(--color-brand-sand)] text-[var(--color-brand-black)] px-4 py-2.5 rounded-full shadow-2xl font-arabic text-xs font-bold flex items-center gap-2 animate-bounce">
           <Check className="w-4 h-4" />
           <span>{t('تم نسخ الرابط بنجاح!', 'Link copied!')}</span>
         </div>

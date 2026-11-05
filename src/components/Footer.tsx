@@ -22,16 +22,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
   };
 
   return (
-    <footer className="relative w-full overflow-hidden border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-black)] pb-12 pt-16 text-[var(--color-brand-linen)]">
+    <footer className="relative w-full overflow-hidden border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-black)] pb-8 pt-10 sm:pb-12 sm:pt-16 text-[var(--color-brand-linen)]">
       <div className="brand-stripe-divider absolute inset-x-0 top-0" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* TOP 4 COLUMNS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-start pb-12 border-b border-[var(--color-brand-chocolate)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-start pb-8 sm:pb-12 border-b border-[var(--color-brand-chocolate)]">
 
           {/* COL 1: BRAND LOGO & BIO */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3 justify-end">
+            <div className="flex items-center gap-3 justify-start">
               <div className="flex flex-col text-start">
                 <span className="font-brand text-2xl font-light tracking-[0.25em] text-[var(--color-brand-linen)]">
                   {t('مقهى هاجس', 'Hajiss Café')}
@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             </p>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 justify-end text-[var(--color-brand-sand)] pt-2">
+            <div className="flex flex-wrap items-center gap-3 justify-start text-[var(--color-brand-sand)] pt-2">
               <a
                 href={brandData.contact.instagram}
                 target="_blank"
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             </h4>
 
             <div className="space-y-3 font-arabic text-xs text-[var(--color-brand-linen)]">
-              <div className="flex items-center justify-end gap-2">
+              <div className="flex items-center justify-start gap-2">
                 <a
                   href={`mailto:${brandData.contact.email}`}
                   className="hover:text-[var(--color-brand-sand)] transition-colors"
@@ -126,7 +126,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 <Mail className="w-4 h-4 text-[var(--color-brand-sand)]" />
               </div>
 
-              <div className="flex items-start justify-end gap-2">
+              <div className="flex items-start justify-start gap-2">
                 <span className="leading-relaxed">
                   {brandData.location.placeAr}{t('، ', ', ')}{brandData.location.cityAr}
                 </span>
@@ -144,7 +144,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
               {t('للحصول على عروض خاصة ومحاصيل طازجة', 'For special offers and freshly roasted beans')}
             </p>
 
-            <div className="flex justify-center pt-1 md:justify-end">
+            <div className="flex justify-start pt-1">
               <ShopQrCode className="w-20 h-20 bg-[var(--color-brand-linen)] p-1.5 rounded-lg border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)]" imageClassName="w-full h-full object-contain" />
             </div>
           </div>
@@ -154,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
               {t('روابط سريعة', 'Quick Links')}
             </h4>
-            <ul className="space-y-2 font-arabic text-xs text-[var(--color-brand-linen)]">
+            <ul className="space-y-1 font-arabic text-xs text-[var(--color-brand-linen)] [&_button]:py-1.5">
               <li>
                 <button
                   onClick={() => scrollTo('hero')}
@@ -212,7 +212,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
         </div>
 
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[rgb(var(--color-brand-sand-rgb)_/_0.65)] font-arabic gap-4">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[rgb(var(--color-brand-sand-rgb)_/_0.65)] font-arabic gap-4">
           <p>
             {t('حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة', 'Copyright © Hajiss Café — All rights reserved')}
           </p>

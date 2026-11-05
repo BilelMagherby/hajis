@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -14,9 +14,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuPage } from './pages/MenuPage';
 import { NewsPage } from './pages/NewsPage';
 import { Navigate } from 'react-router-dom';
-import { AdminLoginPage } from './pages/AdminLoginPage';
-import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { hasAdminSession } from './utils/adminAuth';
+
+// Admin code is split out so visitors' phones don't have to download it.
+const AdminLoginPage = lazy(() => import('./pages/AdminLoginPage').then((m) => ({ default: m.AdminLoginPage })));
+const AdminDashboardPage = lazy(() => import('./pages/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage })));
 
 export const App: React.FC = () => {
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
@@ -26,12 +28,12 @@ export const App: React.FC = () => {
   if (location.pathname === '/admin/login') {
     return hasAdminSession()
       ? <Navigate to="/admin" replace />
-      : <AdminLoginPage />;
+      : <Suspense fallback={null}><AdminLoginPage /></Suspense>;
   }
 
   if (location.pathname === '/admin') {
     return hasAdminSession()
-      ? <AdminDashboardPage onLogout={() => navigate('/admin/login', { replace: true })} />
+      ? <Suspense fallback={null}><AdminDashboardPage onLogout={() => navigate('/admin/login', { replace: true })} /></Suspense>
       : <Navigate to="/admin/login" replace />;
   }
 

@@ -1,7 +1,10 @@
 .cookie-consent-backdrop {
   position: fixed;
   z-index: 80;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: grid;
   place-items: center;
   overflow-y: auto;
@@ -35,7 +38,7 @@
 .cookie-consent-close {
   position: absolute;
   top: 16px;
-  right: 16px;
+  left: 16px;
   display: grid;
   width: 38px;
   height: 38px;
@@ -271,7 +274,7 @@
 
   .cookie-consent-close {
     top: 12px;
-    right: 12px;
+    left: 12px;
     width: 34px;
     height: 34px;
   }
@@ -309,13 +312,22 @@
   }
 }
 
-/* English (LTR): the close button stays top-right, so reserve space on the right instead. */
+/* The close button sits at the end of the line, so in English the reserved space moves to the right. */
+.cookie-consent-dialog[dir='ltr'] .cookie-consent-close {
+  right: 16px;
+  left: auto;
+}
+
 .cookie-consent-dialog[dir='ltr'] h2 {
   padding-left: 0;
   padding-right: 34px;
 }
 
 @media (max-width: 520px) {
+  .cookie-consent-dialog[dir='ltr'] .cookie-consent-close {
+    right: 12px;
+  }
+
   .cookie-consent-dialog[dir='ltr'] .cookie-consent-eyebrow {
     padding-left: 0;
     padding-right: 34px;

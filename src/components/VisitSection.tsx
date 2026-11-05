@@ -11,7 +11,7 @@ export const VisitSection: React.FC = () => {
     <section
       id="visit"
       data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#ECE3D2] text-[#40372D] overflow-hidden"
+      className="relative w-full py-8 sm:py-24 lg:py-28 bg-[#ECE3D2] text-[#40372D] overflow-hidden"
     >
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#C8BCA7]/25 rounded-full blur-3xl pointer-events-none" />
@@ -22,8 +22,9 @@ export const VisitSection: React.FC = () => {
             <div className="visual-media group relative overflow-hidden rounded-2xl border border-[rgba(200,188,167,0.25)] shadow-xl lg:col-span-5">
               <img
                 src="/images/haijs.jpeg"
+                loading="lazy"
                 alt={t('قهوة هاجس المثلجة مع التوت', 'Hajiss iced coffee with berries')}
-                className="h-[400px] w-full object-cover object-center sm:h-[500px]"
+                className="h-[340px] w-full object-cover object-center sm:h-[500px]"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(64,55,45,0.8)] via-transparent to-[rgba(64,55,45,0.1)]" />
               <div dir={dir} className="absolute bottom-5 right-5 left-5 rounded-xl border border-[rgba(200,188,167,0.3)] bg-[rgba(64,55,45,0.85)] p-4 text-start backdrop-blur-md sm:bottom-6 sm:right-6 sm:left-6">
@@ -70,7 +71,7 @@ export const VisitSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex justify-end pt-1">
+              <div className="flex justify-start pt-1">
                 <a
                   href={brandData.location.mapUrl}
                   target="_blank"

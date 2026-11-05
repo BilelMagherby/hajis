@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   House,
-  Leaf
+  MapPin
 } from 'lucide-react';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
@@ -26,7 +26,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ onNavigate, onOpenCookieSett
           className="menu-replacement"
         >
           <img
-          src={t('/images/menu-coming-soon.png', '/images/menu-coming-soon-en.png')}
+          src={t('/images/menu-coming-soon.jpg', '/images/menu-coming-soon-en.jpg')}
           alt={t('قريباً ترقبوا — هاجس، قهوة وأكثر', 'Stay tuned — Hajiss Coffee, more than a taste')}
         />
         </div>
@@ -38,8 +38,8 @@ export const MenuPage: React.FC<MenuPageProps> = ({ onNavigate, onOpenCookieSett
         <button type="button" onClick={() => onNavigate('hero')}>
           <House aria-hidden="true" /><span>{t('الرئيسية', 'Home')}</span>
         </button>
-        <button type="button" onClick={() => onNavigate('v60')}>
-          <Leaf aria-hidden="true" /><span>{t('التقطير', 'Pour-over')}</span>
+        <button type="button" onClick={() => onNavigate('visit')}>
+          <MapPin aria-hidden="true" /><span>{t('زيارة هاجس', 'Visit Hajiss')}</span>
         </button>
       </nav>
     </div>

@@ -30,7 +30,7 @@ export const AdminLoginPage: React.FC = () => {
   };
 
   return (
-    <main className="admin-login-page" dir="rtl">
+    <main className="admin-login-page" lang="ar" dir="rtl">
       <div className="admin-login-glow" aria-hidden="true" />
       <Link className="admin-back-link" to="/" aria-label="العودة إلى الموقع">
         <ArrowRight size={18} />

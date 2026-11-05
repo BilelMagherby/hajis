@@ -51,4 +51,11 @@ const vercelApiDev = (): Plugin => ({
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), vercelApiDev()],
+  build: {
+    // Vite's default only covers Safari 16.4+; keep older iPhones working.
+    target: ['es2019', 'safari13'],
+    // Keeps `inset` and start/end rules working on old phones. Start/end compile to :lang() selectors,
+    // so anything that must stay RTL while the site is in English also needs lang="ar" (see the admin pages).
+    cssTarget: ['safari13', 'chrome80'],
+  },
 })

@@ -11,9 +11,87 @@
     <meta property="og:description" content="هوس التذوق. مقهى هاجس — تجربة قهوة مختصة في حائل." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      html, body { margin: 0; background: #40372d; }
+      #boot, #boot-failed {
+        position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 100;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 24px; background: #40372d; color: #f3ebdd; text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
+      }
+      #boot-failed[hidden] { display: none; }
+      #boot b { font-size: 44px; font-weight: 700; }
+      #boot span { margin-top: 6px; font-size: 13px; letter-spacing: 0.4em; color: #c8bca7; }
+      #boot-failed p { margin: 4px 0; font-size: 17px; }
+      #boot-failed button {
+        margin-top: 18px; padding: 12px 28px; border: 0; border-radius: 999px;
+        background: #c8bca7; color: #2b180e; font-size: 15px; font-weight: 700;
+      }
+      #boot-error { margin-top: 18px; max-width: 320px; font-size: 11px; color: #c8bca7; word-break: break-all; direction: ltr; }
+    </style>
+    <!-- Kept in plain ES5 so it still runs on browsers too old for the app itself. -->
+    <script>
+      (function () {
+        var RETRY_KEY = 'hajiss-boot-retry';
+        var GIVE_UP_MS = 20000;
+        var lastError = '';
+        var started = new Date().getTime();
+
+        function booted() {
+          var root = document.getElementById('root');
+          return !!root && root.children.length > 0 && !document.getElementById('boot');
+        }
+        function setFailed(show) {
+          var box = document.getElementById('boot-failed');
+          if (!box) return;
+          box.hidden = !show;
+          if (show) document.getElementById('boot-error').textContent = lastError;
+        }
+        // A phone holding an old page asks for files a newer deploy removed: one reload fetches the new page.
+        function reloadOnce() {
+          try {
+            if (sessionStorage.getItem(RETRY_KEY)) return false;
+            sessionStorage.setItem(RETRY_KEY, '1');
+          } catch (e) {
+            return false;
+          }
+          location.reload();
+          return true;
+        }
+
+        window.addEventListener('error', function (event) {
+          var target = event.target;
+          var url = target && (target.src || target.href);
+          if (url && /\/assets\//.test(url) && (target.tagName === 'SCRIPT' || target.tagName === 'LINK')) {
+            lastError = 'Failed to load ' + url;
+            if (!reloadOnce()) setFailed(true);
+            return;
+          }
+          lastError = event.message || 'Unknown error';
+          setTimeout(function () { if (!booted()) setFailed(true); }, 400);
+        }, true);
+
+        var timer = setInterval(function () {
+          if (booted()) {
+            clearInterval(timer);
+            setFailed(false);
+            try { sessionStorage.removeItem(RETRY_KEY); } catch (e) { /* storage blocked */ }
+          } else if (new Date().getTime() - started > GIVE_UP_MS) {
+            lastError = lastError || 'Timed out waiting for the app to start';
+            setFailed(true);
+          }
+        }, 500);
+      })();
+    </script>
   </head>
   <body dir="rtl">
-    <div id="root"></div>
+    <div id="root"><div id="boot"><b>هاجس</b><span>HAJISS</span></div></div>
+    <div id="boot-failed" hidden>
+      <p>تعذر تحميل الموقع</p>
+      <p>The site could not load</p>
+      <button type="button" onclick="location.reload()">إعادة المحاولة · Try again</button>
+      <small id="boot-error"></small>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

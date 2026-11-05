@@ -4,13 +4,13 @@ import { brandData } from '../data/brand';
 import { useLanguage } from '../i18n/language';
 
 export const LocationMapSection: React.FC = () => {
-  const { t, dir } = useLanguage();
-  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(brandData.location.mapQuery)}&output=embed`;
+  const { t, dir, language } = useLanguage();
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(brandData.location.mapQuery)}&z=16&hl=${language}&output=embed`;
 
   return (
     <section
       aria-labelledby="location-map-title"
-      className="relative w-full overflow-hidden bg-[#ECE3D2] py-16 text-[#40372D] sm:py-20"
+      className="relative w-full overflow-hidden bg-[#ECE3D2] py-8 text-[#40372D] sm:py-20"
       dir={dir}
     >
       <div className="relative z-10 mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8" dir="ltr">

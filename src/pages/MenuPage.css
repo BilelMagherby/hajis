@@ -4,6 +4,11 @@
   background: #F5F1E7;
 }
 
+/* The home page reuses .menu-page for its poster section, which must only be as tall as the poster. */
+section.menu-page {
+  min-height: 0;
+}
+
 .menu-page main {
   padding-top: 58px;
   padding-bottom: 0;
@@ -22,10 +27,13 @@
 .menu-hero-image {
   position: absolute;
   z-index: -1;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-image:
     linear-gradient(90deg, rgba(245, 241, 231, 0.82) 0%, rgba(245, 241, 231, 0.42) 45%, rgba(245, 241, 231, 0.06) 100%),
-    url('/images/about-parallax.png');
+    url('/images/about-parallax.jpg');
   background-position: center 57%;
   background-size: cover;
 }
@@ -328,6 +336,15 @@
   height: auto;
 }
 
+/* The poster is wide: on phones, crop to its centre so the headline and cup fill the screen. */
+@media (max-width: 640px) {
+  .menu-replacement img {
+    height: 100vw;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
 .menu-product-photo {
   display: block;
   width: 100%;
@@ -426,7 +443,7 @@
   color: #fffaf0;
   background:
     linear-gradient(90deg, rgba(77, 77, 52, 0.78), rgba(77, 77, 52, 0.89)),
-    url('/images/about-parallax.png') center 55% / cover no-repeat;
+    url('/images/about-parallax.jpg') center 55% / cover no-repeat;
 }
 
 .menu-story-banner > div > span {
@@ -473,7 +490,10 @@
 .menu-product-dialog-backdrop {
   position: fixed;
   z-index: 70;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: grid;
   place-items: center;
   overflow-y: auto;
@@ -618,7 +638,7 @@
 @media (max-width: 680px) {
   .menu-page main {
     padding-top: 56px;
-    padding-bottom: 22px;
+    padding-bottom: 0;
   }
 
   .menu-hero {
@@ -628,7 +648,7 @@
   .menu-hero-image {
     background-image:
       linear-gradient(90deg, rgba(245, 240, 232, 0.85), rgba(245, 240, 232, 0.5) 48%, rgba(245, 240, 232, 0.16) 100%),
-      url('/images/about-parallax.png');
+      url('/images/about-parallax.jpg');
     background-position: 48% center;
   }
 
@@ -820,10 +840,11 @@
   .menu-mobile-dock {
     position: fixed;
     z-index: 45;
-    inset-inline: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
     border-top: 1px solid rgba(101, 89, 65, 0.16);
     background: rgba(248, 244, 236, 0.97);
@@ -857,6 +878,11 @@
   }
 
   .menu-mobile-dock span {
-    font-size: 0.57rem;
+    font-size: 0.7rem;
+  }
+
+  /* Keeps the end of the footer clear of the fixed dock. */
+  .menu-page footer {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
   }
 }

@@ -610,6 +610,54 @@ main > section:not(#hero) {
   }
 }
 
+/* iPhones zoom in on any field under 16px and stay zoomed after typing. */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Older phones (before iOS 15 / Chrome 88 / Chrome 108) don't know these newer CSS features. */
+@supports not (aspect-ratio: 1 / 1) {
+  @media (max-width: 639px) {
+    .hero-frame {
+      height: 62.5vw; /* same 16:10 shape; without this the hero collapses to nothing */
+    }
+  }
+}
+
+@supports not (height: 1dvh) {
+  .chat-panel {
+    height: min(580px, calc(100vh - 7rem));
+  }
+
+  .news-modal-dialog {
+    max-height: calc(100vh - 1.5rem);
+  }
+
+  .cookie-consent-dialog {
+    max-height: calc(100vh - 40px);
+  }
+
+  @media (max-width: 520px) {
+    .cookie-consent-dialog {
+      max-height: calc(100vh - 20px);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-frame {
+      height: calc(100vh - 4rem);
+    }
+
+    .news-modal-dialog {
+      max-height: min(calc(100vh - 3rem), 880px);
+    }
+  }
+}
+
 /* Luxury Glassmorphism */
 .glass-espresso {
   background: rgb(25 24 23 / 0.65);
@@ -658,7 +706,10 @@ main > section:not(#hero) {
 
 .coffee-card-face {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;

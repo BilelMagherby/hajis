@@ -13,7 +13,7 @@ import { SessionExpiredError } from '../utils/socialHub';
 const presetMediaOptions = [
   { label: 'كيس المحصول', url: '/images/coffee_bag_cup.jpg' },
   { label: 'طقوس V60', url: '/images/v60-ritual.png' },
-  { label: 'مشروبات هاجس', url: '/images/about_cafe_drinks.png' },
+  { label: 'مشروبات هاجس', url: '/images/about_cafe_drinks.jpg' },
   { label: 'جلسات التراس', url: '/images/lounge_terrace.jpg' },
   { label: 'تحميص البن', url: '/images/roaster_beans.jpg' },
   { label: 'كاونتر المقهى', url: '/images/hero-cafe-counter.jpeg' },

@@ -1,4 +1,3 @@
-import { upload } from '@vercel/blob/client';
 import type { NewsItem } from '../data/news';
 import { adminToken } from './adminAuth';
 import { SessionExpiredError } from './socialHub';
@@ -84,6 +83,8 @@ export const uploadBlogMedia = async (file: File) => {
   if (!extension) throw new Error('الصيغ المدعومة: JPG, PNG, WEBP, GIF, MP4, WEBM.');
   const mediaType: 'image' | 'video' = file.type.startsWith('video/') ? 'video' : 'image';
   try {
+    // Only the admin uploads, so this library stays out of the public bundle.
+    const { upload } = await import('@vercel/blob/client');
     const blob = await upload(`blog/${mediaType}.${extension}`, file, {
       access: 'public',
       contentType: file.type,

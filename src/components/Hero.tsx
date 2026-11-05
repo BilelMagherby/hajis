@@ -5,7 +5,7 @@ import { useLanguage } from '../i18n/language';
 const heroImages: { src: string; srcEn?: string; alt: string; altEn: string }[] = [
   {
     src: '/images/hero-hajis-night.jpg',
-    srcEn: '/images/hero-hajis-night-en.png',
+    srcEn: '/images/hero-hajis-night-en.jpg',
     alt: 'واجهة مقهى هاجس الخارجية ليلاً',
     altEn: 'The Hajiss café storefront at night',
   },
@@ -29,22 +29,29 @@ const heroImages: { src: string; srcEn?: string; alt: string; altEn: string }[] 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Slow connections get the first photo sooner: the other slides load a moment later.
+  const [loadAllSlides, setLoadAllSlides] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 20000); // 20 seconds
 
-    return () => clearInterval(timer);
+    const slidesTimer = setTimeout(() => setLoadAllSlides(true), 3000);
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(slidesTimer);
+    };
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative flex w-full items-center overflow-hidden bg-[var(--color-brand-black)] select-none aspect-[16/10] sm:aspect-auto sm:min-h-[420px] sm:h-[calc(100svh-4rem)]"
+      className="hero-frame relative flex w-full items-center overflow-hidden bg-[var(--color-brand-black)] select-none aspect-[16/10] sm:aspect-auto sm:min-h-[420px] sm:h-[calc(100svh-4rem)]"
     >
       <div className="absolute inset-0 overflow-hidden">
-        {heroImages.map((image, index) => (
+        {heroImages.map((image, index) => (loadAllSlides || index === currentIndex) && (
           <img
             key={image.src}
             src={image.srcEn ? t(image.src, image.srcEn) : image.src}
@@ -63,7 +70,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 grain-overlay pointer-events-none z-10 opacity-30" />
 
       {/* Navigation Indicators */}
-      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 sm:gap-2.5 bg-black/40 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-white/10">
+      <div className="absolute bottom-3 sm:bottom-6 inset-x-0 mx-auto w-fit z-20 flex items-center gap-2 sm:gap-2.5 bg-black/40 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-white/10">
         {heroImages.map((_, index) => (
           <button
             key={index}

@@ -40,7 +40,7 @@ export const AdminDashboardPage: React.FC<{ onLogout: () => void }> = ({ onLogou
   };
 
   return (
-    <main className="admin-shell" dir="rtl">
+    <main className="admin-shell" lang="ar" dir="rtl">
       <aside className="admin-sidebar">
         <a className="admin-sidebar-brand" href="/" aria-label="هاجس">
           <img src="/images/logo.png" alt="" />

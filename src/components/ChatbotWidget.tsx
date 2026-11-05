@@ -217,18 +217,21 @@ export const ChatbotWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 right-auto z-[60] flex flex-col items-start gap-3 sm:bottom-6 sm:left-auto sm:right-6 sm:items-end">
+    <div className={`fixed bottom-4 z-[60] flex flex-col gap-3 sm:bottom-6 sm:left-auto sm:right-6 sm:items-end ${
+      // On phones the button sits on the side away from where lines of text start.
+      isEnglish ? 'right-4 left-auto items-end' : 'left-4 right-auto items-start'
+    }`}>
       {isOpen && (
         <section
           aria-labelledby="hajiss-chat-title"
           aria-modal="false"
-          className="flex h-[min(580px,calc(100dvh-7rem))] w-[min(370px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] bg-[var(--color-brand-linen)] text-start text-[var(--color-brand-olive)] shadow-[0_24px_70px_rgba(0,0,0,0.35)]"
+          className="chat-panel flex h-[min(580px,calc(100dvh-7rem))] w-[min(370px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)] bg-[var(--color-brand-linen)] text-start text-[var(--color-brand-olive)] shadow-[0_24px_70px_rgba(0,0,0,0.35)]"
           dir={dir}
         >
           <header className="flex items-center justify-between border-b border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[var(--color-brand-linen)] px-4 py-3">
             <div className="flex items-center gap-3">
               <img
-                src="/images/chatbot-avatar.png"
+                src="/images/chatbot-avatar-sm.png"
                 alt=""
                 className="h-11 w-11 rounded-full border border-[rgb(var(--color-brand-sand-rgb)_/_0.6)] object-cover"
               />
@@ -340,7 +343,7 @@ export const ChatbotWidget: React.FC = () => {
         className="group relative h-14 w-14 overflow-hidden rounded-full border-2 border-[var(--color-brand-olive)] bg-[var(--color-brand-linen)] shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-brand-olive)] sm:h-[68px] sm:w-[68px]"
       >
         <img
-          src="/images/chatbot-avatar.png"
+          src="/images/chatbot-avatar-sm.png"
           alt=""
           className={`h-full w-full object-cover transition-opacity duration-200 ${isOpen ? 'opacity-70' : 'opacity-100'}`}
         />

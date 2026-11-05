@@ -9,12 +9,12 @@ export const AboutSection: React.FC = () => {
     <section
       id="about"
       data-bean-rain="off"
-      className="relative w-full py-20 sm:py-24 lg:py-28 bg-[#ECE3D2] text-[#40372D] overflow-hidden"
+      className="relative w-full py-8 sm:py-24 lg:py-28 bg-[#ECE3D2] text-[#40372D] overflow-hidden"
     >
       <div
         aria-hidden="true"
         className="parallax-background pointer-events-none absolute inset-0 opacity-40"
-        style={{ backgroundImage: "url('/images/about-parallax.png')" }}
+        style={{ backgroundImage: "url('/images/about-parallax.jpg')" }}
       />
       <div className="pointer-events-none absolute inset-0 bg-[#ECE3D2]/75" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -27,7 +27,8 @@ export const AboutSection: React.FC = () => {
           >
             <div className="visual-media relative h-[360px] w-full overflow-hidden rounded-2xl sm:h-[440px] lg:h-full">
               <img
-                src="/images/about_cafe_drinks.png"
+                src="/images/about_cafe_drinks.jpg"
+                loading="lazy"
                 alt={t('مشروبات هاجس المختصة', 'Hajiss specialty drinks')}
                 className="h-full w-full object-cover object-center"
               />
@@ -84,7 +85,7 @@ export const AboutSection: React.FC = () => {
 
         </div>
 
-        <RevealOnScroll className="mt-16 sm:mt-20 lg:mt-24" delay={100}>
+        <RevealOnScroll className="mt-6 sm:mt-20 lg:mt-24" delay={100}>
           <div
             dir={dir}
             className="brand-texture-clay visual-card overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[#785b40]"

@@ -11,7 +11,7 @@ export const PhilosophySection: React.FC = () => {
   return (
     <section
       id="philosophy"
-      className="relative w-full overflow-hidden bg-[#181512] py-20 text-[var(--color-brand-chocolate)] sm:py-24 lg:py-28"
+      className="relative w-full overflow-hidden bg-[#181512] py-10 text-[var(--color-brand-chocolate)] sm:py-24 lg:py-28"
     >
       <div
         aria-hidden="true"
@@ -19,6 +19,7 @@ export const PhilosophySection: React.FC = () => {
       >
         <img
           src="/images/philosophy-pourover.jpg"
+          loading="lazy"
           alt={t('معايير الجودة والكمال - يميّز هاجس', 'Quality and craft — what sets Hajiss apart')}
           className="h-full w-full object-cover object-center brightness-90"
         />
@@ -30,7 +31,7 @@ export const PhilosophySection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           
           {/* Section Header */}
-          <div className="lg:col-start-1 lg:row-start-1 flex flex-col justify-center text-start py-4">
+          <div className="lg:col-start-1 lg:row-start-1 flex flex-col justify-center text-start lg:py-4">
             <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#D5C7B3]">
               {t('ما الذي يميز هاجس؟', 'What sets Hajiss apart?')}
             </h2>
@@ -44,7 +45,8 @@ export const PhilosophySection: React.FC = () => {
             <div className="visual-card relative h-full overflow-hidden rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.45)] bg-[var(--color-brand-chocolate)] p-6 text-[var(--color-brand-sand)] shadow-[0_18px_44px_rgba(0,0,0,0.22)] sm:p-8 flex flex-col justify-center">
               <div className="pointer-events-none absolute inset-0 opacity-15">
                 <img
-                  src="/images/roaster_beans.jpg"
+                  src="/images/roaster_beans-sm.jpg"
+                  loading="lazy"
                   alt={t('تحميص القهوة', 'Coffee roasting')}
                   className="w-full h-full object-cover"
                 />
@@ -124,7 +126,7 @@ export const PhilosophySection: React.FC = () => {
           )}
 
           {/* BOTTOM: Wholesale services */}
-          <div className="lg:col-span-3 lg:row-start-3 mt-4 sm:mt-6">
+          <div className="lg:col-span-3 lg:row-start-3 lg:mt-6">
             <div
               dir={dir}
               className="visual-card relative overflow-hidden rounded-3xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.35)] bg-[var(--color-brand-chocolate)] px-6 py-8 text-start shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:px-12 sm:py-12"
