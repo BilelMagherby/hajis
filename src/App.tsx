@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -15,6 +15,7 @@ import { MenuPage } from './pages/MenuPage';
 import { NewsPage } from './pages/NewsPage';
 import { Navigate } from 'react-router-dom';
 import { hasAdminSession } from './utils/adminAuth';
+import { CONSENT_CHANGED_EVENT, syncAnalytics } from './utils/analytics';
 
 // Admin code is split out so visitors' phones don't have to download it.
 const AdminLoginPage = lazy(() => import('./pages/AdminLoginPage').then((m) => ({ default: m.AdminLoginPage })));
@@ -24,6 +25,14 @@ export const App: React.FC = () => {
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Google Analytics follows the cookie choice and stays off in the admin area.
+  useEffect(() => {
+    syncAnalytics(location.pathname);
+    const onConsentChange = () => syncAnalytics(location.pathname);
+    window.addEventListener(CONSENT_CHANGED_EVENT, onConsentChange);
+    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, onConsentChange);
+  }, [location.pathname]);
 
   if (location.pathname === '/admin/login') {
     return hasAdminSession()

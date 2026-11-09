@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { LanguageContext, type Language } from './language';
+import { setAnalyticsLanguage } from '../utils/analytics';
 
 const STORAGE_KEY = 'hajiss-language';
 
@@ -30,6 +31,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     root.lang = language;
     root.dir = language === 'en' ? 'ltr' : 'rtl';
     document.title = meta[language].title;
+    setAnalyticsLanguage(language);
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta[language].description);
     try {
       window.localStorage.setItem(STORAGE_KEY, language);

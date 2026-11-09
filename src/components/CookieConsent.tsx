@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CookieConsent.css';
 import { useLanguage } from '../i18n/language';
+import { CONSENT_CHANGED_EVENT } from '../utils/analytics';
 
 const CONSENT_STORAGE_KEY = 'hajiss-cookie-consent';
 const CONSENT_VERSION = 1;
@@ -123,6 +124,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
       return;
     }
 
+    window.dispatchEvent(new Event(CONSENT_CHANGED_EVENT));
     setSavedConsent(consent);
     setChoices(nextChoices);
     setStorageError(null);
@@ -218,7 +220,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
             <section className="cookie-category">
               <div>
                 <h3>{t('ملفات تعريف الارتباط الخاصة بالتحليلات', 'Analytics cookies')}</h3>
-                <p>{t('اختيارية، وتُستخدم لفهم كيفية تفاعل الزوار مع الموقع وتحسين تجربتهم.', 'Optional. Used to understand how visitors interact with the site and to improve their experience.')}</p>
+                <p>{t('اختيارية. نستخدم Google Analytics لفهم كيفية تفاعل الزوار مع الموقع وتحسين تجربتهم، ولا يُحمّل إلا بعد موافقتك.', 'Optional. We use Google Analytics to understand how visitors use the site and improve it. It only loads after you agree.')}</p>
               </div>
               <button
                 className={`cookie-toggle ${choices.analytics ? 'cookie-toggle--enabled' : ''}`}
@@ -251,7 +253,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
           </div>
         ) : (
           <p className="cookie-consent-note">
-            {t('لا يستخدم الموقع حاليًا أدوات تحليلية أو تسويقية خارجية. ولن تُحمّل أي أداة اختيارية قبل الحصول على موافقتك.', 'The site does not currently use any third-party analytics or marketing tools, and no optional tool will load before you give your consent.')}
+            {t('نستخدم Google Analytics لقياس زيارات الموقع، ولا يُحمّل إلا إذا وافقت على ملفات التحليلات. يمكنك تغيير اختيارك في أي وقت من إعدادات ملفات تعريف الارتباط أسفل الصفحة.', 'We use Google Analytics to measure site visits, and it only loads if you accept analytics cookies. You can change your choice at any time from Cookie settings at the bottom of the page.')}
           </p>
         )}
 
