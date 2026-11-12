@@ -7,7 +7,7 @@ import { useLanguage } from '../i18n/language';
 const CONTACT_EMAIL = 'Hajisscafe@gmail.com';
 const ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
-type Status = 'idle' | 'sending' | 'sent' | 'error';
+type Status = 'idle' | 'sending' | 'sent' | 'error' | 'inactive';
 
 const fieldClass =
   'w-full rounded-2xl border border-[rgb(var(--color-brand-sand-rgb)_/_0.45)] bg-[var(--color-brand-linen)] px-4 py-3 text-sm text-[var(--color-brand-chocolate)] placeholder:text-[var(--color-brand-chocolate)]/60 focus:border-[var(--color-brand-sand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-brand-sand-rgb)_/_0.4)]';
@@ -31,9 +31,13 @@ export const ContactSection: React.FC = () => {
       return;
     }
     setStatus('sending');
+    // FormSubmit can be slow; give up after 12 seconds instead of leaving the visitor waiting.
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 12000);
     try {
       const response = await fetch(ENDPOINT, {
         method: 'POST',
+        signal: controller.signal,
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           _subject: `رسالة جديدة من موقع هاجس — ${name.trim()}`,
@@ -46,14 +50,21 @@ export const ContactSection: React.FC = () => {
           الصفحة: window.location.href,
         }),
       });
-      const data = await response.json().catch(() => ({})) as { success?: string | boolean };
-      if (!response.ok || String(data.success) === 'false') throw new Error('send failed');
+      const data = await response.json().catch(() => ({})) as { success?: string | boolean; message?: string };
+      // Until the inbox owner clicks FormSubmit's one-time "Activate Form" email, every send is refused.
+      if (/activat/i.test(data.message ?? '')) {
+        setStatus('inactive');
+        return;
+      }
+      if (!response.ok || String(data.success) === 'false') throw new Error(data.message || 'send failed');
       setStatus('sent');
       setName('');
       setContact('');
       setMessage('');
     } catch {
       setStatus('error');
+    } finally {
+      window.clearTimeout(timer);
     }
   };
 
@@ -112,8 +123,10 @@ export const ContactSection: React.FC = () => {
               <input type="text" name="_honey" value={honey} onChange={(e) => setHoney(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
               <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                <span className="text-xs text-[var(--color-brand-linen)]" role={status === 'error' ? 'alert' : undefined}>
-                  {status === 'error'
+                <span className="text-xs text-[var(--color-brand-linen)]" role={status === 'error' || status === 'inactive' ? 'alert' : undefined}>
+                  {status === 'inactive'
+                    ? t('خدمة الرسائل قيد التفعيل حاليًا. حاول لاحقًا أو راسلنا مباشرة على ' + CONTACT_EMAIL, 'Messaging is being activated. Please try again later or email us at ' + CONTACT_EMAIL)
+                    : status === 'error'
                     ? t(`تعذر الإرسال. حاول مرة أخرى أو راسلنا على ${CONTACT_EMAIL}`, `Couldn't send. Try again or email us at ${CONTACT_EMAIL}`)
                     : t('نقرأ كل رسالة بعناية.', 'We read every message carefully.')}
                 </span>
