@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
   };
 
   return (
-    <footer className="relative w-full overflow-hidden border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[var(--color-brand-black)] pb-8 pt-10 sm:pb-12 sm:pt-16 text-[var(--color-brand-linen)]">
+    <footer className="relative w-full overflow-hidden border-t border-[rgb(var(--color-brand-chocolate-rgb)_/_0.4)] bg-[#2B180E] pb-8 pt-10 sm:pb-12 sm:pt-16 text-[var(--color-brand-linen)]">
       <div className="brand-stripe-divider absolute inset-x-0 top-0" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
