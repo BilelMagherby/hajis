@@ -10,9 +10,10 @@ const heroImages: { src: string; srcEn?: string; alt: string; altEn: string }[] 
     altEn: 'The Hajiss café storefront at night',
   },
   {
-    src: '/images/hero-cafe-counter.jpeg',
-    alt: 'بار قهوة مقهى هاجس',
-    altEn: 'The coffee bar at Hajiss café',
+    src: '/images/hero-opening-soon-ar.jpg',
+    srcEn: '/images/hero-opening-soon-en.jpg',
+    alt: 'الافتتاح قريباً — هاجس',
+    altEn: 'Opening soon — Hajiss',
   },
   {
     src: '/images/hero-slide-1.jpeg',
