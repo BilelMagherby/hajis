@@ -8,6 +8,7 @@ import { VisitSection } from './components/VisitSection';
 import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
+import { ContactSection } from './components/ContactSection';
 import { ChatbotWidget } from './components/ChatbotWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -141,6 +142,9 @@ export const App: React.FC = () => {
 
         {/* 10. Online Store Teaser & QR Code */}
         <StoreTeaser />
+
+        {/* Speak to us: notes are emailed to the team */}
+        <ContactSection />
 
         {/* 11. Hajiss location */}
         <LocationMapSection />

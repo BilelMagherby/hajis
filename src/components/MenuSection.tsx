@@ -10,7 +10,7 @@ export const MenuSection: React.FC<MenuSectionProps> = () => {
   const { t, dir } = useLanguage();
 
   return (
-    <section id="menu" className="menu-page w-full relative sm:pb-[4cm]" dir={dir}>
+    <section id="menu" className="menu-page w-full relative sm:pb-[1.5cm]" dir={dir}>
       <div
         id="menu-poster"
         className="menu-replacement"
