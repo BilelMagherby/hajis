@@ -18,7 +18,7 @@ export const PhilosophySection: React.FC = () => {
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         <img
-          src="/images/philosophy-pourover.jpg"
+          src={new URL('../../Minimalist Pour-Over Coffee Bar.png', import.meta.url).href}
           loading="lazy"
           alt={t('معايير الجودة والكمال - يميّز هاجس', 'Quality and craft — what sets Hajiss apart')}
           className="h-full w-full object-cover object-center brightness-90"
