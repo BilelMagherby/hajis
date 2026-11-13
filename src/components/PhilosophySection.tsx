@@ -55,10 +55,10 @@ export const PhilosophySection: React.FC = () => {
 
               <div className="relative z-10 space-y-2">
                 <h3 className="font-kufi text-2xl sm:text-3xl font-bold leading-snug text-[#D5C7B3]">
-                  {t('متجر في المقهى وعبر الإنترنت', 'A shop in the café and online')}
+                  {t('قهوة مختصة ومعايير تحضير دقيقة', 'Specialty Coffee, Prepared with Precision')}
                 </h3>
                 <p className="font-arabic text-base font-medium leading-[1.8] text-[var(--color-brand-sand)] sm:text-lg">
-                  {t('محاصيل مختارة وأدوات تحضير متنوعة، متوفرة في متجرنا داخل المقهى وعبر متجرنا الإلكتروني، مع التوصيل إلى جميع مناطق المملكة.', 'Hand-picked beans and a wide range of brewing tools, available in our in-café shop and our online store, with delivery across the Kingdom.')}
+                  {t('نختار أجود محاصيل البن ونحمّصها ونحضّرها وفق أعلى معايير الجودة، لنقدّم نكهات غنية ومتوازنة في كل كوب.', 'We select the finest coffee beans, roast and prepare them to the highest quality standards, delivering rich, balanced flavors in every cup.')}
                 </p>
               </div>
             </div>
@@ -135,10 +135,10 @@ export const PhilosophySection: React.FC = () => {
               <div className="relative mx-auto max-w-4xl">
                 <div>
                   <h3 className="font-kufi text-2xl font-bold leading-relaxed text-[#D5C7B3] sm:text-3xl">
-                    {t('توزيع ومستودعات لخدمة المقاهي في حائل', 'Distribution and warehouses serving cafés in Hail')}
+                    {t('التوريد وتوزيع القهوة للمقاهي', 'Coffee Supply and Distribution for Cafés')}
                   </h3>
                   <p className="mt-3 font-arabic text-base leading-8 text-[var(--color-brand-sand)] sm:text-lg sm:leading-9">
-                    {t('نمتلك مستودعات مجهزة تمكّننا من تزويد المقاهي والمشاريع في حائل بالبُن ومستلزمات القهوة، بتوريد منتظم وسريع.', 'Our fully equipped warehouses let us supply cafés and businesses in Hail with coffee beans and coffee supplies — with regular, fast deliveries.')}
+                    {t('مستودعات مجهزة لدعم المقاهي وشركاء الأعمال بتوريد مستمر وموثوق لأجود أنواع القهوة المختصة.', 'Our equipped warehouses support cafés and business partners with a consistent, reliable supply of the finest specialty coffee.')}
                   </p>
                 </div>
               </div>

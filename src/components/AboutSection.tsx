@@ -45,42 +45,21 @@ export const AboutSection: React.FC = () => {
             {/* Top Insignia Emblem */}
             <div dir={dir} className="flex items-center justify-start gap-3">
               <span className="font-arabic text-sm tracking-widest text-[var(--color-brand-sand)] uppercase font-semibold">
-                {t('أصالة المكان وروح الضيافة', 'An authentic place, a spirit of hospitality')}
+                {t('هاجس | مقهى القهوة المختصة في حائل', 'Hajiss | Specialty Coffee Café in Hail')}
               </span>
             </div>
 
             {/* Main Title */}
             <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-brand-linen)] tracking-tight">
-               {t('هاجس ؟', 'What is Hajiss?')}
+              {t('عن هاجس', 'About Hajiss')}
             </h2>
 
-            {/* The 3 Pillars List */}
-            <ul dir={dir} className="space-y-4 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
-              <li className="flex items-start gap-3 text-start">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>{t('مقهى متخصص يقدم أفضل منتجات القهوة المحمصة والمميزة في السوق السعودي "هاجس بيت لأجود أنواع القهوة".', 'A specialty café serving the finest roasted and distinctive coffees in the Saudi market — "Hajiss, home of the finest coffee."')}</span>
-              </li>
-              <li className="flex items-start gap-3 text-start">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>{t('وجهة لشغوفي وعشاق القهوة، في ارقى مجمع يحظى بجلسات خارجية جميلة في أهم المواقع بمدينة حائل.', 'A destination for coffee lovers, in one of the finest complexes in Hail, with beautiful outdoor seating in a prime location.')}</span>
-              </li>
-              <li className="flex items-start gap-3 text-start">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-sand)] mt-2 flex-shrink-0" />
-                <span>{t('راحة زبائننا هدف ملزم لتحقيق ثقتهم بهاجس.', 'Our guests\' comfort is a commitment we keep to earn their trust in Hajiss.')}</span>
-              </li>
-            </ul>
-
-            {/* Unifying statement */}
-            <p className="pt-1 font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
-              {t('وهذي الأشياء الثلاث مو متفرقة عن بعض، أصلها واحد، بس كل وحدة تعبّر عنه بطريقتها.', 'These three things aren\'t separate — they share one root, and each expresses it in its own way.')}
+            <p dir={dir} className="font-arabic text-base leading-[1.8] text-[var(--color-brand-linen)] sm:text-lg">
+              {t(
+                'من أصالة الضيافة الحائلية إلى عالم القهوة المختصة، تبدأ حكاية هاجس. في قلب مدينة حائل، يجمع المقهى بين دفء التراث وشغف الإتقان، ليقدم تجربة تتجاوز حدود المذاق. هنا، تتحول العناية بالتفاصيل إلى لحظات مميزة، ويصبح كل كوب حكاية تستحق أن تُروى.',
+                'From the authenticity of Hail’s hospitality to the world of specialty coffee, the story of Hajiss begins. In the heart of Hail, the café brings together the warmth of heritage and a passion for craftsmanship, offering an experience beyond taste. Here, attention to detail becomes a collection of memorable moments, and every cup becomes a story worth telling.'
+              )}
             </p>
-
-            {/* Final Statement / Punchline */}
-            <div className="pt-4">
-              <p className="font-kufi text-2xl sm:text-3xl font-bold text-[var(--color-brand-sand)] tracking-wide">
-                {t('القهوة... طقس نعيشه.', 'Coffee... a ritual we live.')}
-              </p>
-            </div>
           </RevealOnScroll>
 
         </div>
@@ -92,31 +71,16 @@ export const AboutSection: React.FC = () => {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
               <div className="p-6 sm:p-10 lg:p-14">
-                <div className="story-copy-reveal story-reveal-delay-1 mb-4 flex items-center gap-3 sm:mb-5">
-                  <span className="font-arabic text-sm font-bold tracking-[0.12em] text-[var(--color-brand-sand)]">
-                    {t('حكاية المكان', 'The story of the place')}
-                  </span>
-                </div>
-
-                <h3 className="story-copy-reveal story-reveal-delay-2 font-kufi text-3xl font-bold leading-[1.5] tracking-tight text-[var(--color-brand-linen)] sm:text-4xl">
-                  {t('قصتنا', 'Our Story')}
+                <h3 className="story-copy-reveal story-reveal-delay-1 font-kufi text-3xl font-bold leading-[1.5] tracking-tight text-[var(--color-brand-linen)] sm:text-4xl">
+                  {t('قصة المكان (الوجار)', 'The story of the place (Al-Wijar)')}
                 </h3>
 
-                <blockquote className="story-copy-reveal story-reveal-delay-3 mt-4 border-s-2 border-[var(--color-brand-sand)] ps-5 font-kufi text-xl font-bold leading-[1.8] text-[var(--color-brand-linen)] sm:mt-5 sm:text-2xl">
-                  {t('"بدأت قصتنا من الوجار"', '"Our story began at Al-Wijar"')}
-                </blockquote>
-
-                <div className="mt-5 max-w-prose space-y-4 font-arabic text-base leading-[1.9] text-[var(--color-brand-linen)] sm:mt-6 sm:space-y-5 sm:text-lg">
-                  <p className="story-copy-reveal story-reveal-delay-4">
-                    {t('في منتصف التسعينيات، أنشأنا مقهى صغيرًا بمسمى "الوجار" في مبنى قديم بنفس الموقع، فالوجار أسم تقليدي حائلي يشير إلى مجمر ناري يجتمع حوله الناس بالشتاء للدفء وكذلك للتفاعل والمناقشات بين الأهل والأصحاب.', 'In the mid-1990s, we opened a small café called "Al-Wijar" in an old building on this very spot. Al-Wijar is a traditional Hail word for the fire hearth that people gather around in winter — for warmth, and for conversation among family and friends.')}
-                  </p>
-                  <p className="story-copy-reveal story-reveal-delay-5">
-                    {t('فبعض القصص لا تنتهي... بل تتجدد.', 'Some stories never end... they are renewed.')}
-                  </p>
-                  <p className="story-copy-reveal story-reveal-delay-6">
-                    {t('اليوم نرجع بهاجس بحلّة جديدة تواكب العصر لبداية قصة جديدة امتدادً لحكاية بدأت من أكثر من ثلاثين سنة…. نفس المكان... ونفس الشغف... ونفس الحرص على صناعة مكان يجتمع فيه الناس حول شيء يستحق التقدير. وكان الوجار هو البداية... وهاجس هو الجمر اللي ما طفى، واللّهب اللي اشتعل من جديد.', 'Today we return as Hajiss, with a fresh, modern look — a new chapter in a story that began more than thirty years ago. The same place... the same passion... and the same care for creating a place where people gather around something worth savoring. Al-Wijar was the beginning... and Hajiss is the ember that never went out, the flame that has been lit again.')}
-                  </p>
-                </div>
+                <p className="story-copy-reveal story-reveal-delay-2 mt-5 max-w-prose font-arabic text-base leading-[1.9] text-[var(--color-brand-linen)] sm:mt-6 sm:text-lg">
+                  {t(
+                    'استلهم هاجس هويته من «الوجار» الحائلي الأصيل، رمز الكرم والترحيب واجتماع الضيوف حول دلال القهوة، ليعيد إحياء هذه الروح الدافئة بأسلوب عصري يجمع بين الراحة والأناقة.',
+                    'Hajiss draws its identity from Al-Wijar, an authentic Hail tradition symbolizing generosity, welcome, and guests gathering around coffee pots. It brings this warm spirit to life in a modern style that blends comfort with elegance.'
+                  )}
+                </p>
               </div>
 
               <div className="visual-media relative min-h-[280px] overflow-hidden lg:min-h-full">

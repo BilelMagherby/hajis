@@ -27,47 +27,18 @@ export const VisitSection: React.FC = () => {
                 className="h-[340px] w-full object-cover object-center sm:h-[500px]"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(64,55,45,0.8)] via-transparent to-[rgba(64,55,45,0.1)]" />
-              <div dir={dir} className="absolute bottom-5 right-5 left-5 rounded-xl border border-[rgba(200,188,167,0.3)] bg-[rgba(64,55,45,0.85)] p-4 text-start backdrop-blur-md sm:bottom-6 sm:right-6 sm:left-6">
-                <span className="font-arabic text-[10px] font-medium tracking-[0.2em] text-[var(--color-brand-sand)]">
-                  {t('ضيافة هاجس', 'Hajiss hospitality')}
-                </span>
-                <p className="mt-2 font-kufi text-base font-semibold leading-relaxed text-[var(--color-brand-linen)] sm:text-lg">
-                  {t('هاجس تحس إنه منك... من أول لحظة تزوره.', 'Hajiss feels like yours... from the very first visit.')}
-                </p>
-              </div>
             </div>
 
             <div className="space-y-6 text-start lg:col-span-7" dir={dir}>
               <div>
-                <span className="font-arabic text-xs font-semibold tracking-[0.24em] text-[var(--color-brand-sand)]">
-                  {t('حيث تبدأ الحكايات', 'Where stories begin')}
-                </span>
-                <h2 className="visual-section-title mt-3 font-kufi text-3xl font-bold leading-relaxed text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
-                  {t('زيارة هاجس', 'Visit Hajiss')}
+                <h2 className="visual-section-title font-kufi text-3xl font-bold leading-relaxed text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
+                  {t('ضيافة هاجس وفلسفتنا', 'Hajiss Hospitality and Philosophy')}
                 </h2>
                 <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('هاجس مو مجرد مكان تشرب فيه قهوتك المختصة...', 'Hajiss isn\'t just a place to drink your specialty coffee...')}
-                </p>
-                <p className="mt-3 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('هو مكان رايق لأحلى السوالف و لأحلى الهواجيس، وتبقى فيه أحلى الذكريات.', 'It\'s a relaxed place for the best conversations and the best thoughts, where the best memories stay.')}
-                </p>
-                <p className="mt-3 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('مكان مصمّم لناس اليوم، لكن محافظ على روح الماضي الجميل.', 'A place designed for today, while keeping the spirit of the beautiful past.')}
-                </p>
-              </div>
-
-              <div className="border-t border-[rgb(var(--color-brand-sand-rgb)_/_0.25)] pt-5">
-                <span className="font-arabic text-xs font-semibold tracking-[0.2em] text-[var(--color-brand-sand)]">
-                  {t('فلسفتنا', 'Our philosophy')}
-                </span>
-                <p className="mt-3 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('اللي يميّز المقهى مو بس القهوة الي يقدّمها...', 'What makes a café special isn\'t only the coffee it serves...')}
-                </p>
-                <p className="mt-3 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('اللي يميّزه هو الشعور اللي يتركه في نفوس الناس.', 'It\'s the feeling it leaves with people.')}
-                </p>
-                <p className="mt-3 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
-                  {t('والدليل الحقيقي على هالشعور بسيط جدًا "هاجس تحس انه منك .. من أول لحظة تزوره".', 'And the real proof of that feeling is simple: "Hajiss feels like yours... from the very first visit."')}
+                  {t(
+                    'في هاجس، نؤمن بأن القهوة ليست مجرد مشروب يومي، بل هي ثقافة ضيافة متجذرة في الكرم والعناية بأدق التفاصيل لصناعة لحظات لا تُنسى لكل زائر.',
+                    'At Hajiss, we believe coffee is more than an everyday drink. It is a culture of hospitality rooted in generosity and care for every detail, creating unforgettable moments for every guest.'
+                  )}
                 </p>
               </div>
 

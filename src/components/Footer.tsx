@@ -112,10 +112,55 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           {/* COL 2: CONTACT INFORMATION */}
           <div className="space-y-4">
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
-              {t('التواصل', 'Contact')}
+              {t('الموقع ومعلومات التواصل', 'Location and Contact Information')}
             </h4>
 
             <div className="space-y-3 font-arabic text-xs text-[var(--color-brand-linen)]">
+              <p className="leading-relaxed">
+                {t('اسم العلامة التجارية: هاجس للقهوة المختصة (HAJISS)', 'Brand name: Hajiss Specialty Coffee (HAJISS)')}
+              </p>
+
+              <a
+                href={brandData.location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start justify-start gap-2 hover:text-[var(--color-brand-sand)] transition-colors"
+              >
+                <span className="leading-relaxed">
+                  {t('الموقع: داني سكوير مول، حائل، المملكة العربية السعودية', 'Location: Hajiss Cafe, Dani Square Mall, Hail 55425, Saudi Arabia')}
+                </span>
+                <MapPin className="w-4 h-4 text-[var(--color-brand-sand)] mt-0.5 flex-shrink-0" />
+              </a>
+
+              <p>
+                <span>{t('الموقع الرسمي: ', 'Official website: ')}</span>
+                <a
+                  href="https://hajiss.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir="ltr"
+                  className="hover:text-[var(--color-brand-sand)] transition-colors"
+                >
+                  hajiss.com
+                </a>
+              </p>
+
+              <p>
+                <span>{t('المتجر الإلكتروني: ', 'Online store: ')}</span>
+                <a
+                  href="https://hajiss.shop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir="ltr"
+                  className="hover:text-[var(--color-brand-sand)] transition-colors"
+                >
+                  hajiss.shop
+                </a>
+              </p>
+
+              <h5 className="font-kufi text-sm font-bold text-[var(--color-brand-sand)]">
+                {t('التواصل', 'Contact')}
+              </h5>
               <div className="flex items-center justify-start gap-2">
                 <a
                   href={`mailto:${brandData.contact.email}`}
@@ -124,13 +169,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                   {brandData.contact.email}
                 </a>
                 <Mail className="w-4 h-4 text-[var(--color-brand-sand)]" />
-              </div>
-
-              <div className="flex items-start justify-start gap-2">
-                <span className="leading-relaxed">
-                  {brandData.location.placeAr}{t('، ', ', ')}{brandData.location.cityAr}
-                </span>
-                <MapPin className="w-4 h-4 text-[var(--color-brand-sand)] mt-0.5 flex-shrink-0" />
               </div>
             </div>
           </div>
