@@ -20,14 +20,89 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
       }
       #boot-failed[hidden] { display: none; }
-      #boot b { font-size: 44px; font-weight: 700; }
-      #boot span { margin-top: 6px; font-size: 13px; letter-spacing: 0.4em; color: #c8bca7; }
-      #boot-failed p { margin: 4px 0; font-size: 17px; }
-      #boot-failed button {
-        margin-top: 18px; padding: 12px 28px; border: 0; border-radius: 999px;
-        background: #c8bca7; color: #2b180e; font-size: 15px; font-weight: 700;
+      /* Brand loader. Selectors start with #boot and animations are !important, because the site's
+         global `* { animation: none !important }` rule would otherwise switch them off. Only
+         opacity, scale, rotate, stroke and background properties are animated (transform is blocked). */
+      #boot {
+        background: radial-gradient(ellipse at 50% 38%, #5b4a3a 0%, #40372d 42%, #2b180e 100%);
+        overflow: hidden;
       }
-      #boot-error { margin-top: 18px; max-width: 320px; font-size: 11px; color: #c8bca7; word-break: break-all; direction: ltr; }
+      #boot::before {
+        content: ''; position: absolute; inset: 0; pointer-events: none;
+        background-image: radial-gradient(rgba(200, 188, 167, 0.07) 1px, transparent 0);
+        background-size: 22px 22px;
+      }
+      #boot .boot-stage {
+        position: relative; display: flex; flex-direction: column; align-items: center;
+        animation: boot-in 0.7s ease-out both !important;
+      }
+      #boot .boot-mark { width: 168px; height: 168px; overflow: visible; }
+      #boot .boot-track { fill: none; stroke: rgba(200, 188, 167, 0.14); stroke-width: 1.5; }
+      #boot .boot-sweep {
+        fill: none; stroke: url(#bootRing); stroke-width: 2.5; stroke-linecap: round;
+        stroke-dasharray: 16 84; transform-box: view-box; transform-origin: 60px 60px;
+        animation: boot-spin 1.8s linear infinite !important;
+      }
+      #boot .boot-cup-line, #boot .boot-handle-line, #boot .boot-saucer-line {
+        fill: none; stroke: #e6cfa6; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+        stroke-dasharray: 100; stroke-dashoffset: 100;
+        animation: boot-draw 1.2s cubic-bezier(.45,0,.2,1) forwards !important;
+      }
+      #boot .boot-handle-line { animation-delay: 0.25s !important; }
+      #boot .boot-saucer-line { animation-delay: 0.45s !important; }
+      #boot .boot-coffee {
+        fill: url(#bootCoffee); transform-box: view-box; transform-origin: 60px 92px;
+        animation: boot-fill 1.6s cubic-bezier(.4,0,.2,1) 0.5s both !important;
+      }
+      #boot .boot-steam {
+        fill: none; stroke: rgba(243, 235, 221, 0.8); stroke-width: 2.2; stroke-linecap: round;
+        stroke-dasharray: 100; stroke-dashoffset: 100; opacity: 0;
+        animation: boot-steam 2.6s ease-in-out infinite !important;
+      }
+      #boot .boot-steam.b { animation-delay: 0.9s !important; }
+      #boot .boot-brand {
+        margin-top: 30px; display: flex; flex-direction: column; align-items: center;
+        animation: boot-in 0.8s ease-out 0.6s both !important;
+      }
+      #boot .boot-brand b { font-size: 38px; font-weight: 700; color: #f3ebdd; line-height: 1.2; }
+      #boot .boot-rule {
+        display: block; width: 56px; height: 1px; margin: 12px 0 10px; background: #d9b98a;
+        animation: boot-rule 0.9s cubic-bezier(.2,.7,.2,1) 0.9s both !important;
+      }
+      #boot .boot-brand span { font-size: 12px; letter-spacing: 0.42em; color: #c8bca7; margin-right: -0.42em; }
+      #boot .boot-tag { margin: 16px 0 0; font-size: 13px; color: #c8bca7; animation: boot-in 0.8s ease-out 1s both !important; }
+      #boot .boot-bar {
+        position: absolute; bottom: 14%; left: 50%; width: 140px; height: 2px; margin-left: -70px;
+        overflow: hidden; border-radius: 2px; background: rgba(200, 188, 167, 0.16);
+      }
+      #boot .boot-bar i {
+        position: absolute; top: 0; bottom: 0; width: 45%; border-radius: 2px;
+        background: linear-gradient(90deg, rgba(217, 185, 138, 0), #d9b98a, rgba(217, 185, 138, 0));
+        animation: boot-shimmer 1.5s ease-in-out infinite !important;
+      }
+      #boot.is-leaving { animation: boot-out 0.6s ease-in forwards !important; }
+      @keyframes boot-in { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes boot-draw { to { stroke-dashoffset: 0; } }
+      @keyframes boot-spin { to { rotate: 360deg; } }
+      @keyframes boot-fill { from { scale: 1 0; } to { scale: 1 1; } }
+      @keyframes boot-rule { from { scale: 0 1; } to { scale: 1 1; } }
+      @keyframes boot-steam {
+        0% { stroke-dashoffset: 100; opacity: 0; }
+        20% { opacity: 0.9; }
+        70% { stroke-dashoffset: 0; opacity: 0.5; }
+        100% { stroke-dashoffset: -30; opacity: 0; }
+      }
+      @keyframes boot-shimmer { from { left: -45%; } to { left: 100%; } }
+      @keyframes boot-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+      @media (prefers-reduced-motion: reduce) {
+        #boot .boot-stage, #boot .boot-brand, #boot .boot-tag, #boot .boot-sweep,
+        #boot .boot-steam, #boot .boot-bar i, #boot .boot-rule { animation: none !important; }
+        #boot .boot-cup-line, #boot .boot-handle-line, #boot .boot-saucer-line {
+          stroke-dashoffset: 0 !important; animation: none !important;
+        }
+        #boot .boot-coffee { scale: 1 1 !important; animation: none !important; }
+        #boot .boot-steam, #boot .boot-bar { display: none; }
+      }
     </style>
     <!-- Kept in plain ES5 so it still runs on browsers too old for the app itself. -->
     <script>
@@ -37,9 +112,21 @@
         var lastError = '';
         var started = new Date().getTime();
 
+        var MIN_SHOW_MS = 1600;
+
         function booted() {
           var root = document.getElementById('root');
-          return !!root && root.children.length > 0 && !document.getElementById('boot');
+          return !!root && root.children.length > 0;
+        }
+        // Fade the loader out once the app is ready, after it has been shown long enough to be seen.
+        function hideLoader() {
+          var wait = Math.max(0, MIN_SHOW_MS - (new Date().getTime() - started));
+          setTimeout(function () {
+            var loader = document.getElementById('boot');
+            if (!loader) return;
+            loader.className += ' is-leaving';
+            setTimeout(function () { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 700);
+          }, wait);
         }
         function setFailed(show) {
           var box = document.getElementById('boot-failed');
@@ -75,6 +162,7 @@
           if (booted()) {
             clearInterval(timer);
             setFailed(false);
+            hideLoader();
             try { sessionStorage.removeItem(RETRY_KEY); } catch (e) { /* storage blocked */ }
           } else if (new Date().getTime() - started > GIVE_UP_MS) {
             lastError = lastError || 'Timed out waiting for the app to start';
@@ -85,7 +173,38 @@
     </script>
   </head>
   <body dir="rtl">
-    <div id="root"><div id="boot"><b>هاجس</b><span>HAJISS</span></div></div>
+    <div id="boot" role="status" aria-live="polite" aria-label="جارٍ تحميل هاجس">
+      <div class="boot-stage">
+        <svg class="boot-mark" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="bootRing" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3ebdd" />
+              <stop offset="1" stop-color="#b68a58" />
+            </linearGradient>
+            <linearGradient id="bootCoffee" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9a6a40" />
+              <stop offset="1" stop-color="#4a2c1a" />
+            </linearGradient>
+          </defs>
+          <circle class="boot-track" cx="60" cy="60" r="56" />
+          <circle class="boot-sweep" cx="60" cy="60" r="56" pathLength="100" />
+          <path class="boot-coffee" d="M37 56 H73 V74 C73 84 66 91 56 91 H54 C44 91 37 84 37 74 Z" />
+          <path class="boot-cup-line" pathLength="100" d="M37 56 H73 V74 C73 84 66 91 56 91 H54 C44 91 37 84 37 74 Z" />
+          <path class="boot-handle-line" pathLength="100" d="M73 62 H80 C86 62 86 76 80 76 H73" />
+          <path class="boot-saucer-line" pathLength="100" d="M28 96 H82" />
+          <path class="boot-steam" pathLength="100" d="M48 46 C44 40 52 35 48 27" />
+          <path class="boot-steam b" pathLength="100" d="M62 46 C58 40 66 35 62 27" />
+        </svg>
+        <div class="boot-brand">
+          <b>هاجس</b>
+          <i class="boot-rule" aria-hidden="true"></i>
+          <span>HAJISS</span>
+        </div>
+        <p class="boot-tag">قهوة مختصة · حائل</p>
+      </div>
+      <div class="boot-bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div id="root"></div>
     <div id="boot-failed" hidden>
       <p>تعذر تحميل الموقع</p>
       <p>The site could not load</p>

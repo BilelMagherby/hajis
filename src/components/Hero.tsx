@@ -10,8 +10,8 @@ const heroImages: { src: string; srcEn?: string; alt: string; altEn: string }[] 
     altEn: 'The Hajiss café storefront at night',
   },
   {
-    src: '/images/hero-opening-soon-ar.jpg',
-    srcEn: '/images/hero-opening-soon-en.jpg',
+    // The full English composition is used for both languages: the Arabic overlay was cropped on phones.
+    src: '/images/hero-opening-soon-en.jpg',
     alt: 'الافتتاح قريباً — هاجس',
     altEn: 'Opening soon — Hajiss',
   },

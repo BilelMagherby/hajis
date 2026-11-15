@@ -31,7 +31,7 @@ export const LocationMapSection: React.FC = () => {
           />
         </div>
 
-        <div className="self-start text-start" dir={dir}>
+        <div className="order-first self-start text-start lg:order-none" dir={dir}>
           <h2 id="location-map-title" className="visual-section-title font-kufi text-3xl font-bold text-[#40372D] sm:text-4xl">
             {t('موقعنا', 'Our Location')}
           </h2>
