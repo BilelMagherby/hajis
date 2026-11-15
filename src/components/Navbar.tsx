@@ -108,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {/* CENTER: DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label={t('القائمة الرئيسية', 'Main navigation')}>
+          <nav className="hidden xl:flex items-center gap-6 2xl:gap-8" aria-label={t('القائمة الرئيسية', 'Main navigation')}>
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* MOBILE: LANGUAGE + HAMBURGER BUTTONS */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex xl:hidden items-center gap-3">
             <LanguageToggle variant={isMenuVariant ? 'light' : 'dark'} />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className={`fixed inset-0 z-30 flex flex-col px-6 pt-24 backdrop-blur-xl lg:hidden ${isMenuVariant ? 'bg-[rgb(245_240_232_/_0.98)]' : 'bg-[rgb(43_24_14_/_0.95)]'}`}>
+        <div className={`fixed inset-0 z-30 flex flex-col px-6 pt-24 backdrop-blur-xl xl:hidden ${isMenuVariant ? 'bg-[rgb(245_240_232_/_0.98)]' : 'bg-[rgb(43_24_14_/_0.95)]'}`}>
           <div className="flex flex-col space-y-5 text-start">
             {navLinks.map((link) => (
               <button

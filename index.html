@@ -108,7 +108,7 @@
     <script>
       (function () {
         var RETRY_KEY = 'hajiss-boot-retry';
-        var GIVE_UP_MS = 20000;
+        var GIVE_UP_MS = 60000; // slow mobile networks can take well over 20s to fetch the app
         var lastError = '';
         var started = new Date().getTime();
 
@@ -154,6 +154,8 @@
             if (!reloadOnce()) setFailed(true);
             return;
           }
+          // Only the app's own script errors count. A failed image, font or video is not a reason to show the error screen.
+          if (target !== window) return;
           lastError = event.message || 'Unknown error';
           setTimeout(function () { if (!booted()) setFailed(true); }, 400);
         }, true);
