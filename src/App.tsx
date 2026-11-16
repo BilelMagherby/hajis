@@ -9,6 +9,7 @@ import { StoreTeaser } from './components/StoreTeaser';
 import { Footer } from './components/Footer';
 import { LocationMapSection } from './components/LocationMapSection';
 import { ContactSection } from './components/ContactSection';
+import { SisterSites } from './components/SisterSites';
 import { ChatbotWidget } from './components/ChatbotWidget';
 import { CookieConsent } from './components/CookieConsent';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -142,6 +143,9 @@ export const App: React.FC = () => {
 
         {/* 10. Online Store Teaser & QR Code */}
         <StoreTeaser />
+
+        {/* Our other websites: the shop and Hajiss Supply */}
+        <SisterSites />
 
         {/* Speak to us: notes are emailed to the team */}
         <ContactSection />
