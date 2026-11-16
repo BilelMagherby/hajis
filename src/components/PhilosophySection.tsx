@@ -33,11 +33,8 @@ export const PhilosophySection: React.FC = () => {
           {/* Section Header */}
           <div className="lg:col-start-1 lg:row-start-1 flex flex-col justify-center text-start lg:py-4">
             <h2 className="visual-section-title font-kufi text-3xl sm:text-4xl lg:text-5xl font-bold text-[#D5C7B3]">
-              {t('ما الذي يميز هاجس؟', 'What sets Hajiss apart?')}
+              {t('ما يميز هاجس', 'What Sets Hajiss Apart')}
             </h2>
-            <p className="mt-3 font-kufi text-lg font-semibold leading-relaxed text-[var(--color-brand-sand)] sm:text-xl">
-              {t('أكثر من مقهى... وجهتك المتكاملة للقهوة في حائل', 'More than a café... your complete coffee destination in Hail')}
-            </p>
           </div>
 
           {/* TOP CENTER: Shop */}
@@ -55,10 +52,10 @@ export const PhilosophySection: React.FC = () => {
 
               <div className="relative z-10 space-y-2">
                 <h3 className="font-kufi text-2xl sm:text-3xl font-bold leading-snug text-[#D5C7B3]">
-                  {t('قهوة مختصة ومعايير تحضير دقيقة', 'Specialty Coffee, Prepared with Precision')}
+                  {t('قهوة مختصة من أفضل المحامص السعودية', 'Specialty Coffee & Precision Brewing')}
                 </h3>
                 <p className="font-arabic text-base font-medium leading-[1.8] text-[var(--color-brand-sand)] sm:text-lg">
-                  {t('نختار أجود محاصيل البن ونحمّصها ونحضّرها وفق أعلى معايير الجودة، لنقدّم نكهات غنية ومتوازنة في كل كوب.', 'We select the finest coffee beans, roast and prepare them to the highest quality standards, delivering rich, balanced flavors in every cup.')}
+                  {t('نختار أجود محاصيل القهوة من أفضل المحامص في المملكة العربية السعودية، لنقدم لعملائنا تجربة قهوة مميزة تجمع بين تنوع النكهات وجودة التحضير. ونوفر هذه المحاصيل في المقهى وعبر متجرنا الإلكتروني ليستمتع عشاق القهوة بتجربتهم المفضلة أينما كانوا.', 'We source our coffee beans from Saudi Arabia’s leading specialty roasteries, ensuring exceptional quality and rich, balanced flavor profiles in every cup.')}
                 </p>
               </div>
             </div>
@@ -135,10 +132,10 @@ export const PhilosophySection: React.FC = () => {
               <div className="relative mx-auto max-w-4xl">
                 <div>
                   <h3 className="font-kufi text-2xl font-bold leading-relaxed text-[#D5C7B3] sm:text-3xl">
-                    {t('التوريد وتوزيع القهوة للمقاهي', 'Coffee Supply and Distribution for Cafés')}
+                    {t('التوريد وتوزيع القهوة للمقاهي', 'Supply & Distribution')}
                   </h3>
                   <p className="mt-3 font-arabic text-base leading-8 text-[var(--color-brand-sand)] sm:text-lg sm:leading-9">
-                    {t('مستودعات مجهزة لدعم المقاهي وشركاء الأعمال بتوريد مستمر وموثوق لأجود أنواع القهوة المختصة.', 'Our equipped warehouses support cafés and business partners with a consistent, reliable supply of the finest specialty coffee.')}
+                    {t('نوفر خدمات توريد محاصيل القهوة المختصة والمعدات للمقاهي وشركاء الأعمال، بالتعاون مع نخبة من المحامص السعودية، لضمان تنوع الخيارات وجودة المنتجات واستمرارية التوريد.', 'A reliable supply of specialty coffee beans and products, available to customers and commercial partners through the Hajiss showroom and E-Commerce App.')}
                   </p>
                 </div>
               </div>

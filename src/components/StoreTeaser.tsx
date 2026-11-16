@@ -44,8 +44,8 @@ export const StoreTeaser: React.FC = () => {
 
               <p className="font-arabic text-sm text-[var(--color-brand-chocolate)] max-w-lg leading-relaxed font-medium">
                 {t(
-                  'لآ يفوتكم متجرنا بهاجس ومتجره الإلكتروني "عروضنا مستمرة" محاصيل مميزة، وأدوات قهوة متنوعة مع التوصيل لجميع مناطق المملكة.',
-                  'Don\'t miss our shop at Hajiss and our online store — "our offers never stop." Distinctive beans and a wide range of coffee tools, with delivery across the Kingdom.'
+                  'نوفر تشكيلة مختارة من أجود محاصيل القهوة المختصة من أبرز المحامص السعودية، والمتاحة للشراء مباشرة من المقهى أو عبر متجر هاجس الإلكتروني.',
+                  'Our online store offers a carefully curated selection of specialty coffee beans sourced from Saudi Arabia’s leading roasteries, available in the coffeeshop or delivered directly to our customers through hajiss.shop.'
                 )}
               </p>
 

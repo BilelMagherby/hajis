@@ -54,7 +54,7 @@ export const SisterSites: React.FC = () => {
             </h3>
             <p dir="ltr" className="mt-1 font-brand text-sm tracking-[0.12em] text-[var(--color-brand-sand)]">hajiss.shop</p>
             <p className="mt-4 flex-1 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]/90 sm:text-base sm:leading-8">
-              {t('محاصيل قهوة مختارة وأدوات تحضير متنوعة، مع التوصيل إلى جميع مناطق المملكة.', 'Hand-picked coffee beans and brewing tools, delivered across the Kingdom.')}
+              {t('نوفر تشكيلة مختارة من أجود محاصيل القهوة المختصة من أبرز المحامص السعودية، والمتاحة للشراء مباشرة من المقهى أو عبر متجر هاجس الإلكتروني.', 'Our online store offers a carefully curated selection of specialty coffee beans sourced from Saudi Arabia’s leading roasteries, available in the coffeeshop or delivered directly to our customers through hajiss.shop.')}
             </p>
             <a
               href={SHOP_URL}
@@ -90,10 +90,10 @@ export const SisterSites: React.FC = () => {
               {t('هاجس للتوريد', 'Hajiss Supply')}
             </h3>
             <p className="mt-1 font-arabic text-sm text-[#785B40]">
-              {t('خدمات التوزيع والتوريد للمقاهي', 'Distribution & supply for cafés')}
+              {t('التوريد وتوزيع القهوة للمقاهي', 'Supply & Distribution')}
             </p>
             <p className="mt-4 flex-1 font-arabic text-sm leading-7 text-[#40372D]/85 sm:text-base sm:leading-8">
-              {t('منصة جديدة لتزويد المقاهي والمشاريع بالبُن ومستلزمات القهوة بتوريد منتظم وسريع. نجهّزها لكم بعناية.', 'A new platform supplying cafés and businesses with coffee beans and coffee essentials, with regular, fast deliveries. We are preparing it with care.')}
+              {t('نوفر خدمات توريد محاصيل القهوة المختصة والمعدات للمقاهي وشركاء الأعمال، بالتعاون مع نخبة من المحامص السعودية، لضمان تنوع الخيارات وجودة المنتجات واستمرارية التوريد.', 'A reliable supply of specialty coffee beans and products, available to customers and commercial partners through the Hajiss showroom and E-Commerce App.')}
             </p>
             <span
               aria-disabled="true"

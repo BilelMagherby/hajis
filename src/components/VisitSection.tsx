@@ -32,12 +32,12 @@ export const VisitSection: React.FC = () => {
             <div className="space-y-6 text-start lg:col-span-7" dir={dir}>
               <div>
                 <h2 className="visual-section-title font-kufi text-3xl font-bold leading-relaxed text-[var(--color-brand-linen)] sm:text-4xl lg:text-5xl">
-                  {t('ضيافة هاجس وفلسفتنا', 'Hajiss Hospitality and Philosophy')}
+                  {t('ضيافة هاجس وفلسفتنا', 'Hajiss Hospitality & Philosophy')}
                 </h2>
                 <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
                   {t(
-                    'في هاجس، نؤمن بأن القهوة ليست مجرد مشروب يومي، بل هي ثقافة ضيافة متجذرة في الكرم والعناية بأدق التفاصيل لصناعة لحظات لا تُنسى لكل زائر.',
-                    'At Hajiss, we believe coffee is more than an everyday drink. It is a culture of hospitality rooted in generosity and care for every detail, creating unforgettable moments for every guest.'
+                    'في هاجس، نؤمن بأن القهوة ليست مجرد مشروب يومي، بل هي ثقافة ضيافة متجذرة في الكرم والعناية بأدق التفاصيل، لصناعة لحظات لا تُنسى لكل زائر.',
+                    'At Hajiss, coffee is more than a daily beverage; it is a cultural ritual rooted in generosity, attention to detail, and a commitment to creating memorable moments for every visitor.'
                   )}
                 </p>
               </div>

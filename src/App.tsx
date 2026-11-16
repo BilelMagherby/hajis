@@ -141,11 +141,11 @@ export const App: React.FC = () => {
         {/* 8. Visit Hajiss & 3D Hail Topographic Map */}
         <VisitSection />
 
-        {/* 10. Online Store Teaser & QR Code */}
-        <StoreTeaser />
-
         {/* Our other websites: the shop and Hajiss Supply */}
         <SisterSites />
+
+        {/* 10. Online Store Teaser & QR Code */}
+        <StoreTeaser />
 
         {/* Speak to us: notes are emailed to the team */}
         <ContactSection />

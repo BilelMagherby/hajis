@@ -48,15 +48,15 @@ const getReply = (message: string, language: Language): Reply => {
 
   if (/قصة|الوجار|تاريخ|بداي|من نحن|about|story|history/.test(normalizedMessage)) {
     return reply(
-      { text: 'قصة هاجس امتداد لحكاية «الوجار» في حائل؛ مكان كان يجمع الناس حول الدفء والسوالف. واليوم نكمل الحكاية بروح جديدة وشغف بالقهوة والضيافة.' },
-      { text: 'Hajiss continues the story of "Al-Wijar" in Hail — a place where people gathered around warmth and conversation. Today we carry that story on with a fresh spirit and a passion for coffee and hospitality.' }
+      { text: 'استلهم هاجس هويته من «الوجار» الحائلي الأصيل، رمز الكرم والترحيب واجتماع الضيوف حول دلال القهوة، ليعيد إحياء هذه الروح الدافئة بأسلوب عصري يجمع بين الراحة والأناقة.' },
+      { text: 'Inspired by traditional Haili "Wujar" — the welcoming hearth where guests gather around freshly roasted coffee — Hajiss revives this spirit of warmth and generosity in a contemporary setting designed for comfort and connection.' }
     );
   }
 
   if (/يميز|جودة|جودت|محصول|محاصيل|حبوب|تحميص|اختيار|مذاق|نكهة|special|quality|beans|roast|taste|flavou?r/.test(normalizedMessage)) {
     return reply(
-      { text: 'نهتم بتفاصيل الكوب من اختيار محاصيل مميزة، والتحميص المتوازن، إلى طريقة التحضير. ونختار محاصيلنا من محامص مميزة في المملكة ومن حول العالم.' },
-      { text: 'We care about every detail of the cup — from choosing distinctive beans and a balanced roast to the brewing method. Our beans come from outstanding roasters in the Kingdom and around the world.' }
+      { text: 'نختار أجود محاصيل القهوة من أفضل المحامص في المملكة العربية السعودية، لنقدم لعملائنا تجربة قهوة مميزة تجمع بين تنوع النكهات وجودة التحضير. ونوفر هذه المحاصيل في المقهى وعبر متجرنا الإلكتروني ليستمتع عشاق القهوة بتجربتهم المفضلة أينما كانوا.' },
+      { text: 'We source our coffee beans from Saudi Arabia’s leading specialty roasteries, ensuring exceptional quality and rich, balanced flavor profiles in every cup.' }
     );
   }
 

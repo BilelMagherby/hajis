@@ -37,7 +37,7 @@ export const LocationMapSection: React.FC = () => {
           </h2>
           <p className="mt-4 flex items-start gap-2 font-arabic text-sm leading-7 text-[#40372D]">
             <MapPin className="mt-1 h-4 w-4 flex-shrink-0 text-[#785B40]" />
-            <span>{brandData.location.placeAr}{t('، ', ', ')}{brandData.location.cityAr}</span>
+            <span>{t(brandData.location.addressAr, brandData.location.addressEn)}</span>
           </p>
           <a
             href={brandData.location.mapUrl}

@@ -12,7 +12,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => {
-  const { t } = useLanguage();
+  const { t, isEnglish } = useLanguage();
   const scrollTo = (id: string) => {
     if (onNavigate) {
       onNavigate(id);
@@ -33,8 +33,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
           <div className="space-y-4">
             <div className="flex items-center gap-3 justify-start">
               <div className="flex flex-col text-start">
-                <span className="font-brand text-2xl font-light tracking-[0.25em] text-[var(--color-brand-linen)]">
-                  {t('مقهى هاجس', 'Hajiss Café')}
+                <span className={`font-brand text-xl font-light text-[var(--color-brand-linen)] sm:text-2xl ${isEnglish ? 'tracking-[0.08em]' : ''}`}>
+                  {t('هاجس للقهوة المختصة', 'Hajiss Specialty Coffee')}
                 </span>
               </div>
               <div className="w-16 h-auto flex items-center justify-center">
@@ -47,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             </div>
 
             <p className="font-arabic text-xs text-[var(--color-brand-sand)] leading-relaxed font-light">
-              {t('مقهى هاجس — تجربة قهوة مختصة فريدة في حائل. نجمع بين عراقة التراث وكرم الوجار وأحدث أساليب التحميص والتقطير العالمية.', 'Hajiss Café — a unique specialty coffee experience in Hail, bringing together a rich heritage, the generosity of Al-Wijar, and the latest roasting and brewing methods from around the world.')}
+              {t('هاجس هو مقهى للقهوة المختصة تأسس في مدينة حائل، ليقدم تجربة قهوة متفردة تجمع بين أصالة الضيافة المحلية، أجود أنواع البن وأحدث معايير التحضير العالمية.', 'Hajiss is a specialty coffee shop founded in Hail, offering a distinctive coffee experience that blends authentic local hospitality with the finest coffee beans and best brewing standards.')}
             </p>
 
             {/* Social Icons */}
@@ -127,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 className="flex items-start justify-start gap-2 hover:text-[var(--color-brand-sand)] transition-colors"
               >
                 <span className="leading-relaxed">
-                  {t('الموقع: داني سكوير مول، حائل، المملكة العربية السعودية', 'Location: Hajiss Cafe, Dani Square Mall, Hail 55425, Saudi Arabia')}
+                  {t(`الموقع: ${brandData.location.addressAr}`, `Location: ${brandData.location.addressEn}`)}
                 </span>
                 <MapPin className="w-4 h-4 text-[var(--color-brand-sand)] mt-0.5 flex-shrink-0" />
               </a>
@@ -252,7 +252,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[rgb(var(--color-brand-sand-rgb)_/_0.65)] font-arabic gap-4">
           <p>
-            {t('حقوق الطبع والنشر © مقهى هاجس — جميع الحقوق محفوظة', 'Copyright © Hajiss Café — All rights reserved')}
+            {t('حقوق الطبع والنشر © هاجس للقهوة المختصة — جميع الحقوق محفوظة', 'Copyright © Hajiss Specialty Coffee — All rights reserved')}
           </p>
 
          
