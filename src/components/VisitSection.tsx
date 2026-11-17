@@ -36,7 +36,7 @@ export const VisitSection: React.FC = () => {
                 </h2>
                 <p className="mt-4 font-arabic text-base font-light leading-8 text-[var(--color-brand-linen)] sm:text-lg sm:leading-9">
                   {t(
-                    'في هاجس، نؤمن بأن القهوة ليست مجرد مشروب يومي، بل هي ثقافة ضيافة متجذرة في الكرم والعناية بأدق التفاصيل، لصناعة لحظات لا تُنسى لكل زائر.',
+                    'في هاجس، نؤمن بأن القهوة ليست مجرد مشروب يومي، بل هي ثقافة ضيافة متجذرة في الكرم والعناية بأدق التفاصيل لصناعة لحظات لا تُنسى لكل زائر.',
                     'At Hajiss, coffee is more than a daily beverage; it is a cultural ritual rooted in generosity, attention to detail, and a commitment to creating memorable moments for every visitor.'
                   )}
                 </p>

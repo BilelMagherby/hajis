@@ -55,8 +55,8 @@ const getReply = (message: string, language: Language): Reply => {
 
   if (/يميز|جودة|جودت|محصول|محاصيل|حبوب|تحميص|اختيار|مذاق|نكهة|special|quality|beans|roast|taste|flavou?r/.test(normalizedMessage)) {
     return reply(
-      { text: 'نختار أجود محاصيل القهوة من أفضل المحامص في المملكة العربية السعودية، لنقدم لعملائنا تجربة قهوة مميزة تجمع بين تنوع النكهات وجودة التحضير. ونوفر هذه المحاصيل في المقهى وعبر متجرنا الإلكتروني ليستمتع عشاق القهوة بتجربتهم المفضلة أينما كانوا.' },
-      { text: 'We source our coffee beans from Saudi Arabia’s leading specialty roasteries, ensuring exceptional quality and rich, balanced flavor profiles in every cup.' }
+      { text: 'نختار أجود محاصيل البن ونحمّصها ونحضّرها وفق أعلى معايير الجودة، لنقدّم نكهات غنية ومتوازنة في كل كوب.' },
+      { text: 'Carefully selected coffee beans roasted and prepared according to rigorous specialty standards to highlight rich, balanced flavor profiles.' }
     );
   }
 

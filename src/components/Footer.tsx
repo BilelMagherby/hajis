@@ -47,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             </div>
 
             <p className="font-arabic text-xs text-[var(--color-brand-sand)] leading-relaxed font-light">
-              {t('هاجس هو مقهى للقهوة المختصة تأسس في مدينة حائل، ليقدم تجربة قهوة متفردة تجمع بين أصالة الضيافة المحلية، أجود أنواع البن وأحدث معايير التحضير العالمية.', 'Hajiss is a specialty coffee shop founded in Hail, offering a distinctive coffee experience that blends authentic local hospitality with the finest coffee beans and best brewing standards.')}
+              {t('من أصالة الضيافة الحائلية إلى عالم القهوة المختصة، تبدأ حكاية هاجس. في قلب مدينة حائل، يجمع المقهى بين دفء التراث وشغف الإتقان، ليقدم تجربة تتجاوز حدود المذاق. هنا، تتحول العناية بالتفاصيل إلى لحظات مميزة، ويصبح كل كوب حكاية تستحق أن تُروى.', 'Hajiss is a specialty coffee shop founded in Hail, offering a distinctive coffee experience that blends authentic local hospitality with modern roasting and brewing standards.')}
             </p>
 
             {/* Social Icons */}

@@ -54,7 +54,7 @@ export const SisterSites: React.FC = () => {
             </h3>
             <p dir="ltr" className="mt-1 font-brand text-sm tracking-[0.12em] text-[var(--color-brand-sand)]">hajiss.shop</p>
             <p className="mt-4 flex-1 font-arabic text-sm leading-7 text-[var(--color-brand-linen)]/90 sm:text-base sm:leading-8">
-              {t('نوفر تشكيلة مختارة من أجود محاصيل القهوة المختصة من أبرز المحامص السعودية، والمتاحة للشراء مباشرة من المقهى أو عبر متجر هاجس الإلكتروني.', 'Our online store offers a carefully curated selection of specialty coffee beans sourced from Saudi Arabia’s leading roasteries, available in the coffeeshop or delivered directly to our customers through hajiss.shop.')}
+              {t('توفر محمصة هاجس تشكيلة من محاصيل البن المحمّصة طازجًا، لتصل مباشرة إلى عشاق القهوة عبر المتجر الإلكتروني.', 'Our dedicated roastery supplies freshly roasted specialty coffee beans directly to customers through the Hajiss online store.')}
             </p>
             <a
               href={SHOP_URL}
@@ -90,10 +90,10 @@ export const SisterSites: React.FC = () => {
               {t('هاجس للتوريد', 'Hajiss Supply')}
             </h3>
             <p className="mt-1 font-arabic text-sm text-[#785B40]">
-              {t('التوريد وتوزيع القهوة للمقاهي', 'Supply & Distribution')}
+              {t('التوريد وتوزيع القهوة للمقاهي', 'Supply & Cafe Distribution')}
             </p>
             <p className="mt-4 flex-1 font-arabic text-sm leading-7 text-[#40372D]/85 sm:text-base sm:leading-8">
-              {t('نوفر خدمات توريد محاصيل القهوة المختصة والمعدات للمقاهي وشركاء الأعمال، بالتعاون مع نخبة من المحامص السعودية، لضمان تنوع الخيارات وجودة المنتجات واستمرارية التوريد.', 'A reliable supply of specialty coffee beans and products, available to customers and commercial partners through the Hajiss showroom and E-Commerce App.')}
+              {t('مستودعات مجهزة لدعم المقاهي وشركاء الأعمال بتوريد مستمر وموثوق لأجود أنواع القهوة المختصة.', 'Our well-equipped distribution warehouses provide cafes and commercial partners with reliable and consistent supply of specialty coffee products.')}
             </p>
             <span
               aria-disabled="true"

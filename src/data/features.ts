@@ -14,23 +14,23 @@ export const featuresData: FeatureCardItem[] = [
   {
     id: 'hail-location',
     number: '01',
-    titleAr: 'موقع مميز في داني سكوير',
+    titleAr: 'موقع مميز في داني سكوير مول',
     titleEn: 'Prime Location at Dani Square Mall',
     subtitleAr: '',
     subtitleEn: '',
-    descriptionAr: 'يقع المقهى في قلب مدينة حائل في مجمع داني سكوير، ليوفر مساحة مثالية للقاءات اليومية والعمل والاستمتاع بتجربة قهوة هادئة.',
+    descriptionAr: 'يقع المقهى في داني سكوير مول بقلب مدينة حائل، ويوفر مساحة مثالية للقاءات اليومية والعمل والاستمتاع بأجواء هادئة.',
     descriptionEn: 'Located in the heart of Hail at Dani Square Mall, providing an inviting atmosphere for daily visits, work, and social gatherings.',
     icon: 'mountain'
   },
   {
     id: 'online-roastery',
     number: '02',
-    titleAr: 'المقهى والمتجر الإلكتروني (hajiss.shop)',
-    titleEn: 'Online Store (hajiss.shop)',
+    titleAr: 'المحمصة والمتجر الإلكتروني',
+    titleEn: 'Roastery & Online Store (hajiss.shop)',
     subtitleAr: '',
     subtitleEn: '',
-    descriptionAr: 'نوفر تشكيلة مختارة من أجود محاصيل القهوة المختصة من أبرز المحامص السعودية، والمتاحة للشراء مباشرة من المقهى أو عبر متجر هاجس الإلكتروني.',
-    descriptionEn: 'Our online store offers a carefully curated selection of specialty coffee beans sourced from Saudi Arabia’s leading roasteries, available in the coffeeshop or delivered directly to our customers through hajiss.shop.',
+    descriptionAr: 'توفر محمصة هاجس تشكيلة من محاصيل البن المحمّصة طازجًا، لتصل مباشرة إلى عشاق القهوة عبر المتجر الإلكتروني.',
+    descriptionEn: 'Our dedicated roastery supplies freshly roasted specialty coffee beans directly to customers through the Hajiss online store.',
     icon: 'bean'
   },
   

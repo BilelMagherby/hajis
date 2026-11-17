@@ -7,11 +7,11 @@ const STORAGE_KEY = 'hajiss-language';
 const meta = {
   ar: {
     title: 'هاجس | مقهى القهوة المختصة في حائل',
-    description: 'هاجس هو مقهى للقهوة المختصة تأسس في مدينة حائل، ليقدم تجربة قهوة متفردة تجمع بين أصالة الضيافة المحلية، أجود أنواع البن وأحدث معايير التحضير العالمية.',
+    description: 'من أصالة الضيافة الحائلية إلى عالم القهوة المختصة، تبدأ حكاية هاجس. في قلب مدينة حائل، يجمع المقهى بين دفء التراث وشغف الإتقان، ليقدم تجربة تتجاوز حدود المذاق. هنا، تتحول العناية بالتفاصيل إلى لحظات مميزة، ويصبح كل كوب حكاية تستحق أن تُروى.',
   },
   en: {
     title: 'HAJISS | Specialty Coffee Shop in Hail',
-    description: 'Hajiss is a specialty coffee shop founded in Hail, offering a distinctive coffee experience that blends authentic local hospitality with the finest coffee beans and best brewing standards.',
+    description: 'Hajiss is a specialty coffee shop founded in Hail, offering a distinctive coffee experience that blends authentic local hospitality with modern roasting and brewing standards.',
   },
 } as const;
 
