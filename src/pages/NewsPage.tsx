@@ -271,20 +271,20 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
                 {/* Keyword Search Input */}
                 <div className="relative min-w-[260px] sm:min-w-[300px]">
-                  <Search className="w-4 h-4 absolute start-3.5 inset-y-0 my-auto text-[var(--color-brand-sand)] pointer-events-none" />
+                  <Search className="w-4 h-4 absolute start-3.5 inset-y-0 my-auto text-[#785B40] pointer-events-none" />
                   <input
                     type="text"
                     placeholder={t('ابحث في المستجدات والمحاصيل...', 'Search news and beans...')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[rgba(64,55,45,0.35)] border border-[rgba(200,188,167,0.22)] focus:border-[var(--color-brand-sand)] focus:bg-[rgba(64,55,45,0.55)] text-sm text-[var(--color-brand-linen)] placeholder-[rgba(200,188,167,0.5)] outline-none font-arabic transition-all"
+                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[#F5F1E7] border border-[#785B40]/35 focus:border-[#785B40] focus:bg-white text-sm text-[#40372D] placeholder-[#785B40]/60 outline-none font-arabic transition-all"
                   />
                   {searchQuery && (
                     <button
                       type="button"
                       onClick={() => setSearchQuery('')}
                       aria-label={t('مسح البحث', 'Clear search')}
-                      className="absolute end-3 inset-y-0 my-auto h-fit text-[var(--color-brand-sand)] hover:text-white p-1"
+                      className="absolute end-3 inset-y-0 my-auto h-fit text-[#785B40] hover:text-[#40372D] p-1"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -294,7 +294,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
 
               {/* Active search or category indicators */}
               {(searchQuery || selectedCategory !== 'all') && (
-                <div className="flex items-center justify-between text-xs font-arabic text-[var(--color-brand-sand)] bg-[rgba(64,55,45,0.2)] px-4 py-2 rounded-lg border border-[rgba(200,188,167,0.12)]">
+                <div className="flex items-center justify-between text-xs font-arabic text-[#5f4731] bg-[#E4D8C3] px-4 py-2 rounded-lg border border-[#785B40]/25">
                   <span>
                     {t('النتائج المعروضة:', 'Showing:')} <b>{filteredItems.length}</b> {t('مستجد', filteredItems.length === 1 ? 'post' : 'posts')}
                     {searchQuery && t(` للبحث عن "${searchQuery}"`, ` for "${searchQuery}"`)}
@@ -305,7 +305,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
                       setSelectedCategory('all');
                       setSearchQuery('');
                     }}
-                    className="text-xs text-[var(--color-brand-linen)] hover:underline"
+                    className="text-xs font-semibold text-[#785B40] hover:underline"
                   >
                     {t('إعادة ضبط الفلاتر', 'Reset filters')}
                   </button>
@@ -318,8 +318,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           {featuredItem && (
             <div className="mb-14">
               <div className="flex items-center gap-2 mb-4">
-                <Bookmark className="w-4 h-4 text-[var(--color-brand-sand)]" />
-                <h2 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
+                <Bookmark className="w-4 h-4 text-[#785B40]" />
+                <h2 className="font-kufi text-lg sm:text-xl font-bold text-[#40372D]">
                   {t('المستجد الأبرز لهذا الشهر', 'Featured story of the month')}
                 </h2>
               </div>
@@ -435,8 +435,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             <div className="space-y-6">
               {featuredItem && selectedCategory === 'all' && !searchQuery.trim() && (
                 <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[var(--color-brand-sand)]" />
-                  <h3 className="font-kufi text-lg sm:text-xl font-bold text-[var(--color-brand-sand)]">
+                  <SlidersHorizontal className="w-4 h-4 text-[#785B40]" />
+                  <h3 className="font-kufi text-lg sm:text-xl font-bold text-[#40372D]">
                     {t('جميع المستجدات والأنشطة', 'All news and activities')}
                   </h3>
                 </div>
@@ -551,12 +551,12 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
             </div>
           ) : (
             /* Clean Empty State (Zero Fake Data) */
-            <div className="text-center py-10 sm:py-20 px-6 bg-[rgba(64,55,45,0.2)] rounded-3xl border border-[rgba(200,188,167,0.15)] max-w-lg mx-auto space-y-4">
-              <Coffee className="w-12 h-12 text-[var(--color-brand-sand)] mx-auto opacity-50" />
-              <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[var(--color-brand-linen)]">
+            <div className="text-center py-10 sm:py-20 px-6 bg-[#F5F1E7] rounded-3xl border border-[#785B40]/25 shadow-[0_14px_32px_rgba(64,55,45,0.12)] max-w-lg mx-auto space-y-4">
+              <Coffee className="w-12 h-12 text-[#785B40] mx-auto opacity-60" />
+              <h3 className="font-kufi text-xl sm:text-2xl font-bold text-[#40372D]">
                 {isLoading ? t('جاري تحميل المستجدات...', 'Loading news...') : t('لا توجد مستجدات منشورة حالياً', 'No news has been published yet')}
               </h3>
-              <p className="font-arabic text-sm text-[var(--color-brand-sand)] leading-relaxed">
+              <p className="font-arabic text-sm text-[#5f4731] leading-relaxed">
                 {t('ترقبوا قريباً جديد هاجس — يمكنكم متابعة حساباتنا الرسمية لمعرفة آخر الأخبار وأحدث المحاصيل أولاً بأول، أو زيارة المقهى في داني سكوير بحائل.', 'Stay tuned for what\'s new at Hajiss — follow our official accounts for the latest news and newest beans, or visit the café at Dani Square in Hail.')}
               </p>
               <button
@@ -570,7 +570,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onNavigate, onOpenCookieSett
           )}
 
           {/* STAY CONNECTED SECTION (Clean, without fake input holder) */}
-          <section className="mt-6 sm:mt-20 p-6 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2B180E] to-[#1A1612] border border-[rgba(200,188,167,0.2)] relative overflow-hidden text-start">
+          <section className="mt-6 sm:mt-20 p-6 sm:p-12 rounded-3xl bg-gradient-to-br from-[#785b40] to-[#5f4731] border border-[rgba(200,188,167,0.3)] relative overflow-hidden text-start">
             <div className="absolute top-0 start-0 w-80 h-80 bg-[radial-gradient(circle,rgba(200,188,167,0.1)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="max-w-3xl mx-auto space-y-5 relative z-10 text-center sm:text-start">

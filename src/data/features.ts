@@ -26,7 +26,7 @@ export const featuresData: FeatureCardItem[] = [
     id: 'online-roastery',
     number: '02',
     titleAr: 'المحمصة والمتجر الإلكتروني',
-    titleEn: 'Roastery & Online Store (hajiss.shop)',
+    titleEn: 'Roastery & Online Store',
     subtitleAr: '',
     subtitleEn: '',
     descriptionAr: 'توفر محمصة هاجس تشكيلة من محاصيل البن المحمّصة طازجًا، لتصل مباشرة إلى عشاق القهوة عبر المتجر الإلكتروني.',

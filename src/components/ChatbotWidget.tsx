@@ -22,8 +22,6 @@ const quickQuestions: Record<Language, string[]> = {
     'كيف تحضرون الـV60؟',
     'وين موقعكم؟',
     'كيف أزوركم؟',
-    'عندكم توصيل؟',
-    'وش ألقى بمتجر هاجس؟',
     'وش ساعات العمل؟'
   ],
   en: [
@@ -33,8 +31,6 @@ const quickQuestions: Record<Language, string[]> = {
     'How do you brew your V60?',
     'Where are you located?',
     'How can I visit?',
-    'Do you deliver?',
-    'What can I find in the Hajiss store?',
     'What are your opening hours?'
   ]
 };
@@ -99,32 +95,6 @@ const getReply = (message: string, language: Language): Reply => {
     );
   }
 
-  if (/توصيل|اونلاين|أونلاين|شحن|اطلب|طلب|deliver|online|shipping|order/.test(normalizedMessage)) {
-    return reply(
-      {
-        text: 'أبشر! تقدر تتسوق أونلاين، والتوصيل متاح لجميع مناطق المملكة من متجرنا:',
-        link: { label: 'زيارة متجر هاجس', href: 'https://hajiss.shop/' }
-      },
-      {
-        text: 'Absolutely! You can shop online, with delivery available across the Kingdom from our store:',
-        link: { label: 'Visit the Hajiss store', href: 'https://hajiss.shop/' }
-      }
-    );
-  }
-
-  if (/متجر|أدوات|ادوات|معدات|شراء|عروض|store|shop|tools|equipment|buy|offers/.test(normalizedMessage)) {
-    return reply(
-      {
-        text: 'في متجر هاجس تلقى محاصيل قهوة طازجة، وأدوات للقهوة المختصة، وعروض خاصة. والتوصيل متاح لجميع مناطق المملكة:',
-        link: { label: 'تسوق من متجر هاجس', href: 'https://hajiss.shop/' }
-      },
-      {
-        text: "In the Hajiss store you'll find freshly roasted beans, specialty coffee tools and special offers — with delivery across the Kingdom:",
-        link: { label: 'Shop at Hajiss', href: 'https://hajiss.shop/' }
-      }
-    );
-  }
-
   if (/v60|تقطير|تقطيره|استخلاص|تحضير|pour.?over|brew/.test(normalizedMessage)) {
     return reply(
       { text: 'قهوة الـV60 عندنا تنحضر بعناية: نسبة 1:15، وحرارة 92°، مع Bloom لمدة 45 ثانية، ووقت تقطير يقارب دقيقتين ونصف.' },
@@ -154,11 +124,11 @@ const getReply = (message: string, language: Language): Reply => {
 
   return reply(
     {
-      text: 'أبشر، أقدر أساعدك عن قصة هاجس، القهوة والقائمة، الـV60، موقعنا، الزيارة، التوصيل أو المتجر. وإذا استفسارك غير كذا تواصل معنا على إنستغرام.',
+      text: 'أبشر، أقدر أساعدك عن قصة هاجس، القهوة والقائمة، الـV60، موقعنا أو الزيارة. وإذا استفسارك غير كذا تواصل معنا على إنستغرام.',
       link: { label: 'حساب هاجس على إنستغرام', href: brandData.contact.instagram }
     },
     {
-      text: 'Happy to help with the Hajiss story, our coffee and menu, the V60, our location, visiting, delivery or the store. For anything else, reach us on Instagram.',
+      text: 'Happy to help with the Hajiss story, our coffee and menu, the V60, our location or visiting. For anything else, reach us on Instagram.',
       link: { label: 'Hajiss on Instagram', href: brandData.contact.instagram }
     }
   );

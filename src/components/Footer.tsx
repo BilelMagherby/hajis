@@ -1,8 +1,6 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { InstagramIcon, SnapchatIcon, ThreadsIcon, TikTokIcon, XIcon, YoutubeIcon } from './SocialIcons';
-import { ShopQrCode } from './ShopQrCode';
-import './ShopQrCode.css';
 import { brandData } from '../data/brand';
 import { useLanguage } from '../i18n/language';
 
@@ -27,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* TOP 4 COLUMNS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-start pb-8 sm:pb-12 border-b border-[var(--color-brand-chocolate)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 text-start pb-8 sm:pb-12 border-b border-[var(--color-brand-chocolate)]">
 
           {/* COL 1: BRAND LOGO & BIO */}
           <div className="space-y-4">
@@ -145,19 +143,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
                 </a>
               </p>
 
-              <p>
-                <span>{t('المتجر الإلكتروني: ', 'Online store: ')}</span>
-                <a
-                  href="https://hajiss.shop"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  dir="ltr"
-                  className="hover:text-[var(--color-brand-sand)] transition-colors"
-                >
-                  hajiss.shop
-                </a>
-              </p>
-
               <h5 className="font-kufi text-sm font-bold text-[var(--color-brand-sand)]">
                 {t('التواصل', 'Contact')}
               </h5>
@@ -173,21 +158,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings
             </div>
           </div>
 
-          {/* COL 3: STORE & QR CODE */}
-          <div className="space-y-3">
-            <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
-              {t('زوروا متجرنا الإلكتروني', 'Visit our online store')}
-            </h4>
-            <p className="font-arabic text-xs text-[var(--color-brand-sand)] font-light">
-              {t('للحصول على عروض خاصة ومحاصيل طازجة', 'For special offers and freshly roasted beans')}
-            </p>
-
-            <div className="flex justify-start pt-1">
-              <ShopQrCode className="w-20 h-20 bg-[var(--color-brand-linen)] p-1.5 rounded-lg border border-[rgb(var(--color-brand-sand-rgb)_/_0.5)]" imageClassName="w-full h-full object-contain" />
-            </div>
-          </div>
-
-          {/* COL 4: QUICK NAVIGATION LINKS */}
+          {/* COL 3: QUICK NAVIGATION LINKS */}
           <div className="space-y-3">
             <h4 className="font-kufi text-base font-bold text-[var(--color-brand-sand)]">
               {t('روابط سريعة', 'Quick Links')}
